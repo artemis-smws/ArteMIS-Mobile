@@ -1,2 +1,3 @@
-# GAIA-Mobile-Waste-Management-System
-GAIA-MIS: Waste Management System - Mobile Platform
+# ArteMIS Waste Management System (Mobile)
+ 
+ Mobile based platform derived from ArteMIS Web
