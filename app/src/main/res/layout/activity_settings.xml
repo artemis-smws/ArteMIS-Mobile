@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+    <Switch
+        android:id="@+id/switchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ToggleButton"
+        android:text="Dark Mode\t"
+        android:elegantTextHeight="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="?attr/colorSecondary"
+        android:layout_margin="16dp"
+        android:checked="false"
+        android:thumbTint="?attr/colorSecondary"
+        android:trackTint="?attr/colorSecondaryVariant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
