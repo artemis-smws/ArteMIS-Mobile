@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Project_arteMIS_Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Project_arteMIS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_red</item>
         <item name="colorPrimaryVariant">@color/red</item>
@@ -17,5 +17,7 @@
         <item name="android:statusBarColor">#EEEEEE</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/poppins_m</item>
+        <!-- Enable night mode support -->
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>
     </style>
 </resources>
