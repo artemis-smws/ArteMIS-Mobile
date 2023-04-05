@@ -2,6 +2,7 @@ package com.example.project_artemis
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,9 @@ import android.os.Looper
 import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
+
+    private val preferences_name: String = "isFirstTime"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,8 +26,7 @@ class MainActivity : AppCompatActivity() {
         if (isConnected) {
             val handler = Handler(Looper.getMainLooper())
             handler.postDelayed({
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                firstTime()
             }, 3000)
 
         }else{
@@ -42,5 +45,22 @@ class MainActivity : AppCompatActivity() {
             //finishAffinity()
             //finish()
         }
+    }
+
+    private fun firstTime() {
+        val pref: SharedPreferences = getSharedPreferences(preferences_name, 0)
+        if (pref.getBoolean("isFirstTime", true)) {
+            Handler().postDelayed({
+                val intent = Intent(this@MainActivity, IntroActivity::class.java)
+                startActivity(intent)
+            }, 3000)
+            pref.edit().putBoolean("isFirstTime", false).commit()
+        } else {
+            Handler().postDelayed({
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }, 3000)
+        }
+
     }
 }
