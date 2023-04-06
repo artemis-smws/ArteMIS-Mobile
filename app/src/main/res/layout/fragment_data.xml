@@ -6,18 +6,562 @@
     android:layout_height="match_parent"
     tools:context=".DataFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+
+        <TextView
+            android:id="@+id/statusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_guideline"
+            app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="top"
+            >
+
+            <Button
+                style="?android:spinnerStyle"
+                android:text="JAN 01 2020"
+                android:textSize="16sp"
+                android:textColor="?attr/colorPrimary"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:id="@+id/datePickerData"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="1100px"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    >
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_red"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 234"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="10:24 am"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CICS Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_green"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="5kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 111"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="5:44 pm"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CIT Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_yellow"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="7kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 123"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="6:24 am"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CEAFA Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_red"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="12kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 87"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="7:11 am"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CIT Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_green"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="5kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 10"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="8:24 pm"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CICS Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/baseline_status_circle_yellow"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="9kg"
+                                android:gravity="center"
+                                android:textSize="11sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:elegantTextHeight="true"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/status_container"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Trash Bin 77"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1:24 pm"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="CEAFA Building"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+
+
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/bottom_guideline"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        >
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Status Indicator"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:gravity="center"
+            />
+
+        <ImageView
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/status_indicator_percent"
+            />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/status_indicator_kg"
+            />
+
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
