@@ -12,6 +12,7 @@
         <!-- Tertiary brand color. -->
         <item name="colorTertiary">#2B1D1D</item>
         <item name="colorOnTertiary">#124512</item>
+        <item name="colorSurface">#555555</item>
         <!-- Customize your statusbar here. -->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <!-- Customize your theme here. -->

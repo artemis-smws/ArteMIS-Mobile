@@ -4,20 +4,25 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import kotlinx.android.synthetic.main.activity_settings.*
+import com.example.project_artemis.databinding.ActivitySettingsBinding
+import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val isDarkModeOn = sharedPrefs.getBoolean("isDarkModeOn", false)
 
-        switchButton.isChecked = isDarkModeOn
-
-        switchButton.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchButton.isChecked = isDarkModeOn
+        binding.switchButton.setOnCheckedChangeListener { _, isChecked ->
 
             with(sharedPrefs.edit()){
                 putBoolean("isDarkModeOn", isChecked)

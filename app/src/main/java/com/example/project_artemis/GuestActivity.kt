@@ -3,36 +3,37 @@ package com.example.project_artemis
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.project_artemis.databinding.ActivityGuestBinding
-import kotlinx.android.synthetic.main.activity_home.bottomNav
-import kotlinx.android.synthetic.main.activity_home.settings
 
 class GuestActivity : AppCompatActivity() {
 
     var backPressedTime: Long = 0
     private lateinit var binding : ActivityGuestBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGuestBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
-        settings.setOnClickListener {
+        binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
             startActivity(intent)
         }
 
-        val connectionManager: ConnectivityManager = this.getSystemService(
-            Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
-        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        val isConnected = networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 
         if (isConnected) {
         }else{
@@ -47,12 +48,9 @@ class GuestActivity : AppCompatActivity() {
             }
             val dialog = builder.create()
             dialog.show()
-            //Toast.makeText(this,"You are not connected to the Internet", Toast.LENGTH_LONG).show()
-            //finishAffinity()
-            //finish()
         }
-        bottomNav.selectedItemId = R.id.home
-        binding.bottomNav.setOnItemSelectedListener {
+        binding.bottomNav.selectedItemId = R.id.home
+        binding.bottomNav.setOnNavigationItemSelectedListener {
 
             when(it.itemId){
                 R.id.status -> replaceFragment(DataFragment())
@@ -75,11 +73,10 @@ class GuestActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()){
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
-            finishAffinity()
-            finish()
-        }else{
+            finishAndRemoveTask()
+        } else {
             Toast.makeText(this, "Press back again to exit the app.", Toast.LENGTH_LONG).show()
         }
         backPressedTime = System.currentTimeMillis()

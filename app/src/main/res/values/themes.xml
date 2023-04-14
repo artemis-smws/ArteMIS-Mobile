@@ -12,11 +12,12 @@
         <!-- Tertiary brand color. -->
         <item name="colorTertiary">@color/pastel_red</item>
         <item name="colorOnTertiary">@color/green</item>
+        <item name="colorSurface">#D9D9D9</item>
         <!-- Customize your statusbar here. -->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="android:statusBarColor">#EEEEEE</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/poppins_m</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <!-- Enable night mode support -->
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>
     </style>

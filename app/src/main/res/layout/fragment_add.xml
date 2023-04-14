@@ -6,18 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".AddFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data Input"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/addTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Input"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/locationPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/wasteCategory"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            >
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+
+            <Spinner
+                android:id="@+id/locationPickerInput"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/spinner2"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/amountOfWaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/addTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/amountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount of Waste"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+
+            <EditText
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add_input_background"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:elegantTextHeight="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/typeOfWaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/addTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type of Waste"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+
+            <EditText
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add_input_background"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:elegantTextHeight="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wasteCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waste Category"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+
+            <EditText
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add_input_background"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:elegantTextHeight="true"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
