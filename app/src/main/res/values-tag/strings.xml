@@ -15,6 +15,9 @@
     <string name="amountText">Dami ng Basura</string>
     <string name="typeText">Uri ng Basura</string>
     <string name="categoryText">Kategorya ng Basura</string>
+    <string name="statusTitle">Kalagayan</string>
+    <string name="statusIndicator">Basehan ng Kalagayan ng Basura</string>
+    <string name="wasteMappingTitle">Pagmamapa ng Basura</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

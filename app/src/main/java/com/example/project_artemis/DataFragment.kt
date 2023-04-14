@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.project_artemis.databinding.FragmentDataBinding
 import java.util.*
 
 class DataFragment : Fragment() {
@@ -22,7 +23,12 @@ class DataFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data, container, false)
+        val binding = FragmentDataBinding.inflate(inflater, container, false)
+
+        binding.statusTitle.text = getString(R.string.statusTitle)
+        binding.statusIndicator.text = getString(R.string.statusIndicator)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

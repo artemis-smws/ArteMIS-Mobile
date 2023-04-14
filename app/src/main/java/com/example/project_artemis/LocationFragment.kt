@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.project_artemis.databinding.FragmentLocationBinding
 import java.util.*
 
 class LocationFragment : Fragment() {
@@ -29,13 +30,18 @@ class LocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_location, container, false)
+
+        val binding = FragmentLocationBinding.inflate(inflater, container, false)
+
+        binding.wasteMappingTitle.text = getString(R.string.wasteMappingTitle)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spinnerLocation = view?.findViewById(R.id.locationPickerMapping)!!
+        spinnerLocation = view.findViewById(R.id.locationPickerMapping)!!
 
         itemsLocation = listOf("Batangas State University - Alangilan", "Batangas State University - Pablo Borbon", "Batangas State University - Malvar")
 
@@ -51,7 +57,7 @@ class LocationFragment : Fragment() {
 
         initDatePicker()
         datePickerButton = view.findViewById(R.id.datePicker)
-        datePickerButton.setText(getTodaysDate())
+        datePickerButton.text = getTodaysDate()
 
         datePickerButton.setOnClickListener {
             datePickerDialog.show()

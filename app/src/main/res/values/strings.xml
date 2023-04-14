@@ -15,6 +15,9 @@
     <string name="amountText">Amount of Waste</string>
     <string name="typeText">Type of Waste</string>
     <string name="categoryText">Waste Category</string>
+    <string name="statusTitle">Status</string>
+    <string name="statusIndicator">Status Indcator</string>
+    <string name="wasteMappingTitle">Waste Mapping</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>
