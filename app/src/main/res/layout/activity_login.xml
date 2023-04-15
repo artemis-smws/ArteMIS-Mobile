@@ -148,4 +148,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
+    <include
+        layout="@layout/language_selection_dialog"
+        android:id="@+id/language_selection_dialog"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

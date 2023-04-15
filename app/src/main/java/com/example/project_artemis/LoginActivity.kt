@@ -19,6 +19,9 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val languageSelectionDialog = LanguageSelectionDialog(this)
+        languageSelectionDialog.show()
+
         binding.textView2.text = getString(R.string.login_or)
 
         binding.textView3.text = getString(R.string.Login_to_your_account)
@@ -43,11 +46,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()){
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
-            finishAffinity()
-            finish()
-        }else{
+            finishAndRemoveTask()
+        } else {
             Toast.makeText(this, "Press back again to exit the app.", Toast.LENGTH_LONG).show()
         }
         backPressedTime = System.currentTimeMillis()
