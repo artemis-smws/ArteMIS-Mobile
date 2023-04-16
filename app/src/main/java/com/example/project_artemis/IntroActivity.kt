@@ -16,7 +16,7 @@ class IntroActivity : AppCompatActivity() {
 
     private lateinit var onboardingItemsAdapter: OnboardingItemsAdapter
     private lateinit var indicatorsContainer: LinearLayout
-    var backPressedTime: Long = 0
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
