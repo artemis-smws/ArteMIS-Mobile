@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Language">TAG</string>
     <string name="Login_to_your_account">Mag-Login sa iyong account</string>
-    <string name="welcome_back">Maligayang pagbalik! Pakilagay ng iyong mga detalye.</string>
+    <string name="welcome_back">Maligayang pagbalik! Pakilagay ng\niyong mga detalye.</string>
     <string name="sign_in">Mag-Sign In</string>
     <string name="view_guest">Pumasok bilang Guest</string>
     <string name="forgot_password">Nakalimutan ang Password?</string>
@@ -17,7 +17,7 @@
     <string name="categoryText">Kategorya ng Basura</string>
     <string name="statusTitle">Kalagayan</string>
     <string name="statusIndicator">Basehan ng Kalagayan ng Basura</string>
-    <string name="wasteMappingTitle">Pagmamapa ng Basura</string>
+    <string name="wasteMappingTitle">Pagmamapa ng\nBasura</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

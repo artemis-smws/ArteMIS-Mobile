@@ -1,6 +1,7 @@
 package com.example.project_artemis
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,21 +10,37 @@ import com.example.project_artemis.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
     private var backPressedTime: Long = 0
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    
-        val languageSelectionDialog = LanguageSelectionDialog(this)
-        languageSelectionDialog.show { 
-            updateLanguage() 
+
+        sharedPreferences = getSharedPreferences("MySelectedLanguagePrefs", MODE_PRIVATE)
+        val languageSelected = sharedPreferences.getBoolean("languageSelected", false)
+
+        if (!languageSelected) {
+            val languageSelectionDialog = LanguageSelectionDialog(this)
+            languageSelectionDialog.show {
+                updateLanguage()
+            }
+
+            sharedPreferences.edit().putBoolean("languageSelected", true).apply()
+        }else {
+            sharedPreferences.edit().putBoolean("languageSelected", false).apply()
         }
 
-        binding.changeLanguageButton.text = getString(R.string.Language)
+        if (!languageSelected) {
+            val languageSelectionDialog = LanguageSelectionDialog(this)
+            languageSelectionDialog.show {
+                updateLanguage()
+            }
+
+            sharedPreferences.edit().putBoolean("languageSelected", true).apply()
+        }    
 
         binding.textView2.text = getString(R.string.login_or)
 
@@ -35,14 +52,16 @@ class LoginActivity : AppCompatActivity() {
 
         binding.viewBtn.text = getString(R.string.view_guest)
 
+        binding.forgotPass.text = getString(R.string.forgot_password)
+
         binding.textView5.text = getString(R.string.continue_with)
 
         binding.loginBtn.setOnClickListener {
-            val intent = Intent(this,HomeActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
         binding.viewBtn.setOnClickListener {
-            val intent = Intent(this,GuestActivity::class.java)
+            val intent = Intent(this, GuestActivity::class.java)
             startActivity(intent)
         }
     }

@@ -46,7 +46,7 @@ class LanguageSelectionDialog(private val context: Context) {
 
         resources.updateConfiguration(configuration, resources.displayMetrics)
 
-        sharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences("MyLanguagePrefs", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
         editor.putString("selected_language", language)
         editor.apply()

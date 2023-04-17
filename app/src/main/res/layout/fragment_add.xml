@@ -54,6 +54,7 @@
                 android:id="@+id/locationPickerInput"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textColor="?attr/colorPrimary"
                 android:background="@drawable/spinner2"
                 />
 
