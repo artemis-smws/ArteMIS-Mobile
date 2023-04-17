@@ -29,7 +29,7 @@ class LanguageSelectionDialog(private val context: Context) {
             } else if (tagalogButton.isChecked) {
                 setLocale("tag")
             } else {
-                setLocale("tag")
+                setLocale("en")
             }
             dialog.dismiss()
         }
@@ -44,7 +44,7 @@ class LanguageSelectionDialog(private val context: Context) {
         val configuration = Configuration(resources.configuration)
         configuration.setLocale(locale)
 
-        context.createConfigurationContext(configuration)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
 
         sharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
@@ -53,4 +53,5 @@ class LanguageSelectionDialog(private val context: Context) {
 
         onConfirm?.invoke()
     }
+
 }
