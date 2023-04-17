@@ -25,7 +25,9 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        binding.changeLanguageButton.text = getString(R.string.Language)
+
+        val sharedPrefs = getSharedPreferences("MyThemePrefs", Context.MODE_PRIVATE)
         val isDarkModeOn = sharedPrefs.getBoolean("isDarkModeOn", false)
 
         binding.switchButton.isChecked = isDarkModeOn
