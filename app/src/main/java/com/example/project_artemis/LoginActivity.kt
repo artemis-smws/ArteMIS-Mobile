@@ -17,13 +17,13 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
-        binding.changeLanguageButton.button = getString(R.string.language)
-        
-        binding.changeLanguageButton.setOnClickListener{
-            val languageSelectionDialog = LanguageSelectionDialog(this)
-            languageSelectionDialog.show { updateLanguage() }
+    
+        val languageSelectionDialog = LanguageSelectionDialog(this)
+        languageSelectionDialog.show { 
+            updateLanguage() 
         }
+
+        binding.changeLanguageButton.text = getString(R.string.Language)
 
         binding.textView2.text = getString(R.string.login_or)
 
@@ -59,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateLanguage() {
-        finish()
-        startActivity(intent)
+        recreate()
     }
 }

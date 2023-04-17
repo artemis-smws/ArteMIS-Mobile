@@ -18,6 +18,13 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.changeLanguageButton.setOnClickListener{
+            val languageSelectionDialog = LanguageSelectionDialog(this)
+            languageSelectionDialog.show { 
+                updateLanguage() 
+            }
+        }
+
         val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val isDarkModeOn = sharedPrefs.getBoolean("isDarkModeOn", false)
 
@@ -35,6 +42,10 @@ class SettingsActivity : AppCompatActivity() {
             }
             recreate()
         }
+    }
+
+    private fun updateLanguage() {
+        recreate()
     }
 
 }
