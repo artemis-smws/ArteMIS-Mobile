@@ -10,14 +10,20 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    var backPressedTime: Long = 0
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflate the layout and initialize the binding object
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        binding.changeLanguageButton.button = getString(R.string.language)
+        
+        binding.changeLanguageButton.setOnClickListener{
+            val languageSelectionDialog = LanguageSelectionDialog(this)
+            languageSelectionDialog.show { updateLanguage() }
+        }
 
         binding.textView2.text = getString(R.string.login_or)
 
@@ -31,7 +37,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.textView5.text = getString(R.string.continue_with)
 
-        // Access views using the binding object
         binding.loginBtn.setOnClickListener {
             val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
@@ -43,13 +48,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()){
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
             finishAffinity()
             finish()
-        }else{
+        } else {
             Toast.makeText(this, "Press back again to exit the app.", Toast.LENGTH_LONG).show()
         }
         backPressedTime = System.currentTimeMillis()
+    }
+
+    private fun updateLanguage() {
+        finish()
+        startActivity(intent)
     }
 }

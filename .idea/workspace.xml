@@ -10,9 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4454cdc-9a22-4337-a454-7983826b5908" name="Changes" comment="Dual Language">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/darkred_container.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edit_text_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login_input_background_selected.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,17 +17,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/DataFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/DataFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LocationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LocationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/login_input_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login_input_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/GuestActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/GuestActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/IntroActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/IntroActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LanguageSelectionDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LanguageSelectionDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_intro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_intro.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/spinner_selected_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/spinner_selected_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/spinner_selected_item2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/spinner_selected_item2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-tag/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-tag/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/language_selection_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/language_selection_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/onboarding_item_container_constraint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/onboarding_item_container_constraint.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +35,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[643c0fd20121]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -48,10 +45,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -80,6 +77,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/andrey13/ArteMIS-Mobile/app/src/androidTest/java&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Codes/Kotlin/ArteMIS-Mobile/ArteMIS-Mobile/app/src/main/res/drawable&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
@@ -90,6 +88,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Codes\Kotlin\ArteMIS-Mobile\ArteMIS-Mobile\app\src\main\res\drawable" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.project_artemis" />
     </key>
     <key name="android.template.-1563361461">
       <recent name="com.example.project_artemis" />
@@ -113,31 +114,8 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
+      <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_PROFILING_ENABLED" value="false" />
