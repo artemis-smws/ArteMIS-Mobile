@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project_arteMIS</string>
+    <string name="app_name">ArteMIS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Language">TAG</string>
@@ -18,6 +18,11 @@
     <string name="statusTitle">Kalagayan</string>
     <string name="statusIndicator">Basehan ng Kalagayan ng Basura</string>
     <string name="wasteMappingTitle">Pagmamapa ng\nBasura</string>
+    <string name="this_is_you_dashboard">Ito ang iyong-dashboard</string>
+    <string name="HELLO">KAMUSTA</string>
+    <string name="Mostgatheredwaste">Pinaka Maraming Naipong Basura</string>
+    <string name="Dashboard">Talaan</string>
+    <string name="Logs">Mga Input</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

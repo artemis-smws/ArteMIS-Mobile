@@ -36,6 +36,7 @@
         >
 
         <TextView
+            android:id="@+id/thisyourdashboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="This is your dashboard"
@@ -49,6 +50,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/Hello"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HELLO"
@@ -61,7 +63,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KUYA"
+                android:text="SPARTAN"
                 android:textColor="?attr/colorSecondary"
                 android:textStyle="bold"
                 android:textSize="28sp"
@@ -154,9 +156,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hazardous"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textAlignment="center"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@color/white"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -186,9 +188,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Residual"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textAlignment="center"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@color/white"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -218,9 +220,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Recyclable"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textAlignment="center"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@color/white"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -251,13 +253,14 @@
         >
 
         <TextView
+            android:id="@+id/mostGatheredWaste"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Most Gathered Waste"
             android:textSize="15sp"
             android:textAlignment="center"
             android:layout_gravity="center_vertical"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textStyle="bold"
             tools:ignore="RtlCompat" />
 
@@ -293,7 +296,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@color/white"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -343,7 +346,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@color/white"
                 tools:ignore="RtlCompat" />
 
             <TextView
