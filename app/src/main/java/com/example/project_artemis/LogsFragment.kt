@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.project_artemis.databinding.FragmentLogsBinding
 
 class LogsFragment : Fragment() {
 
@@ -13,7 +14,11 @@ class LogsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_logs, container, false)
+        val binding = FragmentLogsBinding.inflate(inflater, container, false)
+
+        binding.logs.text = getString(R.string.Logs)
+
+        return binding.root
     }
 
 }

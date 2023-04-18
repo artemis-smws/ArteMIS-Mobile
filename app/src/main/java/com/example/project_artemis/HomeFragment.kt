@@ -24,6 +24,11 @@ class HomeFragment : Fragment() {
 
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        binding.dashboardTitle.text = getString(R.string.Dashboard)
+        binding.thisyourdashboard.text = getString(R.string.this_is_you_dashboard)
+        binding.Hello.text = getString(R.string.HELLO)
+        binding.mostGatheredWaste.text = getString(R.string.Mostgatheredwaste)
+
         return binding.root
     }
 
