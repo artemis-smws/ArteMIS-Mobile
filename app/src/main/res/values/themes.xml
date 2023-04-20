@@ -12,7 +12,13 @@
         <!-- Tertiary brand color. -->
         <item name="colorTertiary">@color/pastel_red</item>
         <item name="colorOnTertiary">@color/green</item>
-        <item name="colorSurface">#D9D9D9</item>
+        <item name="colorSurface">#EAEAEA</item>
+        <item name="colorAccent">@color/dark_red</item>
+        <item name="colorOnContainer">#E6E6E6</item>
+        <item name="colorOnSecondaryContainer">#F7F7F7</item>
+        <item name="colorOnSurface">#303030</item>
+        <item name="colorOnTertiaryContainer">#CCCCCC</item>
+        <item name="colorOnErrorContainer">#EDEDED</item>
         <!-- Customize your statusbar here. -->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="android:statusBarColor">#EEEEEE</item>
