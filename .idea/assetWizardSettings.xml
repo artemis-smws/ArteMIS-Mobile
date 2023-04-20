@@ -152,8 +152,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="color" value="7a0000" />
-                                                <entry key="imagePath" value="C:\Users\YOUNGF~1\AppData\Local\Temp\baseline_arrow_drop_down_24.xml" />
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\YOUNGF~1\AppData\Local\Temp\baseline_arrow_back_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -164,7 +164,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Program%20Files%20(x86)/Android/Sdk/icons/material/materialicons/arrow_drop_down/baseline_arrow_drop_down_24.xml" />
+                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Program%20Files%20(x86)/Android/Sdk/icons/material/materialicons/arrow_back/baseline_arrow_back_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -207,9 +207,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundColor" value="7a0000" />
+                                      <entry key="backgroundColor" value="3b2d2d" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="outputName" value="ic_dropdown2" />
+                                      <entry key="outputName" value="ic_back" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -364,7 +364,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Program%20Files%20(x86)/Android/Sdk/icons/material/materialicons/trip_origin/baseline_trip_origin_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Program%20Files%20(x86)/Android/Sdk/icons/material/materialicons/remove_red_eye/baseline_remove_red_eye_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -374,8 +374,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="0c8402" />
-                            <entry key="outputName" value="baseline_status_circle_green" />
+                            <entry key="outputName" value="baseline_remove_red_eye_24" />
                             <entry key="sourceFile" value="D:\Codes\Kotlin\ArteMIS-Mobile\ArteMIS-Mobile" />
                           </map>
                         </option>

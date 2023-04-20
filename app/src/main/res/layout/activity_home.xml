@@ -33,6 +33,7 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <ImageView
+        android:background="@drawable/settings_button_selector"
         android:id="@+id/settings"
         android:layout_width="37dp"
         android:layout_height="37dp"

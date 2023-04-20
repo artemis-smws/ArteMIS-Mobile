@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LogsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/logs"
         android:layout_width="wrap_content"
@@ -20,5 +19,715 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logs"
+            android:layout_marginTop="82dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:gravity="top"
+            >
+
+        <Spinner
+                android:background="@drawable/spinner1"
+                android:id="@+id/locationPickerLogs"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                />
+
+        <Button
+                style="?android:spinnerStyle"
+                android:text="JAN 01 2020"
+                android:textSize="16sp"
+                android:textColor="?attr/colorPrimary"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:id="@+id/datePickerLogs"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/status_container"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User#1111"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="18sp"
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingTop="5dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Residual"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="14sp"
+                            android:layout_weight="0.2"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10kg"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="30dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="13kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User#1112"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"
+
+                            />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="32kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="8kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User#1241"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"
+
+                            />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="42kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="31kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User#3212"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"
+
+                            />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="8kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="21kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User#3311"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"
+
+                            />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="23kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User#2131"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"
+
+                            />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="63kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="29kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingTop="5dp"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hazardous"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_weight="0.2"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0kg"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp"
+                                android:layout_marginEnd="30dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

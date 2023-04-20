@@ -1,11 +1,11 @@
 package com.example.project_artemis
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.project_artemis.databinding.ActivitySettingsBinding
-import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -13,15 +13,22 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
 
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backSettings.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
+        }
+
         binding.changeLanguageButton.setOnClickListener{
             val languageSelectionDialog = LanguageSelectionDialog(this)
-            languageSelectionDialog.show { 
-                updateLanguage() 
+            languageSelectionDialog.show {
+                updateLanguage()
             }
         }
 
@@ -47,7 +54,20 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun updateLanguage() {
+        // Save the state of your UI components before recreating the activity
+        val savedState = Bundle()
+        onSaveInstanceState(savedState)
         recreate()
+        // Restore the state of your UI components after recreating the activity
+        onRestoreInstanceState(savedState)
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        finish()
     }
 
 }

@@ -13,6 +13,12 @@
         <item name="colorTertiary">#2B1D1D</item>
         <item name="colorOnTertiary">#124512</item>
         <item name="colorSurface">#555555</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorOnContainer">#232323</item>
+        <item name="colorOnSurface">@color/dark_red</item>
+        <item name="colorOnSecondaryContainer">#1D1D1D</item>
+        <item name="colorOnTertiaryContainer">#272727</item>
+        <item name="colorOnErrorContainer">#131313</item>
         <!-- Customize your statusbar here. -->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <!-- Customize your theme here. -->
