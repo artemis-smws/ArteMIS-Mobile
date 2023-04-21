@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
-
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
             startActivity(intent)
@@ -84,4 +83,5 @@ class HomeActivity : AppCompatActivity() {
         }
         backPressedTime = System.currentTimeMillis()
     }
+
 }

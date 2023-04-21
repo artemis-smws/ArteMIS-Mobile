@@ -85,15 +85,19 @@ class LoginActivity : AppCompatActivity() {
         binding.forgotPass.text = getString(R.string.forgot_password)
 
         binding.textView5.text = getString(R.string.continue_with)
-
+        
         binding.loginBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        
         binding.viewBtn.setOnClickListener {
             val intent = Intent(this, GuestActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        
     }
 
     override fun onBackPressed() {
