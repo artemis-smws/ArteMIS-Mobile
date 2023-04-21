@@ -4,8 +4,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import com.example.project_artemis.databinding.ActivityLoginBinding
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.view.View
 
 class LoginActivity : AppCompatActivity() {
 
@@ -13,11 +18,36 @@ class LoginActivity : AppCompatActivity() {
     private var backPressedTime: Long = 0
     private lateinit var sharedPreferences: SharedPreferences
 
+    private var mIsShowPass = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.visibility.setOnClickListener {
+            mIsShowPass = !mIsShowPass
+            showPassword(mIsShowPass)
+        }
+
+        showPassword(mIsShowPass)
+
+        binding.visibility.visibility = View.GONE
+
+        binding.editTextPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty()) {
+                    binding.visibility.visibility = View.GONE
+                } else {
+                    binding.visibility.visibility = View.VISIBLE
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
         sharedPreferences = getSharedPreferences("MySelectedLanguagePrefs", MODE_PRIVATE)
         val languageSelected = sharedPreferences.getBoolean("languageSelected", false)
@@ -55,15 +85,19 @@ class LoginActivity : AppCompatActivity() {
         binding.forgotPass.text = getString(R.string.forgot_password)
 
         binding.textView5.text = getString(R.string.continue_with)
-
+        
         binding.loginBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        
         binding.viewBtn.setOnClickListener {
             val intent = Intent(this, GuestActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        
     }
 
     override fun onBackPressed() {
@@ -79,5 +113,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateLanguage() {
         recreate()
+    }
+
+    private fun showPassword(isShow: Boolean){
+        if (isShow) {
+            binding.editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.visibility.setImageResource(R.drawable.baseline_visibility_off_24)
+        }else{
+            binding.editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.visibility.setImageResource(R.drawable.baseline_remove_red_eye_24)
+        }
+        binding.editTextPassword.setSelection(binding.editTextPassword.text.toString().length)
     }
 }

@@ -18,11 +18,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.backSettings.setOnClickListener{
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-            finish()
+            onBackPressed()
         }
 
         binding.changeLanguageButton.setOnClickListener{
@@ -54,11 +50,9 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun updateLanguage() {
-        // Save the state of your UI components before recreating the activity
         val savedState = Bundle()
         onSaveInstanceState(savedState)
         recreate()
-        // Restore the state of your UI components after recreating the activity
         onRestoreInstanceState(savedState)
     }
 
@@ -66,7 +60,6 @@ class SettingsActivity : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
     }
 

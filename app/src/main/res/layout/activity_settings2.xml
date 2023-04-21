@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:context=".SettingsActivity2">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+    >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/top_bar"
+                android:orientation="horizontal"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+        >
+
+            <ImageView
+                    android:background="@drawable/settings_button_selector"
+                    android:id="@+id/backSettings"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/baseline_arrow_back_24"
+                    android:layout_gravity="center_vertical"
+            />
+
+            <TextView
+                    android:id="@+id/settingsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:elegantTextHeight="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+        >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+            >
+
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/baseline_remove_red_eye_24"
+                        android:layout_marginStart="20dp"
+                        android:layout_gravity="center"
+                />
+
+                <TextView
+                        android:id="@+id/appearanceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Display"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginStart="14dp"
+                        android:layout_gravity="center"
+                        android:elegantTextHeight="true"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/settings_container"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+            >
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="25dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                >
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dark Mode"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="16sp"
+                            android:layout_weight="0.2"
+                            android:layout_gravity="center"
+                            android:elegantTextHeight="true"
+                    />
+
+                    <Switch
+                            android:id="@+id/switchButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="16sp"
+                            android:checked="false"
+                            android:thumbTint="?attr/colorSecondary"
+                            android:trackTint="?attr/colorSecondaryVariant"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                </LinearLayout>
+
+                <TextView
+                        android:background="@drawable/text_button_selector"
+                        android:id="@+id/changeLanguageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select Language"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:elegantTextHeight="true"
+                        android:paddingStart="32dp"
+                        android:textSize="16sp"
+                        android:paddingEnd="25dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                />
+
+                <include
+                        layout="@layout/language_selection_dialog"
+                        android:id="@+id/language_selection_dialog"
+                        android:visibility="gone"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

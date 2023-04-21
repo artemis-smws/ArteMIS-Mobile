@@ -1,5 +1,6 @@
 package com.example.project_artemis
 
+import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,17 +11,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import com.example.project_artemis.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val preferences_name: String = "isFirstTime"
+    private lateinit var binding: ActivityMainBinding
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+        if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+            binding.logo.visibility = View.GONE
+            binding.logoDark.visibility = View.VISIBLE
+        }else{
+            binding.logo.visibility = View.VISIBLE
+            binding.logoDark.visibility = View.GONE
+        }
 
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
