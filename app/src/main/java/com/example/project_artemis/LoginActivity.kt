@@ -89,12 +89,14 @@ class LoginActivity : AppCompatActivity() {
         binding.loginBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("caller", "home")
             startActivity(intent)
         }
         
         binding.viewBtn.setOnClickListener {
             val intent = Intent(this, GuestActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("caller", "guest")
             startActivity(intent)
         }
         

@@ -26,7 +26,7 @@ class GuestActivity : AppCompatActivity() {
         replaceFragment(HomeFragment())
 
         binding.settings.setOnClickListener {
-            val intent = Intent(this,SettingsActivity2::class.java)
+            val intent = Intent(this,SettingsActivity::class.java)
             startActivity(intent)
         }
 
