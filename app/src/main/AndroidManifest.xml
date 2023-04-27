@@ -15,6 +15,9 @@
             android:theme="@style/Theme.Project_arteMIS"
             tools:targetApi="31">
         <activity
+                android:name=".ConcernActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".SettingsActivity2"
                 android:exported="false"/>
         <activity

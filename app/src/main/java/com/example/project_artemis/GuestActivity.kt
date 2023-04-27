@@ -7,6 +7,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -27,6 +28,16 @@ class GuestActivity : AppCompatActivity() {
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.contactUs.setOnClickListener {
+            binding.feedback.visibility = View.VISIBLE
+            binding.concerns.visibility = View.VISIBLE
+        }
+
+        binding.concerns.setOnClickListener {
+            val intent = Intent(this,ConcernActivity::class.java)
             startActivity(intent)
         }
 
