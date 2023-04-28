@@ -32,8 +32,17 @@ class GuestActivity : AppCompatActivity() {
         }
 
         binding.contactUs.setOnClickListener {
-            binding.feedback.visibility = View.VISIBLE
-            binding.concerns.visibility = View.VISIBLE
+            if (binding.feedback.visibility == View.VISIBLE && binding.concerns.visibility == View.VISIBLE){
+                binding.feedback.animate().alpha(0f).setDuration(300).withEndAction { binding.feedback.visibility = View.GONE }
+                binding.concerns.animate().alpha(0f).setDuration(300).withEndAction { binding.concerns.visibility = View.GONE }
+            }else{
+                binding.feedback.visibility = View.VISIBLE
+                binding.feedback.alpha = 0f
+                binding.feedback.animate().alpha(1f).setDuration(300)
+                binding.concerns.visibility = View.VISIBLE
+                binding.concerns.alpha = 0f
+                binding.concerns.animate().alpha(1f).setDuration(300)
+            }
         }
 
         binding.concerns.setOnClickListener {
