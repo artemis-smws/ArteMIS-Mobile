@@ -11,6 +11,7 @@ import com.example.project_artemis.databinding.ActivityLoginBinding
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 
 class LoginActivity : AppCompatActivity() {
 
@@ -87,10 +88,36 @@ class LoginActivity : AppCompatActivity() {
         binding.textView5.text = getString(R.string.continue_with)
         
         binding.loginBtn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("caller", "home")
-            startActivity(intent)
+            val email = binding.editTextEmail.text.toString().trim()
+            val password = binding.editTextPassword.text.toString().trim()
+
+            val emailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+            val passwordRegex = Regex("^(?=.*[\\d@\$!%*?&])[\\w@\$!%*?&]{8,}$")
+
+            if (!emailRegex.matches(email)) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Login Error")
+                builder.setMessage("Please enter a valid email address")
+                builder.setPositiveButton("OK") { dialog, which ->
+                    finish()
+                }
+                val dialog = builder.create()
+                dialog.show()
+            } else if (!passwordRegex.matches(password)) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Login Error")
+                builder.setMessage("Your password must have:\n8 or more characters and contain at least 1 number and 1 special character.")
+                builder.setPositiveButton("OK") { dialog, which ->
+                    finish()
+                }
+                val dialog = builder.create()
+                dialog.show()
+            } else {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("caller", "home")
+                startActivity(intent)
+            }
         }
         
         binding.viewBtn.setOnClickListener {
