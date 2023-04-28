@@ -7,6 +7,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -26,7 +27,26 @@ class GuestActivity : AppCompatActivity() {
         replaceFragment(HomeFragment())
 
         binding.settings.setOnClickListener {
-            val intent = Intent(this,SettingsActivity2::class.java)
+            val intent = Intent(this,SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.contactUs.setOnClickListener {
+            if (binding.feedback.visibility == View.VISIBLE && binding.concerns.visibility == View.VISIBLE){
+                binding.feedback.animate().alpha(0f).setDuration(300).withEndAction { binding.feedback.visibility = View.GONE }
+                binding.concerns.animate().alpha(0f).setDuration(300).withEndAction { binding.concerns.visibility = View.GONE }
+            }else{
+                binding.feedback.visibility = View.VISIBLE
+                binding.feedback.alpha = 0f
+                binding.feedback.animate().alpha(1f).setDuration(300)
+                binding.concerns.visibility = View.VISIBLE
+                binding.concerns.alpha = 0f
+                binding.concerns.animate().alpha(1f).setDuration(300)
+            }
+        }
+
+        binding.concerns.setOnClickListener {
+            val intent = Intent(this,ConcernActivity::class.java)
             startActivity(intent)
         }
 

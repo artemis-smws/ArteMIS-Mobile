@@ -40,5 +40,59 @@
         app:layout_constraintTop_toTopOf="@+id/frameLayout"
         app:srcCompat="@drawable/ic_baseline_settings" />
 
+    <Button
+            android:id="@+id/contact_us"
+            android:layout_width="58dp"
+            android:layout_height="70dp"
+            app:cornerRadius="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"/>
+
+    <ImageView
+            android:id="@+id/contactIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:elevation="4dp"
+            android:layout_marginTop="2dp"
+            app:srcCompat="@drawable/baseline_message_24" app:layout_constraintBottom_toBottomOf="@+id/contact_us"
+            app:layout_constraintTop_toTopOf="@+id/contact_us" app:layout_constraintEnd_toEndOf="@+id/contact_us"
+            app:layout_constraintStart_toStartOf="@+id/contact_us"/>
+
+    <Button
+        android:id="@+id/feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:text="Feedback"
+        android:elegantTextHeight="true"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:cornerRadius="15dp"
+        android:visibility="gone"
+        android:elevation="2dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/concerns"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText,UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/concerns"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:text="Concerns"
+        android:elegantTextHeight="true"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:cornerRadius="15dp"
+        android:elevation="2dp"
+        android:visibility="gone"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/contact_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText,UsingOnClickInXml" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
