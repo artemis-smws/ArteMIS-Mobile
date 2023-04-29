@@ -18,20 +18,13 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.backSettings.setOnClickListener{
-            val caller = intent.getStringExtra("caller")
-            if (caller.equals("home")) {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this, GuestActivity::class.java)
-                startActivity(intent)
-            }
+            onBackPressed()
         }
 
         binding.changeLanguageButton.setOnClickListener{
             val languageSelectionDialog = LanguageSelectionDialog(this)
             languageSelectionDialog.show {
-                updateLanguage()
+                recreateActivity()
             }
         }
 
@@ -52,11 +45,11 @@ class SettingsActivity : AppCompatActivity() {
             }else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            recreate()
+            recreateActivity()
         }
     }
 
-    private fun updateLanguage() {
+    private fun recreateActivity() {
         val savedState = Bundle()
         onSaveInstanceState(savedState)
         recreate()
@@ -75,8 +68,10 @@ class SettingsActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
-
         finish()
+        
+        onSaveInstanceState(Bundle())
+        super.onBackPressed()
     }
 
 }

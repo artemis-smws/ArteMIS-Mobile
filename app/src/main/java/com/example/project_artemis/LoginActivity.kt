@@ -99,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
                 builder.setTitle("Login Error")
                 builder.setMessage("Please enter a valid email address")
                 builder.setPositiveButton("OK") { dialog, which ->
-                    finish()
+                    dialog.dismiss()
                 }
                 val dialog = builder.create()
                 dialog.show()
@@ -108,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
                 builder.setTitle("Login Error")
                 builder.setMessage("Your password must have:\n8 or more characters and contain at least 1 number and 1 special character.")
                 builder.setPositiveButton("OK") { dialog, which ->
-                    finish()
+                    dialog.dismiss()
                 }
                 val dialog = builder.create()
                 dialog.show()

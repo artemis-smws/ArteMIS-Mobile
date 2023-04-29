@@ -27,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
+            intent.putExtra("caller", "home")
             startActivity(intent)
         }
 
