@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString().trim()
 
             val emailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
-            val passwordRegex = Regex("^(?=.*[\\d@\$!%*?&])[\\w@\$!%*?&]{8,}$")
+            val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
 
             if (!emailRegex.matches(email)) {
                 val builder = AlertDialog.Builder(this)
@@ -106,7 +106,7 @@ class LoginActivity : AppCompatActivity() {
             } else if (!passwordRegex.matches(password)) {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Login Error")
-                builder.setMessage("Your password must have:\n8 or more characters and contain at least 1 number and 1 special character.")
+                builder.setMessage("Your password must have:\n8 or more characters, must contain Upper and lowercase letter, atleast 1 digit and 1 special character.")
                 builder.setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
                 }
