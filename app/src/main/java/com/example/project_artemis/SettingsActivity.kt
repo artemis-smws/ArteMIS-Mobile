@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AlertDialog
 import com.example.project_artemis.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -87,10 +88,13 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
+        val email = intent.getStringExtra("email")
+
         val caller = intent.getStringExtra("caller")
         if (caller.equals("home")) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("email", email)
             startActivity(intent)
         } else {
             val intent = Intent(this, GuestActivity::class.java)
