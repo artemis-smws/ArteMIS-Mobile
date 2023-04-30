@@ -157,6 +157,7 @@
         tools:ignore="HardcodedText" />
 
     <ImageButton
+        android:id="@+id/googleButton"
         android:layout_width="95dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"

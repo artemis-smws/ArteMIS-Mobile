@@ -5,17 +5,46 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.auth.FirebaseAuth
 import com.example.project_artemis.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
+
+        val email = intent.getStringExtra("email")
+
+        binding.account.text = email
+
+        binding.account.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Sign Out")
+            builder.setMessage("Are you sure you want to sign out?")
+
+            builder.setPositiveButton("Yes") { dialog, which ->
+                auth.signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
+            builder.setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+
+        }
 
         binding.backSettings.setOnClickListener{
             onBackPressed()
