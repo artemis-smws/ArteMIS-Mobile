@@ -364,7 +364,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$PROJECT_DIR$/../Android/Sdk/icons/material/materialicons/message/baseline_message_24.xml" />
+                                      <entry key="url" value="file:$PROJECT_DIR$/../Android/Sdk/icons/material/materialicons/account_circle/baseline_account_circle_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -374,7 +374,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="baseline_message_24" />
+                            <entry key="outputName" value="baseline_account_circle_24" />
                             <entry key="sourceFile" value="$PROJECT_DIR$/../D:\Codes\Kotlin\ArteMIS-Mobile\ArteMIS-Mobile" />
                           </map>
                         </option>

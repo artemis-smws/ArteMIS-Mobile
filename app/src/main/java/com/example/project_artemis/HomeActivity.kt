@@ -25,8 +25,12 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
+        val email = intent.getStringExtra("email")
+
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("caller", "home")
             startActivity(intent)
         }
 
