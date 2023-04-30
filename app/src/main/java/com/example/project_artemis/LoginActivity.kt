@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("email",currentUser.email)
             startActivity(intent)
             finish()
         }
