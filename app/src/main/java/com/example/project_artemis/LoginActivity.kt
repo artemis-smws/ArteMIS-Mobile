@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
         if (currentUser != null) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("email",currentUser.email)
+            intent.putExtra("name",currentUser.displayName)
             startActivity(intent)
             finish()
         }
@@ -206,6 +207,7 @@ class LoginActivity : AppCompatActivity() {
             if (it.isSuccessful){
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("email",account.email)
+                intent.putExtra("name",account.displayName)
                 startActivity(intent)
             }else{
                 val builder = AlertDialog.Builder(this)

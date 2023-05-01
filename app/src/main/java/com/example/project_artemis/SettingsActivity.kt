@@ -23,6 +23,7 @@ class SettingsActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         val email = intent.getStringExtra("email")
+        val name = intent.getStringExtra("name")
 
         binding.account.text = email
 
@@ -89,12 +90,14 @@ class SettingsActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
         val email = intent.getStringExtra("email")
+        val name = intent.getStringExtra("name")
 
         val caller = intent.getStringExtra("caller")
         if (caller.equals("home")) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra("email", email)
+            intent.putExtra("name", name)
             startActivity(intent)
         } else {
             val intent = Intent(this, GuestActivity::class.java)

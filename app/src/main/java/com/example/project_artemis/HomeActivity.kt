@@ -23,13 +23,22 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
 
         val email = intent.getStringExtra("email")
+        val name = intent.getStringExtra("name")
+
+        val bundle = Bundle()
+        bundle.putString("name", name)
+
+        val homeFragment = HomeFragment()
+        homeFragment.arguments = bundle
+
+        replaceFragment(homeFragment)
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
             intent.putExtra("email", email)
+            intent.putExtra("name", name)
             intent.putExtra("caller", "home")
             startActivity(intent)
         }
@@ -59,7 +68,7 @@ class HomeActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.input -> replaceFragment(AddFragment())
                 R.id.status -> replaceFragment(DataFragment())
-                R.id.home -> replaceFragment(HomeFragment())
+                R.id.home -> replaceFragment(homeFragment)
                 R.id.maps -> replaceFragment(LocationFragment())
                 R.id.logs -> replaceFragment(LogsFragment())
 
