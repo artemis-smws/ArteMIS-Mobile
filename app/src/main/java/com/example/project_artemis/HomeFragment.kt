@@ -21,8 +21,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val name = arguments?.getString("name")
+
+        if (name != null) {
+            val words = name.split("\\s+".toRegex())
+            if (words.size > 1) {
+                binding.name.text = "${words[0]} ${words[1]}"
+            } else {
+                binding.name.text = name
+            }
+        }
 
         binding.dashboardTitle.text = getString(R.string.Dashboard)
         binding.thisyourdashboard.text = getString(R.string.this_is_you_dashboard)
