@@ -22,6 +22,11 @@ class SettingsActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val caller = intent.getStringExtra("caller")
+        if (caller.equals("home")) {
+            binding.accountLayout.visibility = View.VISIBLE 
+        }
+
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
 
@@ -91,8 +96,8 @@ class SettingsActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
-
         val caller = intent.getStringExtra("caller")
+        
         if (caller.equals("home")) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
