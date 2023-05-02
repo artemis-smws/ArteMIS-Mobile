@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.example.project_artemis.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -22,6 +25,11 @@ class SettingsActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val caller = intent.getStringExtra("caller")
+        if (caller.equals("home")) {
+            binding.accountLayout.visibility = View.VISIBLE 
+        }
+
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
 
@@ -29,24 +37,30 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.account.setOnClickListener{
             val builder = AlertDialog.Builder(this)
-
+        
             builder.setTitle("Sign Out")
             builder.setMessage("Are you sure you want to sign out?")
-
+        
             builder.setPositiveButton("Yes") { dialog, which ->
-                auth.signOut()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-            }
 
+                auth.signOut()
+        
+                val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
+                googleSignInClient.signOut().addOnCompleteListener {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        
             builder.setNegativeButton("No") { dialog, which ->
                 dialog.dismiss()
             }
-
+        
             val dialog = builder.create()
             dialog.show()
-
         }
+        
 
         binding.backSettings.setOnClickListener{
             onBackPressed()
@@ -91,8 +105,8 @@ class SettingsActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
-
         val caller = intent.getStringExtra("caller")
+        
         if (caller.equals("home")) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK

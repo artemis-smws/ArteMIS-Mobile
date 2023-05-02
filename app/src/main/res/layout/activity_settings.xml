@@ -21,7 +21,7 @@
                 android:orientation="horizontal"
                 android:paddingStart="15dp"
                 android:paddingTop="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="12dp"
                 >
 
             <ImageView
@@ -50,17 +50,17 @@
 
         </LinearLayout>
         <LinearLayout
+                android:id="@+id/accountLayout"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
         >
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:paddingBottom="15dp"
             >
 
@@ -122,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     >
 
