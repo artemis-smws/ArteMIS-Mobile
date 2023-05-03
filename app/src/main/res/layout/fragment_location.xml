@@ -61,6 +61,13 @@
 
         </LinearLayout>
 
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
