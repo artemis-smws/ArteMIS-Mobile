@@ -14,7 +14,7 @@
     <string name="locationText">Lokasyon</string>
     <string name="amountText">Dami ng Basura</string>
     <string name="typeText">Uri ng Basura</string>
-    <string name="categoryText">Kategorya ng Basura</string>
+    <string name="quantityText">Dami ng Basura</string>
     <string name="statusTitle">Kalagayan</string>
     <string name="statusIndicator">Basehan ng Kalagayan ng Basura</string>
     <string name="wasteMappingTitle">Pagmamapa ng\nBasura</string>
