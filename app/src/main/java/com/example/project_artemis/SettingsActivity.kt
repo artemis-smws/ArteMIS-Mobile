@@ -31,8 +31,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         val email = intent.getStringExtra("email")
-        val name = intent.getStringExtra("name")
-        val uid = intent.getStringextra("uid")
 
         binding.account.text = email
 
@@ -106,6 +104,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
+        val uid = intent.getStringExtra("uid")
         val caller = intent.getStringExtra("caller")
         
         if (caller.equals("home")) {

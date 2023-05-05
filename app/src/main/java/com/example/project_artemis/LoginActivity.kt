@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("email",currentUser.email)
             intent.putExtra("name",currentUser.displayName)
-            intent.putExtra("uid",currentUser.Uid)
+            intent.putExtra("uid",currentUser.uid)
             startActivity(intent)
             finish()
         }
@@ -209,7 +209,7 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("email",account.email)
                 intent.putExtra("name",account.displayName)
-                intent.putExtra("uid",account.Uid)
+                intent.putExtra("uid",account.id)
                 startActivity(intent)
             }else{
                 val builder = AlertDialog.Builder(this)

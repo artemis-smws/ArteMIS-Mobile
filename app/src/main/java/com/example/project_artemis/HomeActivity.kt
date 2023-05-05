@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
-        val uid = intent.getStringextra("uid")
+        val uid = intent.getStringExtra("uid")
 
         val bundle = Bundle()
         bundle.putString("name", name)
@@ -36,11 +36,11 @@ class HomeActivity : AppCompatActivity() {
 
         replaceFragment(homeFragment)
 
-        val bundle = Bundle()
-        bundle.putString("uid", uid)
+        val bundle2 = Bundle()
+        bundle2.putString("uid", uid)
 
         val addFragment = AddFragment()
-        addFragment.arguments = bundle
+        addFragment.arguments = bundle2
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
@@ -74,7 +74,7 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNav.setOnNavigationItemSelectedListener {
 
             when(it.itemId){
-                R.id.input -> replaceFragment(addFragment())
+                R.id.input -> replaceFragment(addFragment)
                 R.id.status -> replaceFragment(DataFragment())
                 R.id.home -> replaceFragment(homeFragment)
                 R.id.maps -> replaceFragment(LocationFragment())

@@ -57,20 +57,21 @@ class AddFragment : Fragment() {
             val quantity = binding.quantityeditText.text.toString().trim().toInt()
             val weight = binding.amountedditText.text.toString().trim().toInt()
 
-            val requestBody = JSONObject()
-            val item = JSONObject()
-            val itemsArray = JSONArray()
+            val itemArray = JSONArray()
+            val itemObject = JSONObject()
 
-            item.put("name", name)
-            item.put("quantity", quantity)
+            itemObject.put("name", name)
+            itemObject.put("quantity", quantity)
 
-            itemsArray.put(item)
+            itemArray.put(itemObject)
 
-            val editTextObject = JSONObject()
-            editTextObject.put("items", itemsArray)
-            editTextObject.put("weight", weight)
+            val postData = JSONObject()
+            val postDataEditObject = JSONObject()
 
-            requestBody.put(wastetype, editTextObject)
+            postDataEditObject.put("items", itemArray)
+            postDataEditObject.put("weight", weight)
+
+            postData.put(wastetype, postDataEditObject)
 
             GlobalScope.launch(Dispatchers.IO) {
                 try {
@@ -78,7 +79,7 @@ class AddFragment : Fragment() {
                     val mediaType = "application/json; charset=utf-8".toMediaType()
                     val request = Request.Builder()
                         .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                        .post(requestBody.toString().toRequestBody(mediaType))
+                        .post(postData.toString().toRequestBody(mediaType))
                         .build()
                     val response = client.newCall(request).execute()
                     if (response.isSuccessful) {
@@ -89,7 +90,7 @@ class AddFragment : Fragment() {
                             binding.nameeditText.setText("")
                             binding.quantityeditText.setText("")
                             binding.amountedditText.setText("")
-                            Toast.makeText(requireContext(), "Input Succesful: ${response.code}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         // handle the error here
@@ -109,6 +110,7 @@ class AddFragment : Fragment() {
         return binding.root
     }
 }
+
 /*
 Copyright 2023 arteMIS
 
