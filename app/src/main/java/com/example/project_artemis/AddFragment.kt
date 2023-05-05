@@ -50,62 +50,259 @@ class AddFragment : Fragment() {
 
         binding.locationPickerInput.adapter = adapter
 
-        binding.inputButton.setOnClickListener {
+        val wasteType = listOf( //name ng string na iseset sa val wastetype
+            "Hazardous Waste",  //hazwaste 
+            "Residual Waste",   //residual
+            "Recyclable Waste", //recyclable
+            "Food Waste"        //foodwaste
+        )
 
-            val wastetype = binding.typeeditText.text.toString().trim()
-            val name = binding.nameeditText.text.toString().trim()
-            val quantity = binding.quantityeditText.text.toString().trim().toInt()
-            val weight = binding.amountedditText.text.toString().trim().toInt()
+        binding.wastePickerInput.adapter = adapter
 
-            val itemArray = JSONArray()
-            val itemObject = JSONObject()
+            //haz
+            binding.inputButton.setOnClickListener {
 
-            itemObject.put("name", name)
-            itemObject.put("quantity", quantity)
+                val wastetype = //selected type.toString ex. hazwaste
+                
+                val name = binding.nameeditText.text.toString().trim()
+                val quantity = binding.quantityeditText.text.toString().trim().toInt()
+                val weight = binding.amountedditText.text.toString().trim().toInt()
 
-            itemArray.put(itemObject)
+                // Calculate the total weight of all items in the array
+                var totalWeight = 0
+                val itemArray = JSONArray()
+                for (i in 0 until quantity) {
+                    val itemObject = JSONObject()
+                    itemObject.put("weight", weight)
+                    itemObject.put("name", name)
+                    itemObject.put("quantity", quantity)
+                    itemArray.put(itemObject)
+                    totalWeight += weight
+                }
+ 
+                val postData = JSONObject()
+                val postDataEditObject = JSONObject()
 
-            val postData = JSONObject()
-            val postDataEditObject = JSONObject()
+                postDataEditObject.put("items", itemArray)
+                postDataEditObject.put("total weight", totalweight)
 
-            postDataEditObject.put("items", itemArray)
-            postDataEditObject.put("weight", weight)
+                postData.put(wastetype, postDataEditObject)
 
-            postData.put(wastetype, postDataEditObject)
-
-            GlobalScope.launch(Dispatchers.IO) {
-                try {
-                    val client = OkHttpClient()
-                    val mediaType = "application/json; charset=utf-8".toMediaType()
-                    val request = Request.Builder()
-                        .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                        .post(postData.toString().toRequestBody(mediaType))
-                        .build()
-                    val response = client.newCall(request).execute()
-                    if (response.isSuccessful) {
-                        val responseBody = response.body?.string()
-                        withContext(Dispatchers.Main) {
-                            // Update UI or show success message
-                            binding.typeeditText.setText("")
-                            binding.nameeditText.setText("")
-                            binding.quantityeditText.setText("")
-                            binding.amountedditText.setText("")
-                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                GlobalScope.launch(Dispatchers.IO) {
+                    try {
+                        val client = OkHttpClient()
+                        val mediaType = "application/json; charset=utf-8".toMediaType()
+                        val request = Request.Builder()
+                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+                            .post(postData.toString().toRequestBody(mediaType))
+                            .build()
+                        val response = client.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val responseBody = response.body?.string()
+                            withContext(Dispatchers.Main) {
+                                // Update UI or show success message
+                                binding.typeeditText.setText("")
+                                binding.nameeditText.setText("")
+                                binding.quantityeditText.setText("")
+                                binding.amountedditText.setText("")
+                                Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            // handle the error here
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                    } else {
-                        // handle the error here
+                    } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
-                    }
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
+                
             }
-            
-        }
+
+            //residual
+            //hide ang linearlayout ng quantity at name
+            binding.inputButton.setOnClickListener {
+
+                val wastetype = //selected type.toString
+                
+                val weight = binding.amountedditText.text.toString().trim().toInt()
+                
+                 // Calculate the total weight of all items in the array
+                var totalWeight = 0
+                val itemArray = JSONArray()
+                for (i in 0 until quantity) {
+                    val itemObject = JSONObject()
+                    itemObject.put("weight", weight)
+                    itemArray.put(itemObject)
+                    totalWeight += weight
+                }
+
+                val postData = JSONObject()
+                val postDataEditObject = JSONObject()
+
+                postDataEditObject.put("items", itemArray)
+                postDataEditObject.put("totalweight", totalweight)
+
+                postData.put(wastetype, postDataEditObject)
+
+                GlobalScope.launch(Dispatchers.IO) {
+                    try {
+                        val client = OkHttpClient()
+                        val mediaType = "application/json; charset=utf-8".toMediaType()
+                        val request = Request.Builder()
+                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+                            .post(postData.toString().toRequestBody(mediaType))
+                            .build()
+                        val response = client.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val responseBody = response.body?.string()
+                            withContext(Dispatchers.Main) {
+                                // Update UI or show success message
+                                binding.typeeditText.setText("")
+                                binding.nameeditText.setText("")
+                                binding.quantityeditText.setText("")
+                                binding.amountedditText.setText("")
+                                Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            // handle the error here
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                
+            }
+        
+            //recyclable
+            //hide ang linearlayout ng quantity
+            binding.inputButton.setOnClickListener {
+
+                val wastetype = //selected type.toString
+                
+                val name = binding.nameeditText.text.toString().trim()
+                val weight = binding.amountedditText.text.toString().trim().toInt()
+
+                // Calculate the total weight of all items in the array
+                var totalWeight = 0
+                val itemArray = JSONArray()
+                for (i in 0 until quantity) {
+                    val itemObject = JSONObject()
+                    itemObject.put("weight", weight)
+                    itemArray.put(itemObject)
+                    totalWeight += weight
+                }
+
+                val postData = JSONObject()
+                val postDataEditObject = JSONObject()
+
+                postDataEditObject.put("items", itemArray)
+                postDataEditObject.put("total weight", totalweight)
+
+                postData.put(wastetype, postDataEditObject)
+
+                GlobalScope.launch(Dispatchers.IO) {
+                    try {
+                        val client = OkHttpClient()
+                        val mediaType = "application/json; charset=utf-8".toMediaType()
+                        val request = Request.Builder()
+                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+                            .post(postData.toString().toRequestBody(mediaType))
+                            .build()
+                        val response = client.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val responseBody = response.body?.string()
+                            withContext(Dispatchers.Main) {
+                                // Update UI or show success message
+                                binding.typeeditText.setText("")
+                                binding.nameeditText.setText("")
+                                binding.quantityeditText.setText("")
+                                binding.amountedditText.setText("")
+                                Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            // handle the error here
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                
+            }
+
+            //foodwaste
+            //hide ang linearlayout ng quantity at name
+            binding.inputButton.setOnClickListener {
+
+                val wastetype = //selected type.toString
+                
+                val weight = binding.amountedditText.text.toString().trim().toInt()
+                
+                 // Calculate the total weight of all items in the array
+                var totalWeight = 0
+                val itemArray = JSONArray()
+                for (i in 0 until quantity) {
+                    val itemObject = JSONObject()
+                    itemObject.put("weight", weight)
+                    itemArray.put(itemObject)
+                    totalWeight += weight
+                }
+
+                val postData = JSONObject()
+                val postDataEditObject = JSONObject()
+
+                postDataEditObject.put("items", itemArray)
+                postDataEditObject.put("total weight", totalweight)
+
+                postData.put(wastetype, postDataEditObject)
+
+                GlobalScope.launch(Dispatchers.IO) {
+                    try {
+                        val client = OkHttpClient()
+                        val mediaType = "application/json; charset=utf-8".toMediaType()
+                        val request = Request.Builder()
+                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+                            .post(postData.toString().toRequestBody(mediaType))
+                            .build()
+                        val response = client.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val responseBody = response.body?.string()
+                            withContext(Dispatchers.Main) {
+                                // Update UI or show success message
+                                binding.typeeditText.setText("")
+                                binding.nameeditText.setText("")
+                                binding.quantityeditText.setText("")
+                                binding.amountedditText.setText("")
+                                Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            // handle the error here
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                
+            }
+
 
         return binding.root
     }

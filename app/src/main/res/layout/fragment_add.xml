@@ -82,15 +82,13 @@
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
                 />
-
-            <EditText
-                android:id="@+id/typeeditText"
-                android:layout_width="190dp"
+                
+            <Spinner
+                android:id="@+id/wastePickerInput"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/add_input_background"
-                android:padding="5dp"
-                android:textSize="20sp"
-                android:elegantTextHeight="true"
+                android:textColor="?attr/colorOnPrimary"
+                android:background="@drawable/spinner2"
                 />
 
         </LinearLayout>
