@@ -14,7 +14,8 @@
     <string name="locationText">Location</string>
     <string name="amountText">Amount of Waste</string>
     <string name="typeText">Type of Waste</string>
-    <string name="categoryText">Waste Category</string>
+    <string name="nameText">Name of Waste</string>
+    <string name="quantityText">Waste Quantity</string>
     <string name="statusTitle">Status</string>
     <string name="statusIndicator">Status Indcator</string>
     <string name="wasteMappingTitle">Waste Mapping</string>

@@ -31,7 +31,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         val email = intent.getStringExtra("email")
-        val name = intent.getStringExtra("name")
 
         binding.account.text = email
 
@@ -105,6 +104,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
         val name = intent.getStringExtra("name")
+        val uid = intent.getStringExtra("uid")
         val caller = intent.getStringExtra("caller")
         
         if (caller.equals("home")) {
@@ -112,6 +112,7 @@ class SettingsActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra("email", email)
             intent.putExtra("name", name)
+            intent.putExtra("uid", uid)
             startActivity(intent)
         } else {
             val intent = Intent(this, GuestActivity::class.java)
