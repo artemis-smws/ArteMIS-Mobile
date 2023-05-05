@@ -8,10 +8,7 @@ import android.widget.Toast
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.project_artemis.databinding.FragmentAddBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -21,12 +18,15 @@ import org.json.JSONObject
 
 class AddFragment : Fragment() {
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentAddBinding.inflate(inflater, container, false)
 
+        val uid = arguments?.getString("uid")
+        
         binding.addTitle.text = getString(R.string.data_input)
         binding.locationText.text = getString(R.string.locationText)
         binding.amountText.text = getString(R.string.amountText)
@@ -89,10 +89,13 @@ class AddFragment : Fragment() {
                             binding.nameeditText.setText("")
                             binding.quantityeditText.setText("")
                             binding.amountedditText.setText("")
+                            Toast.makeText(requireContext(), "Input Succesful: ${response.code}", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         // handle the error here
-                        Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
@@ -100,6 +103,7 @@ class AddFragment : Fragment() {
                     }
                 }
             }
+            
         }
 
         return binding.root
