@@ -15,10 +15,9 @@
         >
 
         <TextView
-            android:id="@+id/addTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Data Input"
+            android:text="@string/data_input"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -41,10 +40,9 @@
             >
 
             <TextView
-                android:id="@+id/locationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:text="@string/locationText"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
@@ -74,10 +72,9 @@
             >
 
             <TextView
-                android:id="@+id/typeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type of Waste"
+                android:text="@string/typeText"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
@@ -85,7 +82,7 @@
                 
             <Spinner
                 android:id="@+id/wastePickerInput"
-                android:layout_width="match_parent"
+                android:layout_width="190dp"
                 android:layout_height="40dp"
                 android:textColor="?attr/colorOnPrimary"
                 android:background="@drawable/spinner2"
@@ -106,22 +103,21 @@
             >
 
             <TextView
-                android:id="@+id/NameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name of Waste"
+                android:text="@string/nameText"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
                 />
 
             <EditText
-                android:id="@+id/nameeditText"
+                android:id="@+id/nameEditText"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
                 android:background="@drawable/add_input_background"
                 android:padding="5dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:elegantTextHeight="true"
                 />
 
@@ -139,23 +135,22 @@
             >
 
             <TextView
-                android:id="@+id/amountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount of Waste"
+                android:text="@string/amountText"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
                 />
 
             <EditText
-                android:id="@+id/amountedditText"
+                android:id="@+id/amountEditText"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
                 android:inputType="numberDecimal"
                 android:background="@drawable/add_input_background"
                 android:padding="5dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:elegantTextHeight="true"
                 />
 
@@ -173,23 +168,22 @@
             >
 
             <TextView
-                android:id="@+id/quantityText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Waste Quantity"
+                android:text="@string/quantityText"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
                 />
 
             <EditText
-                android:id="@+id/quantityeditText"
+                android:id="@+id/quantityEditText"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
                 android:inputType="number"
                 android:background="@drawable/add_input_background"
                 android:padding="5dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:elegantTextHeight="true"
                 />
 

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/logsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/status_container"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User#DUMMY"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+
+            />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/locationText"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:layout_weight="0.2"
+                />
+
+            <TextView
+                    android:id="@+id/locationLog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/typeText"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:layout_weight="0.2"
+                />
+
+            <TextView
+                    android:id="@+id/typeOfWaste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nameText"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:layout_weight="0.2"
+                />
+
+            <TextView
+                    android:id="@+id/nameOfWaste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            >
+
+        <TextView
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:text="@string/amountText"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:layout_weight="0.2" />
+
+            <TextView
+                    android:id="@+id/amountOfWaste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quantityText"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:layout_weight="0.2"
+                />
+
+            <TextView
+                    android:id="@+id/wasteQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
