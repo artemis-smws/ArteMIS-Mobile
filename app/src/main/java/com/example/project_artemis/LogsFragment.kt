@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import com.example.project_artemis.databinding.FragmentLogsBinding
 import java.util.*
 
 class LogsFragment : Fragment() {
@@ -29,13 +28,10 @@ class LogsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentLogsBinding.inflate(inflater, container, false)
-
-        binding.logs.text = getString(R.string.Logs)
-
-        return binding.root
+        return inflater.inflate(R.layout.fragment_logs, container, false)
     }
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,6 +56,7 @@ class LogsFragment : Fragment() {
         datePickerButton.setOnClickListener {
             datePickerDialog.show()
         }
+
     }
 
     private fun initDatePicker() {
