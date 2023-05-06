@@ -62,13 +62,78 @@
 
 
         <LinearLayout
-            android:id="@+id/amountOfWaste"
+            android:id="@+id/typeOfWaste"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/addTitle"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type of Waste"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+                
+            <Spinner
+                android:id="@+id/wastePickerInput"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="?attr/colorOnPrimary"
+                android:background="@drawable/spinner2"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nameOfWaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/addTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/NameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of Waste"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
+
+            <EditText
+                android:id="@+id/nameeditText"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add_input_background"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:elegantTextHeight="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/amountOfWaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/addTitle"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             >
@@ -84,8 +149,10 @@
                 />
 
             <EditText
+                android:id="@+id/amountedditText"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
+                android:inputType="numberDecimal"
                 android:background="@drawable/add_input_background"
                 android:padding="5dp"
                 android:textSize="20sp"
@@ -95,39 +162,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/typeOfWaste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/addTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
-
-            <TextView
-                android:id="@+id/typeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type of Waste"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
-
-            <EditText
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:background="@drawable/add_input_background"
-                android:padding="5dp"
-                android:textSize="20sp"
-                android:elegantTextHeight="true"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/wasteCategory"
+            android:id="@+id/wasteQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -138,18 +173,20 @@
             >
 
             <TextView
-                android:id="@+id/categoryText"
+                android:id="@+id/quantityText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Waste Category"
+                android:text="Waste Quantity"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="15sp"
                 android:layout_marginStart="10dp"
                 />
 
             <EditText
+                android:id="@+id/quantityeditText"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
+                android:inputType="number"
                 android:background="@drawable/add_input_background"
                 android:padding="5dp"
                 android:textSize="20sp"
@@ -159,11 +196,29 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            >
 
+        <Button
+            android:id="@+id/inputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Input"
+            android:elegantTextHeight="true"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:cornerRadius="5dp"
+            tools:ignore="HardcodedText,UsingOnClickInXml" />
 
-
-
-
+        </LinearLayout>
     </LinearLayout>
 
 
