@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import android.widget.*
+import android.text.Editable
+import android.text.TextWatcher
 import com.example.project_artemis.databinding.FragmentAddBinding
 import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -75,13 +78,54 @@ class AddFragment : Fragment() {
                             binding.nameOfWaste.visibility = View.VISIBLE
                             binding.amountOfWaste.visibility = View.VISIBLE
 
-                            binding.inputButton.setOnClickListener {
+                            binding.inputButton.isEnabled = false // Disable the button initially
 
+                            // Add a TextWatcher to monitor changes in the EditText fields
+                            val textWatcher = object : TextWatcher {
+                                override fun afterTextChanged(s: Editable?) {
+                                    // Check if all EditText fields have non-empty values
+                                    val name = binding.nameEditText.text.toString().trim()
+                                    val quantity = binding.quantityEditText.text.toString().trim()
+                                    val amount = binding.amountEditText.text.toString().trim()
+
+                                    val allFieldsFilled = name.isNotEmpty() && quantity.isNotEmpty() && amount.isNotEmpty()
+
+                                    // Enable/disable the button based on the result of the check
+                                    binding.inputButton.isEnabled = allFieldsFilled
+                                }
+
+                                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                                    // No implementation needed
+                                }
+
+                                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                                    // No implementation needed
+                                }
+                            }
+
+                            binding.nameEditText.addTextChangedListener(textWatcher)
+                            binding.quantityEditText.addTextChangedListener(textWatcher)
+                            binding.amountEditText.addTextChangedListener(textWatcher)
+
+                            binding.inputButton.setOnClickListener {
                                 val wastetype = "hazwaste"
                                 val name = binding.nameEditText.text.toString().trim()
                                 val quantity = binding.quantityEditText.text.toString().trim().toInt()
                                 val weight = binding.amountEditText.text.toString().trim().toInt()
-                
+
+                                // Check if any EditText field is empty before proceeding
+                                if (name.isEmpty() || quantity == 0 || weight == 0) {
+                                    val builder = AlertDialog.Builder(requireContext())
+                                    builder.setTitle("Error")
+                                    builder.setMessage("Please enter the following data needed")
+                                    builder.setPositiveButton("OK") { dialog, which ->
+                                        dialog.dismiss()
+                                    }
+                                    val dialog = builder.create()
+                                    dialog.show()
+                                    return@setOnClickListener
+                                }
+
                                 // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
@@ -93,15 +137,15 @@ class AddFragment : Fragment() {
                                     itemArray.put(itemObject)
                                     totalWeight += weight
                                 }
-                
+
                                 val postData = JSONObject()
                                 val postDataEditObject = JSONObject()
-                
+
                                 postDataEditObject.put("items", itemArray)
                                 postDataEditObject.put("total weight", totalWeight)
-                
+
                                 postData.put(wastetype, postDataEditObject)
-                
+
                                 GlobalScope.launch(Dispatchers.IO) {
                                     try {
                                         val client = OkHttpClient()
@@ -133,19 +177,57 @@ class AddFragment : Fragment() {
                                         }
                                     }
                                 }
-                
                             }
+
                         }
                         "Residual Waste" -> {
                             binding.wasteQuantity.visibility = View.GONE
                             binding.nameOfWaste.visibility = View.GONE
                             binding.amountOfWaste.visibility = View.VISIBLE
 
+                            binding.inputButton.isEnabled = false // Disable the button initially
+
+                            // Add a TextWatcher to monitor changes in the EditText fields
+                            val textWatcher = object : TextWatcher {
+                                override fun afterTextChanged(s: Editable?) {
+                                    // Check if all EditText fields have non-empty values
+                                    val amount = binding.amountEditText.text.toString().trim()
+
+                                    val allFieldsFilled = amount.isNotEmpty()
+
+                                    // Enable/disable the button based on the result of the check
+                                    binding.inputButton.isEnabled = allFieldsFilled
+                                }
+
+                                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                                    // No implementation needed
+                                }
+
+                                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                                    // No implementation needed
+                                }
+                            }
+
+                            binding.amountEditText.addTextChangedListener(textWatcher)
+
                             binding.inputButton.setOnClickListener {
 
                                 val wastetype = "residual"
                                 val weight = binding.amountEditText.text.toString().trim().toInt()
                  
+                                // Check if any EditText field is empty before proceeding
+                                if (weight == 0) {
+                                    val builder = AlertDialog.Builder(requireContext())
+                                    builder.setTitle("Error")
+                                    builder.setMessage("Please enter the following data needed")
+                                    builder.setPositiveButton("OK") { dialog, which ->
+                                        dialog.dismiss()
+                                    }
+                                    val dialog = builder.create()
+                                    dialog.show()
+                                    return@setOnClickListener
+                                }
+
                                  // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
@@ -203,12 +285,52 @@ class AddFragment : Fragment() {
                             binding.nameOfWaste.visibility = View.VISIBLE
                             binding.amountOfWaste.visibility = View.VISIBLE           
                             
+                            binding.inputButton.isEnabled = false // Disable the button initially
+
+                            // Add a TextWatcher to monitor changes in the EditText fields
+                            val textWatcher = object : TextWatcher {
+                                override fun afterTextChanged(s: Editable?) {
+                                    // Check if all EditText fields have non-empty values
+                                    val name = binding.nameEditText.text.toString().trim()
+                                    val amount = binding.amountEditText.text.toString().trim()
+
+                                    val allFieldsFilled = name.isNotEmpty() && amount.isNotEmpty()
+
+                                    // Enable/disable the button based on the result of the check
+                                    binding.inputButton.isEnabled = allFieldsFilled
+                                }
+
+                                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                                    // No implementation needed
+                                }
+
+                                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                                    // No implementation needed
+                                }
+                            }
+
+                            binding.nameEditText.addTextChangedListener(textWatcher)
+                            binding.amountEditText.addTextChangedListener(textWatcher)
+
                             binding.inputButton.setOnClickListener {
 
                                 val wastetype = "recyclable"
                                 val name = binding.nameEditText.text.toString().trim()
                                 val weight = binding.amountEditText.text.toString().trim().toInt()
                  
+                                // Check if any EditText field is empty before proceeding
+                                if (name.isEmpty() || weight == 0) {
+                                    val builder = AlertDialog.Builder(requireContext())
+                                    builder.setTitle("Error")
+                                    builder.setMessage("Please enter the following data needed")
+                                    builder.setPositiveButton("OK") { dialog, which ->
+                                        dialog.dismiss()
+                                    }
+                                    val dialog = builder.create()
+                                    dialog.show()
+                                    return@setOnClickListener
+                                }
+
                                 // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
@@ -269,11 +391,49 @@ class AddFragment : Fragment() {
                             binding.nameOfWaste.visibility = View.GONE
                             binding.amountOfWaste.visibility = View.VISIBLE
 
+                            binding.inputButton.isEnabled = false // Disable the button initially
+
+                            // Add a TextWatcher to monitor changes in the EditText fields
+                            val textWatcher = object : TextWatcher {
+                                override fun afterTextChanged(s: Editable?) {
+                                    // Check if all EditText fields have non-empty values
+                                    val amount = binding.amountEditText.text.toString().trim()
+
+                                    val allFieldsFilled = amount.isNotEmpty()
+
+                                    // Enable/disable the button based on the result of the check
+                                    binding.inputButton.isEnabled = allFieldsFilled
+                                }
+
+                                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                                    // No implementation needed
+                                }
+
+                                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                                    // No implementation needed
+                                }
+                            }
+
+                            binding.amountEditText.addTextChangedListener(textWatcher)
+
                             binding.inputButton.setOnClickListener {
 
                                 val wastetype = "foodwaste"
                                 val weight = binding.amountEditText.text.toString().trim().toInt()
                  
+                                // Check if any EditText field is empty before proceeding
+                                if (weight == 0) {
+                                    val builder = AlertDialog.Builder(requireContext())
+                                    builder.setTitle("Error")
+                                    builder.setMessage("Please enter the following data needed")
+                                    builder.setPositiveButton("OK") { dialog, which ->
+                                        dialog.dismiss()
+                                    }
+                                    val dialog = builder.create()
+                                    dialog.show()
+                                    return@setOnClickListener
+                                }
+
                                  // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
