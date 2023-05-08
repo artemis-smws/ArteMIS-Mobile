@@ -46,6 +46,17 @@ class AddFragment : Fragment() {
 
         binding.locationPickerInput.adapter = adapterLocation
 
+        binding.locationPickerInput.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedLoc = parent?.getItemAtPosition(position).toString()
+            }
+        }
+
         val wasteType = listOf( //name ng string na iseset sa val wastetype
             "Hazardous Waste",  //hazwaste 
             "Residual Waste",   //residual
@@ -126,33 +137,30 @@ class AddFragment : Fragment() {
                                     return@setOnClickListener
                                 }
 
-                                // Calculate the total weight of all items in the array
-                                var totalWeight = 0
                                 val itemArray = JSONArray()
-                                for (i in 0 until weight) {
-                                    val itemObject = JSONObject()
-                                    itemObject.put("weight", weight)
-                                    itemObject.put("name", name)
-                                    itemObject.put("quantity", quantity)
-                                    itemArray.put(itemObject)
-                                    totalWeight += weight
-                                }
-
+                                val itemObject = JSONObject()
+                    
+                                itemObject.put("name", name)
+                                itemObject.put("quantity", quantity)
+                    
+                                itemArray.put(itemObject)
+                    
                                 val postData = JSONObject()
                                 val postDataEditObject = JSONObject()
 
                                 postDataEditObject.put("items", itemArray)
-                                postDataEditObject.put("total weight", totalWeight)
+                                postDataEditObject.put("weight", weight)
 
                                 postData.put(wastetype, postDataEditObject)
+                                postData.put("location", selectedLoc)
 
                                 GlobalScope.launch(Dispatchers.IO) {
                                     try {
                                         val client = OkHttpClient()
                                         val mediaType = "application/json; charset=utf-8".toMediaType()
                                         val request = Request.Builder()
-                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                                            .post(postData.toString().toRequestBody(mediaType))
+                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/uTMqAN6LRw641OPeg4yE")
+                                            .patch(postData.toString().toRequestBody(mediaType))
                                             .build()
                                         val response = client.newCall(request).execute()
                                         if (response.isSuccessful) {
@@ -178,7 +186,6 @@ class AddFragment : Fragment() {
                                     }
                                 }
                             }
-
                         }
                         "Residual Waste" -> {
                             binding.wasteQuantity.visibility = View.GONE
@@ -228,31 +235,27 @@ class AddFragment : Fragment() {
                                     return@setOnClickListener
                                 }
 
-                                 // Calculate the total weight of all items in the array
-                                var totalWeight = 0
                                 val itemArray = JSONArray()
-                                for (i in 0 until weight) {
-                                    val itemObject = JSONObject()
-                                    itemObject.put("weight", weight)
-                                    itemArray.put(itemObject)
-                                    totalWeight += weight
-                                }
+                                val itemObject = JSONObject()
+                    
+                                itemArray.put(itemObject)
                  
                                 val postData = JSONObject()
                                 val postDataEditObject = JSONObject()
                  
                                 postDataEditObject.put("items", itemArray)
-                                postDataEditObject.put("totalweight", totalWeight)
+                                postDataEditObject.put("weight", weight)
                  
                                 postData.put(wastetype, postDataEditObject)
+                                postData.put("location", selectedLoc)
                  
                                 GlobalScope.launch(Dispatchers.IO) {
                                     try {
                                         val client = OkHttpClient()
                                         val mediaType = "application/json; charset=utf-8".toMediaType()
                                         val request = Request.Builder()
-                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                                            .post(postData.toString().toRequestBody(mediaType))
+                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/uTMqAN6LRw641OPeg4yE")
+                                            .patch(postData.toString().toRequestBody(mediaType))
                                             .build()
                                         val response = client.newCall(request).execute()
                                         if (response.isSuccessful) {
@@ -331,32 +334,30 @@ class AddFragment : Fragment() {
                                     return@setOnClickListener
                                 }
 
-                                // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
-                                for (i in 0 until weight) {
-                                    val itemObject = JSONObject()
-                                    itemObject.put("name", name)
-                                    itemObject.put("weight", weight)
-                                    itemArray.put(itemObject)
-                                    totalWeight += weight
-                                }
-                 
+                                val itemObject = JSONObject()
+                    
+                                itemObject.put("name", name)
+                    
+                                itemArray.put(itemObject)
+
                                 val postData = JSONObject()
                                 val postDataEditObject = JSONObject()
                  
                                 postDataEditObject.put("items", itemArray)
-                                postDataEditObject.put("total weight", totalWeight)
+                                postDataEditObject.put("weight", weight)
                  
                                 postData.put(wastetype, postDataEditObject)
+                                postData.put("location", selectedLoc)
                  
                                 GlobalScope.launch(Dispatchers.IO) {
                                     try {
                                         val client = OkHttpClient()
                                         val mediaType = "application/json; charset=utf-8".toMediaType()
                                         val request = Request.Builder()
-                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                                            .post(postData.toString().toRequestBody(mediaType))
+                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/uTMqAN6LRw641OPeg4yE")
+                                            .patch(postData.toString().toRequestBody(mediaType))
                                             .build()
                                         val response = client.newCall(request).execute()
                                         if (response.isSuccessful) {
@@ -434,31 +435,28 @@ class AddFragment : Fragment() {
                                     return@setOnClickListener
                                 }
 
-                                 // Calculate the total weight of all items in the array
                                 var totalWeight = 0
                                 val itemArray = JSONArray()
-                                for (i in 0 until weight) {
-                                    val itemObject = JSONObject()
-                                    itemObject.put("weight", weight)
-                                    itemArray.put(itemObject)
-                                    totalWeight += weight
-                                }
+                                val itemObject = JSONObject()
+                    
+                                itemArray.put(itemObject)
                  
                                 val postData = JSONObject()
                                 val postDataEditObject = JSONObject()
                  
                                 postDataEditObject.put("items", itemArray)
-                                postDataEditObject.put("total weight", totalWeight)
+                                postDataEditObject.put("weight", weight)
                  
                                 postData.put(wastetype, postDataEditObject)
+                                postData.put("location", selectedLoc)
                  
                                 GlobalScope.launch(Dispatchers.IO) {
                                     try {
                                         val client = OkHttpClient()
                                         val mediaType = "application/json; charset=utf-8".toMediaType()
                                         val request = Request.Builder()
-                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-                                            .post(postData.toString().toRequestBody(mediaType))
+                                            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/uTMqAN6LRw641OPeg4yE")
+                                            .patch(postData.toString().toRequestBody(mediaType))
                                             .build()
                                         val response = client.newCall(request).execute()
                                         if (response.isSuccessful) {
@@ -535,3 +533,14 @@ limitations under the License.
         //            }
         //        }
 
+                                // Calculate the total weight of all items in the array
+                                // var totalWeight = 0
+                                // val itemArray = JSONArray()
+                                // for (i in 0 until weight) {
+                                //     val itemObject = JSONObject()
+                                //     itemObject.put("weight", weight)
+                                //     itemObject.put("name", name)
+                                //     itemObject.put("quantity", quantity)
+                                //     itemArray.put(itemObject)
+                                //     totalWeight += weight
+                                // }
