@@ -49,7 +49,14 @@ class HomeFragment : Fragment() {
         spinnerTime = view.findViewById(R.id.timeSpinner)
 
         itemsTime = listOf("24hr", "7d", "1m", "1y", "2y", "3y", "4y", "5y", "All Time")
-        itemsBuilding = listOf("CIT Building", "CEAFA Building", "CICS Building", "COE Building")
+        itemsBuilding = listOf("CEAFA Building",
+            "CIT Building",
+            "CICS Building",
+            "COE Building",
+            "Gymnasium",
+            "STEER Hub",
+            "Student Services Center"
+        )
 
         val adapterBuilding: ArrayAdapter<*> = ArrayAdapter<Any?>(
             requireContext().applicationContext,

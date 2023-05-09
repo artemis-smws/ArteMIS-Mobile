@@ -56,6 +56,70 @@ class AddFragment : Fragment() {
                 ) {
                     val selectedLoc = parent?.getItemAtPosition(position).toString()
 
+                    val buildingSelectorAlangilan = listOf(
+                        "CEAFA Building",
+                        "CIT Building",
+                        "CICS Building",
+                        "COE Building",
+                        "Gymnasium",
+                        "STEER Hub",
+                        "Student Services Center"
+                    )
+
+                    val buildingSelectorMain = listOf(
+                        "Audio Visual Building",
+                        "CALABARZON Integrated Research & Training Center",
+                        "College of Nursing",
+                        "College of Teacher Education",
+                        "CIT Building",
+                        "COE Building",
+                        "General Engineering Building",
+                        "Gymnasium",
+                        "Gymnasium 2",
+                        "Higher Education Building",
+                        "Sewage Treatment Plant",
+                        "Student Services Center",
+                        "Student Services Center II",
+                        "University Wellness Center"
+                    )
+
+                    val buildingSelectorMalvar = listOf(
+                        "CIT Building",
+                        "CICS Building",
+                        "COE Building",
+                        "Gymnasium",
+                        "Student Services Center"
+                    )
+
+                    val adapterBuilding = ArrayAdapter(
+                        requireContext(),
+                        R.layout.spinner_selected_item2,
+                        buildingSelectorAlangilan
+                    ).apply {
+                        setDropDownViewResource(R.layout.style_spinner)
+                    }
+
+                    binding.buildingPickerInput.adapter = adapterBuilding
+
+                    when (selectedLoc) {
+                        "Batangas State University - Alangilan" -> binding.buildingPickerInput.adapter = ArrayAdapter(
+                            requireContext(),
+                            R.layout.spinner_selected_item2,
+                            buildingSelectorAlangilan
+                        )
+                        "Batangas State University - Pablo Borbon" -> binding.buildingPickerInput.adapter = ArrayAdapter(
+                            requireContext(),
+                            R.layout.spinner_selected_item2,
+                            buildingSelectorMain
+                        )
+                        "Batangas State University - Malvar" -> binding.buildingPickerInput.adapter = ArrayAdapter(
+                            requireContext(),
+                            R.layout.spinner_selected_item2,
+                            buildingSelectorMalvar
+                        )
+
+                    }
+
                     val wasteType = listOf( //name ng string na iseset sa val wastetype
                         "Hazardous Waste",  //hazwaste
                         "Residual Waste",   //residual
