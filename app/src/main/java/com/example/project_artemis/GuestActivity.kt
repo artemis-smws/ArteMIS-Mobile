@@ -28,6 +28,7 @@ class GuestActivity : AppCompatActivity() {
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java)
+            intent.putExtra("caller", "guest")
             startActivity(intent)
         }
 
