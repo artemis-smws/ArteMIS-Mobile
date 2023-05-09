@@ -16,14 +16,22 @@
     <string name="typeText">Uri ng Basura</string>
     <string name="nameText">Pangalan ng Basura</string>
     <string name="quantityText">Dami ng Basura</string>
-    <string name="statusTitle">Kalagayan</string>
+    <string name="statusTitle">Estado</string>
     <string name="statusIndicator">Basehan ng Kalagayan ng Basura</string>
-    <string name="wasteMappingTitle">Pagmamapa ng\nBasura</string>
-    <string name="this_is_you_dashboard">Ito ang iyong-dashboard</string>
+    <string name="wasteMappingTitle">Mapa</string>
+    <string name="this_is_you_dashboard">Ito ang iyong Dashboard</string>
     <string name="HELLO">KAMUSTA</string>
-    <string name="Mostgatheredwaste">Pinaka Maraming Naipong Basura</string>
-    <string name="Dashboard">Talaan</string>
-    <string name="Logs">Mga Input</string>
+    <string name="Mostgatheredwaste">Pinakamaraming naipong basura</string>
+    <string name="Dashboard">Dashboard</string>
+    <string name="Logs">Talaan</string>
+    <string name="changePassword">Palitan ang iyong Password</string>
+    <string name="logoutButton">Mag-Logout</string>
+    <string name="concerns">Mga Problema</string>
+    <string name="feedback">Mga Komento</string>
+    <string name="typeOfConcern">Anong uri ng tulong ang iyong kailangan?</string>
+    <string name="locationOfConcern">Pumili ng lokasyon ng pinaghihingian ng tulong:</string>
+    <string name="descriptionOfConcern">Ibahagi ang iyong kinakailangang tulong:</string>
+    <string name="submitButton">I-submit</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

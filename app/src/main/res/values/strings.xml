@@ -24,6 +24,14 @@
     <string name="Mostgatheredwaste">Most Gathered Waste</string>
     <string name="Dashboard">Dashboard</string>
     <string name="Logs">Logs</string>
+    <string name="changePassword">Change your Password</string>
+    <string name="logoutButton">Logout</string>
+    <string name="concerns">Concerns</string>
+    <string name="feedback">Feedback</string>
+    <string name="typeOfConcern">What do you need help with?</string>
+    <string name="locationOfConcern">Choose the location of concern:</string>
+    <string name="descriptionOfConcern">Describe your concern:</string>
+    <string name="submitButton">Submit</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

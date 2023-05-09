@@ -51,7 +51,6 @@
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/accountLayout"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -86,6 +85,8 @@
                 />
 
             </LinearLayout>
+
+
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,12 +95,48 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
             >
-                <TextView
-                        android:background="@drawable/text_button_selector"
-                        android:id="@+id/account"
+
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="email"
+                        android:orientation="vertical"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="25dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                    <TextView
+                            android:background="@drawable/text_button_selector"
+                            android:id="@+id/emailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email Address"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:elegantTextHeight="true"
+                            android:textSize="16sp"
+
+                            />
+
+                    <TextView
+                            android:background="@drawable/text_button_selector"
+                            android:id="@+id/account"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="email address"
+                            android:textColor="?attr/colorSecondaryVariant"
+                            android:elegantTextHeight="true"
+                            android:textSize="14sp"
+                            />
+
+                </LinearLayout>
+
+                <TextView
+                        android:background="@drawable/text_button_selector"
+                        android:id="@+id/changePassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Change Your Password"
                         android:textColor="?attr/colorOnSecondary"
                         android:elegantTextHeight="true"
                         android:paddingStart="32dp"
@@ -107,11 +144,12 @@
                         android:paddingEnd="25dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                />
+                        />
 
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -197,7 +235,7 @@
                         android:id="@+id/changeLanguageButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select Language"
+                        android:text="@string/Language"
                         android:textColor="?attr/colorOnSecondary"
                         android:elegantTextHeight="true"
                         android:paddingStart="32dp"
@@ -211,6 +249,33 @@
                         layout="@layout/language_selection_dialog"
                         android:id="@+id/language_selection_dialog"
                         android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/settings_container"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    >
+
+                <TextView
+                        android:background="@drawable/text_button_selector"
+                        android:id="@+id/logoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:elegantTextHeight="true"
+                        android:paddingStart="32dp"
+                        android:textSize="16sp"
+                        android:paddingEnd="25dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        />
 
             </LinearLayout>
 

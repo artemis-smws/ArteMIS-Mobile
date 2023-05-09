@@ -213,6 +213,7 @@
             tools:ignore="HardcodedText,UsingOnClickInXml" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 
