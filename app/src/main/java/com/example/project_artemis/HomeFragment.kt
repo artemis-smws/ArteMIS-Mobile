@@ -57,37 +57,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-        
-
-        // val client = OkHttpClient()
-
-        // val request = Request.Builder()
-        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-        //     .build()
-
-        // client.newCall(request).enqueue(object : Callback {
-        //     override fun onFailure(call: Call, e: IOException) {
-        //         e.printStackTrace()
-        //     }
-
-        //     override fun onResponse(call: Call, response: Response) {
-        //         response.use {
-        //             if (!response.isSuccessful) throw IOException("Unexpected code $response")
-            
-        //             val jsonStr = response.body?.string()
-            
-        //             val jsonArray = JSONObject(jsonStr).getJSONArray("data")
-        //             val jsonObject = jsonArray.getJSONObject(0)
-        //             val hazardousWeight = jsonObject.getJSONObject("hazardous_waste").getInt("weight")
-        //             val recyclableWeight = jsonObject.getJSONObject("recyclable").getInt("weight")
-        //             val residualWeight = jsonObject.getJSONObject("residual").getInt("weight")
-            
-        //             binding.displayhaz.text = hazardousWeight.toString()
-        //             binding.displayres.text = residualWeight.toString()
-        //             binding.displayrec.text = recyclableWeight.toString()
-        //         }
-        //     }            
-        // })
 
         val name = arguments?.getString("name")
 

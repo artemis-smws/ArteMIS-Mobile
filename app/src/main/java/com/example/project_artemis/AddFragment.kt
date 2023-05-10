@@ -16,7 +16,10 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import kotlinx.coroutines.DelicateCoroutinesApi
+import okhttp3.*
 import org.json.JSONArray
+import java.io.IOException
 import org.json.JSONObject
 
 class AddFragment : Fragment() {
@@ -31,26 +34,49 @@ class AddFragment : Fragment() {
         val binding = FragmentAddBinding.inflate(inflater, container, false)
 
         val uid = arguments?.getString("uid")
-        
-        val client = OkHttpClient()
 
+        val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
             .build()
-
-        val response = client.newCall(request).execute()
-        val responseBody = response.body?.string()
-
-        if (response.isSuccessful) {
-            val jsonArray = JSONArray(responseBody)
-            if (jsonArray.length() > 0) {
-                val jsonObject = jsonArray.getJSONObject(0)
-                id = jsonObject.getString("id")
-                Toast.makeText(requireContext(), "Request successful: ${response.code}", Toast.LENGTH_SHORT).show()
+        
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Toast.makeText(requireContext(), "Request unsuccessful", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            Toast.makeText(requireContext(), "Request unsuccessful: ${response.code}", Toast.LENGTH_SHORT).show()
-        }
+        
+            override fun onResponse(call: Call, response: Response) {
+                val responseString = response.body?.string()
+                val jsonArray = JSONArray(responseString)
+                val jsonObject = jsonArray.getJSONObject(0)
+                val id = jsonObject.getString("id")
+                this@AddFragment.id = id
+                requireActivity().runOnUiThread { 
+                    Toast.makeText(requireContext(), "Retrieved id: $id", Toast.LENGTH_SHORT).show() 
+                }
+            }
+            
+        })
+
+        // val client = OkHttpClient()
+
+        // val request = Request.Builder()
+        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+        //     .build()
+
+        // val response = client.newCall(request).execute()
+        // val responseBody = response.body?.string()
+
+        // if (response.isSuccessful) {
+        //     val jsonArray = JSONArray(responseBody)
+        //     if (jsonArray.length() > 0) {
+        //         val jsonObject = jsonArray.getJSONObject(0)
+        //         id = jsonObject.getString("id")
+        //         Toast.makeText(requireContext(), "Request successful: ${response.code}", Toast.LENGTH_SHORT).show()
+        //     }
+        // } else {
+        //     Toast.makeText(requireContext(), "Request unsuccessful: ${response.code}", Toast.LENGTH_SHORT).show()
+        // }
         
         val itemsLocation = listOf(
             "Batangas State University - Alangilan",
@@ -258,17 +284,19 @@ class AddFragment : Fragment() {
                                                             binding.nameEditText.setText("")
                                                             binding.quantityEditText.setText("")
                                                             binding.amountEditText.setText("")
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                                                             binding.progressBar2.visibility = View.GONE
+                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     } else {
                                                         // handle the error here
                                                         withContext(Dispatchers.Main) {
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     }
                                                 } catch (e: Exception) {
                                                     withContext(Dispatchers.Main) {
+                                                        binding.progressBar2.visibility = View.GONE
                                                         Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
@@ -337,6 +365,7 @@ class AddFragment : Fragment() {
                                             postData.put(wastetype, postDataEditObject)
                                             postData.put("location", selectedLoc)
 
+                                            binding.progressBar2.visibility = View.VISIBLE
                                             GlobalScope.launch(Dispatchers.IO) {
                                                 try {
                                                     val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
@@ -355,16 +384,19 @@ class AddFragment : Fragment() {
                                                             binding.nameEditText.setText("")
                                                             binding.quantityEditText.setText("")
                                                             binding.amountEditText.setText("")
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     } else {
                                                         // handle the error here
                                                         withContext(Dispatchers.Main) {
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     }
                                                 } catch (e: Exception) {
                                                     withContext(Dispatchers.Main) {
+                                                        binding.progressBar2.visibility = View.GONE
                                                         Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
@@ -440,6 +472,7 @@ class AddFragment : Fragment() {
                                             postData.put(wastetype, postDataEditObject)
                                             postData.put("location", selectedLoc)
 
+                                            binding.progressBar2.visibility = View.VISIBLE
                                             GlobalScope.launch(Dispatchers.IO) {
                                                 try {
                                                     val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
@@ -458,16 +491,19 @@ class AddFragment : Fragment() {
                                                             binding.nameEditText.setText("")
                                                             binding.quantityEditText.setText("")
                                                             binding.amountEditText.setText("")
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     } else {
                                                         // handle the error here
                                                         withContext(Dispatchers.Main) {
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     }
                                                 } catch (e: Exception) {
                                                     withContext(Dispatchers.Main) {
+                                                        binding.progressBar2.visibility = View.GONE
                                                         Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
@@ -540,6 +576,7 @@ class AddFragment : Fragment() {
                                             postData.put(wastetype, postDataEditObject)
                                             postData.put("location", selectedLoc)
 
+                                            binding.progressBar2.visibility = View.VISIBLE
                                             GlobalScope.launch(Dispatchers.IO) {
                                                 try {
                                                     val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
@@ -558,16 +595,19 @@ class AddFragment : Fragment() {
                                                             binding.nameEditText.setText("")
                                                             binding.quantityEditText.setText("")
                                                             binding.amountEditText.setText("")
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     } else {
                                                         // handle the error here
                                                         withContext(Dispatchers.Main) {
+                                                            binding.progressBar2.visibility = View.GONE
                                                             Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
                                                         }
                                                     }
                                                 } catch (e: Exception) {
                                                     withContext(Dispatchers.Main) {
+                                                        binding.progressBar2.visibility = View.GONE
                                                         Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
