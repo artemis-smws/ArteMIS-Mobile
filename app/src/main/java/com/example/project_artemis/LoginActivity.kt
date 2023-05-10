@@ -1,6 +1,7 @@
 package com.example.project_artemis
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,18 @@ class LoginActivity : AppCompatActivity() {
 
     private var mIsShowPass = false
 
+    private fun createIntent() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    private fun createIntentGuest() {
+        val intent = Intent(this, GuestActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -57,7 +70,9 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.googleButton.setOnClickListener {
+            binding.progressBar2.visibility = View.VISIBLE
             signInGoogle()
+            binding.progressBar2.visibility = View.GONE
         }
         
         binding.visibility.setOnClickListener {
@@ -106,28 +121,20 @@ class LoginActivity : AppCompatActivity() {
             sharedPreferences.edit().putBoolean("languageSelected", true).apply()
         }    
 
-        binding.textView2.text = getString(R.string.login_or)
-
-        binding.textView3.text = getString(R.string.Login_to_your_account)
-
-        binding.textView4.text = getString(R.string.welcome_back)
-
-        binding.loginBtn.text = getString(R.string.sign_in)
-
-        binding.viewBtn.text = getString(R.string.view_guest)
-
-        binding.forgotPass.text = getString(R.string.forgot_password)
-
-        binding.textView5.text = getString(R.string.continue_with)
-        
         binding.loginBtn.setOnClickListener {
-            val email = binding.editTextEmail.text.toString().trim()
+
+            val email = binding.editTextEmail.text.toString()
+            val sharedPreferencesEmailInfo = getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+            val editor = sharedPreferencesEmailInfo.edit()
+            editor.putString("EMAIL", email)
+            editor.apply()
+            val emailTest = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
 
             val emailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
             val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
 
-            if (!emailRegex.matches(email)) {
+            if (!emailRegex.matches(emailTest)) {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Login Error")
                 builder.setMessage("Please enter a valid email address")
@@ -146,16 +153,12 @@ class LoginActivity : AppCompatActivity() {
                 val dialog = builder.create()
                 dialog.show()
             } else {
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
+                createIntent()
             }
         }
-        
+
         binding.viewBtn.setOnClickListener {
-            val intent = Intent(this, GuestActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
+            createIntentGuest()
         }
         
     }

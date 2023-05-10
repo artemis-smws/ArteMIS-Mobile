@@ -7,6 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.*
+import org.json.JSONArray
+import java.io.IOException
 import com.example.project_artemis.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -22,6 +27,67 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+            .build()
+        
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle network errors here
+            }
+        
+            override fun onResponse(call: Call, response: Response) {
+                val responseString = response.body?.string()
+                val jsonArray = JSONArray(responseString)
+                val wasteObject = jsonArray.getJSONObject(0)
+                val hazardousWaste = wasteObject.getJSONObject("hazardous_waste")
+                val hazardousWasteWeight = hazardousWaste.getInt("weight")
+                val residualWaste = wasteObject.getJSONObject("residual")
+                val residualWasteWeight = residualWaste.getInt("weight")
+                val recyclableWaste = wasteObject.getJSONObject("recyclable")
+                val recyclableWasteWeight = recyclableWaste.getInt("weight")
+        
+                requireActivity().runOnUiThread {
+                    binding.displayhaz.text = hazardousWasteWeight.toString()
+                    binding.displayres.text = residualWasteWeight.toString()
+                    binding.displayrec.text = recyclableWasteWeight.toString()
+                    
+                }
+            }
+        })
+        
+
+        // val client = OkHttpClient()
+
+        // val request = Request.Builder()
+        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+        //     .build()
+
+        // client.newCall(request).enqueue(object : Callback {
+        //     override fun onFailure(call: Call, e: IOException) {
+        //         e.printStackTrace()
+        //     }
+
+        //     override fun onResponse(call: Call, response: Response) {
+        //         response.use {
+        //             if (!response.isSuccessful) throw IOException("Unexpected code $response")
+            
+        //             val jsonStr = response.body?.string()
+            
+        //             val jsonArray = JSONObject(jsonStr).getJSONArray("data")
+        //             val jsonObject = jsonArray.getJSONObject(0)
+        //             val hazardousWeight = jsonObject.getJSONObject("hazardous_waste").getInt("weight")
+        //             val recyclableWeight = jsonObject.getJSONObject("recyclable").getInt("weight")
+        //             val residualWeight = jsonObject.getJSONObject("residual").getInt("weight")
+            
+        //             binding.displayhaz.text = hazardousWeight.toString()
+        //             binding.displayres.text = residualWeight.toString()
+        //             binding.displayrec.text = recyclableWeight.toString()
+        //         }
+        //     }            
+        // })
 
         val name = arguments?.getString("name")
 
@@ -49,7 +115,14 @@ class HomeFragment : Fragment() {
         spinnerTime = view.findViewById(R.id.timeSpinner)
 
         itemsTime = listOf("24hr", "7d", "1m", "1y", "2y", "3y", "4y", "5y", "All Time")
-        itemsBuilding = listOf("CIT Building", "CEAFA Building", "CICS Building", "COE Building")
+        itemsBuilding = listOf("CEAFA Building",
+            "CIT Building",
+            "CICS Building",
+            "COE Building",
+            "Gymnasium",
+            "STEER Hub",
+            "Student Services Center"
+        )
 
         val adapterBuilding: ArrayAdapter<*> = ArrayAdapter<Any?>(
             requireContext().applicationContext,

@@ -20,21 +20,23 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val sharedPreferencesEmailInfo = getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+        val userEmail = sharedPreferencesEmailInfo.getString("EMAIL", "")
+        val editor = sharedPreferencesEmailInfo.edit()
+
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
 
         val caller = intent.getStringExtra("caller")
-        if (caller.equals("home")) {
-            binding.accountLayout.visibility = View.VISIBLE 
+        if (caller.equals("guest")) {
+            binding.accountLayout.visibility = View.GONE
         }
 
-        val email = intent.getStringExtra("email")
+        binding.account.text = userEmail
 
-        binding.account.text = email
-
-        binding.account.setOnClickListener{
+        binding.logoutButton.setOnClickListener{
             val builder = AlertDialog.Builder(this)
         
             builder.setTitle("Sign Out")
@@ -46,9 +48,14 @@ class SettingsActivity : AppCompatActivity() {
         
                 val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
                 googleSignInClient.signOut().addOnCompleteListener {
+
+                    editor.remove("USER_EMAIL")
+                    editor.apply()
+
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
+
                 }
             }
         
