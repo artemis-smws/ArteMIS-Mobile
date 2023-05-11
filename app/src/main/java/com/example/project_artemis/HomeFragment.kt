@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
 
         // val client = OkHttpClient()
         // val request = Request.Builder()
-        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
+        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest")
         //     .build()
         
         // client.newCall(request).enqueue(object : Callback {
@@ -42,8 +42,8 @@ class HomeFragment : Fragment() {
         //         val responseString = response.body?.string()
         //         val jsonArray = JSONArray(responseString)
         //         val wasteObject = jsonArray.getJSONObject(0)
-        //         val hazardousWaste = wasteObject.getJSONObject("hazardous_waste")
-        //         val hazardousWasteWeight = hazardousWaste.getInt("weight")
+        //         val foodWaste = wasteObject.getJSONObject("food_waste")
+        //         val foodWasteWeight = hazardousWaste.getInt("weight")
         //         val residualWaste = wasteObject.getJSONObject("residual")
         //         val residualWasteWeight = residualWaste.getInt("weight")
         //         val recyclableWaste = wasteObject.getJSONObject("recyclable")
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
         
         //         if (isAdded) {
         //             requireActivity().runOnUiThread {
-        //                 binding.displayhaz.text = hazardousWasteWeight.toString()
+        //                 binding.displayfood.text = foodWasteWeight.toString()
         //                 binding.displayres.text = residualWasteWeight.toString()
         //                 binding.displayrec.text = recyclableWasteWeight.toString()
         //             }
