@@ -12,6 +12,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.example.project_artemis.databinding.FragmentAddBinding
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -22,6 +23,7 @@ import org.json.JSONArray
 import java.io.IOException
 import org.json.JSONObject
 
+@Suppress("NAME_SHADOWING")
 class AddFragment : Fragment() {
 
     private var id: String? = null
@@ -39,45 +41,27 @@ class AddFragment : Fragment() {
         val request = Request.Builder()
             .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
             .build()
-        
+
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Toast.makeText(requireContext(), "Request unsuccessful", Toast.LENGTH_SHORT).show()
             }
-        
+
             override fun onResponse(call: Call, response: Response) {
                 val responseString = response.body?.string()
                 val jsonArray = JSONArray(responseString)
                 val jsonObject = jsonArray.getJSONObject(0)
                 val id = jsonObject.getString("id")
                 this@AddFragment.id = id
-                requireActivity().runOnUiThread { 
-                    Toast.makeText(requireContext(), "Retrieved id: $id", Toast.LENGTH_SHORT).show() 
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), "Retrieved id: $id", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
-            
+
         })
 
-        // val client = OkHttpClient()
-
-        // val request = Request.Builder()
-        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-        //     .build()
-
-        // val response = client.newCall(request).execute()
-        // val responseBody = response.body?.string()
-
-        // if (response.isSuccessful) {
-        //     val jsonArray = JSONArray(responseBody)
-        //     if (jsonArray.length() > 0) {
-        //         val jsonObject = jsonArray.getJSONObject(0)
-        //         id = jsonObject.getString("id")
-        //         Toast.makeText(requireContext(), "Request successful: ${response.code}", Toast.LENGTH_SHORT).show()
-        //     }
-        // } else {
-        //     Toast.makeText(requireContext(), "Request unsuccessful: ${response.code}", Toast.LENGTH_SHORT).show()
-        // }
-        
         val itemsLocation = listOf(
             "Batangas State University - Alangilan",
             "Batangas State University - Pablo Borbon",
@@ -168,11 +152,11 @@ class AddFragment : Fragment() {
 
                     }
 
-                    val wasteType = listOf( //name ng string na iseset sa val wastetype
-                        "Hazardous Waste",  //hazwaste
-                        "Residual Waste",   //residual
-                        "Recyclable Waste", //recyclable
-                        "Food Waste"        //foodwaste
+                    val wasteType = listOf(
+                        "Hazardous Waste",
+                        "Residual Waste",
+                        "Recyclable Waste",
+                        "Food Waste"
                     )
 
                     val adapterWaste = ArrayAdapter(
@@ -230,77 +214,31 @@ class AddFragment : Fragment() {
                                         binding.amountEditText.addTextChangedListener(textWatcher)
 
                                         binding.inputButton.setOnClickListener {
-                                            val wastetype = "hazwaste"
+                                            val wastetype = "hazardous_waste"
                                             val name = binding.nameEditText.text.toString().trim()
                                             val quantity = binding.quantityEditText.text.toString().trim().toInt()
                                             val weight = binding.amountEditText.text.toString().trim().toInt()
 
                                             // Check if any EditText field is empty before proceeding
                                             if (name.isEmpty() || quantity == 0 || weight == 0) {
-                                                val builder = AlertDialog.Builder(requireContext())
-                                                builder.setTitle("Error")
-                                                builder.setMessage("Please enter the following data needed")
-                                                builder.setPositiveButton("OK") { dialog, which ->
-                                                    dialog.dismiss()
-                                                }
-                                                val dialog = builder.create()
-                                                dialog.show()
+                                                showErrorMessage("Please enter the required data")
                                                 return@setOnClickListener
                                             }
 
-                                            val itemArray = JSONArray()
                                             val itemObject = JSONObject()
-
                                             itemObject.put("name", name)
                                             itemObject.put("quantity", quantity)
 
-                                            itemArray.put(itemObject)
-
-                                            val postData = JSONObject()
                                             val postDataEditObject = JSONObject()
-
-                                            postDataEditObject.put("items", itemArray)
+                                            postDataEditObject.put("items", JSONArray().put(itemObject))
                                             postDataEditObject.put("weight", weight)
 
+                                            val postData = JSONObject()
                                             postData.put(wastetype, postDataEditObject)
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
-                                            GlobalScope.launch(Dispatchers.IO) {
-                                                try {
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-                                                    val client = OkHttpClient()
-                                                    val mediaType = "application/json; charset=utf-8".toMediaType()
-                                                    val request = Request.Builder()
-                                                        .url(url)
-                                                        .patch(postData.toString().toRequestBody(mediaType))
-                                                        .build()
-                                                    val response = client.newCall(request).execute()
-                                                    if (response.isSuccessful) {
-                                                        val responseBody = response.body?.string()
-                                                        withContext(Dispatchers.Main) {
-                                                            // Update UI or show success message
-                                                            // binding.typeText.text = ""
-                                                            binding.nameEditText.setText("")
-                                                            binding.quantityEditText.setText("")
-                                                            binding.amountEditText.setText("")
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    } else {
-                                                        // handle the error here
-                                                        withContext(Dispatchers.Main) {
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    }
-                                                } catch (e: Exception) {
-                                                    withContext(Dispatchers.Main) {
-                                                        binding.progressBar2.visibility = View.GONE
-                                                        Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                }
-                                            }
+                                            updateWasteData(id, postData)
                                         }
                                     }
                                     "Residual Waste" -> {
@@ -340,14 +278,7 @@ class AddFragment : Fragment() {
 
                                             // Check if any EditText field is empty before proceeding
                                             if (weight == 0) {
-                                                val builder = AlertDialog.Builder(requireContext())
-                                                builder.setTitle("Error")
-                                                builder.setMessage("Please enter the following data needed")
-                                                builder.setPositiveButton("OK") { dialog, which ->
-                                                    dialog.dismiss()
-                                                }
-                                                val dialog = builder.create()
-                                                dialog.show()
+                                                showErrorMessage("Please enter the required data")
                                                 return@setOnClickListener
                                             }
 
@@ -366,41 +297,7 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
-                                            GlobalScope.launch(Dispatchers.IO) {
-                                                try {
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-                                                    val client = OkHttpClient()
-                                                    val mediaType = "application/json; charset=utf-8".toMediaType()
-                                                    val request = Request.Builder()
-                                                        .url(url)
-                                                        .patch(postData.toString().toRequestBody(mediaType))
-                                                        .build()
-                                                    val response = client.newCall(request).execute()
-                                                    if (response.isSuccessful) {
-                                                        val responseBody = response.body?.string()
-                                                        withContext(Dispatchers.Main) {
-                                                            // Update UI or show success message
-                                                            // binding.typeEditText.setText("")
-                                                            binding.nameEditText.setText("")
-                                                            binding.quantityEditText.setText("")
-                                                            binding.amountEditText.setText("")
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    } else {
-                                                        // handle the error here
-                                                        withContext(Dispatchers.Main) {
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    }
-                                                } catch (e: Exception) {
-                                                    withContext(Dispatchers.Main) {
-                                                        binding.progressBar2.visibility = View.GONE
-                                                        Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                }
-                                            }
+                                            updateWasteData(id, postData)
 
                                         }
                                     }
@@ -444,14 +341,7 @@ class AddFragment : Fragment() {
 
                                             // Check if any EditText field is empty before proceeding
                                             if (name.isEmpty() || weight == 0) {
-                                                val builder = AlertDialog.Builder(requireContext())
-                                                builder.setTitle("Error")
-                                                builder.setMessage("Please enter the following data needed")
-                                                builder.setPositiveButton("OK") { dialog, which ->
-                                                    dialog.dismiss()
-                                                }
-                                                val dialog = builder.create()
-                                                dialog.show()
+                                                showErrorMessage("Please enter the required data")
                                                 return@setOnClickListener
                                             }
 
@@ -473,41 +363,7 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
-                                            GlobalScope.launch(Dispatchers.IO) {
-                                                try {
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-                                                    val client = OkHttpClient()
-                                                    val mediaType = "application/json; charset=utf-8".toMediaType()
-                                                    val request = Request.Builder()
-                                                        .url(url)
-                                                        .patch(postData.toString().toRequestBody(mediaType))
-                                                        .build()
-                                                    val response = client.newCall(request).execute()
-                                                    if (response.isSuccessful) {
-                                                        val responseBody = response.body?.string()
-                                                        withContext(Dispatchers.Main) {
-                                                            // Update UI or show success message
-                                                            // binding.typeeditText.setText("")
-                                                            binding.nameEditText.setText("")
-                                                            binding.quantityEditText.setText("")
-                                                            binding.amountEditText.setText("")
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    } else {
-                                                        // handle the error here
-                                                        withContext(Dispatchers.Main) {
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    }
-                                                } catch (e: Exception) {
-                                                    withContext(Dispatchers.Main) {
-                                                        binding.progressBar2.visibility = View.GONE
-                                                        Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                }
-                                            }
+                                            updateWasteData(id, postData)
 
                                         }
 
@@ -545,19 +401,12 @@ class AddFragment : Fragment() {
 
                                         binding.inputButton.setOnClickListener {
 
-                                            val wastetype = "foodwaste"
+                                            val wastetype = "food_waste"
                                             val weight = binding.amountEditText.text.toString().trim().toInt()
 
                                             // Check if any EditText field is empty before proceeding
                                             if (weight == 0) {
-                                                val builder = AlertDialog.Builder(requireContext())
-                                                builder.setTitle("Error")
-                                                builder.setMessage("Please enter the following data needed")
-                                                builder.setPositiveButton("OK") { dialog, which ->
-                                                    dialog.dismiss()
-                                                }
-                                                val dialog = builder.create()
-                                                dialog.show()
+                                                showErrorMessage("Please enter the required data")
                                                 return@setOnClickListener
                                             }
 
@@ -577,41 +426,7 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
-                                            GlobalScope.launch(Dispatchers.IO) {
-                                                try {
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-                                                    val client = OkHttpClient()
-                                                    val mediaType = "application/json; charset=utf-8".toMediaType()
-                                                    val request = Request.Builder()
-                                                        .url(url)
-                                                        .patch(postData.toString().toRequestBody(mediaType))
-                                                        .build()
-                                                    val response = client.newCall(request).execute()
-                                                    if (response.isSuccessful) {
-                                                        val responseBody = response.body?.string()
-                                                        withContext(Dispatchers.Main) {
-                                                            // Update UI or show success message
-                                                            // binding.typeeditText.setText("")
-                                                            binding.nameEditText.setText("")
-                                                            binding.quantityEditText.setText("")
-                                                            binding.amountEditText.setText("")
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    } else {
-                                                        // handle the error here
-                                                        withContext(Dispatchers.Main) {
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        }
-                                                    }
-                                                } catch (e: Exception) {
-                                                    withContext(Dispatchers.Main) {
-                                                        binding.progressBar2.visibility = View.GONE
-                                                        Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                }
-                                            }
+                                            updateWasteData(id, postData)
 
                                         }
                                     }
@@ -626,6 +441,58 @@ class AddFragment : Fragment() {
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     TODO("Not yet implemented")
+                }
+
+                private fun updateWasteData(id: Long, postData: JSONObject) {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        try {
+                            val client = OkHttpClient()
+                            val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
+                            val mediaType = "application/json".toMediaType()
+                            val request = Request.Builder()
+                                .url(url)
+                                .patch(postData.toString().toRequestBody(mediaType))
+                                .addHeader("Content-Type", "application/json")
+                                .build()
+                            val response = client.newCall(request).execute()
+                            if (response.isSuccessful) {
+                                withContext(Dispatchers.Main) {
+                                    clearInputFields()
+                                    Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } catch (e: Exception) {
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        } finally {
+                            withContext(Dispatchers.Main) {
+                                binding.progressBar2.visibility = View.GONE
+                            }
+                        }
+                    }
+                }
+                              
+
+                private fun showErrorMessage(message: String) {
+                    val builder = AlertDialog.Builder(requireContext())
+                    builder.setTitle("Error")
+                    builder.setMessage(message)
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+
+                private fun clearInputFields() {
+                    binding.nameEditText.setText("")
+                    binding.quantityEditText.setText("")
+                    binding.amountEditText.setText("")
                 }
             }
 

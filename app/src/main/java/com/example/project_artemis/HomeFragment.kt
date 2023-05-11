@@ -49,11 +49,12 @@ class HomeFragment : Fragment() {
                 val recyclableWaste = wasteObject.getJSONObject("recyclable")
                 val recyclableWasteWeight = recyclableWaste.getInt("weight")
         
-                requireActivity().runOnUiThread {
-                    binding.displayhaz.text = hazardousWasteWeight.toString()
-                    binding.displayres.text = residualWasteWeight.toString()
-                    binding.displayrec.text = recyclableWasteWeight.toString()
-                    
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        binding.displayhaz.text = hazardousWasteWeight.toString()
+                        binding.displayres.text = residualWasteWeight.toString()
+                        binding.displayrec.text = recyclableWasteWeight.toString()
+                    }
                 }
             }
         })
