@@ -238,6 +238,8 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
                                             updateWasteData(id, postData)
                                         }
                                     }
@@ -297,6 +299,8 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
                                             updateWasteData(id, postData)
 
                                         }
@@ -363,6 +367,8 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
                                             updateWasteData(id, postData)
 
                                         }
@@ -426,6 +432,8 @@ class AddFragment : Fragment() {
                                             postData.put("location", selectedLoc)
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
                                             updateWasteData(id, postData)
 
                                         }
@@ -472,6 +480,8 @@ class AddFragment : Fragment() {
                         } finally {
                             withContext(Dispatchers.Main) {
                                 binding.progressBar2.visibility = View.GONE
+                                binding.overlay.visibility = View.GONE
+                                binding.overlay.setOnTouchListener (null)
                             }
                         }
                     }
