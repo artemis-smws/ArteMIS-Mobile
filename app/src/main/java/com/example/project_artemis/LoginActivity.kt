@@ -13,7 +13,6 @@ import com.example.project_artemis.databinding.ActivityLoginBinding
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
-import android.widget.EditText
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -71,7 +70,9 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.googleButton.setOnClickListener {
+            binding.progressBar2.visibility = View.VISIBLE
             signInGoogle()
+            binding.progressBar2.visibility = View.GONE
         }
         
         binding.visibility.setOnClickListener {
