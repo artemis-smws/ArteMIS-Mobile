@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.*
-import org.json.JSONArray
-import java.io.IOException
+// import okhttp3.OkHttpClient
+// import okhttp3.Request
+// import okhttp3.*
+// import org.json.JSONArray
+// import java.io.IOException
 import com.example.project_artemis.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -28,36 +28,36 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste")
-            .build()
+        // val client = OkHttpClient()
+        // val request = Request.Builder()
+        //     .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest")
+        //     .build()
         
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                // Handle network errors here
-            }
+        // client.newCall(request).enqueue(object : Callback {
+        //     override fun onFailure(call: Call, e: IOException) {
+        //         // Handle network errors here
+        //     }
         
-            override fun onResponse(call: Call, response: Response) {
-                val responseString = response.body?.string()
-                val jsonArray = JSONArray(responseString)
-                val wasteObject = jsonArray.getJSONObject(0)
-                val hazardousWaste = wasteObject.getJSONObject("hazardous_waste")
-                val hazardousWasteWeight = hazardousWaste.getInt("weight")
-                val residualWaste = wasteObject.getJSONObject("residual")
-                val residualWasteWeight = residualWaste.getInt("weight")
-                val recyclableWaste = wasteObject.getJSONObject("recyclable")
-                val recyclableWasteWeight = recyclableWaste.getInt("weight")
+        //     override fun onResponse(call: Call, response: Response) {
+        //         val responseString = response.body?.string()
+        //         val jsonArray = JSONArray(responseString)
+        //         val wasteObject = jsonArray.getJSONObject(0)
+        //         val foodWaste = wasteObject.getJSONObject("food_waste")
+        //         val foodWasteWeight = hazardousWaste.getInt("weight")
+        //         val residualWaste = wasteObject.getJSONObject("residual")
+        //         val residualWasteWeight = residualWaste.getInt("weight")
+        //         val recyclableWaste = wasteObject.getJSONObject("recyclable")
+        //         val recyclableWasteWeight = recyclableWaste.getInt("weight")
         
-                if (isAdded) {
-                    requireActivity().runOnUiThread {
-                        binding.displayhaz.text = hazardousWasteWeight.toString()
-                        binding.displayres.text = residualWasteWeight.toString()
-                        binding.displayrec.text = recyclableWasteWeight.toString()
-                    }
-                }
-            }
-        })
+        //         if (isAdded) {
+        //             requireActivity().runOnUiThread {
+        //                 binding.displayfood.text = foodWasteWeight.toString()
+        //                 binding.displayres.text = residualWasteWeight.toString()
+        //                 binding.displayrec.text = recyclableWasteWeight.toString()
+        //             }
+        //         }
+        //     }
+        // })
 
         val name = arguments?.getString("name")
 

@@ -14,7 +14,6 @@ import java.util.*
 
 class DataFragment : Fragment() {
 
-
     private lateinit var datePickerDialog: DatePickerDialog
     @SuppressLint("StaticFieldLeak")
     private lateinit var datePickerButton: Button

@@ -13,6 +13,10 @@ class ConcernActivity : AppCompatActivity() {
         binding = ActivityConcernBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backConcern.setOnClickListener{
+            onBackPressed()
+        }
+
         val itemsLocation = listOf(
             "Batangas State University - Alangilan",
             "Batangas State University - Pablo Borbon",
@@ -45,6 +49,12 @@ class ConcernActivity : AppCompatActivity() {
 
         binding.concernTypeInput.adapter = adapterConcern
 
+    }
+    override fun onBackPressed(){
+        
+        finish()
+        onSaveInstanceState(Bundle())
+        super.onBackPressed()
     }
 
 }
