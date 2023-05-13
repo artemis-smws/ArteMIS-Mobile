@@ -1,18 +1,23 @@
 package com.example.project_artemis
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 // import okhttp3.OkHttpClient
 // import okhttp3.Request
 // import okhttp3.*
 // import org.json.JSONArray
 // import java.io.IOException
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import com.example.project_artemis.databinding.FragmentHomeBinding
+import com.github.mikephil.charting.*
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 
 class HomeFragment : Fragment() {
 
@@ -111,6 +116,19 @@ class HomeFragment : Fragment() {
 
         adapterTime.setDropDownViewResource(R.layout.style_spinner)
         spinnerTime.adapter = adapterTime
+
+        val lineData = listOf(
+            Entry(1f, 4f),
+            Entry(2f, 7f),
+            Entry(3f, 2f)
+        )
+
+        val dataSet = LineDataSet(lineData, "Waste Chart")
+        val lineDatas = LineData(dataSet)
+
+        val lineChart = view.findViewById<LineChart>(R.id.chart)
+        lineChart.data = lineDatas
+        lineChart.invalidate()
 
     }
 
