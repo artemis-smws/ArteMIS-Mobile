@@ -10,11 +10,10 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.example.project_artemis.databinding.FragmentHomeBinding
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import okhttp3.*
@@ -188,6 +187,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Waste Generated Chart
+
         val dayString = arrayOf(
             "1h",
             "2h",
@@ -215,7 +216,7 @@ class HomeFragment : Fragment() {
             "24h",
         )
 
-        val wasteGeneratedChart = requireView().findViewById<LineChart>(R.id.chart)
+        val wasteGeneratedChart = requireView().findViewById<LineChart>(R.id.wasteGenChart)
 
         val foodLineData: List<Entry> = listOf(
             Entry(0f, 81f),
@@ -269,9 +270,127 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val xAxis: XAxis = wasteGeneratedChart.xAxis
-        xAxis.granularity = 1f
-        xAxis.valueFormatter = wasteGeneratedFormatter
+        val xAxisWasteGenerated: XAxis = wasteGeneratedChart.xAxis
+        xAxisWasteGenerated.granularity = 1f
+        xAxisWasteGenerated.valueFormatter = wasteGeneratedFormatter
+
+        // Waste Composition Chart
+
+        val wasteCompPieChart = requireView().findViewById<PieChart>(R.id.wasteCompChart)
+
+        val wasteCompColors = listOf(Color.RED, Color.BLUE, Color.GREEN)
+        val entries: MutableList<PieEntry> = ArrayList()
+        entries.add(PieEntry(50f, "Recyclable Waste"))
+        entries.add(PieEntry(30f, "Food Waste"))
+        entries.add(PieEntry(20f, "Residual Waste"))
+
+        val wasteCompDataSet = PieDataSet(entries, "Waste Composition")
+        wasteCompDataSet.colors = wasteCompColors
+
+        val data = PieData(wasteCompDataSet)
+        wasteCompPieChart.data = data
+        wasteCompPieChart.invalidate()
+
+        // Waste Generation per Building Chart
+
+        val wasteGenPerBuildingChart = requireView().findViewById<LineChart>(R.id.wasteGenPerBuildingChart)
+
+        val cicsLineData: List<Entry> = listOf(
+            Entry(0f, 11f),
+            Entry(1f, 7f),
+            Entry(2f, 8f),
+            Entry(3f, 5f),
+            Entry(4f, 3f),
+            Entry(5f, 1f),
+            Entry(6f, 2f)
+        )
+
+        val ceafaLineData: List<Entry> = listOf(
+            Entry(0f, 2f),
+            Entry(1f, 3f),
+            Entry(2f, 11f),
+            Entry(3f, 16f),
+            Entry(4f, 4f),
+            Entry(5f, 7f),
+            Entry(6f, 7f)
+        )
+
+        val citLineData: List<Entry> = listOf(
+            Entry(0f, 12f),
+            Entry(1f, 15f),
+            Entry(2f, 2f),
+            Entry(3f, 12f),
+            Entry(4f, 17f),
+            Entry(5f, 7f),
+            Entry(6f, 8f)
+        )
+
+        val sscLineData: List<Entry> = listOf(
+            Entry(0f, 12f),
+            Entry(1f, 6f),
+            Entry(2f, 12f),
+            Entry(3f, 8f),
+            Entry(4f, 1f),
+            Entry(5f, 2f),
+            Entry(6f, 3f)
+        )
+
+        val gymLineData: List<Entry> = listOf(
+            Entry(0f, 3f),
+            Entry(1f, 4f),
+            Entry(2f, 12f),
+            Entry(3f, 10f),
+            Entry(4f, 14f),
+            Entry(5f, 13f),
+            Entry(6f, 2f)
+        )
+
+        val acesLineData: List<Entry> = listOf(
+            Entry(0f, 18f),
+            Entry(1f, 15f),
+            Entry(2f, 17f),
+            Entry(3f, 14f),
+            Entry(4f, 3f),
+            Entry(5f, 4f),
+            Entry(6f, 12f)
+        )
+
+        val cicsDataSet = LineDataSet(cicsLineData, "CICS")
+        cicsDataSet.color = Color.parseColor("#2d59eb")
+        val ceafaDataSet = LineDataSet(ceafaLineData, "CEAFA")
+        ceafaDataSet.color = Color.parseColor("#eb4034")
+        val citDataSet = LineDataSet(citLineData, "CIT")
+        citDataSet.color = Color.parseColor("#189e18")
+        val sscDataSet = LineDataSet(sscLineData, "SSC")
+        sscDataSet.color = Color.parseColor("#d9cb30")
+        val gymDataSet = LineDataSet(gymLineData, "Gym")
+        gymDataSet.color = Color.parseColor("#ba7a30")
+        val acesDataSet = LineDataSet(acesLineData, "ACES")
+        acesDataSet.color = Color.parseColor("#872982")
+
+        val wasteGenPerBuildingDataSets: MutableList<ILineDataSet> = ArrayList()
+        wasteGenPerBuildingDataSets.add(cicsDataSet)
+        wasteGenPerBuildingDataSets.add(ceafaDataSet)
+        wasteGenPerBuildingDataSets.add(citDataSet)
+        wasteGenPerBuildingDataSets.add(sscDataSet)
+        wasteGenPerBuildingDataSets.add(gymDataSet)
+        wasteGenPerBuildingDataSets.add(citDataSet)
+
+        val wasteGenPerBuildingData = LineData(wasteGenPerBuildingDataSets)
+        wasteGenPerBuildingChart.data = wasteGenPerBuildingData
+        wasteGenPerBuildingChart.invalidate() // refresh
+
+        val wasteGenPerBuildingDataFormatter: ValueFormatter = object : ValueFormatter() {
+            override fun getAxisLabel(value: Float, axis: AxisBase): String {
+                return dayString.get(value.toInt())
+            }
+        }
+
+        val xAxisWasteGenPerBuilding: XAxis = wasteGenPerBuildingChart.xAxis
+        xAxisWasteGenPerBuilding.granularity = 1f
+        xAxisWasteGenPerBuilding.valueFormatter = wasteGenPerBuildingDataFormatter
+
+
 
     }
     }
