@@ -143,7 +143,7 @@
                         />
 
                 <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/chart"
+                        android:id="@+id/wasteGenChart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         />
@@ -177,6 +177,7 @@
                         >
 
                     <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/wasteCompChart"
                         android:layout_width="160dp"
                         android:layout_height="match_parent"/>
 
@@ -376,6 +377,7 @@
                     />
 
                 <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/wasteGenPerBuildingChart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         />
