@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddFragment">
-
-    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        >
+        tools:context=".AddFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_input"
-            android:textColor="?attr/colorOnSecondary"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:id="@+id/locationPicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/wasteCategory"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
             >
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/locationText"
+                android:text="@string/data_input"
                 android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+        <LinearLayout
+                android:id="@+id/locationPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/wasteCategory"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/locationText"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    />
 
             <Spinner
-                android:id="@+id/locationPickerInput"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textColor="?attr/colorOnPrimary"
-                android:background="@drawable/spinner2"
-                />
+                    android:id="@+id/locationPickerInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:background="@drawable/spinner2"
+                    />
 
         </LinearLayout>
 
@@ -91,157 +91,157 @@
 
 
         <LinearLayout
-            android:id="@+id/typeOfWaste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/addTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
-
-            <TextView
+                android:id="@+id/typeOfWaste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/typeText"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
-                
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/addTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/typeText"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    />
+
             <Spinner
-                android:id="@+id/wastePickerInput"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:textColor="?attr/colorOnPrimary"
-                android:background="@drawable/spinner2"
-                />
+                    android:id="@+id/wastePickerInput"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:background="@drawable/spinner2"
+                    />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nameOfWaste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/addTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
-
-            <TextView
+                android:id="@+id/nameOfWaste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nameText"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
-
-            <EditText
-                android:id="@+id/nameEditText"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:background="@drawable/add_input_background"
-                android:padding="5dp"
-                android:textSize="12sp"
-                android:elegantTextHeight="true"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/amountOfWaste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/addTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/addTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/amountText"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nameText"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    />
 
-            <EditText
-                android:id="@+id/amountEditText"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:inputType="numberDecimal"
-                android:background="@drawable/add_input_background"
-                android:padding="5dp"
-                android:textSize="12sp"
-                android:elegantTextHeight="true"
-                />
+            <Spinner
+                    android:id="@+id/namePickerInput"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:background="@drawable/spinner2"
+                    />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/wasteQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
+                android:id="@+id/amountOfWaste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/addTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quantityText"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp"
-                android:layout_marginStart="10dp"
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amountText"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    />
 
             <EditText
-                android:id="@+id/quantityEditText"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:inputType="number"
-                android:background="@drawable/add_input_background"
-                android:padding="5dp"
-                android:textSize="12sp"
-                android:elegantTextHeight="true"
-                />
+                    android:id="@+id/amountEditText"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:textColorHint="?attr/colorSecondaryVariant"
+                    android:hint="kg"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/add_input_background"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:elegantTextHeight="true"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/wasteQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quantityText"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    />
+
+            <EditText
+                    android:id="@+id/quantityEditText"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:inputType="number"
+                    android:background="@drawable/add_input_background"
+                    android:padding="5dp"
+                    android:textSize="14sp"
+                    android:elegantTextHeight="true"
+                    />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/buttonLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            >
+                android:id="@+id/buttonLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/typeOfWaste"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                >
 
-        <Button
-            android:id="@+id/inputButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Input"
-            android:elegantTextHeight="true"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            app:cornerRadius="5dp"
-            tools:ignore="HardcodedText,UsingOnClickInXml" />
+            <Button
+                    android:id="@+id/inputButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Input"
+                    android:elegantTextHeight="true"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    app:cornerRadius="5dp"
+                    tools:ignore="HardcodedText,UsingOnClickInXml" />
 
         </LinearLayout>
 
@@ -259,18 +259,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
-    <View
-            android:id="@+id/overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#80000000"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
