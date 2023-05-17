@@ -70,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.googleButton.setOnClickListener {
-            binding.progressBar2.visibility = View.VISIBLE
             signInGoogle()
             binding.progressBar2.visibility = View.GONE
         }
@@ -190,6 +189,7 @@ class LoginActivity : AppCompatActivity() {
     private fun handleResults(task: Task<GoogleSignInAccount>){
         if (task.isSuccessful){
             val account : GoogleSignInAccount? = task.result
+            binding.progressBar2.visibility = View.VISIBLE
             if (account != null){
                 updateUI(account)
             }
