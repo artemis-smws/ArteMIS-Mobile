@@ -9,10 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import android.widget.*
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.lifecycle.lifecycleScope
 import com.example.project_artemis.databinding.FragmentAddBinding
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -20,9 +18,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import kotlinx.coroutines.DelicateCoroutinesApi
 import org.json.JSONArray
 import org.json.JSONObject
+import org.json.JSONException
 import okhttp3.*
 import java.io.IOException
-import kotlinx.coroutines.launch
 import okhttp3.logging.HttpLoggingInterceptor
 @Suppress("NAME_SHADOWING")
 class AddFragment : Fragment() {
@@ -31,6 +29,10 @@ class AddFragment : Fragment() {
     private var campusName: String? = null
     private var selectedName: String? = null
     private var todayId: String? = null
+    private var residualweight: Double? = null
+    private var recyclableweight: Double? = null
+    private var foodweight: Double? = null
+    private var totalweight: Double? = null
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
@@ -40,8 +42,9 @@ class AddFragment : Fragment() {
         val binding = FragmentAddBinding.inflate(inflater, container, false)
 
         val client = OkHttpClient()
+        val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
         val request = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest")
+            .url(url)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -248,6 +251,53 @@ class AddFragment : Fragment() {
                                 val selectedItem = parent?.getItemAtPosition(position).toString()
                                 when (selectedItem) {
                                     "Residual Waste" -> {
+
+                                        val getclient = OkHttpClient()
+                                        val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+                                        val getData = Request.Builder()
+                                            .url(geturl)
+                                            .build()
+
+                                        getclient.newCall(getData).enqueue(object : Callback {
+                                            override fun onFailure(call: Call, e: IOException) {
+                                                // Handle network errors here
+                                            }
+
+                                            override fun onResponse(call: Call, response: Response) {
+                                                val responseString = response.body?.string()
+                                                val jsonArray = JSONArray(responseString)
+                                                val jsonObject = jsonArray.getJSONObject(0)
+                                                val buildingObject: JSONObject? = try {
+                                                    jsonObject.getJSONObject("$buildingName")
+                                                } catch (e: JSONException) {
+                                                    null
+                                                }
+                                                if (buildingObject != null) {
+                                                    val weightObject = buildingObject.getJSONObject("weight")
+                                                    residualweight = try {
+                                                        weightObject.getDouble("residual")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    recyclableweight = try {
+                                                        weightObject.getDouble("recyclable")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    foodweight = try {
+                                                        weightObject.getDouble("food_waste")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    totalweight = try {
+                                                        weightObject.getDouble("total")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                }
+                                            }
+                                        })
+
                                         binding.wasteQuantity.visibility = View.GONE
                                         binding.nameOfWaste.visibility = View.GONE
                                         binding.amountOfWaste.visibility = View.VISIBLE
@@ -281,7 +331,10 @@ class AddFragment : Fragment() {
 
                                             val building = buildingName
                                             val campus = campusName
-                                            val totalWeight = 0
+                                            val residual = residualweight
+                                            val recyclable = recyclableweight
+                                            val foodwaste = foodweight
+                                            val totalWeight = totalweight
                                             val id = todayId
                                             val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -293,56 +346,124 @@ class AddFragment : Fragment() {
 
                                             binding.progressBar2.visibility = View.VISIBLE
 
-                                            // create an instance of OkHttpClient
-                                            val client = OkHttpClient()
-
-                                            // create a JSON object with the new values to be patched
-                                            val jsonObject = JSONObject().apply {
+                                            val interceptor = HttpLoggingInterceptor()
+                                            interceptor.level = HttpLoggingInterceptor.Level.BODY
+                                            
+                                            val client = OkHttpClient.Builder()
+                                                .addInterceptor(interceptor)
+                                                .build()
+                                            
+                                            val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
+                                            
+                                            val jsonBody = JSONObject().apply {
                                                 put("$building", JSONObject().apply {
                                                     put("weight", JSONObject().apply {
-                                                        put("residual", weight) // new value for residual
-                                                        put("total", totalWeight) // new value for total
+                                                        if (residual != null) {
+                                                            put("residual", residual + weight)
+                                                        } // new value for residual
+                                                        put("recyclable", recyclable) // new value for recyclable
+                                                        put("food_waste", foodwaste) // new value for foodwaste
+                                                        if (totalWeight != null) {
+                                                            put("total", totalWeight + weight)
+                                                        } // new value for total
                                                     })
                                                     put("campus", "$campus")
                                                 })
                                             }
-
-                                            // create a PATCH request to the API endpoint with the updated data
-                                            val requestBody = jsonObject.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+                                            
+                                            val requestBody = jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
                                             val request = Request.Builder()
-                                                .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id")
-                                                .patch(requestBody)
-                                                .addHeader("Content-Type", "application/json; charset=utf-8")
+                                                .url(url)
+                                                .put(requestBody)
+                                                .addHeader("Content-Type", "application/json")
                                                 .build()
-
-                                            // perform the network operation on a separate thread using Coroutines
-                                            lifecycleScope.launch(Dispatchers.IO) {
-                                                try {
-                                                    // execute the request and get the response
-                                                    val response = client.newCall(request).execute()
+                                            
+                                            // Send the request and handle the response
+                                            client.newCall(request).enqueue(object : Callback {
+                                                override fun onFailure(call: Call, e: IOException) {
+                                                    // Handle the failure
+                                                    Toast.makeText(
+                                                        requireContext(),
+                                                        "An error occurred: ${e.message}",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            
+                                                override fun onResponse(call: Call, response: Response) {
                                                     val responseBody = response.body?.string()
-
-                                                    withContext(Dispatchers.Main) {
-                                                        if (response.isSuccessful && responseBody != null) {
+                                                    if (response.isSuccessful && responseBody != null) {
+                                                        requireActivity().runOnUiThread {
                                                             clearInputFields()
-                                                            Toast.makeText(requireContext(), "Input Successful: ${response.code}", Toast.LENGTH_SHORT).show()
-                                                        } else {
-                                                            Toast.makeText(requireContext(), "Input Unsuccessful: ${response.code}", Toast.LENGTH_SHORT).show()
+                                                            binding.progressBar2.visibility = View.GONE
+                                                            Toast.makeText(
+                                                                requireContext(),
+                                                                "Input Successful: ${response.code}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                    } else {
+                                                        requireActivity().runOnUiThread {
+                                                            binding.progressBar2.visibility = View.GONE
+                                                            Toast.makeText(
+                                                                requireContext(),
+                                                                "Input Unsuccessful: ${response.code}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
                                                         }
                                                     }
-                                                } catch (e: Exception) {
-                                                    withContext(Dispatchers.Main) {
-                                                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                } finally {
-                                                    withContext(Dispatchers.Main) {
-                                                        binding.progressBar2.visibility = View.GONE
-                                                    }
                                                 }
-                                            }
+                                            })
+                                            
                                         }
                                     }
                                     "Recyclable Waste" -> {
+
+                                        val getclient = OkHttpClient()
+                                        val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+                                        val getData = Request.Builder()
+                                            .url(geturl)
+                                            .build()
+
+                                        getclient.newCall(getData).enqueue(object : Callback {
+                                            override fun onFailure(call: Call, e: IOException) {
+                                                // Handle network errors here
+                                            }
+
+                                            override fun onResponse(call: Call, response: Response) {
+                                                val responseString = response.body?.string()
+                                                val jsonArray = JSONArray(responseString)
+                                                val jsonObject = jsonArray.getJSONObject(0)
+                                                val buildingObject: JSONObject? = try {
+                                                    jsonObject.getJSONObject("$buildingName")
+                                                } catch (e: JSONException) {
+                                                    null
+                                                }
+                                                if (buildingObject != null) {
+                                                    val weightObject = buildingObject.getJSONObject("weight")
+                                                    residualweight = try {
+                                                        weightObject.getDouble("residual")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    recyclableweight = try {
+                                                        weightObject.getDouble("recyclable")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    foodweight = try {
+                                                        weightObject.getDouble("food_waste")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    totalweight = try {
+                                                        weightObject.getDouble("total")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                }
+                                            }
+                                        })
+
                                         binding.wasteQuantity.visibility = View.GONE
                                         binding.nameOfWaste.visibility = View.VISIBLE
                                         binding.amountOfWaste.visibility = View.VISIBLE
@@ -376,7 +497,10 @@ class AddFragment : Fragment() {
 
                                             val building = buildingName
                                             val campus = campusName
-                                            val totalWeight = 0
+                                            val residual = residualweight
+                                            val recyclable = recyclableweight
+                                            val foodwaste = foodweight
+                                            val totalWeight = totalweight
                                             val id = todayId
                                             val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -390,30 +514,36 @@ class AddFragment : Fragment() {
 
                                             val interceptor = HttpLoggingInterceptor()
                                             interceptor.level = HttpLoggingInterceptor.Level.BODY
-
+                                            
                                             val client = OkHttpClient.Builder()
                                                 .addInterceptor(interceptor)
                                                 .build()
-
+                                            
                                             val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-
+                                            
                                             val jsonBody = JSONObject().apply {
                                                 put("$building", JSONObject().apply {
                                                     put("weight", JSONObject().apply {
-                                                        put("recyclable", weight) // new value for recyclable
-                                                        put("total", totalWeight) // new value for total
+                                                        put("residual", residual) // new value for residual
+                                                        if (recyclable != null) {
+                                                            put("recyclable", recyclable + weight)
+                                                        } // new value for recyclable
+                                                        put("food_waste", foodwaste) // new value for foodwaste
+                                                        if (totalWeight != null) {
+                                                            put("total", totalWeight + weight)
+                                                        } // new value for total
                                                     })
                                                     put("campus", "$campus")
                                                 })
                                             }
-
+                                            
                                             val requestBody = jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
                                             val request = Request.Builder()
                                                 .url(url)
-                                                .patch(requestBody)
+                                                .put(requestBody)
                                                 .addHeader("Content-Type", "application/json")
                                                 .build()
-
+                                            
                                             // Send the request and handle the response
                                             client.newCall(request).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
@@ -424,9 +554,8 @@ class AddFragment : Fragment() {
                                                         Toast.LENGTH_SHORT
                                                     ).show()
                                                 }
-
+                                            
                                                 override fun onResponse(call: Call, response: Response) {
-
                                                     val responseBody = response.body?.string()
                                                     if (response.isSuccessful && responseBody != null) {
                                                         requireActivity().runOnUiThread {
@@ -450,10 +579,59 @@ class AddFragment : Fragment() {
                                                     }
                                                 }
                                             })
+                                            
                                         }
 
                                     }
                                     "Food Waste" -> {
+
+                                        val getclient = OkHttpClient()
+                                        val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+                                        val getData = Request.Builder()
+                                            .url(geturl)
+                                            .build()
+
+                                        getclient.newCall(getData).enqueue(object : Callback {
+                                            override fun onFailure(call: Call, e: IOException) {
+                                                // Handle network errors here
+                                            }
+
+                                            override fun onResponse(call: Call, response: Response) {
+                                                val responseString = response.body?.string()
+                                                val jsonArray = JSONArray(responseString)
+                                                val jsonObject = jsonArray.getJSONObject(0)
+                                                val buildingObject: JSONObject? = try {
+                                                    jsonObject.getJSONObject("$buildingName")
+                                                } catch (e: JSONException) {
+                                                    null
+                                                }
+                                                if (buildingObject != null) {
+                                                    val weightObject = buildingObject.getJSONObject("weight")
+                                                    residualweight = try {
+                                                        weightObject.getDouble("residual")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    recyclableweight = try {
+                                                        weightObject.getDouble("recyclable")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    foodweight = try {
+                                                        weightObject.getDouble("food_waste")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                    totalweight = try {
+                                                        weightObject.getDouble("total")
+                                                    } catch (e: JSONException) {
+                                                        null
+                                                    }
+                                                }
+                                            }
+                                        })
+
+
                                         binding.wasteQuantity.visibility = View.GONE
                                         binding.nameOfWaste.visibility = View.GONE
                                         binding.amountOfWaste.visibility = View.VISIBLE
@@ -487,7 +665,10 @@ class AddFragment : Fragment() {
 
                                             val building = buildingName
                                             val campus = campusName
-                                            val totalWeight = 0
+                                            val residual = residualweight
+                                            val recyclable = recyclableweight
+                                            val foodwaste = foodweight
+                                            val totalWeight = totalweight
                                             val id = todayId
                                             val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -501,23 +682,72 @@ class AddFragment : Fragment() {
 
                                             val interceptor = HttpLoggingInterceptor()
                                             interceptor.level = HttpLoggingInterceptor.Level.BODY
-
+                                            
                                             val client = OkHttpClient.Builder()
                                                 .addInterceptor(interceptor)
                                                 .build()
-
+                                            
                                             val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-
-                                            // create a JSON object with the new values to be patched
-                                            val jsonObject = JSONObject().apply {
+                                            
+                                            val jsonBody = JSONObject().apply {
                                                 put("$building", JSONObject().apply {
                                                     put("weight", JSONObject().apply {
-                                                        put("food_waste", weight) // new value for foodwaste
-                                                        put("total", totalWeight) // new value for total
+                                                        put("residual", residual) // new value for residual
+                                                        put("recyclable", recyclable) // new value for recyclable
+                                                        if (foodwaste != null) {
+                                                            put("food_waste", foodwaste + weight)
+                                                        } // new value for foodwaste
+                                                        if (totalWeight != null) {
+                                                            put("total", totalWeight + weight)
+                                                        } // new value for total
                                                     })
                                                     put("campus", "$campus")
                                                 })
                                             }
+                                            
+                                            val requestBody = jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+                                            val request = Request.Builder()
+                                                .url(url)
+                                                .put(requestBody)
+                                                .addHeader("Content-Type", "application/json")
+                                                .build()
+                                            
+                                            // Send the request and handle the response
+                                            client.newCall(request).enqueue(object : Callback {
+                                                override fun onFailure(call: Call, e: IOException) {
+                                                    // Handle the failure
+                                                    Toast.makeText(
+                                                        requireContext(),
+                                                        "An error occurred: ${e.message}",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            
+                                                override fun onResponse(call: Call, response: Response) {
+                                                    val responseBody = response.body?.string()
+                                                    if (response.isSuccessful && responseBody != null) {
+                                                        requireActivity().runOnUiThread {
+                                                            clearInputFields()
+                                                            binding.progressBar2.visibility = View.GONE
+                                                            Toast.makeText(
+                                                                requireContext(),
+                                                                "Input Successful: ${response.code}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                    } else {
+                                                        requireActivity().runOnUiThread {
+                                                            binding.progressBar2.visibility = View.GONE
+                                                            Toast.makeText(
+                                                                requireContext(),
+                                                                "Input Unsuccessful: ${response.code}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                    }
+                                                }
+                                            })
+                                            
 
 
                                             // // create a PATCH request to the API endpoint with the updated data
@@ -553,44 +783,6 @@ class AddFragment : Fragment() {
                                             //         }
                                             //     }
                                             // }
-
-                                            val requestBody = jsonObject.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
-                                            val request = Request.Builder()
-                                                .url(url)
-                                                .patch(requestBody)
-                                                .addHeader("Content-Type", "application/json")
-                                                .build()
-
-                                            // Send the request and handle the response
-                                            client.newCall(request).enqueue(object : Callback {
-                                                override fun onFailure(call: Call, e: IOException) {
-                                                    // Handle the failure
-                                                    Toast.makeText(
-                                                        requireContext(),"An error occurred: ${e.message}",Toast.LENGTH_SHORT
-                                                    ).show()
-                                                }
-
-                                                override fun onResponse(call: Call, response: Response) {
-
-                                                    val responseBody = response.body?.string()
-                                                    if (response.isSuccessful && responseBody != null) {
-                                                        requireActivity().runOnUiThread {
-                                                            clearInputFields()
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(
-                                                                requireContext(),"Input Successful: ${response.code}",Toast.LENGTH_SHORT
-                                                            ).show()
-                                                        }
-                                                    } else {
-                                                        requireActivity().runOnUiThread {
-                                                            binding.progressBar2.visibility = View.GONE
-                                                            Toast.makeText(
-                                                                requireContext(),"Input Unsuccessful: ${response.code}",Toast.LENGTH_SHORT
-                                                            ).show()
-                                                        }
-                                                    }
-                                                }
-                                            })
 
                                         }
                                     }
