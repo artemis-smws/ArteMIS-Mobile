@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.project_artemis.databinding.FragmentHomeBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
@@ -66,118 +69,12 @@ class HomeFragment : Fragment() {
             setDropDownViewResource(R.layout.style_spinner)
         }
 
-        binding.buildingSpinner.adapter = adapterBuilding
-
-        binding.buildingSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
-                buildingObject = when (selectedBuilding) {
-                    "CEAFA Building" -> "CEAFA"
-                    "CIT Building" -> "CIT"
-                    "CICS Building" -> "CICS"
-                    "RGR Building" -> "RGR"
-                    "Gymnasium" -> "Gym"
-                    "STEER Hub" -> "STEER Hub"
-                    "Student Services Center" -> "SSC"
-                    else -> ""
-                }
-                val decimalFormat = DecimalFormat("#.##")
-
-                val client2 = OkHttpClient()
-                val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
-                val request2 = Request.Builder()
-                    .url(url)
-                    .build()
-
-                client2.newCall(request2).enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
-                        // Handle network errors here
-                    }
-
-                    @SuppressLint("SetTextI18n")
-                    override fun onResponse(call: Call, response: Response) {
-                        val responseString = response.body?.string()
-                        val jsonArray = JSONArray(responseString)
-                        val jsonObject = jsonArray.getJSONObject(0)
-                        val buildingObject: JSONObject? = try {
-                            jsonObject.getJSONObject("$buildingObject")
-                        } catch (e: JSONException) {
-                            null
-                        }
-                        if (buildingObject != null) {
-                            val weightObject = buildingObject.getJSONObject("weight")
-                            val residualWasteWeight: Double? = try {
-                                weightObject.getDouble("residual")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            val foodWasteWeight: Double? = try {
-                                weightObject.getDouble("food_waste")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            val recyclableWasteWeight: Double? = try {
-                                weightObject.getDouble("recyclable")
-                            } catch (e: JSONException) {
-                                null
-                            }
-
-                            if (isAdded) {
-                                requireActivity().runOnUiThread {
-                                    binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
-                                    binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                    binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                }
-                            }
-                        }else{
-                            if (this@HomeFragment.isAdded) {
-                                requireActivity().runOnUiThread {
-                                    binding.displayres.text = "0 kg"
-                                    binding.displayfood.text = "0 kg"
-                                    binding.displayrec.text = "0 kg"
-                                }
-                            }
-                        }
-                    }
-                })
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        val name = arguments?.getString("name")
-
-        if (name != null) {
-            val words = name.split("\\s+".toRegex())
-            if (words.size > 1) {
-                requireActivity().runOnUiThread {
-                    binding.name.text = words[0]
-                }
-            } else {
-                requireActivity().runOnUiThread {
-                    binding.name.text = name
-                }
-            }
-        }
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         // Waste Generated Graph
         val dayString = arrayOf(
             "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"
         )
 
-        val wasteGeneratedChart = requireView().findViewById<LineChart>(R.id.wasteGenChart)
+        val wasteGeneratedChart = binding.wasteGenChart
 
         val foodLineData: List<List<Entry>> = listOf(
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CEAFA
@@ -209,30 +106,7 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
         )
 
-        val buildingIndex = when (buildingObject) {
-            "CEAFA" -> 0
-            "CIT" -> 1
-            "CICS" -> 2
-            "COE" -> 3
-            "Gym" -> 4
-            "STEER Hub" -> 5
-            "SSC" -> 6
-            else -> 0
-        }
 
-        val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-        foodDataSet.color = Color.parseColor("#d7e605")
-
-        val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-        residualDataSet.color = Color.parseColor("#e60505")
-
-        val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-        recyclableDataSet.color = Color.parseColor("#22990b")
-
-        val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-        val wasteGeneratedData = LineData(wasteGeneratedDataSets)
-        wasteGeneratedChart.data = wasteGeneratedData
-        wasteGeneratedChart.invalidate()
 
         val wasteGeneratedFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
@@ -247,7 +121,7 @@ class HomeFragment : Fragment() {
 
         // Waste Composition Chart
 
-        val wasteCompPieChart = requireView().findViewById<PieChart>(R.id.wasteCompChart)
+        val wasteCompPieChart = binding.wasteCompChart
 
         val wasteCompColors = listOf(Color.GREEN, Color.YELLOW, Color.RED)
         val entries: MutableList<PieEntry> = ArrayList()
@@ -265,7 +139,7 @@ class HomeFragment : Fragment() {
 
         // Waste Generation per Building Chart
 
-        val wasteGenPerBuildingChart = requireView().findViewById<LineChart>(R.id.wasteGenPerBuildingChart)
+        val wasteGenPerBuildingChart = binding.wasteGenPerBuildingChart
 
         val cicsLineData: List<Entry> = listOf(
             Entry(0f, 11f),
@@ -367,13 +241,156 @@ class HomeFragment : Fragment() {
 
         val wasteGenPerBuildingDataFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
-                return dayString.get(value.toInt())
+                return dayString[value.toInt()]
             }
         }
 
         val xAxisWasteGenPerBuilding: XAxis = wasteGenPerBuildingChart.xAxis
         xAxisWasteGenPerBuilding.granularity = 1f
         xAxisWasteGenPerBuilding.valueFormatter = wasteGenPerBuildingDataFormatter
+
+        binding.buildingSpinner.adapter = adapterBuilding
+
+        binding.buildingSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+                buildingObject = when (selectedBuilding) {
+                    "CEAFA Building" -> "CEAFA"
+                    "CIT Building" -> "CIT"
+                    "CICS Building" -> "CICS"
+                    "RGR Building" -> "RGR"
+                    "Gymnasium" -> "Gym"
+                    "STEER Hub" -> "STEER Hub"
+                    "Student Services Center" -> "SSC"
+                    else -> ""
+                }
+
+                val buildingIndex = when (buildingObject) {
+                    "CEAFA" -> 0
+                    "CIT" -> 1
+                    "CICS" -> 2
+                    "COE" -> 3
+                    "Gym" -> 4
+                    "STEER Hub" -> 5
+                    "SSC" -> 6
+                    else -> 0
+                }
+
+                val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
+                foodDataSet.color = Color.parseColor("#d7e605")
+
+                val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
+                residualDataSet.color = Color.parseColor("#e60505")
+
+                val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+                recyclableDataSet.color = Color.parseColor("#22990b")
+
+                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+                val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+                wasteGeneratedChart.data = wasteGeneratedData
+                wasteGeneratedChart.invalidate()
+
+                val decimalFormat = DecimalFormat("#.##")
+
+                val client2 = OkHttpClient()
+                val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+                val request2 = Request.Builder()
+                    .url(url)
+                    .build()
+
+                client2.newCall(request2).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        // Handle network errors here
+                    }
+
+                    @SuppressLint("SetTextI18n")
+                    override fun onResponse(call: Call, response: Response) {
+                        val responseString = response.body?.string()
+                        val jsonArray = JSONArray(responseString)
+                        val jsonObject = jsonArray.getJSONObject(0)
+                        val buildingObject: JSONObject? = try {
+                            jsonObject.getJSONObject("$buildingObject")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (buildingObject != null) {
+                            val weightObject = buildingObject.getJSONObject("weight")
+                            val residualWasteWeight: Double? = try {
+                                weightObject.getDouble("residual")
+                            } catch (e: JSONException) {
+                                null
+                            }
+                            val foodWasteWeight: Double? = try {
+                                weightObject.getDouble("food_waste")
+                            } catch (e: JSONException) {
+                                null
+                            }
+                            val recyclableWasteWeight: Double? = try {
+                                weightObject.getDouble("recyclable")
+                            } catch (e: JSONException) {
+                                null
+                            }
+
+                            if (isAdded) {
+                                requireActivity().runOnUiThread {
+                                    binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
+                                    binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                                    binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                                }
+                            }
+                        }else{
+                            if (this@HomeFragment.isAdded) {
+                                requireActivity().runOnUiThread {
+                                    binding.displayres.text = "0 kg"
+                                    binding.displayfood.text = "0 kg"
+                                    binding.displayrec.text = "0 kg"
+                                }
+                            }
+                        }
+                    }
+                })
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        val name = arguments?.getString("name")
+
+        if (name != null) {
+            val words = name.split("\\s+".toRegex())
+            if (words.size > 1) {
+                requireActivity().runOnUiThread {
+                    binding.name.text = words[0]
+                }
+            } else {
+                requireActivity().runOnUiThread {
+                    binding.name.text = name
+                }
+            }
+        }
+
+
+
+        val swipeRefreshLayout = binding.swipeRefreshLayout
+
+        swipeRefreshLayout.setOnRefreshListener {
+            wasteGeneratedChart.invalidate()
+            wasteCompPieChart.invalidate()
+            wasteGenPerBuildingChart.invalidate()
+            swipeRefreshLayout.isRefreshing = false
+        }
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
     }
 
