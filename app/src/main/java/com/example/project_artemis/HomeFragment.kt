@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
             "CEAFA Building",
             "CIT Building",
             "CICS Building",
-            "COE Building",
+            "RGR Building",
             "Gymnasium",
             "STEER Hub",
             "Student Services Center"
@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
                     "CEAFA Building" -> "CEAFA"
                     "CIT Building" -> "CIT"
                     "CICS Building" -> "CICS"
-                    "COE Building" -> "COE"
+                    "RGR Building" -> "RGR"
                     "Gymnasium" -> "Gym"
                     "STEER Hub" -> "STEER Hub"
                     "Student Services Center" -> "SSC"

@@ -72,7 +72,7 @@
                     />
 
             <Spinner
-                    android:id="@+id/locationPickerConcern"
+                    android:id="@+id/locationPickerInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:textColor="?attr/colorOnPrimary"
@@ -112,6 +112,40 @@
 
         </LinearLayout>
 
+
+        <LinearLayout
+                android:id="@+id/buildingPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/wasteCategory"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+        >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Building"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+            />
+
+            <Spinner
+                    android:id="@+id/buildingPickerInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:background="@drawable/spinner2"
+            />
+
+        </LinearLayout>
+
+
+
         <LinearLayout
                 android:id="@+id/descriptionLayout"
                 android:layout_width="match_parent"
@@ -119,7 +153,7 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/addTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 >
@@ -136,7 +170,7 @@
             <EditText
                     android:id="@+id/descriptionConcernEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="120dp"
                     android:background="@drawable/add_input_background"
                     android:padding="5dp"
                     android:textSize="12sp"
@@ -146,7 +180,7 @@
         </LinearLayout>
 
         <Button
-                android:id="@+id/inputButton"
+                android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/submitButton"
@@ -159,5 +193,19 @@
                 tools:ignore="HardcodedText,UsingOnClickInXml" />
 
     </LinearLayout>
+
+
+    <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            android:indeterminateTint="?attr/colorOnSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
