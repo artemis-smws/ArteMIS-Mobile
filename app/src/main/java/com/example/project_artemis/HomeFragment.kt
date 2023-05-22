@@ -284,6 +284,8 @@ class HomeFragment : Fragment() {
                 wasteGeneratedChart.data = wasteGeneratedData
                 wasteGeneratedChart.invalidate()
 
+                setupPieChart(wasteCompPieChart, itemsBuilding[buildingIndex])
+
                 val decimalFormat = DecimalFormat("#.##")
 
                 val client2 = OkHttpClient()
@@ -372,14 +374,35 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-
         val swipeRefreshLayout = binding.swipeRefreshLayout
 
         swipeRefreshLayout.setOnRefreshListener {
+
+            val buildingIndex = when (buildingObject) {
+                "CEAFA" -> 0
+                "CIT" -> 1
+                "CICS" -> 2
+                "RGR" -> 3
+                "Gymnasium" -> 4
+                "STEER_Hub" -> 5
+                "SSC" -> 6
+                else -> 0
+            }
+
+            val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
+            foodDataSet.color = Color.parseColor("#d7e605")
+
+            val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
+            residualDataSet.color = Color.parseColor("#e60505")
+
+            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+            recyclableDataSet.color = Color.parseColor("#22990b")
+
+            val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+            val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+            wasteGeneratedChart.data = wasteGeneratedData
             wasteGeneratedChart.invalidate()
-            wasteCompPieChart.invalidate()
-            wasteGenPerBuildingChart.invalidate()
+
             swipeRefreshLayout.isRefreshing = false
         }
 
@@ -464,6 +487,10 @@ class HomeFragment : Fragment() {
             animateY(1400)
             data = data
         }
+
+        pieChart.data = data
+        pieChart.invalidate()
+
     }
 
 }
