@@ -31,6 +31,9 @@ import java.text.DecimalFormat
 class HomeFragment : Fragment() {
 
     private var buildingObject: String? = null
+    private var residualPercentage: Double? = null
+    private var foodWastePercentage: Double? = null
+    private var recyclablePercentage: Double? = null
     private lateinit var itemsBuilding: List<String>
     private lateinit var itemsTime: List<String>
 
@@ -41,7 +44,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        itemsTime = listOf("Today", "Week", "Month", "Year", "All Time")
+        itemsTime = listOf("Week", "Month", "Year", "All Time")
         itemsBuilding = listOf(
             "CEAFA Building",
             "CIT Building",
@@ -72,13 +75,13 @@ class HomeFragment : Fragment() {
 
         // Waste Generated Graph
         val dayString = arrayOf(
-            "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"
+            "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
         )
 
         val wasteGeneratedChart = binding.wasteGenChart
 
         val foodLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CEAFA
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, 9f), Entry(6f, 6f)),  // CEAFA
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CIT
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // CICS
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
@@ -88,7 +91,7 @@ class HomeFragment : Fragment() {
         )
 
         val residualLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CEAFA
+            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, 6f)),  // CEAFA
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CIT
             listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CICS
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
@@ -98,7 +101,7 @@ class HomeFragment : Fragment() {
         )
 
         val recyclableLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CEAFA
+            listOf(Entry(0f, 7f), Entry(1f, 6f), Entry(2f, 8f), Entry(3f, 5f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CEAFA
             listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CIT
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CICS
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
@@ -116,6 +119,7 @@ class HomeFragment : Fragment() {
         }
 
         val xAxisWasteGenerated: XAxis = wasteGeneratedChart.xAxis
+        
         xAxisWasteGenerated.granularity = 1f
         xAxisWasteGenerated.valueFormatter = wasteGeneratedFormatter
 
@@ -179,7 +183,7 @@ class HomeFragment : Fragment() {
             Entry(6f, 2f)
         )
 
-        val acesLineData: List<Entry> = listOf(
+        val rgrLineData: List<Entry> = listOf(
             Entry(0f, 18f),
             Entry(1f, 15f),
             Entry(2f, 17f),
@@ -209,9 +213,9 @@ class HomeFragment : Fragment() {
         sscDataSet.color = Color.parseColor("#d9cb30")
         val gymDataSet = LineDataSet(gymLineData, "Gym")
         gymDataSet.color = Color.parseColor("#ba7a30")
-        val acesDataSet = LineDataSet(acesLineData, "ACES")
-        acesDataSet.color = Color.parseColor("#872982")
-        val steerDataSet = LineDataSet(steerLineData, "ACES")
+        val rgrDataSet = LineDataSet(rgrLineData, "RGR")
+        rgrDataSet.color = Color.parseColor("#872982")
+        val steerDataSet = LineDataSet(steerLineData, "STEER Hub")
         steerDataSet.color = Color.parseColor("#329582")
 
         val wasteGenPerBuildingDataSets: MutableList<ILineDataSet> = ArrayList()
@@ -220,7 +224,7 @@ class HomeFragment : Fragment() {
         wasteGenPerBuildingDataSets.add(citDataSet)
         wasteGenPerBuildingDataSets.add(sscDataSet)
         wasteGenPerBuildingDataSets.add(gymDataSet)
-        wasteGenPerBuildingDataSets.add(acesDataSet)
+        wasteGenPerBuildingDataSets.add(rgrDataSet)
         wasteGenPerBuildingDataSets.add(steerDataSet)
 
         val wasteGenPerBuildingData = LineData(wasteGenPerBuildingDataSets)
@@ -281,6 +285,10 @@ class HomeFragment : Fragment() {
 
                 val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
                 val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+                wasteGeneratedChart.animateX(1000)
+                wasteGeneratedChart.animateY(1000)
+                wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+
                 wasteGeneratedChart.data = wasteGeneratedData
                 wasteGeneratedChart.invalidate()
 
@@ -331,9 +339,28 @@ class HomeFragment : Fragment() {
                             } catch (e: JSONException) {
                                 null
                             }
-
+                            val totalweight: Double? = try {
+                                weightObject.getDouble("total")
+                            } catch (e: JSONException) {
+                                null
+                            }
+                            if (totalweight != null && residualWasteWeight != null) {
+                                residualPercentage = (residualWasteWeight / totalweight) * 100
+                            }
+                            
+                            if (totalweight != null && foodWasteWeight != null) {
+                                foodWastePercentage = (foodWasteWeight / totalweight) * 100
+                            }
+                            
+                            if (totalweight != null && recyclableWasteWeight != null) {
+                                recyclablePercentage = (recyclableWasteWeight / totalweight) * 100
+                            }
+                            
                             if (isAdded) {
                                 requireActivity().runOnUiThread {
+                                    binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
+                                    binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
+                                    binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
                                     binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
                                     binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
                                     binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
@@ -343,6 +370,9 @@ class HomeFragment : Fragment() {
                         }else{
                             if (this@HomeFragment.isAdded) {
                                 requireActivity().runOnUiThread {
+                                    binding.residualwastepercent.text = "0%"
+                                    binding.foodwastepercent.text = "0%"
+                                    binding.recyclablewastepercent.text = "0%"
                                     binding.alangilanTotal.text = "0 kg"
                                     binding.displayres.text = "0 kg"
                                     binding.displayfood.text = "0 kg"
@@ -374,37 +404,30 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val swipeRefreshLayout = binding.swipeRefreshLayout
-
-        swipeRefreshLayout.setOnRefreshListener {
-
-            val buildingIndex = when (buildingObject) {
-                "CEAFA" -> 0
-                "CIT" -> 1
-                "CICS" -> 2
-                "RGR" -> 3
-                "Gymnasium" -> 4
-                "STEER_Hub" -> 5
-                "SSC" -> 6
-                else -> 0
-            }
-
-            val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-            foodDataSet.color = Color.parseColor("#d7e605")
-
-            val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-            residualDataSet.color = Color.parseColor("#e60505")
-
-            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-            recyclableDataSet.color = Color.parseColor("#22990b")
-
-            val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-            val wasteGeneratedData = LineData(wasteGeneratedDataSets)
-            wasteGeneratedChart.data = wasteGeneratedData
-            wasteGeneratedChart.invalidate()
-
-            swipeRefreshLayout.isRefreshing = false
+        val buildingIndex = when (buildingObject) {
+            "CEAFA" -> 0
+            "CIT" -> 1
+            "CICS" -> 2
+            "RGR" -> 3
+            "Gymnasium" -> 4
+            "STEER_Hub" -> 5
+            "SSC" -> 6
+            else -> 0
         }
+
+        val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
+        foodDataSet.color = Color.parseColor("#d7e605")
+
+        val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
+        residualDataSet.color = Color.parseColor("#e60505")
+
+        val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+        recyclableDataSet.color = Color.parseColor("#22990b")
+
+        val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+        val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+        wasteGeneratedChart.data = wasteGeneratedData
+        wasteGeneratedChart.invalidate()
 
         return binding.root
     }
@@ -419,39 +442,39 @@ class HomeFragment : Fragment() {
         val entries: MutableList<PieEntry> = ArrayList()
         when (building) {
             "CEAFA Building" -> {
-                entries.add(PieEntry(50f, "Recyclable"))
-                entries.add(PieEntry(10f, "Food Waste"))
-                entries.add(PieEntry(40f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "CIT Building" -> {
-                entries.add(PieEntry(20f, "Recyclable"))
-                entries.add(PieEntry(20f, "Food Waste"))
-                entries.add(PieEntry(60f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "CICS Building" -> {
-                entries.add(PieEntry(50f, "Recyclable"))
-                entries.add(PieEntry(20f, "Food Waste"))
-                entries.add(PieEntry(30f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "RGR Building" -> {
-                entries.add(PieEntry(30f, "Recyclable"))
-                entries.add(PieEntry(20f, "Food Waste"))
-                entries.add(PieEntry(50f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "Gymnasium" -> {
-                entries.add(PieEntry(10f, "Recyclable"))
-                entries.add(PieEntry(20f, "Food Waste"))
-                entries.add(PieEntry(70f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "STEER Hub" -> {
-                entries.add(PieEntry(30f, "Recyclable"))
-                entries.add(PieEntry(25f, "Food Waste"))
-                entries.add(PieEntry(45f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
             "Student Services Center" -> {
-                entries.add(PieEntry(20f, "Recyclable"))
-                entries.add(PieEntry(30f, "Food Waste"))
-                entries.add(PieEntry(50f, "Residual"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
             }
         }
 
@@ -484,7 +507,7 @@ class HomeFragment : Fragment() {
             setEntryLabelTextSize(12f)
             setDrawEntryLabels(false)
             rotationAngle = 0f
-            animateY(1400)
+            animateY(1000)
             data = data
         }
 
