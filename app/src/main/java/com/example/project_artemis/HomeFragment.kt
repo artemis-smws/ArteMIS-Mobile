@@ -18,6 +18,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import okhttp3.*
@@ -80,7 +81,7 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CEAFA
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CIT
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // COE
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
@@ -90,7 +91,7 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CEAFA
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CIT
             listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // COE
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
@@ -100,7 +101,7 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CEAFA
             listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CIT
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // COE
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
@@ -118,24 +119,11 @@ class HomeFragment : Fragment() {
         xAxisWasteGenerated.granularity = 1f
         xAxisWasteGenerated.valueFormatter = wasteGeneratedFormatter
 
-
         // Waste Composition Chart
 
         val wasteCompPieChart = binding.wasteCompChart
 
-        val wasteCompColors = listOf(Color.GREEN, Color.YELLOW, Color.RED)
-        val entries: MutableList<PieEntry> = ArrayList()
-        entries.add(PieEntry(50f, "Recyclable"))
-        entries.add(PieEntry(10f, "Food Waste"))
-        entries.add(PieEntry(40f, "Residual"))
-
-        val wasteCompDataSet = PieDataSet(entries, "Waste Composition")
-        wasteCompDataSet.colors = wasteCompColors
-        wasteCompDataSet.setValueTextColor(Color.BLACK)
-
-        val data = PieData(wasteCompDataSet)
-        wasteCompPieChart.data = data
-        wasteCompPieChart.invalidate()
+        setupPieChart(wasteCompPieChart, itemsBuilding[0])
 
         // Waste Generation per Building Chart
 
@@ -259,13 +247,14 @@ class HomeFragment : Fragment() {
                 id: Long
             ) {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+                setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
                 buildingObject = when (selectedBuilding) {
                     "CEAFA Building" -> "CEAFA"
                     "CIT Building" -> "CIT"
                     "CICS Building" -> "CICS"
                     "RGR Building" -> "RGR"
-                    "Gymnasium" -> "Gym"
-                    "STEER Hub" -> "STEER Hub"
+                    "Gymnasium" -> "Gymnasium"
+                    "STEER Hub" -> "STEER_Hub"
                     "Student Services Center" -> "SSC"
                     else -> ""
                 }
@@ -274,9 +263,9 @@ class HomeFragment : Fragment() {
                     "CEAFA" -> 0
                     "CIT" -> 1
                     "CICS" -> 2
-                    "COE" -> 3
-                    "Gym" -> 4
-                    "STEER Hub" -> 5
+                    "RGR" -> 3
+                    "Gymnasium" -> 4
+                    "STEER_Hub" -> 5
                     "SSC" -> 6
                     else -> 0
                 }
@@ -313,6 +302,11 @@ class HomeFragment : Fragment() {
                         val responseString = response.body?.string()
                         val jsonArray = JSONArray(responseString)
                         val jsonObject = jsonArray.getJSONObject(0)
+                        val overall_weight: Double? = try {
+                            jsonObject.getDouble("overall_weight")
+                        } catch (e: JSONException) {
+                            null
+                        }
                         val buildingObject: JSONObject? = try {
                             jsonObject.getJSONObject("$buildingObject")
                         } catch (e: JSONException) {
@@ -338,6 +332,7 @@ class HomeFragment : Fragment() {
 
                             if (isAdded) {
                                 requireActivity().runOnUiThread {
+                                    binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
                                     binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
                                     binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                     binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
@@ -346,6 +341,7 @@ class HomeFragment : Fragment() {
                         }else{
                             if (this@HomeFragment.isAdded) {
                                 requireActivity().runOnUiThread {
+                                    binding.alangilanTotal.text = "0 kg"
                                     binding.displayres.text = "0 kg"
                                     binding.displayfood.text = "0 kg"
                                     binding.displayrec.text = "0 kg"
@@ -359,6 +355,7 @@ class HomeFragment : Fragment() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+
 
         val name = arguments?.getString("name")
 
@@ -388,10 +385,85 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    private fun setupPieChart(pieChart: PieChart, building: String) {
+        val wasteCompColors = listOf(Color.GREEN, Color.YELLOW, Color.RED)
+
+        val entries: MutableList<PieEntry> = ArrayList()
+        when (building) {
+            "CEAFA Building" -> {
+                entries.add(PieEntry(50f, "Recyclable"))
+                entries.add(PieEntry(10f, "Food Waste"))
+                entries.add(PieEntry(40f, "Residual"))
+            }
+            "CIT Building" -> {
+                entries.add(PieEntry(20f, "Recyclable"))
+                entries.add(PieEntry(20f, "Food Waste"))
+                entries.add(PieEntry(60f, "Residual"))
+            }
+            "CICS Building" -> {
+                entries.add(PieEntry(50f, "Recyclable"))
+                entries.add(PieEntry(20f, "Food Waste"))
+                entries.add(PieEntry(30f, "Residual"))
+            }
+            "RGR Building" -> {
+                entries.add(PieEntry(30f, "Recyclable"))
+                entries.add(PieEntry(20f, "Food Waste"))
+                entries.add(PieEntry(50f, "Residual"))
+            }
+            "Gymnasium" -> {
+                entries.add(PieEntry(10f, "Recyclable"))
+                entries.add(PieEntry(20f, "Food Waste"))
+                entries.add(PieEntry(70f, "Residual"))
+            }
+            "STEER Hub" -> {
+                entries.add(PieEntry(30f, "Recyclable"))
+                entries.add(PieEntry(25f, "Food Waste"))
+                entries.add(PieEntry(45f, "Residual"))
+            }
+            "Student Services Center" -> {
+                entries.add(PieEntry(20f, "Recyclable"))
+                entries.add(PieEntry(30f, "Food Waste"))
+                entries.add(PieEntry(50f, "Residual"))
+            }
+        }
+
+        val dataSet = PieDataSet(entries, "Waste Composition").apply {
+            colors = wasteCompColors
+            setDrawIcons(false)
+            sliceSpace = 3f
+            valueLinePart1OffsetPercentage = 80f
+            valueLinePart1Length = 0.4f
+            valueLinePart2Length = 0.5f
+            yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+            valueTextColor = Color.BLACK
+        }
+
+        var data = PieData(dataSet)
+        data.setValueFormatter(PercentFormatter(pieChart))
+        data.setValueTextSize(11f)
+        data.setValueTextColor(Color.BLACK)
+
+        pieChart.apply {
+            setUsePercentValues(true)
+            description.isEnabled = false
+            legend.isEnabled = false
+            setExtraOffsets(5f, 10f, 5f, 5f)
+            dragDecelerationFrictionCoef = 0.95f
+            isDrawHoleEnabled = true
+            holeRadius = 40f
+            transparentCircleRadius = 45f
+            setEntryLabelColor(Color.BLACK)
+            setEntryLabelTextSize(12f)
+            setDrawEntryLabels(false)
+            rotationAngle = 0f
+            animateY(1400)
+            data = data
+        }
     }
 
 }
