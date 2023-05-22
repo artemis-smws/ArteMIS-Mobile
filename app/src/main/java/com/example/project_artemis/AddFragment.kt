@@ -152,8 +152,8 @@ class AddFragment : Fragment() {
                                 "CIT Building" -> "CIT"
                                 "CICS Building" -> "CICS"
                                 "RGR Building" -> "RGR"
-                                "Gymnasium" -> "Gym"
-                                "STEER Hub" -> "STEER Hub"
+                                "Gymnasium" -> "Gymnasium"
+                                "STEER Hub" -> "STEER_Hub"
                                 "Student Services Center" -> "SSC"
                                 else -> ""
                             }

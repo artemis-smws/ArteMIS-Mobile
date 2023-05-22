@@ -58,20 +58,9 @@ class HomeActivity : AppCompatActivity() {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
         val isConnected = networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
-
-        if (isConnected) {
-        } else {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("No Internet Connection")
-            builder.setMessage("Please connect to the Internet to proceed")
-            builder.setPositiveButton("Retry") { dialog, which ->
-                val intent = Intent(this, this::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
-            }
-            val dialog = builder.create()
-            dialog.show()
+        
+        if (!isConnected) {
+            showNoInternetDialog()
         }
 
         binding.bottomNav.selectedItemId = R.id.home
@@ -96,6 +85,22 @@ class HomeActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout,fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun showNoInternetDialog() {
+        val builder = AlertDialog.Builder(this).apply {
+            setTitle("No Internet Connection")
+            setMessage("Please connect to the Internet to proceed")
+            setPositiveButton("Retry") { dialog, which ->
+                val intent = Intent(this@HomeActivity, this@HomeActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }
+                startActivity(intent)
+                finish()
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     override fun onBackPressed() {
