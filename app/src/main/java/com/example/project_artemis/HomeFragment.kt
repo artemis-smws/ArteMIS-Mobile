@@ -473,8 +473,8 @@ class HomeFragment : Fragment() {
 
         pieChart.apply {
             setUsePercentValues(true)
-            description.isEnabled = false
-            legend.isEnabled = false
+            description.isEnabled = true
+            legend.isEnabled = true
             setExtraOffsets(5f, 10f, 5f, 5f)
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
