@@ -184,7 +184,7 @@
 
                             <com.github.mikephil.charting.charts.PieChart
                                     android:id="@+id/wasteCompChart"
-                                    android:layout_width="192dp"
+                                    android:layout_width="210dp"
                                     android:elevation="3dp"
                                     android:layout_height="match_parent"/>
 
