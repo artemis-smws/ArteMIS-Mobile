@@ -415,7 +415,7 @@ class AddFragment : Fragment() {
                                     "Recyclable Waste" -> {
 
                                         binding.wasteQuantity.visibility = View.GONE
-                                        binding.nameOfWaste.visibility = View.VISIBLE
+                                        binding.nameOfWaste.visibility = View.GONE
                                         binding.amountOfWaste.visibility = View.VISIBLE
 
                                         binding.inputButton.isEnabled = false // Disable the button initially

@@ -33,19 +33,25 @@ class GuestActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
-//        handler = Handler()
-//        hideButtonRunnable = Runnable { hideButton() }
-//
-//        findViewById<View>(R.layout.activity_guest).setOnTouchListener { _, event ->
-//            when (event.action) {
-//                MotionEvent.ACTION_DOWN -> {
-//                    showButton()
-//                    handler.removeCallbacks(hideButtonRunnable)
-//                    handler.postDelayed(hideButtonRunnable, 3000)
-//                }
-//            }
-//            false
-//        }
+        handler = Handler()
+        hideButtonRunnable = Runnable { hideButton() }
+
+        binding.frameLayout.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    showButton()
+                    handler.removeCallbacks(hideButtonRunnable)
+                }
+                MotionEvent.ACTION_UP -> {
+                    handler.removeCallbacks(hideButtonRunnable)
+                    handler.postDelayed(hideButtonRunnable, 3000)
+                }
+            }
+            false
+        }
+
+        binding.frameLayout.postDelayed(hideButtonRunnable, 3000)
+
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java).apply {
