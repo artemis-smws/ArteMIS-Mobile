@@ -1,5 +1,6 @@
 package com.example.project_artemis
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -24,6 +25,7 @@ class GuestActivity : AppCompatActivity() {
     private var backPressedTime: Long = 0
     private lateinit var binding : ActivityGuestBinding
 
+    @SuppressLint("ClickableViewAccessibility", "ResourceType")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +36,12 @@ class GuestActivity : AppCompatActivity() {
         handler = Handler()
         hideButtonRunnable = Runnable { hideButton() }
 
-        binding.frameLayout.setOnTouchListener { _, event ->
+        findViewById<View>(R.layout.activity_guest).setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     showButton()
                     handler.removeCallbacks(hideButtonRunnable)
-                    handler.postDelayed(hideButtonRunnable, 2000)
+                    handler.postDelayed(hideButtonRunnable, 3000)
                 }
             }
             false

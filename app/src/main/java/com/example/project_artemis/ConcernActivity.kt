@@ -218,7 +218,7 @@ class ConcernActivity : AppCompatActivity() {
                                 binding.progressBar2.visibility = View.GONE
                                 Toast.makeText(
                                     this@ConcernActivity,
-                                    "Input Successful: ${response.code}",
+                                    "Your concern has been sent",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -227,7 +227,7 @@ class ConcernActivity : AppCompatActivity() {
                                 binding.progressBar2.visibility = View.GONE
                                 Toast.makeText(
                                     this@ConcernActivity,
-                                    "Input Unsuccessful: ${response.code}",
+                                    "Sending concern failed",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
