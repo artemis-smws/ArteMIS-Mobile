@@ -32,6 +32,11 @@
     <string name="locationOfConcern">Choose the location of concern:</string>
     <string name="descriptionOfConcern">Describe your concern:</string>
     <string name="submitButton">Submit</string>
+    <string name="building">Building</string>
+    <string name="wasteGenerated">Waste Generated</string>
+    <string name="wasteComposition">Waste Composition</string>
+    <string name="wasteGenPerBuilding">Waste Generation per Building</string>
+    <string name="rankingPerCampus">Ranking per Campus</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

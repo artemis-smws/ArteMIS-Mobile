@@ -142,7 +142,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Waste Generated"
+                                android:text="@string/wasteGenerated"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
@@ -170,7 +170,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Waste Composition"
+                                android:text="@string/wasteComposition"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
@@ -381,7 +381,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Waste Generation per Building"
+                                android:text="@string/wasteGenPerBuilding"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
@@ -409,7 +409,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Ranking per Campus"
+                                android:text="@string/rankingPerCampus"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
