@@ -196,7 +196,9 @@ class ConcernActivity : AppCompatActivity() {
                                         val amount = binding.descriptionConcernEditText.text.toString().trim()
                                         val allFieldsFilled = amount.isNotEmpty()
                                         // Enable/disable the button based on the result of the check
-                                        binding.submitButton.isEnabled = allFieldsFilled
+                                        runOnUiThread {
+                                            binding.submitButton.isEnabled = allFieldsFilled
+                                        }
                                     }
 
                                     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -260,20 +262,24 @@ class ConcernActivity : AppCompatActivity() {
                                         override fun onResponse(call: Call, response: Response) {
                                             val responseBody = response.body?.string()
                                             if (response.isSuccessful && responseBody != null) {
-                                                clearInputFields()
-                                                binding.progressBar2.visibility = View.GONE
-                                                Toast.makeText(
-                                                    this@ConcernActivity,
-                                                    "Your concern has been sent",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                runOnUiThread {
+                                                    clearInputFields()
+                                                    binding.progressBar2.visibility = View.GONE
+                                                    Toast.makeText(
+                                                        this@ConcernActivity,
+                                                        "Your concern has been sent",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
                                             } else {
-                                                binding.progressBar2.visibility = View.GONE
-                                                Toast.makeText(
-                                                    this@ConcernActivity,
-                                                    "Sending concern failed",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                runOnUiThread {
+                                                    binding.progressBar2.visibility = View.GONE
+                                                    Toast.makeText(
+                                                        this@ConcernActivity,
+                                                        "Sending concern failed",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
                                             }
                                         }
                                     })

@@ -445,36 +445,43 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "CIT Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "CICS Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "RGR Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "Gymnasium" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "STEER Hub" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
             "Student Services Center" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                pieChart.invalidate()
             }
         }
 
@@ -501,7 +508,7 @@ class HomeFragment : Fragment() {
             setExtraOffsets(5f, 10f, 5f, 5f)
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
-            holeRadius = 40f
+            holeRadius = 30f
             transparentCircleRadius = 45f
             setEntryLabelColor(Color.BLACK)
             setEntryLabelTextSize(12f)
