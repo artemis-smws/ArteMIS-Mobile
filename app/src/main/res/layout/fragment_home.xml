@@ -151,104 +151,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="218dp"
-                        android:background="@drawable/status_container"
-                        android:orientation="vertical"
-                        android:padding="15dp"
-                        >
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Waste Composition"
-                        android:textStyle="bold"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:textSize="15sp"
-                        />
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        >
-
-                        <com.github.mikephil.charting.charts.PieChart
-                                android:id="@+id/wasteCompChart"
-                                android:layout_width="195dp"
-                                android:elevation="3dp"
-                                android:layout_height="match_parent"/>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:orientation="vertical"
-                                >
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Food Waste"
-                                android:textStyle="bold"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/foodwastepercent"
-                                android:text="0%"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Residual Waste"
-                                android:textStyle="bold"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/residualwastepercent"
-                                android:text="0%"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Recyclable Waste"
-                                android:textStyle="bold"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/recyclablewastepercent"
-                                android:text="0%"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="13sp"
-                                />
-
-                        </LinearLayout>
-
-                </LinearLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                         android:id="@+id/typePercentContainer"
@@ -360,6 +262,105 @@
                                 android:textAlignment="center"
                                 android:textColor="?attr/colorOnPrimary"
                                 tools:ignore="RtlCompat" />
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="218dp"
+                        android:background="@drawable/status_container"
+                        android:orientation="vertical"
+                        android:padding="15dp"
+                        >
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Waste Composition"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="15sp"
+                        />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+
+                        <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/wasteCompChart"
+                                android:layout_width="185dp"
+                                android:elevation="3dp"
+                                android:layout_height="match_parent"/>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:orientation="vertical"
+                                >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Food Waste"
+                                android:textStyle="bold"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/foodwastepercent"
+                                android:text="0%"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Residual Waste"
+                                android:textStyle="bold"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/residualwastepercent"
+                                android:text="0%"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recyclable Waste"
+                                android:textStyle="bold"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/recyclablewastepercent"
+                                android:text="0%"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="13sp"
+                                />
+
+                        </LinearLayout>
 
                 </LinearLayout>
 
