@@ -32,15 +32,15 @@ class GuestActivity : AppCompatActivity() {
         binding = ActivityGuestBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
-
-        binding.contactUs.setOnClickListener {
-            binding.contactUs.alpha = 1.0f
-            binding.contactIcon.alpha = 1.0f
-            binding.contactUs.postDelayed({
-                binding.contactUs.alpha = 0.1f
-                binding.contactIcon.alpha = 0.1f
-            }, 3000)
-        }
+//
+//        binding.contactUs.setOnClickListener {
+//            binding.contactUs.alpha = 1.0f
+//            binding.contactIcon.alpha = 1.0f
+//            binding.contactUs.postDelayed({
+//                binding.contactUs.alpha = 0.1f
+//                binding.contactIcon.alpha = 0.1f
+//            }, 3000)
+//        }
 
         // handler = Handler()
         // hideButtonRunnable = Runnable { hideButton() }

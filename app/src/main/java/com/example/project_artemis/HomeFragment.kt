@@ -251,7 +251,6 @@ class HomeFragment : Fragment() {
                 id: Long
             ) {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
-                setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
                 buildingObject = when (selectedBuilding) {
                     "CEAFA Building" -> "CEAFA"
                     "CIT Building" -> "CIT"
@@ -380,6 +379,9 @@ class HomeFragment : Fragment() {
                                 }
                             }
                         }
+                        requireActivity().runOnUiThread {
+                            setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        }
                     }
                 })
 
@@ -505,6 +507,7 @@ class HomeFragment : Fragment() {
             setUsePercentValues(true)
             description.isEnabled = true
             legend.isEnabled = true
+            setlegendTextSize(10f)
             setExtraOffsets(5f, 10f, 5f, 5f)
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
