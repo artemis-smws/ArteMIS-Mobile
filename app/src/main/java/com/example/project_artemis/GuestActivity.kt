@@ -6,8 +6,8 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-// import android.os.Handler
-// import android.view.MotionEvent
+import android.os.Handler
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import com.example.project_artemis.databinding.ActivityGuestBinding
 
 class GuestActivity : AppCompatActivity() {
-//
+
 //    private lateinit var handler: Handler
 //    private lateinit var hideButtonRunnable: Runnable
 //    private var isButtonVisible: Boolean = true
@@ -32,35 +32,20 @@ class GuestActivity : AppCompatActivity() {
         binding = ActivityGuestBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+
+//        handler = Handler()
+//        hideButtonRunnable = Runnable { hideButton() }
 //
-//        binding.contactUs.setOnClickListener {
-//            binding.contactUs.alpha = 1.0f
-//            binding.contactIcon.alpha = 1.0f
-//            binding.contactUs.postDelayed({
-//                binding.contactUs.alpha = 0.1f
-//                binding.contactIcon.alpha = 0.1f
-//            }, 3000)
+//        findViewById<View>(R.layout.activity_guest).setOnTouchListener { _, event ->
+//            when (event.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    showButton()
+//                    handler.removeCallbacks(hideButtonRunnable)
+//                    handler.postDelayed(hideButtonRunnable, 3000)
+//                }
+//            }
+//            false
 //        }
-
-        // handler = Handler()
-        // hideButtonRunnable = Runnable { hideButton() }
-
-        // binding.frameLayout.setOnTouchListener { _, event ->
-        //     when (event.action) {
-        //         MotionEvent.ACTION_DOWN -> {
-        //             showButton()
-        //             handler.removeCallbacks(hideButtonRunnable)
-        //         }
-        //         MotionEvent.ACTION_UP -> {
-        //             handler.removeCallbacks(hideButtonRunnable)
-        //             handler.postDelayed(hideButtonRunnable, 3000)
-        //         }
-        //     }
-        //     false
-        // }
-
-        // binding.frameLayout.postDelayed(hideButtonRunnable, 3000)
-
 
         binding.settings.setOnClickListener {
             val intent = Intent(this,SettingsActivity::class.java).apply {
@@ -108,7 +93,7 @@ class GuestActivity : AppCompatActivity() {
             Toast.makeText(this, "Press back again to exit the app.", Toast.LENGTH_LONG).show()
         }
         backPressedTime = System.currentTimeMillis()
-    }
+     }
 
     // private fun hideButton() {
     //     if (isButtonVisible) {

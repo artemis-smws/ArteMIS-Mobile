@@ -127,7 +127,7 @@ class HomeFragment : Fragment() {
 
         val wasteCompPieChart = binding.wasteCompChart
 
-        setupPieChart(wasteCompPieChart, itemsBuilding[0])
+        // setupPieChart(wasteCompPieChart, itemsBuilding[0])
 
         // Waste Generation per Building Chart
 
@@ -360,8 +360,8 @@ class HomeFragment : Fragment() {
                                     binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
                                     binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
                                     binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
-                                    binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
-                                    binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0kg"
+                                    binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                                    binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                     binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                     binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                 }
@@ -379,8 +379,10 @@ class HomeFragment : Fragment() {
                                 }
                             }
                         }
-                        requireActivity().runOnUiThread {
-                            setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        if (isAdded){
+                            requireActivity().runOnUiThread {
+                                setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            }
                         }
                     }
                 })
@@ -507,17 +509,16 @@ class HomeFragment : Fragment() {
             setUsePercentValues(true)
             description.isEnabled = true
             legend.isEnabled = true
-            setlegendTextSize(10f)
             setExtraOffsets(5f, 10f, 5f, 5f)
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
-            holeRadius = 30f
+            holeRadius = 50f
             transparentCircleRadius = 45f
             setEntryLabelColor(Color.BLACK)
             setEntryLabelTextSize(12f)
             setDrawEntryLabels(false)
             rotationAngle = 0f
-            animateY(1000)
+            animateY(1000) //line 519
             data = data
         }
 

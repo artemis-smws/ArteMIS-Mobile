@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.project_artemis.databinding.FragmentLogsBinding
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -16,7 +17,6 @@ import okhttp3.Request
 import okhttp3.Response
 import org.json.JSONArray
 import java.io.IOException
-
 
 
 class LogsFragment : Fragment() {
@@ -71,111 +71,114 @@ class LogsFragment : Fragment() {
                         val sscresValue = sscObject.getJSONObject("weight").getInt("residual")
                         val sscrecValue = sscObject.getJSONObject("weight").getInt("recyclable")
                         val sscfoodValue = sscObject.getJSONObject("weight").getInt("food_waste")
-                        runOnUiThread {
-                            if (ceafaresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (ceafarecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (ceafafoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (citresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (citrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (citfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (cicsresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (cicsrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (cicsfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (rgrresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (rgrrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (rgrfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (gymresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (gymrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (gymfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (steerresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (steerrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (steerfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (sscresValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (sscrecValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
-                            }
-                            if (sscfoodValue != 0) {
-                                button.visibility = View.VISIBLE
-                            } else {
-                                button.visibility = View.GONE
+
+                        if (isAdded){
+                            requireActivity().runOnUiThread {
+                                if (ceafaresValue != 0) {
+                                    binding.resceafa.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullresceafa.visibility = View.VISIBLE
+                                }
+                                if (ceafarecValue != 0) {
+                                    binding.recceafa.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrecceafa.visibility = View.VISIBLE
+                                }
+                                if (ceafafoodValue != 0) {
+                                    binding.foodceafa.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodceafa.visibility = View.VISIBLE
+                                }
+                                if (citresValue != 0) {
+                                    binding.rescit.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrescit.visibility = View.VISIBLE
+                                }
+                                if (citrecValue != 0) {
+                                    binding.reccit.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullreccit.visibility = View.VISIBLE
+                                }
+                                if (citfoodValue != 0) {
+                                    binding.foodcit.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodcit.visibility = View.VISIBLE
+                                }
+                                if (cicsresValue != 0) {
+                                    binding.rescics.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrescics.visibility = View.VISIBLE
+                                }
+                                if (cicsrecValue != 0) {
+                                    binding.reccics.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullreccics.visibility = View.VISIBLE
+                                }
+                                if (cicsfoodValue != 0) {
+                                    binding.foodcics.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodcics.visibility = View.VISIBLE
+                                }
+                                if (rgrresValue != 0) {
+                                    binding.resrgr.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullresrgr.visibility = View.VISIBLE
+                                }
+                                if (rgrrecValue != 0) {
+                                    binding.recrgr.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrecrgr.visibility = View.VISIBLE
+                                }
+                                if (rgrfoodValue != 0) {
+                                    binding.foodrgr.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodrgr.visibility = View.VISIBLE
+                                }
+                                if (gymresValue != 0) {
+                                    binding.resgym.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullresgym.visibility = View.VISIBLE
+                                }
+                                if (gymrecValue != 0) {
+                                    binding.recgym.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrecgym.visibility = View.VISIBLE
+                                }
+                                if (gymfoodValue != 0) {
+                                    binding.foodgym.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodgym.visibility = View.VISIBLE
+                                }
+                                if (steerresValue != 0) {
+                                    binding.ressteer.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullressteer.visibility = View.VISIBLE
+                                }
+                                if (steerrecValue != 0) {
+                                    binding.recsteer.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrecsteer.visibility = View.VISIBLE
+                                }
+                                if (steerfoodValue != 0) {
+                                    binding.foodsteer.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodsteer.visibility = View.VISIBLE
+                                }
+                                if (sscresValue != 0) {
+                                    binding.resssc.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullresssc.visibility = View.VISIBLE
+                                }
+                                if (sscrecValue != 0) {
+                                    binding.recssc.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullrecssc.visibility = View.VISIBLE
+                                }
+                                if (sscfoodValue != 0) {
+                                    binding.foodssc.visibility = View.VISIBLE
+                                } else {
+                                    binding.nullfoodssc.visibility = View.VISIBLE
+                                }
                             }
                         }
                 
