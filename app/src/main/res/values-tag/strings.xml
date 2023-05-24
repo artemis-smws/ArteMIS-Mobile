@@ -32,6 +32,11 @@
     <string name="locationOfConcern">Pumili ng lokasyon ng pinaghihingian ng tulong:</string>
     <string name="descriptionOfConcern">Ibahagi ang iyong kinakailangang tulong:</string>
     <string name="submitButton">I-submit</string>
+    <string name="building">Gusali</string>
+    <string name="wasteGenerated">Basurang Nalikha</string>
+    <string name="wasteComposition">Komposisyon ng Basura</string>
+    <string name="wasteGenPerBuilding">Basurang Nalikha kada Gusali</string>
+    <string name="rankingPerCampus">Ranggo ng Basura kada Kampus</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>
         <item>Batangas State University - Pablo Borbon Campus</item>

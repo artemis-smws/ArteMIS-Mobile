@@ -21,17 +21,9 @@
         tools:ignore="HardcodedText" />
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/legend"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logs"
-            android:layout_marginTop="82dp"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-            android:gravity="top"
-            >
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -39,21 +31,21 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            >
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.2"
                 >
 
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="0.2"
-                    >
-
-                <ImageView
+            <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/circle_yellow"/>
 
-                <TextView
+            <TextView
                     android:layout_marginStart="6dp"
                     android:layout_marginEnd="6dp"
                     android:layout_width="wrap_content"
@@ -62,384 +54,1517 @@
                     android:textSize="13sp"
                     android:textColor="?attr/colorOnSecondary"
                     android:layout_gravity="center"
-                        />
+                    />
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                >
+
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/circle_green"/>
+
+            <TextView
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:text="Recyclable"
+                    android:textSize="13sp"
+                    android:textColor="?attr/colorOnSecondary"
                     android:layout_gravity="center"
-                    android:layout_weight="0.2"
-                    >
+                    />
 
-                <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/circle_green"/>
+        </LinearLayout>
 
-                <TextView
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Recyclable"
-                        android:textSize="13sp"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:layout_gravity="center"
-                        />
-
-            </LinearLayout>
-
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="0.2"
-                    >
-
-                <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/circle_red"/>
-
-                <TextView
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Residual"
-                        android:textSize="13sp"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:layout_gravity="center"
-                        />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
                 >
 
-            <TextView
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Building"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:layout_weight="0.3"
-                />
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/circle_red"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:layout_weight="0.1"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:background="@drawable/status_container_2"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:layout_weight="0.1"
-                        >
-
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/trash_red"
-                            android:layout_gravity="center"
-                            />
-
-                    <TextView
-                            android:layout_marginStart="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="CICS Building"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:layout_weight="0.1"
-                            android:layout_gravity="center"
-                            />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="0.2"
-                    >
-
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/check_red"
-                        android:layout_marginStart="30dp"
-                            />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:background="@drawable/status_container_2"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:layout_weight="0.1"
-                        >
-
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/trash_green"
-                            android:layout_gravity="center"
-                            />
-
-                    <TextView
-                            android:layout_marginStart="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="CEAFA Building"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:layout_weight="0.1"
-                            android:layout_gravity="center"
-                            />
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.2"
-                        >
-
-                    <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/check_green"
-                            android:layout_marginStart="30dp"
-                            />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:background="@drawable/status_container_2"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:layout_weight="0.1"
-                        >
-
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/trash_red"
-                            android:layout_gravity="center"
-                            />
-
-                    <TextView
-                            android:layout_marginStart="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="CIT Building"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:layout_weight="0.1"
-                            android:layout_gravity="center"
-                            />
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.2"
-                        >
-
-                    <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/check_red"
-                            android:layout_marginStart="30dp"
-                            />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:background="@drawable/status_container_2"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:layout_weight="0.1"
-                        >
-
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/trash_yellow"
-                            android:layout_gravity="center"
-                            />
-
-                    <TextView
-                            android:layout_marginStart="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ACESS Building"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:layout_weight="0.1"
-                            android:layout_gravity="center"
-                            />
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.2"
-                        >
-
-                    <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/check_yellow"
-                            android:layout_marginStart="30dp"
-                            />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:background="@drawable/status_container_2"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:layout_weight="0.1"
-                        >
-
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/trash_green"
-                            android:layout_gravity="center"
-                            />
-
-                    <TextView
-                            android:layout_marginStart="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="STEER Hub"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:layout_weight="0.1"
-                            android:layout_gravity="center"
-                            />
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.2"
-                        >
-
-                    <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/check_green"
-                            android:layout_marginStart="30dp"
-                            />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                    android:text="Residual"
+                    android:textSize="13sp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:layout_gravity="center"
+                    />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/legend"
+            android:layout_marginTop="120dp"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="top"
+                >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/building"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_weight="0.3"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/statusTitle"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_weight="0.1"
+                        />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CICS Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodcics"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodcics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CICS Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/reccics"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullreccics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CICS Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/rescics"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrescics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CEAFA Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodceafa"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodceafa"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CEAFA Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/recceafa"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrecceafa"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CEAFA Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/resceafa"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullresceafa"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CIT Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodcit"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodcit"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CIT Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/reccit"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullreccit"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CIT Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/rescit"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrescit"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RGR Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodrgr"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodrgr"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RGR Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/recrgr"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrecrgr"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RGR Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/resrgr"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullresrgr"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gymnasium"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodgym"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gymnasium"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/recgym"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrecgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gymnasium"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/resgym"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullresgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="STEER Hub"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodsteer"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodsteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="STEER Hub"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/recsteer"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrecsteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="STEER Hub"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/ressteer"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullressteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_yellow"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SSC Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/foodssc"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullfoodssc"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_green"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SSC Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/recssc"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullrecssc"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/status_container_2"
+                            android:orientation="horizontal"
+                            android:padding="10dp"
+                            android:layout_weight="0.1"
+                            >
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/trash_red"
+                                android:layout_gravity="center"
+                                />
+
+                        <TextView
+                                android:layout_marginStart="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SSC Building"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center"
+                                />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.2"
+                            >
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+            android:id="@+id/resssc"
+            android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="30dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+            android:id="@+id/nullresssc"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
