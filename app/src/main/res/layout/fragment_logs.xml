@@ -226,7 +226,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodcics"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -294,7 +293,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullreccics"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -360,7 +358,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrescics"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -427,7 +424,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -495,7 +491,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrecceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -561,7 +556,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullresceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -629,7 +623,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodcit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -697,7 +690,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullreccit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -763,7 +755,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrescit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -831,7 +822,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodrgr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -899,7 +889,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrecrgr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -965,7 +954,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullresrgr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1033,7 +1021,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodgym"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1101,7 +1088,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrecgym"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1167,7 +1153,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullresgym"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1235,7 +1220,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodsteer"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1303,7 +1287,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrecsteer"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1369,7 +1352,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullressteer"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1437,7 +1419,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullfoodssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1505,7 +1486,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullrecssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
@@ -1571,7 +1551,6 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:visibility="gone"
             android:id="@+id/nullresssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>

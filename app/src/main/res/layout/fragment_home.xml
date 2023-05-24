@@ -156,6 +156,124 @@
 
                     </LinearLayout>
 
+
+                    <LinearLayout
+                            android:id="@+id/typePercentContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/graphContainer"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginTop="10dp"
+                    >
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:background="@drawable/darkred_container"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:layout_weight="0.3"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                        >
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Food Waste"
+                                    android:textSize="14sp"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    tools:ignore="RtlCompat" />
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0 kg"
+                                    android:elegantTextHeight="true"
+                                    android:elevation="2dp"
+                                    android:id="@+id/displayfood"
+                                    android:textSize="13sp"
+                                    android:textAlignment="center"
+                                    android:textColor="?attr/colorOnPrimary"
+                                    tools:ignore="RtlCompat" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:background="@drawable/darkred_container"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:layout_weight="0.3"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                        >
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Residual"
+                                    android:textSize="14sp"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    tools:ignore="RtlCompat" />
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0 kg"
+                                    android:id="@+id/displayres"
+                                    android:elevation="2dp"
+                                    android:textSize="13sp"
+                                    android:elegantTextHeight="true"
+                                    android:textAlignment="center"
+                                    android:textColor="?attr/colorOnPrimary"
+                                    tools:ignore="RtlCompat" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:background="@drawable/darkred_container"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:layout_weight="0.3"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                        >
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Recyclable"
+                                    android:textSize="14sp"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    tools:ignore="RtlCompat" />
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0 kg"
+                                    android:elegantTextHeight="true"
+                                    android:id="@+id/displayrec"
+                                    android:elevation="2dp"
+                                    android:textSize="13sp"
+                                    android:textAlignment="center"
+                                    android:textColor="?attr/colorOnPrimary"
+                                    tools:ignore="RtlCompat" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
                     <LinearLayout
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
@@ -207,7 +325,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="%"
+                                        android:text="0%"
+                                        android:id="@+id/foodwastepercent"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -224,7 +343,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="%"
+                                        android:text="0%"
+                                        android:id="@+id/residualwastepercent"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -241,7 +361,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="%"
+                                        android:text="0%"
+                                        android:id="@+id/recyclablewastepercent"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -252,120 +373,6 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                            android:id="@+id/typePercentContainer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/graphContainer"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:layout_weight="0.3"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="5dp"
-                                >
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Food Waste"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:elegantTextHeight="true"
-                                    android:elevation="2dp"
-                                    android:id="@+id/displayfood"
-                                    android:textSize="13sp"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:layout_weight="0.3"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="5dp"
-                                >
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Residual"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:id="@+id/displayres"
-                                    android:elevation="2dp"
-                                    android:textSize="13sp"
-                                    android:elegantTextHeight="true"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:layout_weight="0.3"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="5dp"
-                                >
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Recyclable"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:elegantTextHeight="true"
-                                    android:id="@+id/displayrec"
-                                    android:elevation="2dp"
-                                    android:textSize="13sp"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                     <LinearLayout
                             android:layout_marginStart="20dp"

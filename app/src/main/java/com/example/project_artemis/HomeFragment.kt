@@ -110,8 +110,6 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
         )
 
-
-
         val wasteGeneratedFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
                 return dayString[value.toInt()]
@@ -357,9 +355,9 @@ class HomeFragment : Fragment() {
                             
                             if (isAdded) {
                                 requireActivity().runOnUiThread {
-                                    binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
-                                    binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
-                                    binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "%"
+                                    binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
+                                    binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
+                                    binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
                                     binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                     binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
                                     binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
@@ -441,50 +439,50 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupPieChart(pieChart: PieChart, building: String) {
-        val wasteCompColors = listOf(Color.GREEN, Color.YELLOW, Color.RED)
+        val wasteCompColors = listOf(Color.GREEN, Color.RED, Color.YELLOW)
 
         val entries: MutableList<PieEntry> = ArrayList()
         when (building) {
             "CEAFA Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "CIT Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "CICS Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "RGR Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
         }
