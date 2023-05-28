@@ -1,7 +1,5 @@
 package com.example.project_artemis
 
-import android.widget.ArrayAdapter
-import android.widget.Button
 import java.util.*
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,6 +14,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 
 
@@ -59,10 +59,34 @@ class LogsFragment : Fragment() {
                         val rgrresValue = rgrObject.getJSONObject("weight").getInt("residual")
                         val rgrrecValue = rgrObject.getJSONObject("weight").getInt("recyclable")
                         val rgrfoodValue = rgrObject.getJSONObject("weight").getInt("food_waste")
-                        val gymObject = jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
-                        val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
-                        val gymrecValue = gymObject.getJSONObject("weight").getInt("recyclable")
-                        val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
+                        val gymObject: JSONObject? = try {
+                            jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (gymObject != null) {
+                            val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
+                            val gymrecValue = gymObject.getJSONObject("weight").getInt("recyclable")
+                            val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
+
+                            if (isAdded) {
+                                requireActivity().runOnUiThread {
+                                    if (gymresValue != 0) {
+                                        binding.nullresgym.visibility = View.GONE
+                                        binding.resgym.visibility = View.VISIBLE
+                                    }
+                                    if (gymrecValue != 0) {
+                                        binding.nullrecgym.visibility = View.GONE
+                                        binding.recgym.visibility = View.VISIBLE
+                                    }
+                                    if (gymfoodValue != 0) {
+                                        binding.nullfoodgym.visibility = View.GONE
+                                        binding.foodgym.visibility = View.VISIBLE
+                                    }
+                                }
+                            }
+                        }
+
                         val steerObject = jsonArray.getJSONObject(0).getJSONObject("STEER_Hub")
                         val steerresValue = steerObject.getJSONObject("weight").getInt("residual")
                         val steerrecValue = steerObject.getJSONObject("weight").getInt("recyclable")
@@ -79,83 +103,71 @@ class LogsFragment : Fragment() {
                                     binding.resceafa.visibility = View.VISIBLE
                                 }
                                 if (ceafarecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrecceafa.visibility = View.GONE
                                     binding.recceafa.visibility = View.VISIBLE
                                 }
                                 if (ceafafoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodceafa.visibility = View.GONE
                                     binding.foodceafa.visibility = View.VISIBLE
                                 }
                                 if (citresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrescit.visibility = View.GONE
                                     binding.rescit.visibility = View.VISIBLE
                                 }
                                 if (citrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullreccit.visibility = View.GONE
                                     binding.reccit.visibility = View.VISIBLE
                                 }
                                 if (citfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodcit.visibility = View.GONE
                                     binding.foodcit.visibility = View.VISIBLE
                                 }
                                 if (cicsresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrescics.visibility = View.GONE
                                     binding.rescics.visibility = View.VISIBLE
                                 }
                                 if (cicsrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullreccics.visibility = View.GONE
                                     binding.reccics.visibility = View.VISIBLE
                                 }
                                 if (cicsfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodcics.visibility = View.GONE
                                     binding.foodcics.visibility = View.VISIBLE
                                 }
                                 if (rgrresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullresrgr.visibility = View.GONE
                                     binding.resrgr.visibility = View.VISIBLE
                                 }
                                 if (rgrrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrecrgr.visibility = View.GONE
                                     binding.recrgr.visibility = View.VISIBLE
                                 }
                                 if (rgrfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodrgr.visibility = View.GONE
                                     binding.foodrgr.visibility = View.VISIBLE
                                 }
-                                if (gymresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
-                                    binding.resgym.visibility = View.VISIBLE
-                                }
-                                if (gymrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
-                                    binding.recgym.visibility = View.VISIBLE
-                                }
-                                if (gymfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
-                                    binding.foodgym.visibility = View.VISIBLE
-                                }
                                 if (steerresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullressteer.visibility = View.GONE
                                     binding.ressteer.visibility = View.VISIBLE
                                 }
                                 if (steerrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrecsteer.visibility = View.GONE
                                     binding.recsteer.visibility = View.VISIBLE
                                 }
                                 if (steerfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodsteer.visibility = View.GONE
                                     binding.foodsteer.visibility = View.VISIBLE
                                 }
                                 if (sscresValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullresssc.visibility = View.GONE
                                     binding.resssc.visibility = View.VISIBLE
                                 }
                                 if (sscrecValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullrecssc.visibility = View.GONE
                                     binding.recssc.visibility = View.VISIBLE
                                 }
                                 if (sscfoodValue != 0) {
-                                    binding.nullresceafa.visibility = View.GONE
+                                    binding.nullfoodssc.visibility = View.GONE
                                     binding.foodssc.visibility = View.VISIBLE
                                 }
                             }
