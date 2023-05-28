@@ -307,88 +307,177 @@ class HomeFragment : Fragment() {
 
                 client2.newCall(request2).enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
-                        // Handle network errors here
+                        showErrorMessage("Please check your Internet Connection")
                     }
 
                     @SuppressLint("SetTextI18n")
                     override fun onResponse(call: Call, response: Response) {
                         val responseString = response.body?.string()
-                        val jsonArray = JSONArray(responseString)
-                        val jsonObject = jsonArray.getJSONObject(0)
-                        val overall_weight: Double? = try {
-                            jsonObject.getDouble("overall_weight")
+                        try {
+                            val jsonArray = JSONArray(responseString)
+                            val jsonObject = jsonArray.getJSONObject(0)
+                            val overall_weight: Double? = try {
+                                jsonObject.getDouble("overall_weight")
+                            } catch (e: JSONException) {
+                                null
+                            }
+                            val buildingObject: JSONObject? = try {
+                                jsonObject.getJSONObject("$buildingObject")
+                            } catch (e: JSONException) {
+                                null
+                            }
+                            if (buildingObject != null) {
+                                val weightObject = buildingObject.getJSONObject("weight")
+                                val residualWasteWeight: Double? = try {
+                                    weightObject.getDouble("residual")
+                                } catch (e: JSONException) {
+                                    null
+                                }
+                                val foodWasteWeight: Double? = try {
+                                    weightObject.getDouble("food_waste")
+                                } catch (e: JSONException) {
+                                    null
+                                }
+                                val recyclableWasteWeight: Double? = try {
+                                    weightObject.getDouble("recyclable")
+                                } catch (e: JSONException) {
+                                    null
+                                }
+                                val totalweight: Double? = try {
+                                    weightObject.getDouble("total")
+                                } catch (e: JSONException) {
+                                    null
+                                }
+                                if (totalweight != null && residualWasteWeight != null) {
+                                    residualPercentage = (residualWasteWeight / totalweight) * 100
+                                }
+                    
+                                if (totalweight != null && foodWasteWeight != null) {
+                                    foodWastePercentage = (foodWasteWeight / totalweight) * 100
+                                }
+                    
+                                if (totalweight != null && recyclableWasteWeight != null) {
+                                    recyclablePercentage = (recyclableWasteWeight / totalweight) * 100
+                                }
+                    
+                                if (isAdded) {
+                                    requireActivity().runOnUiThread {
+                                        binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
+                                        binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
+                                        binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
+                                        binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                        binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                        binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                        binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                    }
+                                }
+                            } else {
+                                if (isAdded) {
+                                    requireActivity().runOnUiThread {
+                                        binding.residualwastepercent.text = "0%"
+                                        binding.foodwastepercent.text = "0%"
+                                        binding.recyclablewastepercent.text = "0%"
+                                        binding.alangilanTotal.text = "0 kg"
+                                        binding.displayres.text = "0 kg"
+                                        binding.displayfood.text = "0 kg"
+                                        binding.displayrec.text = "0 kg"
+                                    }
+                                }
+                            }
                         } catch (e: JSONException) {
-                            null
-                        }
-                        val buildingObject: JSONObject? = try {
-                            jsonObject.getJSONObject("$buildingObject")
-                        } catch (e: JSONException) {
-                            null
-                        }
-                        if (buildingObject != null) {
-                            val weightObject = buildingObject.getJSONObject("weight")
-                            val residualWasteWeight: Double? = try {
-                                weightObject.getDouble("residual")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            val foodWasteWeight: Double? = try {
-                                weightObject.getDouble("food_waste")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            val recyclableWasteWeight: Double? = try {
-                                weightObject.getDouble("recyclable")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            val totalweight: Double? = try {
-                                weightObject.getDouble("total")
-                            } catch (e: JSONException) {
-                                null
-                            }
-                            if (totalweight != null && residualWasteWeight != null) {
-                                residualPercentage = (residualWasteWeight / totalweight) * 100
-                            }
-                            
-                            if (totalweight != null && foodWasteWeight != null) {
-                                foodWastePercentage = (foodWasteWeight / totalweight) * 100
-                            }
-                            
-                            if (totalweight != null && recyclableWasteWeight != null) {
-                                recyclablePercentage = (recyclableWasteWeight / totalweight) * 100
-                            }
-                            
+                            // Handle the JSON parsing error
                             if (isAdded) {
                                 requireActivity().runOnUiThread {
-                                    binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
-                                    binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
-                                    binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
-                                    binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                    binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                    binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                    binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
-                                }
-                            }
-                        }else{
-                            if (this@HomeFragment.isAdded) {
-                                requireActivity().runOnUiThread {
-                                    binding.residualwastepercent.text = "0%"
-                                    binding.foodwastepercent.text = "0%"
-                                    binding.recyclablewastepercent.text = "0%"
-                                    binding.alangilanTotal.text = "0 kg"
-                                    binding.displayres.text = "0 kg"
-                                    binding.displayfood.text = "0 kg"
-                                    binding.displayrec.text = "0 kg"
+                                    showErrorMessage("Please check your Internet Connection")
                                 }
                             }
                         }
-                        if (isAdded){
+                    
+                        if (isAdded) {
                             requireActivity().runOnUiThread {
                                 setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
                             }
                         }
                     }
+                    
+                    // override fun onResponse(call: Call, response: Response) {
+                    //     val responseString = response.body?.string()
+                    //     val jsonArray = JSONArray(responseString)
+                    //     val jsonObject = jsonArray.getJSONObject(0)
+                    //     val overall_weight: Double? = try {
+                    //         jsonObject.getDouble("overall_weight")
+                    //     } catch (e: JSONException) {
+                    //         null
+                    //     }
+                    //     val buildingObject: JSONObject? = try {
+                    //         jsonObject.getJSONObject("$buildingObject")
+                    //     } catch (e: JSONException) {
+                    //         null
+                    //     }
+                    //     if (buildingObject != null) {
+                    //         val weightObject = buildingObject.getJSONObject("weight")
+                    //         val residualWasteWeight: Double? = try {
+                    //             weightObject.getDouble("residual")
+                    //         } catch (e: JSONException) {
+                    //             null
+                    //         }
+                    //         val foodWasteWeight: Double? = try {
+                    //             weightObject.getDouble("food_waste")
+                    //         } catch (e: JSONException) {
+                    //             null
+                    //         }
+                    //         val recyclableWasteWeight: Double? = try {
+                    //             weightObject.getDouble("recyclable")
+                    //         } catch (e: JSONException) {
+                    //             null
+                    //         }
+                    //         val totalweight: Double? = try {
+                    //             weightObject.getDouble("total")
+                    //         } catch (e: JSONException) {
+                    //             null
+                    //         }
+                    //         if (totalweight != null && residualWasteWeight != null) {
+                    //             residualPercentage = (residualWasteWeight / totalweight) * 100
+                    //         }
+                            
+                    //         if (totalweight != null && foodWasteWeight != null) {
+                    //             foodWastePercentage = (foodWasteWeight / totalweight) * 100
+                    //         }
+                            
+                    //         if (totalweight != null && recyclableWasteWeight != null) {
+                    //             recyclablePercentage = (recyclableWasteWeight / totalweight) * 100
+                    //         }
+                            
+                    //         if (isAdded) {
+                    //             requireActivity().runOnUiThread {
+                    //                 binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
+                    //                 binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
+                    //                 binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it)+ "%" } ?: "0%"
+                    //                 binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                    //                 binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                    //                 binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                    //                 binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it)+ " kg" } ?: "0 kg"
+                    //             }
+                    //         }
+                    //     }else{
+                    //         if (this@HomeFragment.isAdded) {
+                    //             requireActivity().runOnUiThread {
+                    //                 binding.residualwastepercent.text = "0%"
+                    //                 binding.foodwastepercent.text = "0%"
+                    //                 binding.recyclablewastepercent.text = "0%"
+                    //                 binding.alangilanTotal.text = "0 kg"
+                    //                 binding.displayres.text = "0 kg"
+                    //                 binding.displayfood.text = "0 kg"
+                    //                 binding.displayrec.text = "0 kg"
+                    //             }
+                    //         }
+                    //     }
+                    //     if (isAdded){
+                    //         requireActivity().runOnUiThread {
+                    //             setupPieChart(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                    //         }
+                    //     }
+                    // }
                 })
 
             }
@@ -466,6 +555,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    private fun showErrorMessage(message: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Error")
+        builder.setMessage(message)
+        builder.setPositiveButton("OK") { dialog, which ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun setupPieChart(pieChart: PieChart, building: String) {

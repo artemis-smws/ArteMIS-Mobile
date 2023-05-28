@@ -294,7 +294,7 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    // Handle network errors here
+                                                    showErrorMessage("Please check your Internet Connection")
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
@@ -461,7 +461,7 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    // Handle network errors here
+                                                    showErrorMessage("Please check your Internet Connection")
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
@@ -766,7 +766,7 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    // Handle network errors here
+                                                    showErrorMessage("Please check your Internet Connection")
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
