@@ -436,7 +436,7 @@
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/status_container"
