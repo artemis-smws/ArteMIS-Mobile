@@ -21,6 +21,7 @@ import org.json.JSONException
 import okhttp3.*
 import java.io.IOException
 import okhttp3.logging.HttpLoggingInterceptor
+
 @Suppress("NAME_SHADOWING")
 class AddFragment : Fragment() {
 
