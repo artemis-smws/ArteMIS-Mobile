@@ -36,6 +36,7 @@
     <string name="wasteGenerated">Basurang Nalikha</string>
     <string name="wasteComposition">Komposisyon ng Basura</string>
     <string name="wasteGenPerBuilding">Basurang Nalikha kada Gusali</string>
+    <string name="wasteCompPerBuilding">Komposisyon ng Basura kada Gusali</string>
     <string name="rankingPerCampus">Ranggo ng Basura kada Kampus</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>

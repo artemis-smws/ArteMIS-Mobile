@@ -36,6 +36,7 @@
     <string name="wasteGenerated">Waste Generated</string>
     <string name="wasteComposition">Waste Composition</string>
     <string name="wasteGenPerBuilding">Waste Generation per Building</string>
+    <string name="wasteCompPerBuilding">Waste Composition per Building</string>
     <string name="rankingPerCampus">Ranking per Campus</string>
     <string-array name="location">
         <item>Batangas State University - Alangilan Campus</item>

@@ -402,10 +402,41 @@
 
                     </LinearLayout>
 
+
                     <LinearLayout
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="270dp"
+                            android:background="@drawable/status_container"
+                            android:orientation="vertical"
+                            android:padding="15dp"
+                            >
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wasteCompPerBuilding"
+                                android:textStyle="bold"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="15sp"
+                                />
+
+                            <com.github.mikephil.charting.charts.PieChart
+                                    android:id="@+id/wasteCompChartperBuilding"
+                                    android:layout_width="match_parent"
+                                    android:elevation="3dp"
+                                    android:layout_height="match_parent"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/status_container"
