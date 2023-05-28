@@ -224,6 +224,8 @@ class ConcernActivity : AppCompatActivity() {
                                     }
                                     
                                     binding.progressBar2.visibility = View.VISIBLE
+                                    binding.overlay.visibility = View.VISIBLE
+                                    binding.overlay.setOnTouchListener { _, _ -> true}
                                     
                                     val interceptor = HttpLoggingInterceptor()
                                     interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -263,8 +265,9 @@ class ConcernActivity : AppCompatActivity() {
                                             val responseBody = response.body?.string()
                                             if (response.isSuccessful && responseBody != null) {
                                                 runOnUiThread {
-                                                    clearInputFields()
+                                                    binding.descriptionConcernEditText.setText("")
                                                     binding.progressBar2.visibility = View.GONE
+                                                    binding.overlay.visibility = View.GONE
                                                     Toast.makeText(
                                                         this@ConcernActivity,
                                                         "Your concern has been sent",
@@ -274,6 +277,7 @@ class ConcernActivity : AppCompatActivity() {
                                             } else {
                                                 runOnUiThread {
                                                     binding.progressBar2.visibility = View.GONE
+                                                    binding.overlay.visibility = View.GONE
                                                     Toast.makeText(
                                                         this@ConcernActivity,
                                                         "Sending concern failed",
@@ -310,9 +314,6 @@ class ConcernActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun clearInputFields() {
-        binding.descriptionConcernEditText.setText("")
-    }
     override fun onBackPressed(){
         
         finish()

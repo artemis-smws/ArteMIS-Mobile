@@ -239,6 +239,12 @@ class HomeFragment : Fragment() {
         xAxisWasteGenPerBuilding.granularity = 1f
         xAxisWasteGenPerBuilding.valueFormatter = wasteGenPerBuildingDataFormatter
 
+
+        // Waste Composition per Building Chart
+
+        val wasteCompPieChartperBuilding = binding.wasteCompChartperBuilding
+
+
         binding.buildingSpinner.adapter = adapterBuilding
 
         binding.buildingSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -390,6 +396,23 @@ class HomeFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
+        binding.timeSpinner.adapter = adapterTime
+
+        binding.timeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedTime = binding.buildingSpinner.selectedItem.toString()
+
+                setupPieChartperBuilding(wasteCompPieChartperBuilding, selectedTime) // Refresh the pie chart
+
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
 
         val name = arguments?.getString("name")
 
@@ -531,5 +554,91 @@ class HomeFragment : Fragment() {
         pieChart.invalidate()
 
     }
+
+    private fun setupPieChartperBuilding(pieChart: PieChart, time: String) {
+        val wasteCompperBuildingColors = listOf(Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.LTGRAY, Color.MAGENTA, Color.CYAN)
+
+        val entries: MutableList<PieEntry> = ArrayList()
+        when (time) {
+            "Week" -> {
+                entries.add(PieEntry(16f, "CICS"))
+                entries.add(PieEntry(13f, "CEAFA"))
+                entries.add(PieEntry(11f, "CIT"))
+                entries.add(PieEntry(15f, "SSC"))
+                entries.add(PieEntry(17f, "Gym"))
+                entries.add(PieEntry(10f, "RGR"))
+                entries.add(PieEntry(18f, "STEER Hub"))
+                pieChart.invalidate()
+            }
+            "Month" -> {
+                entries.add(PieEntry(13f, "CICS"))
+                entries.add(PieEntry(11f, "CEAFA"))
+                entries.add(PieEntry(16f, "CIT"))
+                entries.add(PieEntry(10f, "SSC"))
+                entries.add(PieEntry(15f, "Gym"))
+                entries.add(PieEntry(18f, "RGR"))
+                entries.add(PieEntry(17f, "STEER Hub"))
+                pieChart.invalidate()
+            }
+            "Year" -> {
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "CICS"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "CEAFA"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "CIT"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "SSC"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Gym"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "RGR"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "STEER Hub"))
+                pieChart.invalidate()
+            }
+            "All Time" -> {
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "CICS"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "CEAFA"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "CIT"))
+                entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "SSC"))
+                entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Gym"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "RGR"))
+                entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "STEER Hub"))
+                pieChart.invalidate()
+            }
+        }
+
+        val dataSet = PieDataSet(entries, "Waste Composition").apply {
+            colors = wasteCompperBuildingColors
+            setDrawIcons(false)
+            sliceSpace = 3f
+            valueLinePart1OffsetPercentage = 80f
+            valueLinePart1Length = 0.4f
+            valueLinePart2Length = 0.5f
+            yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+            valueTextColor = Color.BLACK
+        }
+
+        var data = PieData(dataSet)
+        data.setValueFormatter(PercentFormatter(pieChart))
+        data.setValueTextSize(11f)
+        data.setValueTextColor(Color.BLACK)
+
+        pieChart.apply {
+            setUsePercentValues(true)
+            description.isEnabled = true
+            legend.isEnabled = true
+            setExtraOffsets(5f, 10f, 5f, 5f)
+            dragDecelerationFrictionCoef = 0.95f
+            isDrawHoleEnabled = true
+            holeRadius = 50f
+            transparentCircleRadius = 45f
+            setEntryLabelColor(Color.BLACK)
+            setEntryLabelTextSize(12f)
+            setDrawEntryLabels(false)
+            rotationAngle = 0f
+            animateY(1000)
+            data = data
+        }
+
+        pieChart.data = data
+        pieChart.invalidate()
+
+    }
+
 
 }
