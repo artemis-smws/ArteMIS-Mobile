@@ -283,6 +283,8 @@ class AddFragment : Fragment() {
                                         binding.inputButton.setOnClickListener {
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
 
                                             val getclient = OkHttpClient()
                                             val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
@@ -388,6 +390,7 @@ class AddFragment : Fragment() {
                                                                 requireActivity().runOnUiThread {
                                                                     clearInputFields()
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
                                                                         "Input Successful: ${response.code}",
@@ -397,9 +400,10 @@ class AddFragment : Fragment() {
                                                             } else {
                                                                 requireActivity().runOnUiThread {
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
-                                                                        "Input Unsuccessful: ${response.code}",
+                                                                        "Input Failed: ${response.code}",
                                                                         Toast.LENGTH_SHORT
                                                                     ).show()
                                                                 }
@@ -446,6 +450,8 @@ class AddFragment : Fragment() {
                                         binding.inputButton.setOnClickListener {
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
 
                                             val getclient = OkHttpClient()
                                             val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
@@ -551,6 +557,7 @@ class AddFragment : Fragment() {
                                                                 requireActivity().runOnUiThread {
                                                                     clearInputFields()
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
                                                                         "Input Successful: ${response.code}",
@@ -560,9 +567,10 @@ class AddFragment : Fragment() {
                                                             } else {
                                                                 requireActivity().runOnUiThread {
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
-                                                                        "Input Unsuccessful: ${response.code}",
+                                                                        "Input Failed: ${response.code}",
                                                                         Toast.LENGTH_SHORT
                                                                     ).show()
                                                                 }
@@ -747,6 +755,8 @@ class AddFragment : Fragment() {
                                         binding.inputButton.setOnClickListener {
 
                                             binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
 
                                             val getclient = OkHttpClient()
                                             val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
@@ -852,6 +862,7 @@ class AddFragment : Fragment() {
                                                                 requireActivity().runOnUiThread {
                                                                     clearInputFields()
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
                                                                         "Input Successful: ${response.code}",
@@ -861,9 +872,10 @@ class AddFragment : Fragment() {
                                                             } else {
                                                                 requireActivity().runOnUiThread {
                                                                     binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
                                                                     Toast.makeText(
                                                                         requireContext(),
-                                                                        "Input Unsuccessful: ${response.code}",
+                                                                        "Input Failed: ${response.code}",
                                                                         Toast.LENGTH_SHORT
                                                                     ).show()
                                                                 }
