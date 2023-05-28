@@ -389,7 +389,7 @@ class HomeFragment : Fragment() {
                             // Handle the JSON parsing error
                             if (isAdded) {
                                 requireActivity().runOnUiThread {
-                                    showErrorMessage("Please check your Internet Connection")
+                                    showErrorMessage("The app is on maintenance, Please comeback later.")
                                 }
                             }
                         }
