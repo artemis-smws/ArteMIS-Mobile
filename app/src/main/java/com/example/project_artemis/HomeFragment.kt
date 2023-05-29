@@ -14,14 +14,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.project_artemis.databinding.FragmentHomeBinding
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.data.CubicBezierLineDataSet
+import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import okhttp3.*
 import org.json.JSONArray
@@ -29,6 +31,8 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -76,9 +80,29 @@ class HomeFragment : Fragment() {
         }
 
         // Waste Generated Graph
-        val dayString = arrayOf(
-            "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
-        )
+
+        val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
+
+        val calendar = Calendar.getInstance()
+
+        val dayString = mutableListOf<String>()
+        for (i in 0 until 7) {
+            val date = calendar.time
+            val formattedDate = dateFormat.format(date)
+            dayString.add(formattedDate)
+
+            calendar.add(Calendar.DAY_OF_YEAR, -1)
+        }
+
+        dayString.reverse()
+
+        // Print the dayString to verify the result
+        for (day in dayString) {
+            println(day)
+        }
+//        val dayString = arrayOf(
+//            "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+//        )
 
         val wasteGeneratedChart = binding.wasteGenChart
 
@@ -129,96 +153,58 @@ class HomeFragment : Fragment() {
 
         // setupPieChart(wasteCompPieChart, itemsBuilding[0])
 
-        // Waste Generation per Building Chart
+        // Waste Generation per Building BarChart
 
-        val wasteGenPerBuildingChart = binding.wasteGenPerBuildingChart
-
-        val cicsLineData: List<Entry> = listOf(
-            Entry(0f, 11f),
-            Entry(1f, 7f),
-            Entry(2f, 8f),
-            Entry(3f, 5f),
-            Entry(4f, 3f),
-            Entry(5f, 1f),
-            Entry(6f, 2f)
+        val buildingString = arrayOf(
+            "CICS", "CEAFA", "CIT", "SSC", "Gym", "RGR", "STEER Hub"
         )
 
-        val ceafaLineData: List<Entry> = listOf(
-            Entry(0f, 2f),
-            Entry(1f, 3f),
-            Entry(2f, 11f),
-            Entry(3f, 16f),
-            Entry(4f, 4f),
-            Entry(5f, 7f),
-            Entry(6f, 7f)
+        val wasteGenPerBuildingChart: BarChart = binding.wasteGenPerBuildingChart
+
+        val cicsLineData: List<BarEntry> = listOf(
+            BarEntry(0f, 11f)
         )
 
-        val citLineData: List<Entry> = listOf(
-            Entry(0f, 12f),
-            Entry(1f, 15f),
-            Entry(2f, 2f),
-            Entry(3f, 12f),
-            Entry(4f, 17f),
-            Entry(5f, 7f),
-            Entry(6f, 8f)
+        val ceafaLineData: List<BarEntry> = listOf(
+            BarEntry(1f, 2f)
         )
 
-        val sscLineData: List<Entry> = listOf(
-            Entry(0f, 12f),
-            Entry(1f, 6f),
-            Entry(2f, 12f),
-            Entry(3f, 8f),
-            Entry(4f, 1f),
-            Entry(5f, 2f),
-            Entry(6f, 3f)
+        val citLineData: List<BarEntry> = listOf(
+            BarEntry(2f, 2f)
         )
 
-        val gymLineData: List<Entry> = listOf(
-            Entry(0f, 3f),
-            Entry(1f, 4f),
-            Entry(2f, 12f),
-            Entry(3f, 10f),
-            Entry(4f, 14f),
-            Entry(5f, 13f),
-            Entry(6f, 2f)
+        val sscLineData: List<BarEntry> = listOf(
+            BarEntry(3f, 1f)
         )
 
-        val rgrLineData: List<Entry> = listOf(
-            Entry(0f, 18f),
-            Entry(1f, 15f),
-            Entry(2f, 17f),
-            Entry(3f, 14f),
-            Entry(4f, 3f),
-            Entry(5f, 4f),
-            Entry(6f, 12f)
+        val gymLineData: List<BarEntry> = listOf(
+            BarEntry(4f, 14f)
         )
 
-        val steerLineData: List<Entry> = listOf(
-            Entry(0f, 18f),
-            Entry(1f, 15f),
-            Entry(2f, 17f),
-            Entry(3f, 14f),
-            Entry(4f, 3f),
-            Entry(5f, 4f),
-            Entry(6f, 12f)
+        val rgrLineData: List<BarEntry> = listOf(
+            BarEntry(5f, 4f)
         )
 
-        val cicsDataSet = LineDataSet(cicsLineData, "CICS")
+        val steerLineData: List<BarEntry> = listOf(
+            BarEntry(6f, 12f)
+        )
+
+        val cicsDataSet = BarDataSet(cicsLineData, "CICS")
         cicsDataSet.color = Color.parseColor("#2d59eb")
-        val ceafaDataSet = LineDataSet(ceafaLineData, "CEAFA")
+        val ceafaDataSet = BarDataSet(ceafaLineData, "CEAFA")
         ceafaDataSet.color = Color.parseColor("#eb4034")
-        val citDataSet = LineDataSet(citLineData, "CIT")
+        val citDataSet = BarDataSet(citLineData, "CIT")
         citDataSet.color = Color.parseColor("#189e18")
-        val sscDataSet = LineDataSet(sscLineData, "SSC")
+        val sscDataSet = BarDataSet(sscLineData, "SSC")
         sscDataSet.color = Color.parseColor("#d9cb30")
-        val gymDataSet = LineDataSet(gymLineData, "Gym")
+        val gymDataSet = BarDataSet(gymLineData, "Gym")
         gymDataSet.color = Color.parseColor("#ba7a30")
-        val rgrDataSet = LineDataSet(rgrLineData, "RGR")
+        val rgrDataSet = BarDataSet(rgrLineData, "RGR")
         rgrDataSet.color = Color.parseColor("#872982")
-        val steerDataSet = LineDataSet(steerLineData, "STEER Hub")
+        val steerDataSet = BarDataSet(steerLineData, "STEER Hub")
         steerDataSet.color = Color.parseColor("#329582")
 
-        val wasteGenPerBuildingDataSets: MutableList<ILineDataSet> = ArrayList()
+        val wasteGenPerBuildingDataSets: MutableList<IBarDataSet> = ArrayList()
         wasteGenPerBuildingDataSets.add(cicsDataSet)
         wasteGenPerBuildingDataSets.add(ceafaDataSet)
         wasteGenPerBuildingDataSets.add(citDataSet)
@@ -227,13 +213,12 @@ class HomeFragment : Fragment() {
         wasteGenPerBuildingDataSets.add(rgrDataSet)
         wasteGenPerBuildingDataSets.add(steerDataSet)
 
-        val wasteGenPerBuildingData = LineData(wasteGenPerBuildingDataSets)
+        val wasteGenPerBuildingData = BarData(wasteGenPerBuildingDataSets)
         wasteGenPerBuildingChart.data = wasteGenPerBuildingData
-        wasteGenPerBuildingChart.invalidate() // refresh
 
         val wasteGenPerBuildingDataFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
-                return dayString[value.toInt()]
+                return buildingString[value.toInt()]
             }
         }
 
@@ -241,6 +226,7 @@ class HomeFragment : Fragment() {
         xAxisWasteGenPerBuilding.granularity = 1f
         xAxisWasteGenPerBuilding.valueFormatter = wasteGenPerBuildingDataFormatter
 
+        wasteGenPerBuildingChart.invalidate() // refresh
 
         // Waste Composition per Building Chart
 
@@ -279,30 +265,30 @@ class HomeFragment : Fragment() {
                     else -> 0
                 }
 
-                val foodDataSet = CubicBezierLineDataSet(foodLineData[buildingIndex], "Food Waste")
-                    foodDataSet.setDrawValues(false)
-                    foodDataSet.color = Color.parseColor("#d7e605")
-                    foodDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+                val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
+                foodDataSet.setDrawValues(false)
+                foodDataSet.color = Color.parseColor("#d7e605")
+                foodDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                    val residualDataSet = CubicBezierLineDataSet(residualLineData[buildingIndex], "Residual Waste")
-                    residualDataSet.setDrawValues(false)
-                    residualDataSet.color = Color.parseColor("#e60505")
-                    residualDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+                val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
+                residualDataSet.setDrawValues(false)
+                residualDataSet.color = Color.parseColor("#e60505")
+                residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                    val recyclableDataSet = CubicBezierLineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-                    recyclableDataSet.setDrawValues(false)
-                    recyclableDataSet.color = Color.parseColor("#22990b")
-                    recyclableDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+                val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+                recyclableDataSet.setDrawValues(false)
+                recyclableDataSet.color = Color.parseColor("#22990b")
+                recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                    val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-                    val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+                val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
-                    wasteGeneratedChart.animateX(1000)
-                    wasteGeneratedChart.animateY(1000)
-                    wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+                wasteGeneratedChart.animateX(1000)
+                wasteGeneratedChart.animateY(1000)
+                wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
 
-                    wasteGeneratedChart.data = wasteGeneratedData
-                    wasteGeneratedChart.invalidate()
+                wasteGeneratedChart.data = wasteGeneratedData
+                wasteGeneratedChart.invalidate()
 
 
                 setupPieChart(wasteCompPieChart, itemsBuilding[buildingIndex])
@@ -372,9 +358,6 @@ class HomeFragment : Fragment() {
                     
                                 if (isAdded) {
                                     requireActivity().runOnUiThread {
-                                        binding.residualwastepercent.text = residualPercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
-                                        binding.foodwastepercent.text = foodWastePercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
-                                        binding.recyclablewastepercent.text = recyclablePercentage?.let { decimalFormat.format(it) + "%" } ?: "0%"
                                         binding.alangilanTotal.text = overall_weight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
                                         binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
                                         binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
@@ -384,9 +367,6 @@ class HomeFragment : Fragment() {
                             } else {
                                 if (isAdded) {
                                     requireActivity().runOnUiThread {
-                                        binding.residualwastepercent.text = "0%"
-                                        binding.foodwastepercent.text = "0%"
-                                        binding.recyclablewastepercent.text = "0%"
                                         binding.alangilanTotal.text = "0 kg"
                                         binding.displayres.text = "0 kg"
                                         binding.displayfood.text = "0 kg"
@@ -543,30 +523,30 @@ class HomeFragment : Fragment() {
                 else -> 0
             }
 
-            val foodDataSet = CubicBezierLineDataSet(foodLineData[buildingIndex], "Food Waste")
-                foodDataSet.setDrawValues(false)
-                foodDataSet.color = Color.parseColor("#d7e605")
-                foodDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+            val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
+            foodDataSet.setDrawValues(false)
+            foodDataSet.color = Color.parseColor("#d7e605")
+            foodDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val residualDataSet = CubicBezierLineDataSet(residualLineData[buildingIndex], "Residual Waste")
-                residualDataSet.setDrawValues(false)
-                residualDataSet.color = Color.parseColor("#e60505")
-                residualDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+            val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
+            residualDataSet.setDrawValues(false)
+            residualDataSet.color = Color.parseColor("#e60505")
+            residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val recyclableDataSet = CubicBezierLineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-                recyclableDataSet.setDrawValues(false)
-                recyclableDataSet.color = Color.parseColor("#22990b")
-                recyclableDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
+            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+            recyclableDataSet.setDrawValues(false)
+            recyclableDataSet.color = Color.parseColor("#22990b")
+            recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-                val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+            val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+            val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
-                wasteGeneratedChart.animateX(1000)
-                wasteGeneratedChart.animateY(1000)
-                wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+            wasteGeneratedChart.animateX(1000)
+            wasteGeneratedChart.animateY(1000)
+            wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
 
-                wasteGeneratedChart.data = wasteGeneratedData
-                wasteGeneratedChart.invalidate()
+            wasteGeneratedChart.data = wasteGeneratedData
+            wasteGeneratedChart.invalidate()
 
 
             swipeRefreshLayout.isRefreshing = false
