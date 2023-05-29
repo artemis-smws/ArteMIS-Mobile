@@ -19,6 +19,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.data.CubicBezierLineDataSet
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        itemsTime = listOf("Week", "Month", "Year", "All Time")
+        itemsTime = listOf("7 days", "30 days", "Last Year", "All Time")
         itemsBuilding = listOf(
             "CEAFA Building",
             "CIT Building",
@@ -278,23 +279,31 @@ class HomeFragment : Fragment() {
                     else -> 0
                 }
 
-                val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-                foodDataSet.color = Color.parseColor("#d7e605")
+                val foodDataSet = CubicBezierLineDataSet(foodLineData[buildingIndex], "Food Waste")
+                    foodDataSet.setDrawValues(false)
+                    foodDataSet.color = Color.parseColor("#d7e605")
+                    foodDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-                val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-                residualDataSet.color = Color.parseColor("#e60505")
+                    val residualDataSet = CubicBezierLineDataSet(residualLineData[buildingIndex], "Residual Waste")
+                    residualDataSet.setDrawValues(false)
+                    residualDataSet.color = Color.parseColor("#e60505")
+                    residualDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-                val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-                recyclableDataSet.color = Color.parseColor("#22990b")
+                    val recyclableDataSet = CubicBezierLineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+                    recyclableDataSet.setDrawValues(false)
+                    recyclableDataSet.color = Color.parseColor("#22990b")
+                    recyclableDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-                val wasteGeneratedData = LineData(wasteGeneratedDataSets)
-                wasteGeneratedChart.animateX(1000)
-                wasteGeneratedChart.animateY(1000)
-                wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+                    val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+                    val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
-                wasteGeneratedChart.data = wasteGeneratedData
-                wasteGeneratedChart.invalidate()
+                    wasteGeneratedChart.animateX(1000)
+                    wasteGeneratedChart.animateY(1000)
+                    wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+
+                    wasteGeneratedChart.data = wasteGeneratedData
+                    wasteGeneratedChart.invalidate()
+
 
                 setupPieChart(wasteCompPieChart, itemsBuilding[buildingIndex])
 
@@ -534,19 +543,31 @@ class HomeFragment : Fragment() {
                 else -> 0
             }
 
-            val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-            foodDataSet.color = Color.parseColor("#d7e605")
+            val foodDataSet = CubicBezierLineDataSet(foodLineData[buildingIndex], "Food Waste")
+                foodDataSet.setDrawValues(false)
+                foodDataSet.color = Color.parseColor("#d7e605")
+                foodDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-            val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-            residualDataSet.color = Color.parseColor("#e60505")
+                val residualDataSet = CubicBezierLineDataSet(residualLineData[buildingIndex], "Residual Waste")
+                residualDataSet.setDrawValues(false)
+                residualDataSet.color = Color.parseColor("#e60505")
+                residualDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-            recyclableDataSet.color = Color.parseColor("#22990b")
+                val recyclableDataSet = CubicBezierLineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+                recyclableDataSet.setDrawValues(false)
+                recyclableDataSet.color = Color.parseColor("#22990b")
+                recyclableDataSet.mode = CubicBezierLineDataSet.Mode.CUBIC_BEZIER
 
-            val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
-            val wasteGeneratedData = LineData(wasteGeneratedDataSets)
-            wasteGeneratedChart.data = wasteGeneratedData
-            wasteGeneratedChart.invalidate()
+                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+                val wasteGeneratedData = LineData(wasteGeneratedDataSets)
+
+                wasteGeneratedChart.animateX(1000)
+                wasteGeneratedChart.animateY(1000)
+                wasteGeneratedChart.animate().alpha(1f).setDuration(1000)
+
+                wasteGeneratedChart.data = wasteGeneratedData
+                wasteGeneratedChart.invalidate()
+
 
             swipeRefreshLayout.isRefreshing = false
         }

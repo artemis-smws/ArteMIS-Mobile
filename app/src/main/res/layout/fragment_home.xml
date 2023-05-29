@@ -128,10 +128,8 @@
                     <LinearLayout
                             android:id="@+id/graphContainer"
                             android:layout_width="match_parent"
-                            android:layout_height="210dp"
-                            android:background="@drawable/status_container"
+                            android:layout_height="250dp"
                             android:orientation="vertical"
-                            android:padding="15dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
@@ -279,10 +277,8 @@
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
-                            android:layout_height="218dp"
-                            android:background="@drawable/status_container"
+                            android:layout_height="220dp"
                             android:orientation="vertical"
-                            android:padding="15dp"
                             >
 
                         <TextView
@@ -380,9 +376,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="210dp"
-                            android:background="@drawable/status_container"
                             android:orientation="vertical"
-                            android:padding="15dp"
                             >
 
                         <TextView
@@ -409,9 +403,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="270dp"
-                            android:background="@drawable/status_container"
                             android:orientation="vertical"
-                            android:padding="15dp"
                             >
 
                         <TextView
