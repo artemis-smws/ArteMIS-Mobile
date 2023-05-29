@@ -130,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="250dp"
                             android:orientation="vertical"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
                             app:layout_constraintTop_toBottomOf="@+id/dashboardSpinner"
@@ -158,114 +158,139 @@
                     <LinearLayout
                             android:id="@+id/typePercentContainer"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="80dp"
                             app:layout_constraintTop_toBottomOf="@id/graphContainer"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                     >
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="match_parent"
                                 android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
+                                android:orientation="horizontal"
                                 android:gravity="center"
                                 android:layout_weight="0.3"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="5dp"
                         >
+                            <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/trash_up"
+                                    android:layout_gravity="center"
+                                    />
+                            <LinearLayout
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:orientation="vertical">
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Jan 1"
+                                        android:textSize="14sp"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        tools:ignore="RtlCompat" />
 
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Food Waste"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:elegantTextHeight="true"
-                                    android:elevation="2dp"
-                                    android:id="@+id/displayfood"
-                                    android:textSize="13sp"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:elegantTextHeight="true"
+                                        android:elevation="2dp"
+                                        android:text="0 kg"
+                                        android:textSize="13sp"
+                                        android:textAlignment="center"
+                                        android:textColor="?attr/colorOnPrimary"
+                                        tools:ignore="RtlCompat" />
+                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="match_parent"
                                 android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
+                                android:orientation="horizontal"
                                 android:gravity="center"
                                 android:layout_weight="0.3"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="5dp"
                         >
 
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Residual"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
+                            <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/trash_down"
+                                    android:layout_gravity="center"
+                                    />
+                            <LinearLayout
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:orientation="vertical">
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Jan 1"
+                                        android:textSize="14sp"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        tools:ignore="RtlCompat" />
 
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:id="@+id/displayres"
-                                    android:elevation="2dp"
-                                    android:textSize="13sp"
-                                    android:elegantTextHeight="true"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:elegantTextHeight="true"
+                                        android:elevation="2dp"
+                                        android:text="0 kg"
+                                        android:textSize="13sp"
+                                        android:textAlignment="center"
+                                        android:textColor="?attr/colorOnPrimary"
+                                        tools:ignore="RtlCompat" />
+                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="match_parent"
                                 android:background="@drawable/darkred_container"
-                                android:orientation="vertical"
+                                android:orientation="horizontal"
                                 android:gravity="center"
                                 android:layout_weight="0.3"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="5dp"
                         >
+                            <ImageView
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:src="@drawable/trash_average"
+                                    android:layout_gravity="center"
+                                    />
+                            <LinearLayout
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:orientation="vertical">
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Jan 1"
+                                        android:textSize="14sp"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        tools:ignore="RtlCompat" />
 
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Recyclable"
-                                    android:textSize="14sp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    tools:ignore="RtlCompat" />
-
-                            <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0 kg"
-                                    android:elegantTextHeight="true"
-                                    android:id="@+id/displayrec"
-                                    android:elevation="2dp"
-                                    android:textSize="13sp"
-                                    android:textAlignment="center"
-                                    android:textColor="?attr/colorOnPrimary"
-                                    tools:ignore="RtlCompat" />
-
+                                <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:elegantTextHeight="true"
+                                        android:elevation="2dp"
+                                        android:text="0 kg"
+                                        android:textSize="13sp"
+                                        android:textAlignment="center"
+                                        android:textColor="?attr/colorOnPrimary"
+                                        tools:ignore="RtlCompat" />
+                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -275,7 +300,7 @@
                     <LinearLayout
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="220dp"
                             android:orientation="vertical"
@@ -298,13 +323,14 @@
 
                             <com.github.mikephil.charting.charts.PieChart
                                     android:id="@+id/wasteCompChart"
-                                    android:layout_width="210dp"
+                                    android:layout_width="230dp"
                                     android:elevation="3dp"
                                     android:layout_height="match_parent"/>
 
                             <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginTop="20dp"
                                     android:layout_marginStart="10dp"
                                     android:orientation="vertical"
                                     >
@@ -321,8 +347,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="0%"
-                                        android:id="@+id/foodwastepercent"
+                                        android:text="0 kg"
+                                        android:id="@+id/displayfood"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -339,8 +365,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="0%"
-                                        android:id="@+id/residualwastepercent"
+                                        android:text="0 kg"
+                                        android:id="@+id/displayres"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -357,8 +383,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="0%"
-                                        android:id="@+id/recyclablewastepercent"
+                                        android:text="0 kg"
+                                        android:id="@+id/displayrec"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -388,7 +414,7 @@
                                 android:textSize="15sp"
                                 />
 
-                        <com.github.mikephil.charting.charts.LineChart
+                        <com.github.mikephil.charting.charts.BarChart
                                 android:id="@+id/wasteGenPerBuildingChart"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -430,10 +456,8 @@
                             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
                             android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@drawable/status_container"
+                            android:layout_height="110dp"
                             android:orientation="vertical"
-                            android:padding="15dp"
                             >
 
                         <TextView
