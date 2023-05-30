@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-appcheck-interop:16.1.1@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/bfd30ee96cf68032496bfabacd2a615d/transformed/firebase-appcheck-interop-16.1.1/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/bfd30ee96cf68032496bfabacd2a615d/transformed/firebase-appcheck-interop-16.1.1/jars/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/bfd30ee96cf68032496bfabacd2a615d/transformed/firebase-appcheck-interop-16.1.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/bfd30ee96cf68032496bfabacd2a615d/transformed/firebase-appcheck-interop-16.1.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.1.1/180c3419f6e018a697301a4738be3c377b5a7235/firebase-appcheck-interop-16.1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.1.1/180c3419f6e018a697301a4738be3c377b5a7235/firebase-appcheck-interop-16.1.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.1.1/9375b7bd0056340e3e167a89c5025bd67d6c073a/firebase-appcheck-interop-16.1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-interop/16.1.1/9375b7bd0056340e3e167a89c5025bd67d6c073a/firebase-appcheck-interop-16.1.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

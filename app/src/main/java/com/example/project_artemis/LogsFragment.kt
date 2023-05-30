@@ -47,19 +47,19 @@ class LogsFragment : Fragment() {
                         val jsonArray = JSONArray(responseString)
                         val ceafaObject = jsonArray.getJSONObject(0).getJSONObject("CEAFA")
                         val ceafaresValue = ceafaObject.getJSONObject("weight").getInt("residual")
-                        val ceafarecValue = ceafaObject.getJSONObject("weight").getInt("recyclable")
+                        val ceafarecValue = ceafaObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val ceafafoodValue = ceafaObject.getJSONObject("weight").getInt("food_waste")
                         val citObject = jsonArray.getJSONObject(0).getJSONObject("CIT")
                         val citresValue = citObject.getJSONObject("weight").getInt("residual")
-                        val citrecValue = citObject.getJSONObject("weight").getInt("recyclable")
+                        val citrecValue = citObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val citfoodValue = citObject.getJSONObject("weight").getInt("food_waste")
                         val cicsObject = jsonArray.getJSONObject(0).getJSONObject("CICS")
                         val cicsresValue = cicsObject.getJSONObject("weight").getInt("residual")
-                        val cicsrecValue = cicsObject.getJSONObject("weight").getInt("recyclable")
+                        val cicsrecValue = cicsObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val cicsfoodValue = cicsObject.getJSONObject("weight").getInt("food_waste")
                         val rgrObject = jsonArray.getJSONObject(0).getJSONObject("RGR")
                         val rgrresValue = rgrObject.getJSONObject("weight").getInt("residual")
-                        val rgrrecValue = rgrObject.getJSONObject("weight").getInt("recyclable")
+                        val rgrrecValue = rgrObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val rgrfoodValue = rgrObject.getJSONObject("weight").getInt("food_waste")
                         val gymObject: JSONObject? = try {
                             jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
@@ -68,7 +68,7 @@ class LogsFragment : Fragment() {
                         }
                         if (gymObject != null) {
                             val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
-                            val gymrecValue = gymObject.getJSONObject("weight").getInt("recyclable")
+                            val gymrecValue = gymObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                             val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
 
                             if (isAdded) {
@@ -91,11 +91,11 @@ class LogsFragment : Fragment() {
 
                         val steerObject = jsonArray.getJSONObject(0).getJSONObject("STEER_Hub")
                         val steerresValue = steerObject.getJSONObject("weight").getInt("residual")
-                        val steerrecValue = steerObject.getJSONObject("weight").getInt("recyclable")
+                        val steerrecValue = steerObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val steerfoodValue = steerObject.getJSONObject("weight").getInt("food_waste")
                         val sscObject = jsonArray.getJSONObject(0).getJSONObject("SSC")
                         val sscresValue = sscObject.getJSONObject("weight").getInt("residual")
-                        val sscrecValue = sscObject.getJSONObject("weight").getInt("recyclable")
+                        val sscrecValue = sscObject.getJSONObject("weight").getJSONObject("recyclable").getInt("total")
                         val sscfoodValue = sscObject.getJSONObject("weight").getInt("food_waste")
 
                         if (isAdded){
