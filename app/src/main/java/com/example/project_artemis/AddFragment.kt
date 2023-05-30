@@ -33,6 +33,9 @@ class AddFragment : Fragment() {
     private var recyclableweight: Double? = null
     private var foodweight: Double? = null
     private var totalweight: Double? = null
+    private var recyclablebottle: Double? = null
+    private var recyclablekarton: Double? = null
+    private var recyclablepaper: Double? = null
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
@@ -219,9 +222,9 @@ class AddFragment : Fragment() {
                                 id: Long
                             ) {
                                 val recyclableName = listOf(
-                                    "Bottles",
-                                    "Paper",
-                                    "Karton"
+                                    "bottle",
+                                    "paper",
+                                    "karton"
                                 )
                                 val adapterName = ArrayAdapter(
                                     requireContext(),
@@ -299,49 +302,41 @@ class AddFragment : Fragment() {
                                                         showErrorMessage("Please check your Internet Connection")
                                                     }
                                                 }
-                                        
+
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
-                                                    val jsonObject = jsonArray.getJSONObject(0)
-                                                    val buildingObject: JSONObject? = try {
-                                                        jsonObject.getJSONObject("$buildingName")
-                                                    } catch (e: JSONException) {
-                                                        null
-                                                    }
-                                                    if (buildingObject != null) {
-                                                        val weightObject = buildingObject.getJSONObject("weight")
-                                                        residualweight = try {
-                                                            weightObject.getDouble("residual")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        recyclableweight = try {
-                                                            weightObject.getDouble("recyclable")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        foodweight = try {
-                                                            weightObject.getDouble("food_waste")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        totalweight = try {
-                                                            weightObject.getDouble("total")
-                                                        } catch (e: JSONException) {
-                                                            null
+
+                                                    if (jsonArray.length() > 0) {
+                                                        val jsonObject = jsonArray.getJSONObject(0)
+                                                        val buildingObject = jsonObject.optJSONObject(buildingName)
+
+                                                        if (buildingObject != null) {
+                                                            val weightObject = buildingObject.optJSONObject("weight")
+                                                            residualweight = weightObject?.optDouble("residual")
+
+                                                            val recyclableObject = weightObject?.optJSONObject("recyclable")
+                                                            recyclableweight = recyclableObject?.optDouble("total")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton")
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
+                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+
+                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
-                                        
                                                     val building = buildingName
                                                     val campus = campusName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
+                                                    val bottle = recyclablebottle ?: 0.0
+                                                    val karton = recyclablekarton ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
-                                        
+
                                                     // Check if any EditText field is empty before proceeding
                                                     if (weight == 0.0) {
                                                         requireActivity().runOnUiThread {
@@ -362,7 +357,12 @@ class AddFragment : Fragment() {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual + weight)
-                                                                put("recyclable", recyclable)
+                                                                put("recyclable", JSONObject().apply {
+                                                                    put("total", recyclable)
+                                                                    put("karton", karton)
+                                                                    put("bottle", bottle)
+                                                                    put("paper", paper)
+                                                                })
                                                                 put("food_waste", foodwaste)
                                                                 put("total", totalWeight + weight)
                                                             })
@@ -470,44 +470,37 @@ class AddFragment : Fragment() {
                                                         showErrorMessage("Please check your Internet Connection")
                                                     }
                                                 }
-                                        
+
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
-                                                    val jsonObject = jsonArray.getJSONObject(0)
-                                                    val buildingObject: JSONObject? = try {
-                                                        jsonObject.getJSONObject("$buildingName")
-                                                    } catch (e: JSONException) {
-                                                        null
-                                                    }
-                                                    if (buildingObject != null) {
-                                                        val weightObject = buildingObject.getJSONObject("weight")
-                                                        residualweight = try {
-                                                            weightObject.getDouble("residual")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        recyclableweight = try {
-                                                            weightObject.getDouble("recyclable")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        foodweight = try {
-                                                            weightObject.getDouble("food_waste")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        totalweight = try {
-                                                            weightObject.getDouble("total")
-                                                        } catch (e: JSONException) {
-                                                            null
+
+                                                    if (jsonArray.length() > 0) {
+                                                        val jsonObject = jsonArray.getJSONObject(0)
+                                                        val buildingObject = jsonObject.optJSONObject(buildingName)
+
+                                                        if (buildingObject != null) {
+                                                            val weightObject = buildingObject.optJSONObject("weight")
+                                                            residualweight = weightObject?.optDouble("residual")
+
+                                                            val recyclableObject = weightObject?.optJSONObject("recyclable")
+                                                            recyclableweight = recyclableObject?.optDouble("total")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton")
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
+                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+
+                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
-                                        
                                                     val building = buildingName
                                                     val campus = campusName
+                                                    val name = selectedName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
+                                                    val bottle = recyclablebottle ?: 0.0
+                                                    val karton = recyclablekarton ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
@@ -533,7 +526,28 @@ class AddFragment : Fragment() {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual)
-                                                                put("recyclable", recyclable + weight)
+                                                                put("recyclable", JSONObject().apply {
+                                                                    when (name) {
+                                                                        "karton" -> {
+                                                                            put("total", recyclable + weight)
+                                                                            put("karton", karton + weight)
+                                                                            put("bottle", bottle)
+                                                                            put("paper", paper)
+                                                                        }
+                                                                        "bottle" -> {
+                                                                            put("total", recyclable + weight)
+                                                                            put("karton", karton)
+                                                                            put("bottle", bottle + weight)
+                                                                            put("paper", paper)
+                                                                        }
+                                                                        "paper" -> {
+                                                                            put("total", recyclable + weight)
+                                                                            put("karton", karton)
+                                                                            put("bottle", bottle)
+                                                                            put("paper", paper + weight)
+                                                                        }
+                                                                    }
+                                                                })
                                                                 put("food_waste", foodwaste)
                                                                 put("total", totalWeight + weight)
                                                             })
@@ -779,49 +793,41 @@ class AddFragment : Fragment() {
                                                         showErrorMessage("Please check your Internet Connection")
                                                     }
                                                 }
-                                        
+
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
-                                                    val jsonObject = jsonArray.getJSONObject(0)
-                                                    val buildingObject: JSONObject? = try {
-                                                        jsonObject.getJSONObject("$buildingName")
-                                                    } catch (e: JSONException) {
-                                                        null
-                                                    }
-                                                    if (buildingObject != null) {
-                                                        val weightObject = buildingObject.getJSONObject("weight")
-                                                        residualweight = try {
-                                                            weightObject.getDouble("residual")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        recyclableweight = try {
-                                                            weightObject.getDouble("recyclable")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        foodweight = try {
-                                                            weightObject.getDouble("food_waste")
-                                                        } catch (e: JSONException) {
-                                                            null
-                                                        }
-                                                        totalweight = try {
-                                                            weightObject.getDouble("total")
-                                                        } catch (e: JSONException) {
-                                                            null
+
+                                                    if (jsonArray.length() > 0) {
+                                                        val jsonObject = jsonArray.getJSONObject(0)
+                                                        val buildingObject = jsonObject.optJSONObject(buildingName)
+
+                                                        if (buildingObject != null) {
+                                                            val weightObject = buildingObject.optJSONObject("weight")
+                                                            residualweight = weightObject?.optDouble("residual")
+
+                                                            val recyclableObject = weightObject?.optJSONObject("recyclable")
+                                                            recyclableweight = recyclableObject?.optDouble("total")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton")
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
+                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+
+                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
-                                        
                                                     val building = buildingName
                                                     val campus = campusName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
+                                                    val bottle = recyclablebottle ?: 0.0
+                                                    val karton = recyclablekarton ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
-                                        
+
                                                     // Check if any EditText field is empty before proceeding
                                                     if (weight == 0.0) {
                                                         requireActivity().runOnUiThread {
@@ -837,12 +843,17 @@ class AddFragment : Fragment() {
                                                         .build()
                                         
                                                     val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
-                                        
+
                                                     val jsonBody = JSONObject().apply {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual)
-                                                                put("recyclable", recyclable)
+                                                                put("recyclable", JSONObject().apply {
+                                                                    put("total", recyclable)
+                                                                    put("karton", karton)
+                                                                    put("bottle", bottle)
+                                                                    put("paper", paper)
+                                                                })
                                                                 put("food_waste", foodwaste + weight)
                                                                 put("total", totalWeight + weight)
                                                             })

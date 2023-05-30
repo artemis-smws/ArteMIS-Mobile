@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Project_arteMIS.iml" filepath="$PROJECT_DIR$/.idea/Project_arteMIS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Project_arteMIS.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>

@@ -364,7 +364,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Program%20Files%20(x86)/Android/Sdk/icons/material/materialicons/check_circle/baseline_check_circle_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../AppData/Local/Android/Sdk/icons/material/materialiconsoutlined/restore_from_trash/outline_restore_from_trash_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -374,8 +374,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="0c8402" />
-                            <entry key="outputName" value="check_green" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="outline_restore_from_trash_24" />
                             <entry key="sourceFile" value="D:\Codes\Kotlin\D:\Codes\Kotlin\ArteMIS-Mobile\ArteMIS-Mobile" />
                           </map>
                         </option>
