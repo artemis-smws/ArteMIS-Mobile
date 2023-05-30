@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.project_artemis.databinding.FragmentLogsBinding
 import okhttp3.Call
@@ -35,9 +36,11 @@ class LogsFragment : Fragment() {
 
                 client2.newCall(request2).enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
-                        // Handle network errors here
+                        requireActivity().runOnUiThread {
+                            showErrorMessage("Please check your Internet Connection")
+                        }
                     }
-            
+
                     @SuppressLint("SetTextI18n")
                     override fun onResponse(call: Call, response: Response) {
                         val responseString = response.body?.string()
@@ -172,6 +175,17 @@ class LogsFragment : Fragment() {
                             }
                         }
                 
+                    }
+
+                    private fun showErrorMessage(message: String) {
+                        val builder = AlertDialog.Builder(requireContext())
+                        builder.setTitle("Error")
+                        builder.setMessage(message)
+                        builder.setPositiveButton("OK") { dialog, which ->
+                            dialog.dismiss()
+                        }
+                        val dialog = builder.create()
+                        dialog.show()
                     }
                 })
 

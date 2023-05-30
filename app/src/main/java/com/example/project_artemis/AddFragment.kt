@@ -295,7 +295,9 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    showErrorMessage("Please check your Internet Connection")
+                                                    requireActivity().runOnUiThread {
+                                                        showErrorMessage("Please check your Internet Connection")
+                                                    }
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
@@ -342,7 +344,9 @@ class AddFragment : Fragment() {
                                         
                                                     // Check if any EditText field is empty before proceeding
                                                     if (weight == 0.0) {
-                                                        showErrorMessage("Please enter the required data")
+                                                        requireActivity().runOnUiThread {
+                                                            showErrorMessage("Please enter the required data")
+                                                        }
                                                     }
 
                                                     val interceptor = HttpLoggingInterceptor()
@@ -462,7 +466,9 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    showErrorMessage("Please check your Internet Connection")
+                                                    requireActivity().runOnUiThread {
+                                                        showErrorMessage("Please check your Internet Connection")
+                                                    }
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
@@ -509,7 +515,9 @@ class AddFragment : Fragment() {
                                         
                                                     // Check if any EditText field is empty before proceeding
                                                     if (weight == 0.0) {
-                                                        showErrorMessage("Please enter the required data")
+                                                        requireActivity().runOnUiThread {
+                                                            showErrorMessage("Please enter the required data")
+                                                        }
                                                     }
                                         
                                                     val interceptor = HttpLoggingInterceptor()
@@ -767,7 +775,9 @@ class AddFragment : Fragment() {
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
                                                 override fun onFailure(call: Call, e: IOException) {
-                                                    showErrorMessage("Please check your Internet Connection")
+                                                    requireActivity().runOnUiThread {
+                                                        showErrorMessage("Please check your Internet Connection")
+                                                    }
                                                 }
                                         
                                                 override fun onResponse(call: Call, response: Response) {
@@ -814,7 +824,9 @@ class AddFragment : Fragment() {
                                         
                                                     // Check if any EditText field is empty before proceeding
                                                     if (weight == 0.0) {
-                                                        showErrorMessage("Please enter the required data")
+                                                        requireActivity().runOnUiThread {
+                                                            showErrorMessage("Please enter the required data")
+                                                        }
                                                     }
                                         
                                                     val interceptor = HttpLoggingInterceptor()
