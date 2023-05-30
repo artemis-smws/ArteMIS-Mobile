@@ -198,6 +198,7 @@ class LoginActivity : AppCompatActivity() {
             builder.setTitle("Signup Error")
             builder.setMessage("Please enter a valid email address")
             builder.setPositiveButton("OK") { dialog, which ->
+                binding.progressBar2.visibility = View.GONE
                 dialog.dismiss()
             }
             val dialog = builder.create()
