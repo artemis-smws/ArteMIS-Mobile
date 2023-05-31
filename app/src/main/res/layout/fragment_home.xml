@@ -6,26 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout">
 
-    <TextView
-        android:id="@+id/dashboardTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Dashboard"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        <TextView
+                android:id="@+id/Hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/HELLO"
+                android:textColor="?attr/colorSecondary"
+                android:textStyle="bold"
+                android:textSize="30sp" />
+
+        <TextView
+                android:id="@+id/name"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPARTAN"
+                android:textColor="?attr/colorSecondary"
+                android:textStyle="bold"
+                android:textSize="30sp" />
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/dashboardTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/Dashboard"-->
+<!--        android:textColor="?attr/colorOnSecondary"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="HardcodedText" />-->
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboardTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="80dp"
             android:layout_marginBottom="10dp"
@@ -49,38 +78,21 @@
                             app:layout_constraintTop_toBottomOf="@+id/dashboardTitle"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginTop="10dp"
                             android:layout_marginStart="40dp"
                             android:layout_marginEnd="40dp"
                             android:orientation="vertical"
                             >
-                        <LinearLayout
+
+                        <TextView
+                                android:id="@+id/thisyourdashboard"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                            <TextView
-                                    android:id="@+id/Hello"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/HELLO"
-                                    android:textColor="?attr/colorSecondary"
-                                    android:textStyle="bold"
-                                    android:textSize="28sp"
-                                    />
-
-                            <TextView
-                                    android:id="@+id/name"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="SPARTAN"
-                                    android:textColor="?attr/colorSecondary"
-                                    android:textStyle="bold"
-                                    android:textSize="28sp"
-                                    />
-
-                        </LinearLayout>
+                                android:layout_marginBottom="5dp"
+                                android:text="@string/this_is_you_dashboard"
+                                android:textColor="?attr/colorSecondaryVariant"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                />
 
                     </LinearLayout>
 
@@ -131,6 +143,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wasteGenerated"
+                                android:layout_marginBottom="5dp"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
@@ -182,6 +195,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Jan 21"
+                                        android:id="@+id/highestDate"
                                         android:textSize="20sp"
                                         android:textStyle="bold"
                                         android:elegantTextHeight="true"
@@ -196,6 +210,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:elevation="2dp"
+                                        android:id="@+id/highestWeight"
                                         android:text="0 kg"
                                         android:layout_marginTop="-5dp"
                                         android:textSize="14sp"
@@ -232,6 +247,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Jan 21"
+                                        android:id="@+id/lowestDate"
                                         android:textSize="20sp"
                                         android:textStyle="bold"
                                         android:elegantTextHeight="true"
@@ -247,6 +263,7 @@
                                         android:layout_height="wrap_content"
                                         android:elevation="2dp"
                                         android:text="0 kg"
+                                        android:id="@+id/lowestWeight"
                                         android:textSize="14sp"
                                         android:layout_marginTop="-5dp"
                                         android:textAlignment="center"
@@ -280,6 +297,7 @@
                                     android:elevation="2dp"
                                     android:text="0 kg"
                                     android:textSize="23sp"
+                                        android:id="@+id/averageWeight"
                                     android:textStyle="bold"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/white"
@@ -421,7 +439,7 @@
                             android:layout_marginTop="20dp"
                             android:background="@drawable/alphared_container"
                             android:layout_width="match_parent"
-                            android:layout_height="230dp"
+                            android:layout_height="wrap_content"
                             android:padding="15dp"
                             android:orientation="vertical"
                             >
@@ -435,10 +453,6 @@
                                 android:textSize="15sp"
                                 />
 
-                        <ScrollView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
                             <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -447,6 +461,8 @@
                                 <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
                                         android:orientation="horizontal">
 
                                     <TextView
@@ -469,7 +485,7 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/alangilanTotal"
+                                            android:id="@+id/gymTotal"
                                             android:text="0 kg"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -480,6 +496,7 @@
                                 <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
                                     <TextView
@@ -503,6 +520,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0 kg"
+                                            android:id="@+id/ceafaTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -512,6 +530,7 @@
                                 <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
                                     <TextView
@@ -535,6 +554,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0 kg"
+                                            android:id="@+id/cicsTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -544,6 +564,7 @@
                                 <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
                                     <TextView
@@ -566,7 +587,8 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="30.02 kg"
+                                            android:text="0 kg"
+                                            android:id="@+id/citTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -576,6 +598,7 @@
                                 <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
                                     <TextView
@@ -598,7 +621,8 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="30.02 kg"
+                                            android:text="0 kg"
+                                            android:id="@+id/sscTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -607,6 +631,7 @@
 
                                 <LinearLayout
                                         android:layout_width="match_parent"
+                                        android:layout_marginBottom="5dp"
                                         android:layout_height="wrap_content"
                                         android:orientation="horizontal">
 
@@ -630,7 +655,8 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="30.02 kg"
+                                            android:text="0 kg"
+                                            android:id="@+id/rgrTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -662,7 +688,8 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="30.02 kg"
+                                            android:text="0 kg"
+                                            android:id="@+id/steerTotal"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
                                             />
@@ -671,7 +698,6 @@
 
                             </LinearLayout>
 
-                        </ScrollView>
 
                     </LinearLayout>
 

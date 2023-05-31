@@ -11,7 +11,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4454cdc-9a22-4337-a454-7983826b5908" name="Changes" comment="Updated Home Fragment refreshable sheeshable" />
+    <list default="true" id="d4454cdc-9a22-4337-a454-7983826b5908" name="Changes" comment="Updated Home Fragment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/project_artemis/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_logs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_logs.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +99,7 @@
     &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/andrey13/ArteMIS-Mobile/app/src/main/res/mipmap-hdpi&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user05/ArteMIS-Mobile&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andrey13/ArteMIS-Mobile&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -284,7 +289,28 @@
       <option name="project" value="LOCAL" />
       <updated>1685451650895</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated Home Fragment">
+      <created>1685514806979</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685514806979</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updated Home Fragment">
+      <created>1685535272138</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685535272138</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated Home Fragment">
+      <created>1685535380661</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685535380661</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,6 +334,7 @@
     <MESSAGE value="updated backend" />
     <MESSAGE value="updated Dashboard" />
     <MESSAGE value="Updated Home Fragment refreshable sheeshable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Home Fragment refreshable sheeshable" />
+    <MESSAGE value="Updated Home Fragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Home Fragment" />
   </component>
 </project>

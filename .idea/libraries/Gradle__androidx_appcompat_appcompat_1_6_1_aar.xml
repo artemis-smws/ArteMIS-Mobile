@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.appcompat:appcompat:1.6.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/0dc802757d4384945beab6b88e153d9e/transformed/appcompat-1.6.1/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/1cce0e430a128e50fd37204c0bccc5a0/transformed/appcompat-1.6.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/0dc802757d4384945beab6b88e153d9e/transformed/appcompat-1.6.1/res" />
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/0dc802757d4384945beab6b88e153d9e/transformed/appcompat-1.6.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/0dc802757d4384945beab6b88e153d9e/transformed/appcompat-1.6.1/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/1cce0e430a128e50fd37204c0bccc5a0/transformed/appcompat-1.6.1/res" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/1cce0e430a128e50fd37204c0bccc5a0/transformed/appcompat-1.6.1/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/1cce0e430a128e50fd37204c0bccc5a0/transformed/appcompat-1.6.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

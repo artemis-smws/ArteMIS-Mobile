@@ -111,12 +111,45 @@
 
     </LinearLayout>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/legend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/building"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                android:layout_weight="0.2" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/statusTitle"
+                android:textStyle="bold"
+                android:layout_marginEnd="25dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                android:layout_weight="0.1" />
+
+    </LinearLayout>
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/legend"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="160dp"
             >
 
         <LinearLayout
@@ -128,39 +161,7 @@
                 >
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    >
-
-                <TextView
-                        android:layout_marginStart="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/building"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:layout_weight="0.3"
-                        />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/statusTitle"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:layout_weight="0.1"
-                        />
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"

@@ -28,7 +28,7 @@ class AddFragment : Fragment() {
     private var buildingName: String? = null
     private var campusName: String? = null
     private var selectedName: String? = null
-    private var todayId: String? = null
+    // private var todayId: String? = null
     private var residualweight: Double? = null
     private var recyclableweight: Double? = null
     private var foodweight: Double? = null
@@ -43,32 +43,6 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentAddBinding.inflate(inflater, container, false)
-
-        val client = OkHttpClient()
-        val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
-        val request = Request.Builder()
-            .url(url)
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Toast.makeText(requireContext(), "Request unsuccessful", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val responseString = response.body?.string()
-                val jsonArray = JSONArray(responseString)
-                val jsonObject = jsonArray.getJSONObject(0)
-                todayId = jsonObject.getString("id")
-                val id = todayId
-                if (isAdded) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), "Retrieved id: $id", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-        })
 
         val itemsLocation = listOf(
             "Batangas State University - Alangilan",
@@ -290,6 +264,27 @@ class AddFragment : Fragment() {
                                             binding.overlay.visibility = View.VISIBLE
                                             binding.overlay.setOnTouchListener { _, _ -> true}
 
+                                            // val client = OkHttpClient()
+                                            // val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+                                            // val request = Request.Builder()
+                                            //     .url(url)
+                                            //     .build()
+                                    
+                                            // client.newCall(request).enqueue(object : Callback {
+                                            //     override fun onFailure(call: Call, e: IOException) {
+                                            //         Toast.makeText(requireContext(), "Request unsuccessful", Toast.LENGTH_SHORT).show()
+                                            //     }
+                                    
+                                            //     override fun onResponse(call: Call, response: Response) {
+                                            //         val responseString = response.body?.string()
+                                            //         val jsonArray = JSONArray(responseString)
+                                            //         val jsonObject = jsonArray.getJSONObject(0)
+                                            //         todayId = jsonObject.getString("id")
+                                            //     }
+                                    
+                                            // })
+
+
                                             val getclient = OkHttpClient()
                                             val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
                                             val getData = Request.Builder()
@@ -306,6 +301,8 @@ class AddFragment : Fragment() {
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
+                                                    val jsonObject = jsonArray.getJSONObject(0)
+                                                    val todayId = jsonObject.getString("id")
 
                                                     if (jsonArray.length() > 0) {
                                                         val jsonObject = jsonArray.getJSONObject(0)
@@ -474,6 +471,8 @@ class AddFragment : Fragment() {
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
+                                                    val jsonObject = jsonArray.getJSONObject(0)
+                                                    val todayId = jsonObject.getString("id")
 
                                                     if (jsonArray.length() > 0) {
                                                         val jsonObject = jsonArray.getJSONObject(0)
@@ -797,6 +796,8 @@ class AddFragment : Fragment() {
                                                 override fun onResponse(call: Call, response: Response) {
                                                     val responseString = response.body?.string()
                                                     val jsonArray = JSONArray(responseString)
+                                                    val jsonObject = jsonArray.getJSONObject(0)
+                                                    val todayId = jsonObject.getString("id")
 
                                                     if (jsonArray.length() > 0) {
                                                         val jsonObject = jsonArray.getJSONObject(0)

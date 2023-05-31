@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.drawerlayout:drawerlayout:1.1.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/0ba67439917034b08067f2fddc7f77b5/transformed/drawerlayout-1.1.1/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/3eb8d8e17fae71793770ee61588af7bd/transformed/drawerlayout-1.1.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/0ba67439917034b08067f2fddc7f77b5/transformed/drawerlayout-1.1.1/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/0ba67439917034b08067f2fddc7f77b5/transformed/drawerlayout-1.1.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/0ba67439917034b08067f2fddc7f77b5/transformed/drawerlayout-1.1.1/res" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/3eb8d8e17fae71793770ee61588af7bd/transformed/drawerlayout-1.1.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/3eb8d8e17fae71793770ee61588af7bd/transformed/drawerlayout-1.1.1/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/3eb8d8e17fae71793770ee61588af7bd/transformed/drawerlayout-1.1.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
