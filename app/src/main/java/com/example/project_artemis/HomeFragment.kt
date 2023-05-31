@@ -40,6 +40,13 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     private var buildingObject: String? = null
+    private var cicsPercentage: Double? = null
+    private var citPercentage: Double? = null
+    private var ceafaPercentage: Double? = null
+    private var steerPercentage: Double? = null
+    private var rgrPercentage: Double? = null
+    private var sscPercentage: Double? = null
+    private var gymPercentage: Double? = null
     private var residualPercentage: Double? = null
     private var foodWastePercentage: Double? = null
     private var recyclablePercentage: Double? = null
@@ -351,66 +358,165 @@ class HomeFragment : Fragment() {
 
         val wasteCompPieChartperBuilding = binding.wasteCompChartperBuilding
 
-        val wasteComperBuildingColors = listOf(Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.LTGRAY, Color.MAGENTA, Color.CYAN)
-        val entries: MutableList<PieEntry> = ArrayList()
+        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+        
+        val client3 = OkHttpClient()
+        val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
+        val request3 = Request.Builder()
+            .url(url)
+            .build()
 
-        entries.add(PieEntry(23f, "CICS"))
-        entries.add(PieEntry(17f, "CEAFA"))
-        entries.add(PieEntry(20f, "CIT"))
-        entries.add(PieEntry(13f, "SSC"))
-        entries.add(PieEntry(7f, "Gym"))
-        entries.add(PieEntry(11f, "RGR"))
-        entries.add(PieEntry(9f, "STEER Hub"))
-//
-//        entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "CICS"))
-//        entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "CEAFA"))
-//        entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "CIT"))
-//        entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "SSC"))
-//        entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Gym"))
-//        entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "RGR"))
-//        entries.add(PieEntry(foodWastePercentage?.toFloat() ?: 0f, "STEER Hub"))
+        client3.newCall(request3).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                requireActivity().runOnUiThread {
+                    showErrorMessage("Please check your Internet Connection")
+                }
+            }
 
-        val themeColor1 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
-        val themeColor2 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnPrimary)
-
-
-        val dataSet = PieDataSet(entries, "").apply {
-            colors = wasteComperBuildingColors
-            setDrawIcons(false)
-            sliceSpace = 3f
-            valueLinePart1OffsetPercentage = 80f
-            valueLinePart1Length = 0.4f
-            valueLinePart2Length = 0.5f
-            yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
-            valueTextColor = themeColor1
-        }
-
-        val data = PieData(dataSet).apply {
-            setValueFormatter(PercentFormatter(wasteCompPieChartperBuilding))
-            setValueTextSize(11f)
-            setValueTextColor(themeColor1)
-        }
-
-        wasteCompPieChartperBuilding.apply {
-            setUsePercentValues(true)
-            description.isEnabled = true
-            legend.isEnabled = true
-            legend.textColor = themeColor1
-            setHoleColor(themeColor2)
-            setExtraOffsets(5f, 10f, 5f, 5f)
-            dragDecelerationFrictionCoef = 0.95f
-            isDrawHoleEnabled = true
-            holeRadius = 40f
-            transparentCircleRadius = 45f
-            setEntryLabelColor(themeColor1)
-            setEntryLabelTextSize(12f)
-            setDrawEntryLabels(false)
-            rotationAngle = 0f
-            animateY(1000)
-            setData(data)
-        }
-
-        wasteCompPieChartperBuilding.invalidate()
+            @SuppressLint("SetTextI18n")
+            override fun onResponse(call: Call, response: Response) {
+                val responseString = response.body?.string()
+                try {
+                    val jsonArray = JSONArray(responseString)
+                    val jsonObject = jsonArray.getJSONObject(0)
+                    val cicsObject: JSONObject? = try {
+                        jsonObject.getJSONObject("CICS")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (cicsObject != null) {
+                        val weightObject = cicsObject.getJSONObject("weight")
+                        val cicstotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (cicstotal != null) {
+                            cicsPercentage = cicstotal
+                        }
+                    }
+                    val citObject: JSONObject? = try {
+                        jsonObject.getJSONObject("CIT")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (citObject != null) {
+                        val weightObject = citObject.getJSONObject("weight")
+                        val cittotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (cittotal != null) {
+                            citPercentage = cittotal
+                        }
+                    }
+                    val ceaObject: JSONObject? = try {
+                        jsonObject.getJSONObject("CEAFA")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (ceaObject != null) {
+                        val weightObject = ceaObject.getJSONObject("weight")
+                        val ceatotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (ceatotal != null) {
+                            ceafaPercentage = ceatotal
+                        }
+                    }
+                    val steerObject: JSONObject? = try {
+                        jsonObject.getJSONObject("STEER_Hub")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (steerObject != null) {
+                        val weightObject = steerObject.getJSONObject("weight")
+                        val steertotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (steertotal != null) {
+                            steerPercentage = steertotal
+                        }
+                    }
+                    val gymObject: JSONObject? = try {
+                        jsonObject.getJSONObject("Gymnasium")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (gymObject != null) {
+                        val weightObject = gymObject.getJSONObject("weight")
+                        val gymtotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (gymtotal != null) {
+                            gymPercentage = gymtotal
+                        }
+                    }
+                    val sscObject: JSONObject? = try {
+                        jsonObject.getJSONObject("SSC")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (sscObject != null) {
+                        val weightObject = sscObject.getJSONObject("weight")
+                        val ssctotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (ssctotal != null) {
+                            sscPercentage = ssctotal
+                        }
+                    }
+                    val rgrObject: JSONObject? = try {
+                        jsonObject.getJSONObject("RGR")
+                    } catch (e: JSONException) {
+                        null
+                    }
+                    if (rgrObject != null) {
+                        val weightObject = rgrObject.getJSONObject("weight")
+                        val rgrtotal: Double? = try {
+                            weightObject.getDouble("total")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (rgrtotal != null) {
+                            rgrPercentage = rgrtotal
+                        }
+                    }
+                    if (isAdded) {
+                        requireActivity().runOnUiThread {
+                            binding.gymTotal.text = gymPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.ceafaTotal.text = ceafaPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.cicsTotal.text = cicsPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.sscTotal.text = sscPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.citTotal.text = citPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.rgrTotal.text = rgrPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            binding.steerTotal.text = steerPercentage?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                        }
+                    }
+                } catch (e: JSONException) {
+                    // Handle the JSON parsing error
+                    if (isAdded) {
+                        requireActivity().runOnUiThread {
+                            showErrorMessage("The app is on maintenance, Please comeback later.")
+                        }
+                    }
+                }
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+            }
+        })
 
         binding.buildingSpinner.adapter = adapterBuilding
 
@@ -444,12 +550,11 @@ class HomeFragment : Fragment() {
                     else -> 0
                 }
 
-                val overallthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorPrimary)
                 val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
                 val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
                 oversllDataSet.setDrawValues(false)
-                oversllDataSet.color = overallthemeColor
+                oversllDataSet.color = Color.parseColor("#FF0000")
                 oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
@@ -462,7 +567,7 @@ class HomeFragment : Fragment() {
 //                recyclableDataSet.color = Color.parseColor("#22990b")
 //                recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val wasteGeneratedDataSets = listOf(oversllDataSet)
+                val wasteGeneratedDataSets = listOf(oversllDataSet, buildingDataSet)
                 val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
                 wasteGeneratedChart.animateX(1000)
@@ -500,11 +605,6 @@ class HomeFragment : Fragment() {
                         try {
                             val jsonArray = JSONArray(responseString)
                             val jsonObject = jsonArray.getJSONObject(0)
-                            val overall_weight: Double? = try {
-                                jsonObject.getDouble("overall_weight")
-                            } catch (e: JSONException) {
-                                null
-                            }
                             val buildingObject: JSONObject? = try {
                                 jsonObject.getJSONObject("$buildingObject")
                             } catch (e: JSONException) {
@@ -679,7 +779,7 @@ class HomeFragment : Fragment() {
                     }
                     "Last year" -> {
                         requireActivity().runOnUiThread {
-                            setupPieChartL30days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
                         }
                     }
 
@@ -721,12 +821,11 @@ class HomeFragment : Fragment() {
                 else -> 0
             }
 
-            val overallthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorPrimary)
             val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
             val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
             oversllDataSet.setDrawValues(false)
-            oversllDataSet.color = overallthemeColor
+            oversllDataSet.color = Color.parseColor("#FF0000")
             oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
@@ -740,7 +839,7 @@ class HomeFragment : Fragment() {
 //            recyclableDataSet.color = Color.parseColor("#22990b")
 //            recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-            val wasteGeneratedDataSets = listOf(oversllDataSet)
+            val wasteGeneratedDataSets = listOf(oversllDataSet, buildingDataSet)
             val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
             wasteGeneratedChart.animateX(1000)
@@ -774,6 +873,63 @@ class HomeFragment : Fragment() {
         }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun buildingPieChart(wasteCompPieChartperBuilding: PieChart){
+
+        val wasteComperBuildingColors = listOf(Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.LTGRAY, Color.MAGENTA, Color.CYAN)
+        val entries: MutableList<PieEntry> = ArrayList()
+
+        entries.add(PieEntry(cicsPercentage?.toFloat() ?: 0f, "CICS"))
+        entries.add(PieEntry(ceafaPercentage?.toFloat() ?: 0f, "CEAFA"))
+        entries.add(PieEntry(citPercentage?.toFloat() ?: 0f, "CIT"))
+        entries.add(PieEntry(sscPercentage?.toFloat() ?: 0f, "SSC"))
+        entries.add(PieEntry(gymPercentage?.toFloat() ?: 0f, "Gym"))
+        entries.add(PieEntry(rgrPercentage?.toFloat() ?: 0f, "RGR"))
+        entries.add(PieEntry(steerPercentage?.toFloat() ?: 0f, "STEER Hub"))
+
+        val themeColor1 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
+        val themeColor2 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnPrimary)
+
+
+        val dataSet = PieDataSet(entries, "").apply {
+            colors = wasteComperBuildingColors
+            setDrawIcons(false)
+            sliceSpace = 3f
+            valueLinePart1OffsetPercentage = 80f
+            valueLinePart1Length = 0.4f
+            valueLinePart2Length = 0.5f
+            yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+            valueTextColor = themeColor1
+        }
+
+        val data = PieData(dataSet).apply {
+            setValueFormatter(PercentFormatter(wasteCompPieChartperBuilding))
+            setValueTextSize(11f)
+            setValueTextColor(themeColor1)
+        }
+
+        wasteCompPieChartperBuilding.apply {
+            setUsePercentValues(true)
+            description.isEnabled = true
+            legend.isEnabled = true
+            legend.textColor = themeColor1
+            setHoleColor(themeColor2)
+            setExtraOffsets(5f, 10f, 5f, 5f)
+            dragDecelerationFrictionCoef = 0.95f
+            isDrawHoleEnabled = true
+            holeRadius = 40f
+            transparentCircleRadius = 45f
+            setEntryLabelColor(themeColor1)
+            setEntryLabelTextSize(12f)
+            setDrawEntryLabels(false)
+            rotationAngle = 0f
+            animateY(1000)
+            setData(data)
+        }
+
+        wasteCompPieChartperBuilding.invalidate()
+
     }
 
     private fun setupPieChartL7days(pieChart: PieChart, building: String) {

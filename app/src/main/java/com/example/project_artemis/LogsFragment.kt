@@ -47,55 +47,59 @@ class LogsFragment : Fragment() {
                 val jsonArray = JSONArray(responseString)
                 val ceafaObject = jsonArray.getJSONObject(0).getJSONObject("CEAFA")
                 val ceafaresValue = ceafaObject.getJSONObject("weight").getInt("residual")
-                val ceafarecValue = ceafaObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val ceafarecValue = if (ceafaObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    ceafaObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    ceafaObject.getJSONObject("weight").getInt("recyclable")
+                }
                 val ceafafoodValue = ceafaObject.getJSONObject("weight").getInt("food_waste")
                 val citObject = jsonArray.getJSONObject(0).getJSONObject("CIT")
                 val citresValue = citObject.getJSONObject("weight").getInt("residual")
-                val citrecValue = citObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val citrecValue = if (citObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    citObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    citObject.getJSONObject("weight").getInt("recyclable")
+                }                
                 val citfoodValue = citObject.getJSONObject("weight").getInt("food_waste")
                 val cicsObject = jsonArray.getJSONObject(0).getJSONObject("CICS")
                 val cicsresValue = cicsObject.getJSONObject("weight").getInt("residual")
-                val cicsrecValue = cicsObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val cicsrecValue = if (cicsObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    cicsObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    cicsObject.getJSONObject("weight").getInt("recyclable")
+                }                
                 val cicsfoodValue = cicsObject.getJSONObject("weight").getInt("food_waste")
                 val rgrObject = jsonArray.getJSONObject(0).getJSONObject("RGR")
                 val rgrresValue = rgrObject.getJSONObject("weight").getInt("residual")
-                val rgrrecValue = rgrObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val rgrrecValue = if (rgrObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    rgrObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    rgrObject.getJSONObject("weight").getInt("recyclable")
+                }                
                 val rgrfoodValue = rgrObject.getJSONObject("weight").getInt("food_waste")
-                val gymObject: JSONObject? = try {
-                    jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
-                } catch (e: JSONException) {
-                    null
+                val gymObject = jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
+                val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
+                val gymrecValue = if (gymObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    gymObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    gymObject.getJSONObject("weight").getInt("recyclable")
                 }
-                if (gymObject != null) {
-                    val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
-                    val gymrecValue = gymObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
-                    val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
-
-                    if (isAdded) {
-                        requireActivity().runOnUiThread {
-                            if (gymresValue != 0) {
-                                binding.nullresgym.visibility = View.GONE
-                                binding.resgym.visibility = View.VISIBLE
-                            }
-                            if (gymrecValue != 0) {
-                                binding.nullrecgym.visibility = View.GONE
-                                binding.recgym.visibility = View.VISIBLE
-                            }
-                            if (gymfoodValue != 0) {
-                                binding.nullfoodgym.visibility = View.GONE
-                                binding.foodgym.visibility = View.VISIBLE
-                            }
-                        }
-                    }
-                }
-
+                val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
                 val steerObject = jsonArray.getJSONObject(0).getJSONObject("STEER_Hub")
                 val steerresValue = steerObject.getJSONObject("weight").getInt("residual")
-                val steerrecValue = steerObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val steerrecValue = if (steerObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    steerObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    steerObject.getJSONObject("weight").getInt("recyclable")
+                }                
                 val steerfoodValue = steerObject.getJSONObject("weight").getInt("food_waste")
                 val sscObject = jsonArray.getJSONObject(0).getJSONObject("SSC")
                 val sscresValue = sscObject.getJSONObject("weight").getInt("residual")
-                val sscrecValue = sscObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total", 0)
+                val sscrecValue = if (sscObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
+                    sscObject.getJSONObject("weight").getJSONObject("recyclable").optInt("total")
+                } else {
+                    sscObject.getJSONObject("weight").getInt("recyclable")
+                }                
                 val sscfoodValue = sscObject.getJSONObject("weight").getInt("food_waste")
 
                 if (isAdded){
@@ -147,6 +151,18 @@ class LogsFragment : Fragment() {
                         if (rgrfoodValue != 0) {
                             binding.nullfoodrgr.visibility = View.GONE
                             binding.foodrgr.visibility = View.VISIBLE
+                        }
+                        if (gymresValue != 0) {
+                            binding.nullresgym.visibility = View.GONE
+                            binding.resgym.visibility = View.VISIBLE
+                        }
+                        if (gymrecValue != 0) {
+                            binding.nullrecgym.visibility = View.GONE
+                            binding.recgym.visibility = View.VISIBLE
+                        }
+                        if (gymfoodValue != 0) {
+                            binding.nullfoodgym.visibility = View.GONE
+                            binding.foodgym.visibility = View.VISIBLE
                         }
                         if (steerresValue != 0) {
                             binding.nullressteer.visibility = View.GONE
