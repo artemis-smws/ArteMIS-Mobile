@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-firestore:24.5.0@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/c5f57c2ac7227dbc2d5ef784f271292e/transformed/firebase-firestore-24.5.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/c5f57c2ac7227dbc2d5ef784f271292e/transformed/firebase-firestore-24.5.0/jars/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/129390173f66cddce08fb15c18ab1a56/transformed/firebase-firestore-24.5.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../caches/transforms-3/129390173f66cddce08fb15c18ab1a56/transformed/firebase-firestore-24.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

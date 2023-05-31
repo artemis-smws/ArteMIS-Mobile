@@ -53,6 +53,114 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        val decimalFormat = DecimalFormat("#.##")
+
+        val getHighest = OkHttpClient()
+        val highrequest = Request.Builder()
+            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/highest")
+            .build()
+
+        getHighest.newCall(highrequest).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle request failure
+            }
+        
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val jsonData = response.body?.string()
+                    // Parse the JSON data and extract the required values
+                    val jsonArray = JSONArray(jsonData)
+                    if (jsonArray.length() > 0) {
+                        val jsonObject = jsonArray.getJSONObject(0)
+                        val overallWeight = jsonObject.getInt("overall_weight")
+                        val createdAtSeconds = jsonObject.getJSONObject("createdAt").getLong("seconds")
+        
+                        // Convert createdAtSeconds to a Date object
+                        val createdAtDate = Date(createdAtSeconds * 1000)
+        
+                        // Format the date as MMM-d
+                        val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
+                        val formattedDate = dateFormat.format(createdAtDate)
+        
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.highestDate.text = formattedDate
+                                binding.highestWeight.text = overallWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        val getLowest = OkHttpClient()
+        val lowrequest = Request.Builder()
+            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/lowest")
+            .build()
+        
+        getLowest.newCall(lowrequest).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle request failure
+            }
+        
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val jsonData = response.body?.string()
+                    // Parse the JSON data and extract the required values
+                    val jsonArray = JSONArray(jsonData)
+                    if (jsonArray.length() > 0) {
+                        val jsonObject = jsonArray.getJSONObject(0)
+                        val overallWeight = jsonObject.getInt("overall_weight")
+                        val createdAtSeconds = jsonObject.getJSONObject("createdAt").getLong("seconds")
+
+                        // Convert createdAtSeconds to a Date object
+                        val createdAtDate = Date(createdAtSeconds * 1000)
+        
+                        // Format the date as MMM-d
+                        val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
+                        val formattedDate = dateFormat.format(createdAtDate)
+        
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.lowestDate.text = formattedDate
+                                binding.lowestWeight.text = overallWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        val getAverage = OkHttpClient()
+        val averequest = Request.Builder()
+            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/status/latest")
+            .build()
+
+        getAverage.newCall(averequest).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle request failure
+            }
+        
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val jsonData = response.body?.string()
+                    // Parse the JSON data and extract the required values
+                    val jsonArray = JSONArray(jsonData)
+                    if (jsonArray.length() > 0) {
+                        val jsonObject = jsonArray.getJSONObject(0)
+                        val overallWeight = jsonObject.getInt("current_average")
+        
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.averageWeight.text = overallWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        
+
         itemsTime = listOf("7 days", "30 days", "Last Year")
         itemsBuilding = listOf(
             "CEAFA Building",
@@ -86,7 +194,6 @@ class HomeFragment : Fragment() {
         val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
 
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, -1)
 
         val dayString = mutableListOf<String>()
         for (i in 0 until 7) {
@@ -99,19 +206,20 @@ class HomeFragment : Fragment() {
 
         dayString.reverse()
 
+        val currentDate = dateFormat.format(Date())
+        dayString.add(currentDate) // Add the current date to the list
+
         // Print the dayString to verify the result
         for (day in dayString) {
             println(day)
         }
-//        val dayString = arrayOf(
-//            "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
-//        )
 
         val themeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
         val wasteGeneratedChart = binding.wasteGenChart
 
-        val foodLineData: List<List<Entry>> = listOf(
+        val overallLineData: List<List<Entry>> = listOf(
+            //7th date                                                                                          current date
             listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, 9f), Entry(6f, 6f)),  // CEAFA
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CIT
             listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // CICS
@@ -121,25 +229,25 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
         )
 
-        val residualLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, 6f)),  // CEAFA
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CIT
-            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CICS
-            listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
-            listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
-            listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
-            listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
-        )
-
-        val recyclableLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 7f), Entry(1f, 6f), Entry(2f, 8f), Entry(3f, 5f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CEAFA
-            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CIT
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CICS
-            listOf(Entry(0f, 8f), Entry(1f, 7f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
-            listOf(Entry(0f, 8f), Entry(1f, 7f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
-            listOf(Entry(0f, 9f), Entry(1f, 3f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
-            listOf(Entry(0f, 5f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
-        )
+       val buildingLineData: List<List<Entry>> = listOf(
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, 6f)),  // CEAFA
+           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CIT
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CICS
+           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
+           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
+           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
+           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
+       )
+//
+//        val recyclableLineData: List<List<Entry>> = listOf(
+//            listOf(Entry(0f, 7f), Entry(1f, 6f), Entry(2f, 8f), Entry(3f, 5f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CEAFA
+//            listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CIT
+//            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CICS
+//            listOf(Entry(0f, 8f), Entry(1f, 7f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
+//            listOf(Entry(0f, 8f), Entry(1f, 7f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
+//            listOf(Entry(0f, 9f), Entry(1f, 3f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
+//            listOf(Entry(0f, 5f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
+//        )
 
         val wasteGeneratedFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
@@ -336,22 +444,25 @@ class HomeFragment : Fragment() {
                     else -> 0
                 }
 
-                val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-                foodDataSet.setDrawValues(false)
-                foodDataSet.color = Color.parseColor("#d7e605")
-                foodDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+                val overallthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorPrimary)
+                val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
-                val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-                residualDataSet.setDrawValues(false)
-                residualDataSet.color = Color.parseColor("#e60505")
-                residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+                val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
+                oversllDataSet.setDrawValues(false)
+                oversllDataSet.color = overallthemeColor
+                oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-                recyclableDataSet.setDrawValues(false)
-                recyclableDataSet.color = Color.parseColor("#22990b")
-                recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+               val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
+               buildingDataSet.setDrawValues(false)
+               buildingDataSet.color = buildingthemeColor
+               buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+//                val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+//                recyclableDataSet.setDrawValues(false)
+//                recyclableDataSet.color = Color.parseColor("#22990b")
+//                recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+
+                val wasteGeneratedDataSets = listOf(oversllDataSet)
                 val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
                 wasteGeneratedChart.animateX(1000)
@@ -610,22 +721,26 @@ class HomeFragment : Fragment() {
                 else -> 0
             }
 
-            val foodDataSet = LineDataSet(foodLineData[buildingIndex], "Food Waste")
-            foodDataSet.setDrawValues(false)
-            foodDataSet.color = Color.parseColor("#d7e605")
-            foodDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+            val overallthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorPrimary)
+            val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
-            val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual Waste")
-            residualDataSet.setDrawValues(false)
-            residualDataSet.color = Color.parseColor("#e60505")
-            residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+            val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
+            oversllDataSet.setDrawValues(false)
+            oversllDataSet.color = overallthemeColor
+            oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
-            recyclableDataSet.setDrawValues(false)
-            recyclableDataSet.color = Color.parseColor("#22990b")
-            recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+            val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
+            buildingDataSet.setDrawValues(false)
+            buildingDataSet.color = buildingthemeColor
+            buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-            val wasteGeneratedDataSets = listOf(foodDataSet, residualDataSet, recyclableDataSet)
+//
+//            val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable Waste")
+//            recyclableDataSet.setDrawValues(false)
+//            recyclableDataSet.color = Color.parseColor("#22990b")
+//            recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+
+            val wasteGeneratedDataSets = listOf(oversllDataSet)
             val wasteGeneratedData = LineData(wasteGeneratedDataSets)
 
             wasteGeneratedChart.animateX(1000)
