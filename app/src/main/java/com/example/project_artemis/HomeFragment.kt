@@ -40,6 +40,14 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     private var buildingObject: String? = null
+    private var overallWeight: String? = null
+    private var ceafaTotalWeight: Double? = null
+    private var cittoTalWeight: Double? = null
+    private var cicsTotalWeight: Double? = null
+    private var rgrTotalWeight: Double? = null
+    private var steerHubTotalWeight: Double? = null
+    private var gymnasiumTotalWeight: Double? = null
+    private var sscTotalWeight: Double? = null
     private var cicsPercentage: Double? = null
     private var citPercentage: Double? = null
     private var ceafaPercentage: Double? = null
@@ -227,23 +235,23 @@ class HomeFragment : Fragment() {
 
         val overallLineData: List<List<Entry>> = listOf(
             //7th date                                                                                          current date
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, 9f), Entry(6f, 6f)),  // CEAFA
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // CIT
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
-            listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, 9f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CEAFA
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CIT
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CICS
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // RGR
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // Gym
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // STEER Hub
+            listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, overallWeight?.toFloat() ?: 0f))  // SSC
         )
 
        val buildingLineData: List<List<Entry>> = listOf(
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, 6f)),  // CEAFA
-           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // CIT
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, 8f)),  // CICS
-           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, 3f)),  // RGR
-           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, 9f)),  // Gym
-           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, 4f)),  // STEER Hub
-           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, 7f))  // SSC
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
+           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)),  // CIT
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
+           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
+           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),  // Gym
+           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
+           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
        )
 //
 //        val recyclableLineData: List<List<Entry>> = listOf(
@@ -585,6 +593,84 @@ class HomeFragment : Fragment() {
                 setupPieChartL7days(wasteCompPieChart, itemsBuilding[buildingIndex])
 
                 val decimalFormat = DecimalFormat("#.##")
+
+
+                val client = OkHttpClient()
+
+                val request = Request.Builder()
+                    .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest/7days") 
+                    .build()
+            
+                client.newCall(request).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        requireActivity().runOnUiThread {
+                            showErrorMessage("Please check your Internet Connection")
+                        }
+                    }
+            
+                    override fun onResponse(call: Call, response: Response) {
+                        val responseData = response.body?.string()
+                        val jsonArray = JSONArray(responseData)
+            
+                        // Sort the array based on the "createdAt" timestamp in descending order
+                        val sortedArray = (0 until jsonArray.length()).map { jsonArray.getJSONObject(it) }
+                            .sortedByDescending { it.getJSONObject("createdAt").getLong("seconds") }
+            
+                        // Get the current date in the same format as "createdAt" field
+                        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            
+                        // Find the latest data with the current date
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+            
+                            if (createdAtDate == currentDate) {
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                overallWeight = item.getDouble("overall_weight")
+                                if (citData != null) {
+                                    citTotalWeight = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                    }
+                })
+
+
 
                 val client2 = OkHttpClient()
                 val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
