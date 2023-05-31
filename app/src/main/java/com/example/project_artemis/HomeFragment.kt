@@ -553,12 +553,12 @@ class HomeFragment : Fragment() {
                 val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
                 val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
-                oversllDataSet.setDrawValues(false)
+                oversllDataSet.setDrawValues(true)
                 oversllDataSet.color = Color.parseColor("#FF0000")
                 oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
-               buildingDataSet.setDrawValues(false)
+               buildingDataSet.setDrawValues(true)
                buildingDataSet.color = buildingthemeColor
                buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
@@ -824,12 +824,12 @@ class HomeFragment : Fragment() {
             val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
             val oversllDataSet = LineDataSet(overallLineData[buildingIndex], "Overall Generated Weight")
-            oversllDataSet.setDrawValues(false)
+            oversllDataSet.setDrawValues(true)
             oversllDataSet.color = Color.parseColor("#FF0000")
             oversllDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Generated Weight")
-            buildingDataSet.setDrawValues(false)
+            buildingDataSet.setDrawValues(true)
             buildingDataSet.color = buildingthemeColor
             buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
