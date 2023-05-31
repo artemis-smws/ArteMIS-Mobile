@@ -40,14 +40,25 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     private var buildingObject: String? = null
-    private var overallWeight: String? = null
+    private var current_average: Int? = null
+    private var overallWeight: Double? = null
+
     private var ceafaTotalWeight: Double? = null
-    private var cittoTalWeight: Double? = null
+    private var citTotalWeight: Double? = null
     private var cicsTotalWeight: Double? = null
     private var rgrTotalWeight: Double? = null
     private var steerHubTotalWeight: Double? = null
     private var gymnasiumTotalWeight: Double? = null
     private var sscTotalWeight: Double? = null
+
+    private var ceafaTotalWeight1: Double? = null
+    private var citTotalWeight1: Double? = null
+    private var cicsTotalWeigh1: Double? = null
+    private var rgrTotalWeight1: Double? = null
+    private var steerHubTotalWeight1: Double? = null
+    private var gymnasiumTotalWeight1: Double? = null
+    private var sscTotalWeight1: Double? = null
+
     private var cicsPercentage: Double? = null
     private var citPercentage: Double? = null
     private var ceafaPercentage: Double? = null
@@ -163,11 +174,18 @@ class HomeFragment : Fragment() {
                     val jsonArray = JSONArray(jsonData)
                     if (jsonArray.length() > 0) {
                         val jsonObject = jsonArray.getJSONObject(0)
-                        val overallWeight = jsonObject.getInt("current_average")
+                        val overallWeight: Int? = try {
+                            jsonObject.getInt("current_average")
+                        } catch (e: JSONException) {
+                            null
+                        }
+                        if (overallWeight != null) {
+                            current_average = overallWeight
+                        }
         
                         if (isAdded) {
                             requireActivity().runOnUiThread {
-                                binding.averageWeight.text = overallWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.averageWeight.text = current_average?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
                             }
                         }
                     }
@@ -234,24 +252,23 @@ class HomeFragment : Fragment() {
         val wasteGeneratedChart = binding.wasteGenChart
 
         val overallLineData: List<List<Entry>> = listOf(
-            //7th date                                                                                          current date
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, 9f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CEAFA
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CIT
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // RGR
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // Gym
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // STEER Hub
-            listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, overallWeight?.toFloat() ?: 0f))  // SSC
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CEAFA
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CIT
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CICS
+            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // RGR
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // Gym
+            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // STEER Hub
+            listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f))  // SSC
         )
 
        val buildingLineData: List<List<Entry>> = listOf(
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, 4f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
-           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)),  // CIT
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, 4f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
-           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, 8f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
-           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 7f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),  // Gym
-           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, 7f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
-           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, 4f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
+           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)),  // CIT
+           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, cicsTotalWeigh1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
+           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
+           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),  // Gym
+           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
+           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
        )
 //
 //        val recyclableLineData: List<List<Entry>> = listOf(
@@ -617,6 +634,9 @@ class HomeFragment : Fragment() {
                             .sortedByDescending { it.getJSONObject("createdAt").getLong("seconds") }
             
                         // Get the current date in the same format as "createdAt" field
+                        val calendar = Calendar.getInstance()
+                        calendar.add(Calendar.DAY_OF_YEAR, -1)
+                        val previousDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
                         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             
                         // Find the latest data with the current date
@@ -627,6 +647,7 @@ class HomeFragment : Fragment() {
                                 .format(Date(createdAt.getLong("seconds") * 1000))
             
                             if (createdAtDate == currentDate) {
+                                overallWeight = item.getDouble("overall_weight")
                                 val citData = item.optJSONObject("CIT")
                                 val ceafaData = item.optJSONObject("CEAFA")
                                 val cicsData = item.optJSONObject("CICS")
@@ -636,7 +657,6 @@ class HomeFragment : Fragment() {
                                 val rgrData = item.optJSONObject("RGR")
             
 
-                                overallWeight = item.getDouble("overall_weight")
                                 if (citData != null) {
                                     citTotalWeight = citData.getJSONObject("weight").getDouble("total")
                                 }
@@ -663,6 +683,53 @@ class HomeFragment : Fragment() {
             
                                 if (rgrData != null) {
                                     rgrTotalWeight = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate) {
+                                overallWeight = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight1 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeigh1 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight1 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight1 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight1 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight1 = rgrData.getJSONObject("weight").getDouble("total")
                                 }
             
                             }
