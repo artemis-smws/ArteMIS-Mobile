@@ -42,6 +42,12 @@ class HomeFragment : Fragment() {
     private var buildingObject: String? = null
     private var current_average: Int? = null
     private var overallWeight: Double? = null
+    private var overallWeight1: Double? = null
+    private var overallWeight2: Double? = null
+    private var overallWeight3: Double? = null
+    private var overallWeight4: Double? = null
+    private var overallWeight5: Double? = null
+    private var overallWeight6: Double? = null
 
     private var ceafaTotalWeight: Double? = null
     private var citTotalWeight: Double? = null
@@ -53,11 +59,51 @@ class HomeFragment : Fragment() {
 
     private var ceafaTotalWeight1: Double? = null
     private var citTotalWeight1: Double? = null
-    private var cicsTotalWeigh1: Double? = null
+    private var cicsTotalWeight1: Double? = null
     private var rgrTotalWeight1: Double? = null
     private var steerHubTotalWeight1: Double? = null
     private var gymnasiumTotalWeight1: Double? = null
     private var sscTotalWeight1: Double? = null
+
+    private var ceafaTotalWeight2: Double? = null
+    private var citTotalWeight2: Double? = null
+    private var cicsTotalWeight2: Double? = null
+    private var rgrTotalWeight2: Double? = null
+    private var steerHubTotalWeight2: Double? = null
+    private var gymnasiumTotalWeight2: Double? = null
+    private var sscTotalWeight2: Double? = null
+
+    private var ceafaTotalWeight3: Double? = null
+    private var citTotalWeight3: Double? = null
+    private var cicsTotalWeight3: Double? = null
+    private var rgrTotalWeight3: Double? = null
+    private var steerHubTotalWeight3: Double? = null
+    private var gymnasiumTotalWeight3: Double? = null
+    private var sscTotalWeight3: Double? = null
+
+    private var ceafaTotalWeight4: Double? = null
+    private var citTotalWeight4: Double? = null
+    private var cicsTotalWeight4: Double? = null
+    private var rgrTotalWeight4: Double? = null
+    private var steerHubTotalWeight4: Double? = null
+    private var gymnasiumTotalWeight4: Double? = null
+    private var sscTotalWeight4: Double? = null
+
+    private var ceafaTotalWeight5: Double? = null
+    private var citTotalWeight5: Double? = null
+    private var cicsTotalWeight5: Double? = null
+    private var rgrTotalWeight5: Double? = null
+    private var steerHubTotalWeight5: Double? = null
+    private var gymnasiumTotalWeight5: Double? = null
+    private var sscTotalWeight5: Double? = null
+
+    private var ceafaTotalWeight6: Double? = null
+    private var citTotalWeight6: Double? = null
+    private var cicsTotalWeight6: Double? = null
+    private var rgrTotalWeight6: Double? = null
+    private var steerHubTotalWeight6: Double? = null
+    private var gymnasiumTotalWeight6: Double? = null
+    private var sscTotalWeight6: Double? = null
 
     private var cicsPercentage: Double? = null
     private var citPercentage: Double? = null
@@ -252,23 +298,23 @@ class HomeFragment : Fragment() {
         val wasteGeneratedChart = binding.wasteGenChart
 
         val overallLineData: List<List<Entry>> = listOf(
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 7f), Entry(3f, 8f), Entry(4f, 7f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CEAFA
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CIT
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CICS
-            listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // RGR
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // Gym
-            listOf(Entry(0f, 7f), Entry(1f, 9f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // STEER Hub
-            listOf(Entry(0f, 4f), Entry(1f, 4f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, overallWeight?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f))  // SSC
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CEAFA
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)),  // CIT
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)), // CICS
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)), // RGR
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)), // Gym
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f)), // STEER Hub
+            listOf(Entry(0f, overallWeight6?.toFloat() ?: 0f), Entry(1f, overallWeight5?.toFloat() ?: 0f), Entry(2f, overallWeight4?.toFloat() ?: 0f), Entry(3f, overallWeight3?.toFloat() ?: 0f), Entry(4f, overallWeight2?.toFloat() ?: 0f), Entry(5f, overallWeight1?.toFloat() ?: 0f), Entry(6f, overallWeight?.toFloat() ?: 0f))  // SSC
         )
 
        val buildingLineData: List<List<Entry>> = listOf(
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 6f), Entry(3f, 5f), Entry(4f, 3f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
-           listOf(Entry(0f, 3f), Entry(1f, 6f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)),  // CIT
-           listOf(Entry(0f, 2f), Entry(1f, 4f), Entry(2f, 8f), Entry(3f, 6f), Entry(4f, 2f), Entry(5f, cicsTotalWeigh1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
-           listOf(Entry(0f, 5f), Entry(1f, 9f), Entry(2f, 6f), Entry(3f, 4f), Entry(4f, 7f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
-           listOf(Entry(0f, 4f), Entry(1f, 8f), Entry(2f, 2f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),  // Gym
-           listOf(Entry(0f, 6f), Entry(1f, 7f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 9f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
-           listOf(Entry(0f, 8f), Entry(1f, 6f), Entry(2f, 12f), Entry(3f, 3f), Entry(4f, 6f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
+           listOf(Entry(0f, ceafaTotalWeight6?.toFloat() ?: 0f), Entry(1f, ceafaTotalWeight5?.toFloat() ?: 0f), Entry(2f, ceafaTotalWeight4?.toFloat() ?: 0f), Entry(3f, ceafaTotalWeight3?.toFloat() ?: 0f), Entry(4f, ceafaTotalWeight2?.toFloat() ?: 0f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
+           listOf(Entry(0f, citTotalWeight6?.toFloat() ?: 0f), Entry(1f, citTotalWeight5?.toFloat() ?: 0f), Entry(2f, citTotalWeight4?.toFloat() ?: 0f), Entry(3f, citTotalWeight3?.toFloat() ?: 0f), Entry(4f, citTotalWeight2?.toFloat() ?: 0f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)), //CIT
+           listOf(Entry(0f, cicsTotalWeight6?.toFloat() ?: 0f), Entry(1f, cicsTotalWeight5?.toFloat() ?: 0f), Entry(2f, cicsTotalWeight4?.toFloat() ?: 0f), Entry(3f, cicsTotalWeight3?.toFloat() ?: 0f), Entry(4f, cicsTotalWeight2?.toFloat() ?: 0f), Entry(5f, cicsTotalWeight1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
+           listOf(Entry(0f, rgrTotalWeight6?.toFloat() ?: 0f), Entry(1f, rgrTotalWeight5?.toFloat() ?: 0f), Entry(2f, rgrTotalWeight4?.toFloat() ?: 0f), Entry(3f, rgrTotalWeight3?.toFloat() ?: 0f), Entry(4f, rgrTotalWeight2?.toFloat() ?: 0f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
+           listOf(Entry(0f, gymnasiumTotalWeight6?.toFloat() ?: 0f), Entry(1f, gymnasiumTotalWeight5?.toFloat() ?: 0f), Entry(2f, gymnasiumTotalWeight4?.toFloat() ?: 0f), Entry(3f, gymnasiumTotalWeight3?.toFloat() ?: 0f), Entry(4f, gymnasiumTotalWeight2?.toFloat() ?: 0f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),   // Gym
+           listOf(Entry(0f, steerHubTotalWeight6?.toFloat() ?: 0f), Entry(1f, steerHubTotalWeight5?.toFloat() ?: 0f), Entry(2f, steerHubTotalWeight4?.toFloat() ?: 0f), Entry(3f, steerHubTotalWeight3?.toFloat() ?: 0f), Entry(4f, steerHubTotalWeight2?.toFloat() ?: 0f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
+           listOf(Entry(0f, sscTotalWeight6?.toFloat() ?: 0f), Entry(1f, sscTotalWeight5?.toFloat() ?: 0f), Entry(2f, sscTotalWeight4?.toFloat() ?: 0f), Entry(3f, sscTotalWeight3?.toFloat() ?: 0f), Entry(4f, sscTotalWeight2?.toFloat() ?: 0f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
        )
 //
 //        val recyclableLineData: List<List<Entry>> = listOf(
@@ -636,6 +682,21 @@ class HomeFragment : Fragment() {
                         // Get the current date in the same format as "createdAt" field
                         val calendar = Calendar.getInstance()
                         calendar.add(Calendar.DAY_OF_YEAR, -1)
+                        val calendar2 = Calendar.getInstance()
+                        calendar2.add(Calendar.DAY_OF_YEAR, -2)
+                        val calendar3 = Calendar.getInstance()
+                        calendar3.add(Calendar.DAY_OF_YEAR, -3)
+                        val calendar4 = Calendar.getInstance()
+                        calendar4.add(Calendar.DAY_OF_YEAR, -4)
+                        val calendar5 = Calendar.getInstance()
+                        calendar5.add(Calendar.DAY_OF_YEAR, -5)
+                        val calendar6 = Calendar.getInstance()
+                        calendar6.add(Calendar.DAY_OF_YEAR, -6)
+                        val previousDate6 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar6.time)
+                        val previousDate5 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar5.time)
+                        val previousDate4 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar4.time)
+                        val previousDate3 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar3.time)
+                        val previousDate2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar2.time)
                         val previousDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
                         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             
@@ -694,7 +755,7 @@ class HomeFragment : Fragment() {
                                 .format(Date(createdAt.getLong("seconds") * 1000))
                         
                             if (createdAtDate == previousDate) {
-                                overallWeight = item.getDouble("overall_weight")
+                                overallWeight1 = item.getDouble("overall_weight")
                                 val citData = item.optJSONObject("CIT")
                                 val ceafaData = item.optJSONObject("CEAFA")
                                 val cicsData = item.optJSONObject("CICS")
@@ -705,7 +766,7 @@ class HomeFragment : Fragment() {
             
 
                                 if (citData != null) {
-                                    citTotalWeight = citData.getJSONObject("weight").getDouble("total")
+                                    citTotalWeight1 = citData.getJSONObject("weight").getDouble("total")
                                 }
             
                                 if (ceafaData != null) {
@@ -713,7 +774,7 @@ class HomeFragment : Fragment() {
                                 }
             
                                 if (cicsData != null) {
-                                    cicsTotalWeigh1 = cicsData.getJSONObject("weight").getDouble("total")
+                                    cicsTotalWeight1 = cicsData.getJSONObject("weight").getDouble("total")
                                 }
             
                                 if (steerHubData != null) {
@@ -730,6 +791,288 @@ class HomeFragment : Fragment() {
             
                                 if (rgrData != null) {
                                     rgrTotalWeight1 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate2) {
+                                overallWeight2 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight2 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight2 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight2 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight2 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight2 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight2 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight2 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate2) {
+                                overallWeight2 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight2 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight2 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight2 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight2 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight2 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight2 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight2 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate3) {
+                                overallWeight3 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight3 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight3 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight3 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight3 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight3 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight3 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight3 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate4) {
+                                overallWeight4 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight4 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight4 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight4 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight4 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight4 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight4 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight4 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate5) {
+                                overallWeight5 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight5 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight5 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight5 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight5 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight5 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight5 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight5 = rgrData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                            }
+                        }
+                        for (i in sortedArray.indices) {
+                            val item = sortedArray[i]
+                            val createdAt = item.getJSONObject("createdAt")
+                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(createdAt.getLong("seconds") * 1000))
+                        
+                            if (createdAtDate == previousDate6) {
+                                overallWeight6 = item.getDouble("overall_weight")
+                                val citData = item.optJSONObject("CIT")
+                                val ceafaData = item.optJSONObject("CEAFA")
+                                val cicsData = item.optJSONObject("CICS")
+                                val steerHubData = item.optJSONObject("STEER_Hub")
+                                val gymnasiumData = item.optJSONObject("Gymnasium")
+                                val sscData = item.optJSONObject("SSC")
+                                val rgrData = item.optJSONObject("RGR")
+            
+
+                                if (citData != null) {
+                                    citTotalWeight6 = citData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (ceafaData != null) {
+                                    ceafaTotalWeight6 = ceafaData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (cicsData != null) {
+                                    cicsTotalWeight6 = cicsData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (steerHubData != null) {
+                                    steerHubTotalWeight6 = steerHubData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (gymnasiumData != null) {
+                                    gymnasiumTotalWeight6 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (sscData != null) {
+                                    sscTotalWeight6 = sscData.getJSONObject("weight").getDouble("total")
+                                }
+            
+                                if (rgrData != null) {
+                                    rgrTotalWeight6 = rgrData.getJSONObject("weight").getDouble("total")
                                 }
             
                             }
