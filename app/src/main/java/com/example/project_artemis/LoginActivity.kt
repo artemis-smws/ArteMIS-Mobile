@@ -34,9 +34,19 @@ class LoginActivity : AppCompatActivity() {
     private var mIsShowPass = false
 
     private fun createIntent() {
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Signup Error")
+        builder.setMessage("Please enter a valid email address")
+        builder.setPositiveButton("OK") { dialog, which ->
+            binding.progressBar2.visibility = View.GONE
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+//        val intent = Intent(this, HomeActivity::class.java)
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//        startActivity(intent)
     }
 
     private fun createIntentGuest() {

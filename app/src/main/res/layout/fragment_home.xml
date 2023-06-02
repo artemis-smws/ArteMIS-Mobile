@@ -447,7 +447,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/rankingPerBuilding"
+                                android:text="@string/wasteGenPerBuilding"
                                 android:textStyle="bold"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:textSize="15sp"
@@ -465,13 +465,13 @@
                                         android:layout_marginTop="5dp"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="1. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="1. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
@@ -499,18 +499,18 @@
                                         android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="2. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="2. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="CEAFA"
+                                            android:text="CEAFA Building"
                                             android:layout_weight="0.1"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -533,18 +533,18 @@
                                         android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="3. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="3. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="CICS"
+                                            android:text="CICS Building"
                                             android:layout_weight="0.1"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -567,18 +567,18 @@
                                         android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="4. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="4. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="CIT"
+                                            android:text="CIT Building"
                                             android:layout_weight="0.1"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -601,18 +601,18 @@
                                         android:layout_marginBottom="5dp"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="5. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="5. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="SSC"
+                                            android:text="SSC Building"
                                             android:layout_weight="0.1"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -635,18 +635,18 @@
                                         android:layout_height="wrap_content"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="6. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="6. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="RGR"
+                                            android:text="RGR Building"
                                             android:layout_weight="0.1"
                                             android:textColor="?attr/colorOnSecondary"
                                             android:textSize="15sp"
@@ -668,13 +668,13 @@
                                         android:layout_height="wrap_content"
                                         android:orientation="horizontal">
 
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="7. "
-                                            android:textColor="?attr/colorOnSecondary"
-                                            android:textSize="15sp"
-                                            />
+<!--                                    <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="7. "-->
+<!--                                            android:textColor="?attr/colorOnSecondary"-->
+<!--                                            android:textSize="15sp"-->
+<!--                                            />-->
 
                                     <TextView
                                             android:layout_width="wrap_content"
