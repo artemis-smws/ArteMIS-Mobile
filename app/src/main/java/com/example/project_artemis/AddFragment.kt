@@ -314,9 +314,9 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton")
-                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
-                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
+                                                            recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
                                                             foodweight = weightObject?.optDouble("food_waste")
                                                             totalweight = weightObject?.optDouble("total")
@@ -484,9 +484,9 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton")
-                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
-                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
+                                                            recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
                                                             foodweight = weightObject?.optDouble("food_waste")
                                                             totalweight = weightObject?.optDouble("total")
@@ -809,9 +809,9 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton")
-                                                            recyclablebottle = recyclableObject?.optDouble("bottle")
-                                                            recyclablepaper = recyclableObject?.optDouble("paper")
+                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
+                                                            recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
                                                             foodweight = weightObject?.optDouble("food_waste")
                                                             totalweight = weightObject?.optDouble("total")
