@@ -209,7 +209,7 @@
                                 <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:elevation="2dp"
+                                        android:elevation="4dp"
                                         android:id="@+id/highestWeight"
                                         android:text="0 kg"
                                         android:layout_marginTop="-5dp"
@@ -261,7 +261,7 @@
                                 <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:elevation="2dp"
+                                        android:elevation="4dp"
                                         android:text="0 kg"
                                         android:id="@+id/lowestWeight"
                                         android:textSize="14sp"
@@ -276,32 +276,32 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/darkred_container"
-                                android:orientation="horizontal"
+                                android:orientation="vertical"
                                 android:gravity="center"
                                 android:layout_weight="0.3"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="5dp"
                         >
-                            <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_marginTop="3dp"
-                                    android:layout_height="45dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/trash_average"
-                                    />
-
                             <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:elegantTextHeight="true"
-                                    android:elevation="2dp"
                                     android:text="0 kg"
-                                    android:textSize="23sp"
+                                    android:textSize="20sp"
                                         android:id="@+id/averageWeight"
                                     android:textStyle="bold"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/white"
                                     tools:ignore="RtlCompat" />
+
+                            <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="23dp"
+                                    android:layout_marginTop="-5dp"
+                                    android:elevation="3dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/trash_average"
+                                    />
 
                         </LinearLayout>
 
