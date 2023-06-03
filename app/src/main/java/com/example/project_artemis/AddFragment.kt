@@ -324,6 +324,18 @@ class AddFragment : Fragment() {
                                                     }
                                                     val building = buildingName
                                                     val campus = campusName
+
+                                                    // Check if any of the fields (cardboard, paper, bottle) are null
+                                                    if (recyclablecardboard == null) {
+                                                        recyclablecardboard = 0.0
+                                                    }
+                                                    if (recyclablepaper == null) {
+                                                        recyclablepaper = 0.0
+                                                    }
+                                                    if (recyclablebottle == null) {
+                                                        recyclablebottle = 0.0
+                                                    }
+                                                    
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
@@ -495,6 +507,18 @@ class AddFragment : Fragment() {
                                                     val building = buildingName
                                                     val campus = campusName
                                                     val name = selectedName
+
+                                                    // Check if any of the fields (cardboard, paper, bottle) are null
+                                                    if (recyclablecardboard == null) {
+                                                        recyclablecardboard = 0.0
+                                                    }
+                                                    if (recyclablepaper == null) {
+                                                        recyclablepaper = 0.0
+                                                    }
+                                                    if (recyclablebottle == null) {
+                                                        recyclablebottle = 0.0
+                                                    }
+                                                    
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
@@ -819,6 +843,18 @@ class AddFragment : Fragment() {
                                                     }
                                                     val building = buildingName
                                                     val campus = campusName
+
+                                                    // Check if any of the fields (cardboard, paper, bottle) are null
+                                                    if (recyclablecardboard == null) {
+                                                        recyclablecardboard = 0.0
+                                                    }
+                                                    if (recyclablepaper == null) {
+                                                        recyclablepaper = 0.0
+                                                    }
+                                                    if (recyclablebottle == null) {
+                                                        recyclablebottle = 0.0
+                                                    }
+                                                    
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
