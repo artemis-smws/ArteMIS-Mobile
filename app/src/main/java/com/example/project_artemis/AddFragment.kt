@@ -34,7 +34,7 @@ class AddFragment : Fragment() {
     private var foodweight: Double? = null
     private var totalweight: Double? = null
     private var recyclablebottle: Double? = null
-    private var recyclablekarton: Double? = null
+    private var recyclablecardboard: Double? = null
     private var recyclablepaper: Double? = null
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -198,7 +198,7 @@ class AddFragment : Fragment() {
                                 val recyclableName = listOf(
                                     "bottle",
                                     "paper",
-                                    "karton"
+                                    "cardboard"
                                 )
                                 val adapterName = ArrayAdapter(
                                     requireContext(),
@@ -314,7 +314,7 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablecardboard = recyclableObject?.optDouble("cardboard") ?: 0.0
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
@@ -326,9 +326,9 @@ class AddFragment : Fragment() {
                                                     val campus = campusName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
-                                                    val paper = recyclablepaper ?: 0.0
+                                                    val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
-                                                    val karton = recyclablekarton ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
@@ -356,7 +356,7 @@ class AddFragment : Fragment() {
                                                                 put("residual", residual + weight)
                                                                 put("recyclable", JSONObject().apply {
                                                                     put("total", recyclable)
-                                                                    put("karton", karton)
+                                                                    put("cardboard", cardboard)
                                                                     put("bottle", bottle)
                                                                     put("paper", paper)
                                                                 })
@@ -484,7 +484,7 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablecardboard = recyclableObject?.optDouble("cardboard") ?: 0.0
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
@@ -497,9 +497,9 @@ class AddFragment : Fragment() {
                                                     val name = selectedName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
-                                                    val paper = recyclablepaper ?: 0.0
+                                                    val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
-                                                    val karton = recyclablekarton ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
@@ -527,23 +527,23 @@ class AddFragment : Fragment() {
                                                                 put("residual", residual)
                                                                 put("recyclable", JSONObject().apply {
                                                                     when (name) {
-                                                                        "karton" -> {
+                                                                        "cardboard" -> {
                                                                             put("total", recyclable + weight)
-                                                                            put("karton", karton + weight)
+                                                                            put("cardboard", cardboard!! + weight)
                                                                             put("bottle", bottle)
                                                                             put("paper", paper)
                                                                         }
                                                                         "bottle" -> {
                                                                             put("total", recyclable + weight)
-                                                                            put("karton", karton)
-                                                                            put("bottle", bottle + weight)
+                                                                            put("cardboard", cardboard)
+                                                                            put("bottle", bottle!! + weight)
                                                                             put("paper", paper)
                                                                         }
                                                                         "paper" -> {
                                                                             put("total", recyclable + weight)
-                                                                            put("karton", karton)
+                                                                            put("cardboard", cardboard)
                                                                             put("bottle", bottle)
-                                                                            put("paper", paper + weight)
+                                                                            put("paper", paper!! + weight)
                                                                         }
                                                                     }
                                                                 })
@@ -809,7 +809,7 @@ class AddFragment : Fragment() {
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
-                                                            recyclablekarton = recyclableObject?.optDouble("karton") ?: 0.0
+                                                            recyclablecardboard = recyclableObject?.optDouble("cardboard") ?: 0.0
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
@@ -821,9 +821,9 @@ class AddFragment : Fragment() {
                                                     val campus = campusName
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
-                                                    val paper = recyclablepaper ?: 0.0
+                                                    val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
-                                                    val karton = recyclablekarton ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val id = todayId
@@ -851,7 +851,7 @@ class AddFragment : Fragment() {
                                                                 put("residual", residual)
                                                                 put("recyclable", JSONObject().apply {
                                                                     put("total", recyclable)
-                                                                    put("karton", karton)
+                                                                    put("cardboard", cardboard)
                                                                     put("bottle", bottle)
                                                                     put("paper", paper)
                                                                 })
