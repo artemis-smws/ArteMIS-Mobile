@@ -467,17 +467,17 @@ class HomeFragment : Fragment() {
 
         val wasteGeneratedChart = binding.wasteGenChart
 
-       val buildingLineData: List<List<Entry>> = listOf(
-           listOf(Entry(0f, ceafaTotalWeight6?.toFloat() ?: 0f), Entry(1f, ceafaTotalWeight5?.toFloat() ?: 0f), Entry(2f, ceafaTotalWeight4?.toFloat() ?: 0f), Entry(3f, ceafaTotalWeight3?.toFloat() ?: 0f), Entry(4f, ceafaTotalWeight2?.toFloat() ?: 0f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
-           listOf(Entry(0f, citTotalWeight6?.toFloat() ?: 0f), Entry(1f, citTotalWeight5?.toFloat() ?: 0f), Entry(2f, citTotalWeight4?.toFloat() ?: 0f), Entry(3f, citTotalWeight3?.toFloat() ?: 0f), Entry(4f, citTotalWeight2?.toFloat() ?: 0f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)), //CIT
-           listOf(Entry(0f, cicsTotalWeight6?.toFloat() ?: 0f), Entry(1f, cicsTotalWeight5?.toFloat() ?: 0f), Entry(2f, cicsTotalWeight4?.toFloat() ?: 0f), Entry(3f, cicsTotalWeight3?.toFloat() ?: 0f), Entry(4f, cicsTotalWeight2?.toFloat() ?: 0f), Entry(5f, cicsTotalWeight1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
-           listOf(Entry(0f, rgrTotalWeight6?.toFloat() ?: 0f), Entry(1f, rgrTotalWeight5?.toFloat() ?: 0f), Entry(2f, rgrTotalWeight4?.toFloat() ?: 0f), Entry(3f, rgrTotalWeight3?.toFloat() ?: 0f), Entry(4f, rgrTotalWeight2?.toFloat() ?: 0f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
-           listOf(Entry(0f, gymnasiumTotalWeight6?.toFloat() ?: 0f), Entry(1f, gymnasiumTotalWeight5?.toFloat() ?: 0f), Entry(2f, gymnasiumTotalWeight4?.toFloat() ?: 0f), Entry(3f, gymnasiumTotalWeight3?.toFloat() ?: 0f), Entry(4f, gymnasiumTotalWeight2?.toFloat() ?: 0f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),   // Gym
-           listOf(Entry(0f, steerHubTotalWeight6?.toFloat() ?: 0f), Entry(1f, steerHubTotalWeight5?.toFloat() ?: 0f), Entry(2f, steerHubTotalWeight4?.toFloat() ?: 0f), Entry(3f, steerHubTotalWeight3?.toFloat() ?: 0f), Entry(4f, steerHubTotalWeight2?.toFloat() ?: 0f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
-           listOf(Entry(0f, sscTotalWeight6?.toFloat() ?: 0f), Entry(1f, sscTotalWeight5?.toFloat() ?: 0f), Entry(2f, sscTotalWeight4?.toFloat() ?: 0f), Entry(3f, sscTotalWeight3?.toFloat() ?: 0f), Entry(4f, sscTotalWeight2?.toFloat() ?: 0f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
-       )
+        val buildingLineData: List<List<Entry>> = listOf(
+            listOf(Entry(0f, ceafaTotalWeight6?.toFloat() ?: 0f), Entry(1f, ceafaTotalWeight5?.toFloat() ?: 0f), Entry(2f, ceafaTotalWeight4?.toFloat() ?: 0f), Entry(3f, ceafaTotalWeight3?.toFloat() ?: 0f), Entry(4f, ceafaTotalWeight2?.toFloat() ?: 0f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
+            listOf(Entry(0f, citTotalWeight6?.toFloat() ?: 0f), Entry(1f, citTotalWeight5?.toFloat() ?: 0f), Entry(2f, citTotalWeight4?.toFloat() ?: 0f), Entry(3f, citTotalWeight3?.toFloat() ?: 0f), Entry(4f, citTotalWeight2?.toFloat() ?: 0f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)), //CIT
+            listOf(Entry(0f, cicsTotalWeight6?.toFloat() ?: 0f), Entry(1f, cicsTotalWeight5?.toFloat() ?: 0f), Entry(2f, cicsTotalWeight4?.toFloat() ?: 0f), Entry(3f, cicsTotalWeight3?.toFloat() ?: 0f), Entry(4f, cicsTotalWeight2?.toFloat() ?: 0f), Entry(5f, cicsTotalWeight1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
+            listOf(Entry(0f, rgrTotalWeight6?.toFloat() ?: 0f), Entry(1f, rgrTotalWeight5?.toFloat() ?: 0f), Entry(2f, rgrTotalWeight4?.toFloat() ?: 0f), Entry(3f, rgrTotalWeight3?.toFloat() ?: 0f), Entry(4f, rgrTotalWeight2?.toFloat() ?: 0f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
+            listOf(Entry(0f, gymnasiumTotalWeight6?.toFloat() ?: 0f), Entry(1f, gymnasiumTotalWeight5?.toFloat() ?: 0f), Entry(2f, gymnasiumTotalWeight4?.toFloat() ?: 0f), Entry(3f, gymnasiumTotalWeight3?.toFloat() ?: 0f), Entry(4f, gymnasiumTotalWeight2?.toFloat() ?: 0f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),   // Gym
+            listOf(Entry(0f, steerHubTotalWeight6?.toFloat() ?: 0f), Entry(1f, steerHubTotalWeight5?.toFloat() ?: 0f), Entry(2f, steerHubTotalWeight4?.toFloat() ?: 0f), Entry(3f, steerHubTotalWeight3?.toFloat() ?: 0f), Entry(4f, steerHubTotalWeight2?.toFloat() ?: 0f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
+            listOf(Entry(0f, sscTotalWeight6?.toFloat() ?: 0f), Entry(1f, sscTotalWeight5?.toFloat() ?: 0f), Entry(2f, sscTotalWeight4?.toFloat() ?: 0f), Entry(3f, sscTotalWeight3?.toFloat() ?: 0f), Entry(4f, sscTotalWeight2?.toFloat() ?: 0f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
+        )
 
-       val residualLineData: List<List<Entry>> = listOf(
+        val residualLineData: List<List<Entry>> = listOf(
             listOf(Entry(0f, ceafaresidualWeight6?.toFloat() ?: 0f), Entry(1f, ceafaresidualWeight5?.toFloat() ?: 0f), Entry(2f, ceafaresidualWeight4?.toFloat() ?: 0f), Entry(3f, ceafaresidualWeight3?.toFloat() ?: 0f), Entry(4f, ceafaresidualWeight2?.toFloat() ?: 0f), Entry(5f, ceafaresidualWeight1?.toFloat() ?: 0f), Entry(6f, ceafaresidualWeight?.toFloat() ?: 0f)),  // CEAFA
             listOf(Entry(0f, citresidualWeight6?.toFloat() ?: 0f), Entry(1f, citresidualWeight5?.toFloat() ?: 0f), Entry(2f, citresidualWeight4?.toFloat() ?: 0f), Entry(3f, citresidualWeight3?.toFloat() ?: 0f), Entry(4f, citresidualWeight2?.toFloat() ?: 0f), Entry(5f, citresidualWeight1?.toFloat() ?: 0f), Entry(6f, citresidualWeight?.toFloat() ?: 0f)), //CIT
             listOf(Entry(0f, cicsresidualWeight6?.toFloat() ?: 0f), Entry(1f, cicsresidualWeight5?.toFloat() ?: 0f), Entry(2f, cicsresidualWeight4?.toFloat() ?: 0f), Entry(3f, cicsresidualWeight3?.toFloat() ?: 0f), Entry(4f, cicsresidualWeight2?.toFloat() ?: 0f), Entry(5f, cicsresidualWeight1?.toFloat() ?: 0f), Entry(6f, cicsresidualWeight?.toFloat() ?: 0f)),  // CICS
@@ -529,7 +529,8 @@ class HomeFragment : Fragment() {
 
         val wasteCompPieChart = binding.wasteCompChart
 
-        // setupPieChart(wasteCompPieChart, itemsBuilding[0])
+        val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
 
         // Waste Composition per Building Chart
 
@@ -1057,6 +1058,12 @@ class HomeFragment : Fragment() {
     
                     }
                 }
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+                        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                    }
+                }
             }
         })
 
@@ -1229,6 +1236,104 @@ class HomeFragment : Fragment() {
                 id: Long
             ) {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+
+                val ceafarecyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
+                val ceafaresidualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
+                val ceafafoodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
+                val citrecyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
+                val citresidualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
+                val citfoodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
+                val cicsrecyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
+                val cicsresidualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
+                val cicsfoodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
+                val rgrrecyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
+                val rgrresidualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
+                val rgrfoodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
+                val steerHubrecyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
+                val steerHubresidualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
+                val steerHubfoodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
+                val sscrecyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
+                val sscresidualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
+                val sscfoodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
+                val gymnasiumrecyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
+                val gymnasiumresidualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
+                val gymnasiumfoodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
+
+                when (selectedBuilding) {
+                    "CEAFA Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = ceafaresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = ceafafoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = ceafarecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "CIT Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = citresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = citfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = citrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "CICS Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = cicsresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = cicsfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = cicsrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "RGR Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = rgrresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = rgrfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = rgrrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "Gymnasium" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = gymnasiumresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = gymnasiumfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = gymnasiumrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "STEER Hub" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = steerHubresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = steerHubfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = steerHubrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "Student Services Center" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = sscresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = sscfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = sscrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    else -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = ceafaresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = ceafafoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = ceafarecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                }
+
                 buildingObject = when (selectedBuilding) {
                     "CEAFA Building" -> "CEAFA"
                     "CIT Building" -> "CIT"
@@ -1400,88 +1505,17 @@ class HomeFragment : Fragment() {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
                 val selectedTime = binding.timeSpinner.selectedItem.toString()
 
-                val ceafa_recyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
-                val ceafa_residualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
-                val ceafa_foodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
-                val cit_recyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
-                val cit_residualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
-                val cit_foodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
-                val cics_recyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
-                val cics_residualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
-                val cics_foodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
-                val rgr_recyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
-                val rgr_residualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
-                val rgr_foodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
-                val steerHub_recyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
-                val steerHub_residualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
-                val steerHub_foodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
-                val ssc_recyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
-                val ssc_residualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
-                val ssc_foodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
-                val gymnasium_recyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
-                val gymnasium_residualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
-                val gymnasium_foodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
-
-                when (selectedBuilding) {
-                    "CEAFA Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = ceafa_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = ceafa_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = ceafa_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "CIT Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = cit_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = cit_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = cit_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "CICS Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = cics_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = cics_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = cics_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "RGR Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = rgr_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = rgr_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = rgr_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "Gymnasium" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = gymnasium_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = gymnasium_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = gymnasium_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "STEER Hub" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = steerHub_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = steerHub_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = steerHub_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "Student Services Center" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = ssc_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = ssc_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = ssc_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                }
                 when (selectedTime) {
                     "7 days" -> {
                         requireActivity().runOnUiThread {
                             setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
                         }
                     }
                     "30 days" -> {
                         requireActivity().runOnUiThread {
                             setupPieChartL30days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
                         }
                     }
                     "Last year" -> {
@@ -1656,69 +1690,69 @@ class HomeFragment : Fragment() {
 
         val entries: MutableList<PieEntry> = ArrayList()
 
-        val ceafa_recyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
-        val ceafa_residualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
-        val ceafa_foodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
-        val cit_recyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
-        val cit_residualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
-        val cit_foodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
-        val cics_recyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
-        val cics_residualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
-        val cics_foodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
-        val rgr_recyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
-        val rgr_residualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
-        val rgr_foodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
-        val steerHub_recyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
-        val steerHub_residualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
-        val steerHub_foodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
-        val ssc_recyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
-        val ssc_residualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
-        val ssc_foodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
-        val gymnasium_recyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
-        val gymnasium_residualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
-        val gymnasium_foodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
+        val ceafarecyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
+        val ceafaresidualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
+        val ceafafoodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
+        val citrecyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
+        val citresidualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
+        val citfoodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
+        val cicsrecyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
+        val cicsresidualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
+        val cicsfoodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
+        val rgrrecyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
+        val rgrresidualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
+        val rgrfoodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
+        val steerHubrecyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
+        val steerHubresidualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
+        val steerHubfoodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
+        val sscrecyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
+        val sscresidualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
+        val sscfoodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
+        val gymnasiumrecyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
+        val gymnasiumresidualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
+        val gymnasiumfoodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
 
         when (building) {
             "CEAFA Building" -> {
-                entries.add(PieEntry(ceafa_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(ceafa_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(ceafa_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(ceafarecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(ceafaresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(ceafafoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "CIT Building" -> {
-                entries.add(PieEntry(cit_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(cit_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(cit_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(citrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(citresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(citfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "CICS Building" -> {
-                entries.add(PieEntry(cics_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(cics_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(cics_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(cicsrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(cicsresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(cicsfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "RGR Building" -> {
-                entries.add(PieEntry(rgr_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(rgr_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(rgr_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(rgrrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(rgrresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(rgrfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
-                entries.add(PieEntry(gymnasium_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(gymnasium_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(gymnasium_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(gymnasiumrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(gymnasiumresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(gymnasiumfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
-                entries.add(PieEntry(steerHub_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(steerHub_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(steerHub_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(steerHubrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(steerHubresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(steerHubfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
-                entries.add(PieEntry(ssc_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(ssc_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(ssc_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(sscrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(sscresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(sscfoodtotal?.toFloat() ?: 0f, "Food Waste"))
                 pieChart.invalidate()
             }
         }
@@ -1760,6 +1794,7 @@ class HomeFragment : Fragment() {
             setDrawEntryLabels(false)
             rotationAngle = 0f
             animateY(1000)
+            pieChart.data = data
         }
 
         pieChart.data = data
@@ -1864,6 +1899,7 @@ class HomeFragment : Fragment() {
             setDrawEntryLabels(false)
             rotationAngle = 0f
             animateY(1000)
+            pieChart.data = data
         }
 
         pieChart.data = data
