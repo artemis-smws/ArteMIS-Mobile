@@ -529,9 +529,11 @@ class HomeFragment : Fragment() {
 
         val wasteCompPieChart = binding.wasteCompChart
 
-        val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
-        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
-
+        val selectedBuilding = binding.buildingSpinner.selectedItem?.toString()
+        if (selectedBuilding != null) {
+            setupPieChartL7days(wasteCompPieChart, selectedBuilding)
+        }
+        
         // Waste Composition per Building Chart
 
         val wasteCompPieChartperBuilding = binding.wasteCompChartperBuilding
@@ -1060,8 +1062,10 @@ class HomeFragment : Fragment() {
                 }
                 if (isAdded) {
                     requireActivity().runOnUiThread {
-                        val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
-                        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        val selectedBuilding = binding.buildingSpinner.selectedItem?.toString()
+                        if (selectedBuilding != null) {
+                            setupPieChartL7days(wasteCompPieChart, selectedBuilding)
+                        }
                     }
                 }
             }
