@@ -528,11 +528,6 @@ class HomeFragment : Fragment() {
         // Waste Composition Chart
 
         val wasteCompPieChart = binding.wasteCompChart
-
-        val selectedBuilding = binding.buildingSpinner.selectedItem?.toString()
-        if (selectedBuilding != null) {
-            setupPieChartL7days(wasteCompPieChart, selectedBuilding)
-        }
         
         // Waste Composition per Building Chart
 
@@ -1607,6 +1602,30 @@ class HomeFragment : Fragment() {
             wasteGeneratedChart.invalidate()
 
 
+            val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+            val selectedTime = binding.timeSpinner.selectedItem.toString()
+
+            when (selectedTime) {
+                "7 days" -> {
+                    requireActivity().runOnUiThread {
+                        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+                "30 days" -> {
+                    requireActivity().runOnUiThread {
+                        setupPieChartL30days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+                "Last year" -> {
+                    requireActivity().runOnUiThread {
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+
+            }
+
             swipeRefreshLayout.isRefreshing = false
         }
 
@@ -1715,47 +1734,62 @@ class HomeFragment : Fragment() {
         val gymnasiumresidualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
         val gymnasiumfoodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
 
+        val ceafaTotal7days = calculateTotalWeight(ceafaTotalWeight, ceafaTotalWeight1, ceafaTotalWeight2, ceafaTotalWeight3, ceafaTotalWeight4, ceafaTotalWeight5, ceafaTotalWeight6)
+        val citTotal7days = calculateTotalWeight(citTotalWeight, citTotalWeight1, citTotalWeight2, citTotalWeight3, citTotalWeight4, citTotalWeight5, citTotalWeight6)
+        val cicsTotal7days = calculateTotalWeight(cicsTotalWeight, cicsTotalWeight1, cicsTotalWeight2, cicsTotalWeight3, cicsTotalWeight4, cicsTotalWeight5, cicsTotalWeight6)
+        val rgrTotal7days = calculateTotalWeight(rgrTotalWeight, rgrTotalWeight1, rgrTotalWeight2, rgrTotalWeight3, rgrTotalWeight4, rgrTotalWeight5, rgrTotalWeight6)
+        val gymnasiumTotal7days = calculateTotalWeight(gymnasiumTotalWeight, gymnasiumTotalWeight1, gymnasiumTotalWeight2, gymnasiumTotalWeight3, gymnasiumTotalWeight4, gymnasiumTotalWeight5, gymnasiumTotalWeight6)
+        val steerHubTotal7days = calculateTotalWeight(steerHubTotalWeight, steerHubTotalWeight1, steerHubTotalWeight2, steerHubTotalWeight3, steerHubTotalWeight4, steerHubTotalWeight5, steerHubTotalWeight6)
+        val sscTotal7days = calculateTotalWeight(sscTotalWeight, sscTotalWeight1, sscTotalWeight2, sscTotalWeight3, sscTotalWeight4, sscTotalWeight5, sscTotalWeight6)
+
         when (building) {
             "CEAFA Building" -> {
                 entries.add(PieEntry(ceafarecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(ceafaresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(ceafafoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $ceafaTotal7days kg"
                 pieChart.invalidate()
             }
             "CIT Building" -> {
                 entries.add(PieEntry(citrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(citresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(citfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $citTotal7days kg"
                 pieChart.invalidate()
             }
             "CICS Building" -> {
                 entries.add(PieEntry(cicsrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(cicsresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(cicsfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $cicsTotal7days kg"
                 pieChart.invalidate()
             }
             "RGR Building" -> {
                 entries.add(PieEntry(rgrrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(rgrresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(rgrfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $rgrTotal7days kg"
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
                 entries.add(PieEntry(gymnasiumrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(gymnasiumresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(gymnasiumfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $gymnasiumTotal7days kg"
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
                 entries.add(PieEntry(steerHubrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(steerHubresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(steerHubfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $steerHubTotal7days kg"
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
                 entries.add(PieEntry(sscrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(sscresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(sscfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $sscTotal7days kg"
                 pieChart.invalidate()
             }
         }
@@ -1782,7 +1816,6 @@ class HomeFragment : Fragment() {
         pieChart.apply {
             setUsePercentValues(true)
             description.isEnabled = true
-            description.text = "gg"
             description.textColor = themeColor
             legend.isEnabled = true
             setHoleColor(themeColor2)
