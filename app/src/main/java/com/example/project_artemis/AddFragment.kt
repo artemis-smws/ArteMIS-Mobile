@@ -324,18 +324,17 @@ class AddFragment : Fragment() {
                                                     }
                                                     val building = buildingName
                                                     val campus = campusName
-
-                                                    // Check if any of the fields (cardboard, paper, bottle) are null
-                                                    if (recyclablecardboard == null) {
+                                                    
+                                                    if (recyclablecardboard == null || recyclablecardboard!!.isNaN()) {
                                                         recyclablecardboard = 0.0
                                                     }
-                                                    if (recyclablepaper == null) {
+                                                    if (recyclablepaper == null || recyclablepaper!!.isNaN()) {
                                                         recyclablepaper = 0.0
                                                     }
-                                                    if (recyclablebottle == null) {
+                                                    if (recyclablebottle == null || recyclablebottle!!.isNaN()) {
                                                         recyclablebottle = 0.0
                                                     }
-                                                    
+
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
@@ -508,17 +507,16 @@ class AddFragment : Fragment() {
                                                     val campus = campusName
                                                     val name = selectedName
 
-                                                    // Check if any of the fields (cardboard, paper, bottle) are null
-                                                    if (recyclablecardboard == null) {
+                                                    if (recyclablecardboard == null || recyclablecardboard!!.isNaN()) {
                                                         recyclablecardboard = 0.0
                                                     }
-                                                    if (recyclablepaper == null) {
+                                                    if (recyclablepaper == null || recyclablepaper!!.isNaN()) {
                                                         recyclablepaper = 0.0
                                                     }
-                                                    if (recyclablebottle == null) {
+                                                    if (recyclablebottle == null || recyclablebottle!!.isNaN()) {
                                                         recyclablebottle = 0.0
                                                     }
-                                                    
+
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
@@ -844,17 +842,16 @@ class AddFragment : Fragment() {
                                                     val building = buildingName
                                                     val campus = campusName
 
-                                                    // Check if any of the fields (cardboard, paper, bottle) are null
-                                                    if (recyclablecardboard == null) {
+                                                    if (recyclablecardboard == null || recyclablecardboard!!.isNaN()) {
                                                         recyclablecardboard = 0.0
                                                     }
-                                                    if (recyclablepaper == null) {
+                                                    if (recyclablepaper == null || recyclablepaper!!.isNaN()) {
                                                         recyclablepaper = 0.0
                                                     }
-                                                    if (recyclablebottle == null) {
+                                                    if (recyclablebottle == null || recyclablebottle!!.isNaN()) {
                                                         recyclablebottle = 0.0
                                                     }
-                                                    
+
                                                     val residual = residualweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
@@ -979,6 +976,13 @@ class AddFragment : Fragment() {
                     binding.quantityEditText.setText("")
                     binding.amountEditText.setText("")
                 }
+
+                // private fun handleNaN(value: Double?): Double? {
+                //     if (value != null && value.isNaN()) {
+                //         return 0.0
+                //     }
+                //     return value
+                // }
 
             }
 

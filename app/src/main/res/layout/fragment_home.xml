@@ -79,6 +79,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginStart="40dp"
+                            android:layout_marginTop="2dp"
                             android:layout_marginEnd="40dp"
                             android:orientation="vertical"
                             >
@@ -297,7 +298,7 @@
                             <ImageView
                                     android:layout_width="30dp"
                                     android:layout_height="23dp"
-                                    android:layout_marginTop="-5dp"
+                                    android:layout_marginTop="-3dp"
                                     android:elevation="3dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/trash_average"

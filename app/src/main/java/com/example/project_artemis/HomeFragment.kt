@@ -276,28 +276,6 @@ class HomeFragment : Fragment() {
     private var gymnasiumTotalWeight6: Double? = null
     private var sscTotalWeight6: Double? = null
 
-    private val ceafa_recyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
-    private val ceafa_residualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
-    private val ceafa_foodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
-    private val cit_recyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
-    private val cit_residualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
-    private val cit_foodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
-    private val cics_recyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
-    private val cics_residualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
-    private val cics_foodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
-    private val rgr_recyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
-    private val rgr_residualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
-    private val rgr_foodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
-    private val steerHub_recyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
-    private val steerHub_residualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
-    private val steerHub_foodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
-    private val ssc_recyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
-    private val ssc_residualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
-    private val ssc_foodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
-    private val gymnasium_recyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
-    private val gymnasium_residualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
-    private val gymnasium_foodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
-
     private var cicsPercentage: Double? = null
     private var citPercentage: Double? = null
     private var ceafaPercentage: Double? = null
@@ -489,17 +467,17 @@ class HomeFragment : Fragment() {
 
         val wasteGeneratedChart = binding.wasteGenChart
 
-       val buildingLineData: List<List<Entry>> = listOf(
-           listOf(Entry(0f, ceafaTotalWeight6?.toFloat() ?: 0f), Entry(1f, ceafaTotalWeight5?.toFloat() ?: 0f), Entry(2f, ceafaTotalWeight4?.toFloat() ?: 0f), Entry(3f, ceafaTotalWeight3?.toFloat() ?: 0f), Entry(4f, ceafaTotalWeight2?.toFloat() ?: 0f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
-           listOf(Entry(0f, citTotalWeight6?.toFloat() ?: 0f), Entry(1f, citTotalWeight5?.toFloat() ?: 0f), Entry(2f, citTotalWeight4?.toFloat() ?: 0f), Entry(3f, citTotalWeight3?.toFloat() ?: 0f), Entry(4f, citTotalWeight2?.toFloat() ?: 0f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)), //CIT
-           listOf(Entry(0f, cicsTotalWeight6?.toFloat() ?: 0f), Entry(1f, cicsTotalWeight5?.toFloat() ?: 0f), Entry(2f, cicsTotalWeight4?.toFloat() ?: 0f), Entry(3f, cicsTotalWeight3?.toFloat() ?: 0f), Entry(4f, cicsTotalWeight2?.toFloat() ?: 0f), Entry(5f, cicsTotalWeight1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
-           listOf(Entry(0f, rgrTotalWeight6?.toFloat() ?: 0f), Entry(1f, rgrTotalWeight5?.toFloat() ?: 0f), Entry(2f, rgrTotalWeight4?.toFloat() ?: 0f), Entry(3f, rgrTotalWeight3?.toFloat() ?: 0f), Entry(4f, rgrTotalWeight2?.toFloat() ?: 0f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
-           listOf(Entry(0f, gymnasiumTotalWeight6?.toFloat() ?: 0f), Entry(1f, gymnasiumTotalWeight5?.toFloat() ?: 0f), Entry(2f, gymnasiumTotalWeight4?.toFloat() ?: 0f), Entry(3f, gymnasiumTotalWeight3?.toFloat() ?: 0f), Entry(4f, gymnasiumTotalWeight2?.toFloat() ?: 0f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),   // Gym
-           listOf(Entry(0f, steerHubTotalWeight6?.toFloat() ?: 0f), Entry(1f, steerHubTotalWeight5?.toFloat() ?: 0f), Entry(2f, steerHubTotalWeight4?.toFloat() ?: 0f), Entry(3f, steerHubTotalWeight3?.toFloat() ?: 0f), Entry(4f, steerHubTotalWeight2?.toFloat() ?: 0f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
-           listOf(Entry(0f, sscTotalWeight6?.toFloat() ?: 0f), Entry(1f, sscTotalWeight5?.toFloat() ?: 0f), Entry(2f, sscTotalWeight4?.toFloat() ?: 0f), Entry(3f, sscTotalWeight3?.toFloat() ?: 0f), Entry(4f, sscTotalWeight2?.toFloat() ?: 0f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
-       )
+        val buildingLineData: List<List<Entry>> = listOf(
+            listOf(Entry(0f, ceafaTotalWeight6?.toFloat() ?: 0f), Entry(1f, ceafaTotalWeight5?.toFloat() ?: 0f), Entry(2f, ceafaTotalWeight4?.toFloat() ?: 0f), Entry(3f, ceafaTotalWeight3?.toFloat() ?: 0f), Entry(4f, ceafaTotalWeight2?.toFloat() ?: 0f), Entry(5f, ceafaTotalWeight1?.toFloat() ?: 0f), Entry(6f, ceafaTotalWeight?.toFloat() ?: 0f)),  // CEAFA
+            listOf(Entry(0f, citTotalWeight6?.toFloat() ?: 0f), Entry(1f, citTotalWeight5?.toFloat() ?: 0f), Entry(2f, citTotalWeight4?.toFloat() ?: 0f), Entry(3f, citTotalWeight3?.toFloat() ?: 0f), Entry(4f, citTotalWeight2?.toFloat() ?: 0f), Entry(5f, citTotalWeight1?.toFloat() ?: 0f), Entry(6f, citTotalWeight?.toFloat() ?: 0f)), //CIT
+            listOf(Entry(0f, cicsTotalWeight6?.toFloat() ?: 0f), Entry(1f, cicsTotalWeight5?.toFloat() ?: 0f), Entry(2f, cicsTotalWeight4?.toFloat() ?: 0f), Entry(3f, cicsTotalWeight3?.toFloat() ?: 0f), Entry(4f, cicsTotalWeight2?.toFloat() ?: 0f), Entry(5f, cicsTotalWeight1?.toFloat() ?: 0f), Entry(6f, cicsTotalWeight?.toFloat() ?: 0f)),  // CICS
+            listOf(Entry(0f, rgrTotalWeight6?.toFloat() ?: 0f), Entry(1f, rgrTotalWeight5?.toFloat() ?: 0f), Entry(2f, rgrTotalWeight4?.toFloat() ?: 0f), Entry(3f, rgrTotalWeight3?.toFloat() ?: 0f), Entry(4f, rgrTotalWeight2?.toFloat() ?: 0f), Entry(5f, rgrTotalWeight1?.toFloat() ?: 0f), Entry(6f, rgrTotalWeight?.toFloat() ?: 0f)),  // RGR
+            listOf(Entry(0f, gymnasiumTotalWeight6?.toFloat() ?: 0f), Entry(1f, gymnasiumTotalWeight5?.toFloat() ?: 0f), Entry(2f, gymnasiumTotalWeight4?.toFloat() ?: 0f), Entry(3f, gymnasiumTotalWeight3?.toFloat() ?: 0f), Entry(4f, gymnasiumTotalWeight2?.toFloat() ?: 0f), Entry(5f, gymnasiumTotalWeight1?.toFloat() ?: 0f), Entry(6f, gymnasiumTotalWeight?.toFloat() ?: 0f)),   // Gym
+            listOf(Entry(0f, steerHubTotalWeight6?.toFloat() ?: 0f), Entry(1f, steerHubTotalWeight5?.toFloat() ?: 0f), Entry(2f, steerHubTotalWeight4?.toFloat() ?: 0f), Entry(3f, steerHubTotalWeight3?.toFloat() ?: 0f), Entry(4f, steerHubTotalWeight2?.toFloat() ?: 0f), Entry(5f, steerHubTotalWeight1?.toFloat() ?: 0f), Entry(6f, steerHubTotalWeight?.toFloat() ?: 0f)),  // STEER Hub
+            listOf(Entry(0f, sscTotalWeight6?.toFloat() ?: 0f), Entry(1f, sscTotalWeight5?.toFloat() ?: 0f), Entry(2f, sscTotalWeight4?.toFloat() ?: 0f), Entry(3f, sscTotalWeight3?.toFloat() ?: 0f), Entry(4f, sscTotalWeight2?.toFloat() ?: 0f), Entry(5f, sscTotalWeight1?.toFloat() ?: 0f), Entry(6f, sscTotalWeight?.toFloat() ?: 0f))  // SSC
+        )
 
-       val residualLineData: List<List<Entry>> = listOf(
+        val residualLineData: List<List<Entry>> = listOf(
             listOf(Entry(0f, ceafaresidualWeight6?.toFloat() ?: 0f), Entry(1f, ceafaresidualWeight5?.toFloat() ?: 0f), Entry(2f, ceafaresidualWeight4?.toFloat() ?: 0f), Entry(3f, ceafaresidualWeight3?.toFloat() ?: 0f), Entry(4f, ceafaresidualWeight2?.toFloat() ?: 0f), Entry(5f, ceafaresidualWeight1?.toFloat() ?: 0f), Entry(6f, ceafaresidualWeight?.toFloat() ?: 0f)),  // CEAFA
             listOf(Entry(0f, citresidualWeight6?.toFloat() ?: 0f), Entry(1f, citresidualWeight5?.toFloat() ?: 0f), Entry(2f, citresidualWeight4?.toFloat() ?: 0f), Entry(3f, citresidualWeight3?.toFloat() ?: 0f), Entry(4f, citresidualWeight2?.toFloat() ?: 0f), Entry(5f, citresidualWeight1?.toFloat() ?: 0f), Entry(6f, citresidualWeight?.toFloat() ?: 0f)), //CIT
             listOf(Entry(0f, cicsresidualWeight6?.toFloat() ?: 0f), Entry(1f, cicsresidualWeight5?.toFloat() ?: 0f), Entry(2f, cicsresidualWeight4?.toFloat() ?: 0f), Entry(3f, cicsresidualWeight3?.toFloat() ?: 0f), Entry(4f, cicsresidualWeight2?.toFloat() ?: 0f), Entry(5f, cicsresidualWeight1?.toFloat() ?: 0f), Entry(6f, cicsresidualWeight?.toFloat() ?: 0f)),  // CICS
@@ -550,14 +528,544 @@ class HomeFragment : Fragment() {
         // Waste Composition Chart
 
         val wasteCompPieChart = binding.wasteCompChart
-
-        // setupPieChart(wasteCompPieChart, itemsBuilding[0])
-
+        
         // Waste Composition per Building Chart
 
         val wasteCompPieChartperBuilding = binding.wasteCompChartperBuilding
 
         buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+
+
+        val client = OkHttpClient()
+
+        val request = Request.Builder()
+            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest/7days") 
+            .build()
+    
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                requireActivity().runOnUiThread {
+                    showErrorMessage("Please check your Internet Connection")
+                }
+            }
+    
+            override fun onResponse(call: Call, response: Response) {
+                val responseData = response.body?.string()
+                val jsonArray = JSONArray(responseData)
+    
+                // Sort the array based on the "createdAt" timestamp in descending order
+                val sortedArray = (0 until jsonArray.length()).map { jsonArray.getJSONObject(it) }
+                    .sortedByDescending { it.getJSONObject("createdAt").getLong("seconds") }
+    
+                // Get the current date in the same format as "createdAt" field
+                val calendar = Calendar.getInstance()
+                calendar.add(Calendar.DAY_OF_YEAR, -1)
+                val calendar2 = Calendar.getInstance()
+                calendar2.add(Calendar.DAY_OF_YEAR, -2)
+                val calendar3 = Calendar.getInstance()
+                calendar3.add(Calendar.DAY_OF_YEAR, -3)
+                val calendar4 = Calendar.getInstance()
+                calendar4.add(Calendar.DAY_OF_YEAR, -4)
+                val calendar5 = Calendar.getInstance()
+                calendar5.add(Calendar.DAY_OF_YEAR, -5)
+                val calendar6 = Calendar.getInstance()
+                calendar6.add(Calendar.DAY_OF_YEAR, -6)
+                val previousDate6 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar6.time)
+                val previousDate5 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar5.time)
+                val previousDate4 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar4.time)
+                val previousDate3 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar3.time)
+                val previousDate2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar2.time)
+                val previousDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+                val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+    
+                // Find the latest data with the current date
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+    
+                    if (createdAtDate == currentDate) {
+                        overallWeight = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate) {
+                        overallWeight1 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight1 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight1 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight1 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight1 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight1 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight1 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight1 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight1 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight1 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight1 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight1 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight1 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight1 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight1 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight1 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight1 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight1 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight1 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight1 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight1 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight1 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight1 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight1 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight1 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight1 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight1 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight1 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight1 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate2) {
+                        overallWeight2 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight2 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight2 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight2 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight2 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight2 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight2 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight2 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight2 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight2 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight2 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight2 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight2 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight2 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight2 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight2 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight2 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight2 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight2 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight2 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight2 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight2 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight2 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight2 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight2 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight2 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight2 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight2 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight2 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate3) {
+                        overallWeight3 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight3 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight3 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight3 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight3 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight3 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight3 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight3 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight3 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight3 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight3 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight3 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight3 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight3 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight3 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight3 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight3 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight3 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight3 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight3 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight3 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight3 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight3 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight3 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight3 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight3 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight3 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight3 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight3 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate4) {
+                        overallWeight4 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight4 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight4 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight4 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight4 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight4 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight4 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight4 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight4 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight4 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight4 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight4 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight4 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight4 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight4 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight4 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight4 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight4 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight4 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight4 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight4 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight4 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight4 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight4 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight4 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight4 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight4 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight4 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight4 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate5) {
+                        overallWeight5 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight5 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight5 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight5 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight5 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight5 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight5 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight5 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight5 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight5 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight5 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight5 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight5 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight5 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight5 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight5 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight5 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight5 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight5 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight5 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight5 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight5 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight5 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight5 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight5 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight5 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight5 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight5 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight5 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                for (i in sortedArray.indices) {
+                    val item = sortedArray[i]
+                    val createdAt = item.getJSONObject("createdAt")
+                    val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date(createdAt.getLong("seconds") * 1000))
+                
+                    if (createdAtDate == previousDate6) {
+                        overallWeight6 = item.getDouble("overall_weight")
+                        val citData = item.optJSONObject("CIT")
+                        val ceafaData = item.optJSONObject("CEAFA")
+                        val cicsData = item.optJSONObject("CICS")
+                        val steerHubData = item.optJSONObject("STEER_Hub")
+                        val gymnasiumData = item.optJSONObject("Gymnasium")
+                        val sscData = item.optJSONObject("SSC")
+                        val rgrData = item.optJSONObject("RGR")
+    
+
+                        if (citData != null) {
+                            citTotalWeight6 = citData.getJSONObject("weight").getDouble("total")
+                            citresidualWeight6 = citData.getJSONObject("weight").getDouble("residual")
+                            citrecyclableWeight6 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            citfoodWeight6 = citData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (ceafaData != null) {
+                            ceafaTotalWeight6 = ceafaData.getJSONObject("weight").getDouble("total")
+                            ceafaresidualWeight6 = ceafaData.getJSONObject("weight").getDouble("residual")
+                            ceafarecyclableWeight6 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            ceafafoodWeight6 = ceafaData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (cicsData != null) {
+                            cicsTotalWeight6 = cicsData.getJSONObject("weight").getDouble("total")
+                            cicsresidualWeight6 = cicsData.getJSONObject("weight").getDouble("residual")
+                            cicsrecyclableWeight6 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            cicsfoodWeight6 = cicsData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (steerHubData != null) {
+                            steerHubTotalWeight6 = steerHubData.getJSONObject("weight").getDouble("total")
+                            steerHubresidualWeight6 = steerHubData.getJSONObject("weight").getDouble("residual")
+                            steerHubrecyclableWeight6 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            steerHubfoodWeight6 = steerHubData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (gymnasiumData != null) {
+                            gymnasiumTotalWeight6 = gymnasiumData.getJSONObject("weight").getDouble("total")
+                            gymnasiumresidualWeight6 = gymnasiumData.getJSONObject("weight").getDouble("residual")
+                            gymnasiumrecyclableWeight6 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            gymnasiumfoodWeight6 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (sscData != null) {
+                            sscTotalWeight6 = sscData.getJSONObject("weight").getDouble("total")
+                            sscresidualWeight6 = sscData.getJSONObject("weight").getDouble("residual")
+                            sscrecyclableWeight6 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            sscfoodWeight6 = sscData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                        if (rgrData != null) {
+                            rgrTotalWeight6 = rgrData.getJSONObject("weight").getDouble("total")
+                            rgrresidualWeight6 = rgrData.getJSONObject("weight").getDouble("residual")
+                            rgrrecyclableWeight6 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
+                            rgrfoodWeight6 = rgrData.getJSONObject("weight").getDouble("food_waste")
+                        }
+    
+                    }
+                }
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        val selectedBuilding = binding.buildingSpinner.selectedItem?.toString()
+                        if (selectedBuilding != null) {
+                            setupPieChartL7days(wasteCompPieChart, selectedBuilding)
+                        }
+                    }
+                }
+            }
+        })
+
         
         val client3 = OkHttpClient()
         val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
@@ -727,6 +1235,104 @@ class HomeFragment : Fragment() {
                 id: Long
             ) {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+
+                val ceafarecyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
+                val ceafaresidualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
+                val ceafafoodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
+                val citrecyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
+                val citresidualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
+                val citfoodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
+                val cicsrecyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
+                val cicsresidualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
+                val cicsfoodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
+                val rgrrecyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
+                val rgrresidualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
+                val rgrfoodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
+                val steerHubrecyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
+                val steerHubresidualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
+                val steerHubfoodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
+                val sscrecyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
+                val sscresidualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
+                val sscfoodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
+                val gymnasiumrecyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
+                val gymnasiumresidualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
+                val gymnasiumfoodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
+
+                when (selectedBuilding) {
+                    "CEAFA Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = ceafaresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = ceafafoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = ceafarecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "CIT Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = citresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = citfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = citrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "CICS Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = cicsresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = cicsfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = cicsrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "RGR Building" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = rgrresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = rgrfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = rgrrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "Gymnasium" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = gymnasiumresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = gymnasiumfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = gymnasiumrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "STEER Hub" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = steerHubresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = steerHubfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = steerHubrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    "Student Services Center" -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = sscresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = sscfoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = sscrecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                    else -> {
+                        if (isAdded) {
+                            requireActivity().runOnUiThread {
+                                binding.displayres.text = ceafaresidualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayfood.text = ceafafoodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                binding.displayrec.text = ceafarecyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            }
+                        }
+                    }
+                }
+
                 buildingObject = when (selectedBuilding) {
                     "CEAFA Building" -> "CEAFA"
                     "CIT Building" -> "CIT"
@@ -793,530 +1399,6 @@ class HomeFragment : Fragment() {
                 setupPieChartL7days(wasteCompPieChart, itemsBuilding[buildingIndex])
 
                 val decimalFormat = DecimalFormat("#.##")
-
-
-                val client = OkHttpClient()
-
-                val request = Request.Builder()
-                    .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest/7days") 
-                    .build()
-            
-                client.newCall(request).enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
-                        requireActivity().runOnUiThread {
-                            showErrorMessage("Please check your Internet Connection")
-                        }
-                    }
-            
-                    override fun onResponse(call: Call, response: Response) {
-                        val responseData = response.body?.string()
-                        val jsonArray = JSONArray(responseData)
-            
-                        // Sort the array based on the "createdAt" timestamp in descending order
-                        val sortedArray = (0 until jsonArray.length()).map { jsonArray.getJSONObject(it) }
-                            .sortedByDescending { it.getJSONObject("createdAt").getLong("seconds") }
-            
-                        // Get the current date in the same format as "createdAt" field
-                        val calendar = Calendar.getInstance()
-                        calendar.add(Calendar.DAY_OF_YEAR, -1)
-                        val calendar2 = Calendar.getInstance()
-                        calendar2.add(Calendar.DAY_OF_YEAR, -2)
-                        val calendar3 = Calendar.getInstance()
-                        calendar3.add(Calendar.DAY_OF_YEAR, -3)
-                        val calendar4 = Calendar.getInstance()
-                        calendar4.add(Calendar.DAY_OF_YEAR, -4)
-                        val calendar5 = Calendar.getInstance()
-                        calendar5.add(Calendar.DAY_OF_YEAR, -5)
-                        val calendar6 = Calendar.getInstance()
-                        calendar6.add(Calendar.DAY_OF_YEAR, -6)
-                        val previousDate6 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar6.time)
-                        val previousDate5 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar5.time)
-                        val previousDate4 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar4.time)
-                        val previousDate3 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar3.time)
-                        val previousDate2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar2.time)
-                        val previousDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-                        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-            
-                        // Find the latest data with the current date
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-            
-                            if (createdAtDate == currentDate) {
-                                overallWeight = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate) {
-                                overallWeight1 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight1 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight1 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight1 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight1 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight1 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight1 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight1 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight1 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight1 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight1 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight1 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight1 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight1 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight1 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight1 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight1 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight1 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight1 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight1 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight1 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight1 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight1 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight1 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight1 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight1 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight1 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight1 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight1 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate2) {
-                                overallWeight2 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight2 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight2 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight2 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight2 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight2 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight2 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight2 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight2 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight2 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight2 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight2 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight2 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight2 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight2 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight2 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight2 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight2 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight2 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight2 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight2 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight2 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight2 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight2 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight2 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight2 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight2 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight2 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight2 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate3) {
-                                overallWeight3 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight3 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight3 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight3 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight3 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight3 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight3 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight3 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight3 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight3 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight3 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight3 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight3 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight3 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight3 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight3 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight3 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight3 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight3 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight3 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight3 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight3 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight3 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight3 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight3 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight3 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight3 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight3 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight3 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate4) {
-                                overallWeight4 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight4 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight4 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight4 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight4 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight4 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight4 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight4 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight4 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight4 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight4 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight4 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight4 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight4 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight4 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight4 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight4 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight4 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight4 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight4 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight4 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight4 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight4 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight4 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight4 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight4 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight4 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight4 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight4 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate5) {
-                                overallWeight5 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight5 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight5 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight5 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight5 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight5 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight5 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight5 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight5 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight5 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight5 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight5 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight5 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight5 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight5 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight5 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight5 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight5 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight5 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight5 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight5 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight5 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight5 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight5 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight5 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight5 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight5 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight5 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight5 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                        for (i in sortedArray.indices) {
-                            val item = sortedArray[i]
-                            val createdAt = item.getJSONObject("createdAt")
-                            val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                                .format(Date(createdAt.getLong("seconds") * 1000))
-                        
-                            if (createdAtDate == previousDate6) {
-                                overallWeight6 = item.getDouble("overall_weight")
-                                val citData = item.optJSONObject("CIT")
-                                val ceafaData = item.optJSONObject("CEAFA")
-                                val cicsData = item.optJSONObject("CICS")
-                                val steerHubData = item.optJSONObject("STEER_Hub")
-                                val gymnasiumData = item.optJSONObject("Gymnasium")
-                                val sscData = item.optJSONObject("SSC")
-                                val rgrData = item.optJSONObject("RGR")
-            
-
-                                if (citData != null) {
-                                    citTotalWeight6 = citData.getJSONObject("weight").getDouble("total")
-                                    citresidualWeight6 = citData.getJSONObject("weight").getDouble("residual")
-                                    citrecyclableWeight6 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    citfoodWeight6 = citData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (ceafaData != null) {
-                                    ceafaTotalWeight6 = ceafaData.getJSONObject("weight").getDouble("total")
-                                    ceafaresidualWeight6 = ceafaData.getJSONObject("weight").getDouble("residual")
-                                    ceafarecyclableWeight6 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    ceafafoodWeight6 = ceafaData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (cicsData != null) {
-                                    cicsTotalWeight6 = cicsData.getJSONObject("weight").getDouble("total")
-                                    cicsresidualWeight6 = cicsData.getJSONObject("weight").getDouble("residual")
-                                    cicsrecyclableWeight6 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    cicsfoodWeight6 = cicsData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (steerHubData != null) {
-                                    steerHubTotalWeight6 = steerHubData.getJSONObject("weight").getDouble("total")
-                                    steerHubresidualWeight6 = steerHubData.getJSONObject("weight").getDouble("residual")
-                                    steerHubrecyclableWeight6 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    steerHubfoodWeight6 = steerHubData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (gymnasiumData != null) {
-                                    gymnasiumTotalWeight6 = gymnasiumData.getJSONObject("weight").getDouble("total")
-                                    gymnasiumresidualWeight6 = gymnasiumData.getJSONObject("weight").getDouble("residual")
-                                    gymnasiumrecyclableWeight6 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    gymnasiumfoodWeight6 = gymnasiumData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (sscData != null) {
-                                    sscTotalWeight6 = sscData.getJSONObject("weight").getDouble("total")
-                                    sscresidualWeight6 = sscData.getJSONObject("weight").getDouble("residual")
-                                    sscrecyclableWeight6 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    sscfoodWeight6 = sscData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                                if (rgrData != null) {
-                                    rgrTotalWeight6 = rgrData.getJSONObject("weight").getDouble("total")
-                                    rgrresidualWeight6 = rgrData.getJSONObject("weight").getDouble("residual")
-                                    rgrrecyclableWeight6 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
-                                    rgrfoodWeight6 = rgrData.getJSONObject("weight").getDouble("food_waste")
-                                }
-            
-                            }
-                        }
-                    }
-                })
-
 
 
                 // val client2 = OkHttpClient()
@@ -1404,7 +1486,6 @@ class HomeFragment : Fragment() {
                 //     }
                     
                 // })
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -1422,66 +1503,17 @@ class HomeFragment : Fragment() {
                 val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
                 val selectedTime = binding.timeSpinner.selectedItem.toString()
 
-                when (selectedBuilding) {
-                    "CEAFA Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = ceafa_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = ceafa_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = ceafa_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "CIT Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = cit_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = cit_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = cit_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "CICS Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = cics_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = cics_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = cics_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "RGR Building" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = rgr_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = rgr_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = rgr_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "Gymnasium" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = gymnasium_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = gymnasium_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = gymnasium_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "STEER Hub" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = steerHub_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = steerHub_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = steerHub_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                    "Student Services Center" -> {
-                        requireActivity().runOnUiThread {
-                            binding.displayres.text = ssc_residualtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayfood.text = ssc_foodtotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                            binding.displayrec.text = ssc_recyclabletotal?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                        }
-                    }
-                }
                 when (selectedTime) {
                     "7 days" -> {
                         requireActivity().runOnUiThread {
                             setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
                         }
                     }
                     "30 days" -> {
                         requireActivity().runOnUiThread {
                             setupPieChartL30days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                            buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
                         }
                     }
                     "Last year" -> {
@@ -1570,6 +1602,30 @@ class HomeFragment : Fragment() {
             wasteGeneratedChart.invalidate()
 
 
+            val selectedBuilding = binding.buildingSpinner.selectedItem.toString()
+            val selectedTime = binding.timeSpinner.selectedItem.toString()
+
+            when (selectedTime) {
+                "7 days" -> {
+                    requireActivity().runOnUiThread {
+                        setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+                "30 days" -> {
+                    requireActivity().runOnUiThread {
+                        setupPieChartL30days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+                "Last year" -> {
+                    requireActivity().runOnUiThread {
+                        buildingPieChart(wasteCompPieChartperBuilding) // Refresh the pie chart
+                    }
+                }
+
+            }
+
             swipeRefreshLayout.isRefreshing = false
         }
 
@@ -1651,56 +1707,93 @@ class HomeFragment : Fragment() {
             // Handle the case when either pieChart or building is null
             return
         }
-    
+
         val wasteCompColors = listOf(Color.GREEN, Color.RED, Color.YELLOW)
-    
+
         val entries: MutableList<PieEntry> = ArrayList()
+
+        val ceafarecyclabletotal = calculateTotalWeight(ceafarecyclableWeight, ceafarecyclableWeight1, ceafarecyclableWeight2, ceafarecyclableWeight3, ceafarecyclableWeight4, ceafarecyclableWeight5, ceafarecyclableWeight6)
+        val ceafaresidualtotal = calculateTotalWeight(ceafaresidualWeight, ceafaresidualWeight1, ceafaresidualWeight2, ceafaresidualWeight3, ceafaresidualWeight4, ceafaresidualWeight5, ceafaresidualWeight6)
+        val ceafafoodtotal = calculateTotalWeight(ceafafoodWeight, ceafafoodWeight1, ceafafoodWeight2, ceafafoodWeight3, ceafafoodWeight4, ceafafoodWeight5, ceafafoodWeight6)
+        val citrecyclabletotal = calculateTotalWeight(citrecyclableWeight, citrecyclableWeight1, citrecyclableWeight2, citrecyclableWeight3, citrecyclableWeight4, citrecyclableWeight5, citrecyclableWeight6)
+        val citresidualtotal = calculateTotalWeight(citresidualWeight, citresidualWeight1, citresidualWeight2, citresidualWeight3, citresidualWeight4, citresidualWeight5, citresidualWeight6)
+        val citfoodtotal = calculateTotalWeight(citfoodWeight, citfoodWeight1, citfoodWeight2, citfoodWeight3, citfoodWeight4, citfoodWeight5, citfoodWeight6)
+        val cicsrecyclabletotal = calculateTotalWeight(cicsrecyclableWeight, cicsrecyclableWeight1, cicsrecyclableWeight2, cicsrecyclableWeight3, cicsrecyclableWeight4, cicsrecyclableWeight5, cicsrecyclableWeight6)
+        val cicsresidualtotal = calculateTotalWeight(cicsresidualWeight, cicsresidualWeight1, cicsresidualWeight2, cicsresidualWeight3, cicsresidualWeight4, cicsresidualWeight5, cicsresidualWeight6)
+        val cicsfoodtotal = calculateTotalWeight(cicsfoodWeight, cicsfoodWeight1, cicsfoodWeight2, cicsfoodWeight3, cicsfoodWeight4, cicsfoodWeight5, cicsfoodWeight6)
+        val rgrrecyclabletotal = calculateTotalWeight(rgrrecyclableWeight, rgrrecyclableWeight1, rgrrecyclableWeight2, rgrrecyclableWeight3, rgrrecyclableWeight4, rgrrecyclableWeight5, rgrrecyclableWeight6)
+        val rgrresidualtotal = calculateTotalWeight(rgrresidualWeight, rgrresidualWeight1, rgrresidualWeight2, rgrresidualWeight3, rgrresidualWeight4, rgrresidualWeight5, rgrresidualWeight6)
+        val rgrfoodtotal = calculateTotalWeight(rgrfoodWeight, rgrfoodWeight1, rgrfoodWeight2, rgrfoodWeight3, rgrfoodWeight4, rgrfoodWeight5, rgrfoodWeight6)
+        val steerHubrecyclabletotal = calculateTotalWeight(steerHubrecyclableWeight, steerHubrecyclableWeight1, steerHubrecyclableWeight2, steerHubrecyclableWeight3, steerHubrecyclableWeight4, steerHubrecyclableWeight5, steerHubrecyclableWeight6)
+        val steerHubresidualtotal = calculateTotalWeight(steerHubresidualWeight, steerHubresidualWeight1, steerHubresidualWeight2, steerHubresidualWeight3, steerHubresidualWeight4, steerHubresidualWeight5, steerHubresidualWeight6)
+        val steerHubfoodtotal = calculateTotalWeight(steerHubfoodWeight, steerHubfoodWeight1, steerHubfoodWeight2, steerHubfoodWeight3, steerHubfoodWeight4, steerHubfoodWeight5, steerHubfoodWeight6)
+        val sscrecyclabletotal = calculateTotalWeight(sscrecyclableWeight, sscrecyclableWeight1, sscrecyclableWeight2, sscrecyclableWeight3, sscrecyclableWeight4, sscrecyclableWeight5, sscrecyclableWeight6)
+        val sscresidualtotal = calculateTotalWeight(sscresidualWeight, sscresidualWeight1, sscresidualWeight2, sscresidualWeight3, sscresidualWeight4, sscresidualWeight5, sscresidualWeight6)
+        val sscfoodtotal = calculateTotalWeight(sscfoodWeight, sscfoodWeight1, sscfoodWeight2, sscfoodWeight3, sscfoodWeight4, sscfoodWeight5, sscfoodWeight6)
+        val gymnasiumrecyclabletotal = calculateTotalWeight(gymnasiumrecyclableWeight, gymnasiumrecyclableWeight1, gymnasiumrecyclableWeight2, gymnasiumrecyclableWeight3, gymnasiumrecyclableWeight4, gymnasiumrecyclableWeight5, gymnasiumrecyclableWeight6)
+        val gymnasiumresidualtotal = calculateTotalWeight(gymnasiumresidualWeight, gymnasiumresidualWeight1, gymnasiumresidualWeight2, gymnasiumresidualWeight3, gymnasiumresidualWeight4, gymnasiumresidualWeight5, gymnasiumresidualWeight6)
+        val gymnasiumfoodtotal = calculateTotalWeight(gymnasiumfoodWeight, gymnasiumfoodWeight1, gymnasiumfoodWeight2, gymnasiumfoodWeight3, gymnasiumfoodWeight4, gymnasiumfoodWeight5, gymnasiumfoodWeight6)
+
+        val ceafaTotal7days = calculateTotalWeight(ceafaTotalWeight, ceafaTotalWeight1, ceafaTotalWeight2, ceafaTotalWeight3, ceafaTotalWeight4, ceafaTotalWeight5, ceafaTotalWeight6)
+        val citTotal7days = calculateTotalWeight(citTotalWeight, citTotalWeight1, citTotalWeight2, citTotalWeight3, citTotalWeight4, citTotalWeight5, citTotalWeight6)
+        val cicsTotal7days = calculateTotalWeight(cicsTotalWeight, cicsTotalWeight1, cicsTotalWeight2, cicsTotalWeight3, cicsTotalWeight4, cicsTotalWeight5, cicsTotalWeight6)
+        val rgrTotal7days = calculateTotalWeight(rgrTotalWeight, rgrTotalWeight1, rgrTotalWeight2, rgrTotalWeight3, rgrTotalWeight4, rgrTotalWeight5, rgrTotalWeight6)
+        val gymnasiumTotal7days = calculateTotalWeight(gymnasiumTotalWeight, gymnasiumTotalWeight1, gymnasiumTotalWeight2, gymnasiumTotalWeight3, gymnasiumTotalWeight4, gymnasiumTotalWeight5, gymnasiumTotalWeight6)
+        val steerHubTotal7days = calculateTotalWeight(steerHubTotalWeight, steerHubTotalWeight1, steerHubTotalWeight2, steerHubTotalWeight3, steerHubTotalWeight4, steerHubTotalWeight5, steerHubTotalWeight6)
+        val sscTotal7days = calculateTotalWeight(sscTotalWeight, sscTotalWeight1, sscTotalWeight2, sscTotalWeight3, sscTotalWeight4, sscTotalWeight5, sscTotalWeight6)
 
         when (building) {
             "CEAFA Building" -> {
-                entries.add(PieEntry(ceafa_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(ceafa_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(ceafa_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(ceafarecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(ceafaresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(ceafafoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $ceafaTotal7days kg"
                 pieChart.invalidate()
             }
             "CIT Building" -> {
-                entries.add(PieEntry(cit_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(cit_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(cit_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(citrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(citresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(citfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $citTotal7days kg"
                 pieChart.invalidate()
             }
             "CICS Building" -> {
-                entries.add(PieEntry(cics_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(cics_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(cics_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(cicsrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(cicsresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(cicsfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $cicsTotal7days kg"
                 pieChart.invalidate()
             }
             "RGR Building" -> {
-                entries.add(PieEntry(rgr_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(rgr_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(rgr_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(rgrrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(rgrresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(rgrfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $rgrTotal7days kg"
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
-                entries.add(PieEntry(gymnasium_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(gymnasium_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(gymnasium_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(gymnasiumrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(gymnasiumresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(gymnasiumfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $gymnasiumTotal7days kg"
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
-                entries.add(PieEntry(steerHub_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(steerHub_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(steerHub_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(steerHubrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(steerHubresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(steerHubfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $steerHubTotal7days kg"
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
-                entries.add(PieEntry(ssc_recyclabletotal?.toFloat() ?: 0f, "Recyclable"))
-                entries.add(PieEntry(ssc_residualtotal?.toFloat() ?: 0f, "Residual"))
-                entries.add(PieEntry(ssc_foodtotal?.toFloat() ?: 0f, "Food Waste"))
+                entries.add(PieEntry(sscrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
+                entries.add(PieEntry(sscresidualtotal?.toFloat() ?: 0f, "Residual"))
+                entries.add(PieEntry(sscfoodtotal?.toFloat() ?: 0f, "Food Waste"))
+                pieChart.description.text = "total $sscTotal7days kg"
                 pieChart.invalidate()
             }
         }
-    
+
         val themeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
         val themeColor2 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnPrimary)
 
@@ -1723,7 +1816,6 @@ class HomeFragment : Fragment() {
         pieChart.apply {
             setUsePercentValues(true)
             description.isEnabled = true
-            description.text = "gg"
             description.textColor = themeColor
             legend.isEnabled = true
             setHoleColor(themeColor2)
@@ -1738,6 +1830,7 @@ class HomeFragment : Fragment() {
             setDrawEntryLabels(false)
             rotationAngle = 0f
             animateY(1000)
+            pieChart.data = data
         }
 
         pieChart.data = data
@@ -1753,8 +1846,8 @@ class HomeFragment : Fragment() {
         }
         return totalWeight
     }
-    
-    
+
+
 
     private fun setupPieChartL30days(pieChart: PieChart, building: String) {
         val wasteCompColors = listOf(Color.GREEN, Color.RED, Color.YELLOW)
@@ -1842,6 +1935,7 @@ class HomeFragment : Fragment() {
             setDrawEntryLabels(false)
             rotationAngle = 0f
             animateY(1000)
+            pieChart.data = data
         }
 
         pieChart.data = data
@@ -1853,6 +1947,8 @@ class HomeFragment : Fragment() {
         context.theme.resolveAttribute(attr, typedValue, true)
         return typedValue.data
     }
+
+
 
 }
 
