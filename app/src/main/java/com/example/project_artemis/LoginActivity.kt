@@ -200,6 +200,7 @@ class LoginActivity : AppCompatActivity() {
         if (task.isSuccessful){
             val account : GoogleSignInAccount? = task.result
             binding.progressBar2.visibility = View.VISIBLE
+            binding.overlay.visibility = View.VISIBLE
             if (account != null){
                 updateUI(account)
             }
@@ -209,6 +210,7 @@ class LoginActivity : AppCompatActivity() {
             builder.setMessage("Please enter a valid email address")
             builder.setPositiveButton("OK") { dialog, which ->
                 binding.progressBar2.visibility = View.GONE
+                binding.overlay.visibility = View.GONE
                 dialog.dismiss()
             }
             val dialog = builder.create()
