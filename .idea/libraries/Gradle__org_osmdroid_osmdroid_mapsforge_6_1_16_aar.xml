@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: org.osmdroid:osmdroid-mapsforge:6.1.16@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/546dcabf42a05a82f7a50aa4d95db9cd/transformed/osmdroid-mapsforge-6.1.16/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/546dcabf42a05a82f7a50aa4d95db9cd/transformed/osmdroid-mapsforge-6.1.16/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8df3f702f6e1ae531d26b483f451ac5f/transformed/osmdroid-mapsforge-6.1.16/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8df3f702f6e1ae531d26b483f451ac5f/transformed/osmdroid-mapsforge-6.1.16/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../caches/modules-2/files-2.1/org.osmdroid/osmdroid-mapsforge/6.1.16/91341c8ff63575d2f2be09d7b92d6bc510c17ac6/osmdroid-mapsforge-6.1.16-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.osmdroid/osmdroid-mapsforge/6.1.16/91341c8ff63575d2f2be09d7b92d6bc510c17ac6/osmdroid-mapsforge-6.1.16-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../caches/modules-2/files-2.1/org.osmdroid/osmdroid-mapsforge/6.1.16/8948059a9dbdf663ea89cf096512d238d31a3184/osmdroid-mapsforge-6.1.16-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.osmdroid/osmdroid-mapsforge/6.1.16/8948059a9dbdf663ea89cf096512d238d31a3184/osmdroid-mapsforge-6.1.16-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

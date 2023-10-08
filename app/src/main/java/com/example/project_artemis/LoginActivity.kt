@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
             signInGoogle()
             binding.progressBar2.visibility = View.GONE
         }
-        
+
         binding.visibility.setOnClickListener {
             mIsShowPass = !mIsShowPass
             showPassword(mIsShowPass)
@@ -128,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             sharedPreferences.edit().putBoolean("languageSelected", true).apply()
-        }    
+        }
 
         binding.loginBtn.setOnClickListener {
 
@@ -169,7 +169,7 @@ class LoginActivity : AppCompatActivity() {
         binding.viewBtn.setOnClickListener {
             createIntentGuest()
         }
-        
+
     }
 
     override fun onBackPressed() {
@@ -189,17 +189,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        result ->
-            if (result.resultCode == Activity.RESULT_OK){
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                handleResults(task)
-            }
+            result ->
+        if (result.resultCode == Activity.RESULT_OK){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleResults(task)
+        }
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>){
         if (task.isSuccessful){
             val account : GoogleSignInAccount? = task.result
             binding.progressBar2.visibility = View.VISIBLE
+            binding.overlay.visibility = View.VISIBLE
             if (account != null){
                 updateUI(account)
             }
@@ -209,6 +210,7 @@ class LoginActivity : AppCompatActivity() {
             builder.setMessage("Please enter a valid email address")
             builder.setPositiveButton("OK") { dialog, which ->
                 binding.progressBar2.visibility = View.GONE
+                binding.overlay.visibility = View.GONE
                 dialog.dismiss()
             }
             val dialog = builder.create()
