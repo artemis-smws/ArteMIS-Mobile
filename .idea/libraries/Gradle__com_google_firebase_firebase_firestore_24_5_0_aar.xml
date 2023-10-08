@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-firestore:24.5.0@aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../caches/transforms-3/129390173f66cddce08fb15c18ab1a56/transformed/firebase-firestore-24.5.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../caches/transforms-3/129390173f66cddce08fb15c18ab1a56/transformed/firebase-firestore-24.5.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/19f390b806644b52bc4af026ba71d9b6/transformed/firebase-firestore-24.5.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/19f390b806644b52bc4af026ba71d9b6/transformed/firebase-firestore-24.5.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../caches/modules-2/files-2.1/com.google.firebase/firebase-firestore/24.5.0/cde9b146ca7b550e8f5741fcaa74e4c98a563e26/firebase-firestore-24.5.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-firestore/24.5.0/cde9b146ca7b550e8f5741fcaa74e4c98a563e26/firebase-firestore-24.5.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
