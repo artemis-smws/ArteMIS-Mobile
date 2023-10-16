@@ -33,6 +33,10 @@ import java.util.*
 
 class HomeFragment : Fragment() {
 
+    private val waste = BuildConfig.waste
+    private val wasteLatest = BuildConfig.waste_latest
+    private val statusLatest = BuildConfig.status_latest
+
     private var buildingObject: String? = null
     private var current_average: Int? = null
     private var overallWeight: Double? = null
@@ -300,7 +304,7 @@ class HomeFragment : Fragment() {
 
         val getHighest = OkHttpClient()
         val highrequest = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/highest")
+            .url("$waste/highest")
             .build()
 
         getHighest.newCall(highrequest).enqueue(object : Callback {
@@ -338,7 +342,7 @@ class HomeFragment : Fragment() {
 
         val getLowest = OkHttpClient()
         val lowrequest = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/lowest")
+            .url("$waste/lowest")
             .build()
         
         getLowest.newCall(lowrequest).enqueue(object : Callback {
@@ -376,7 +380,7 @@ class HomeFragment : Fragment() {
 
         val getAverage = OkHttpClient()
         val averequest = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/status/latest")
+            .url(statusLatest)
             .build()
 
         getAverage.newCall(averequest).enqueue(object : Callback {
@@ -539,7 +543,7 @@ class HomeFragment : Fragment() {
         val client = OkHttpClient()
 
         val request = Request.Builder()
-            .url("https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest/7days") 
+            .url("$wasteLatest/7days")
             .build()
     
         client.newCall(request).enqueue(object : Callback {
@@ -1068,9 +1072,8 @@ class HomeFragment : Fragment() {
 
         
         val client3 = OkHttpClient()
-        val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
         val request3 = Request.Builder()
-            .url(url)
+            .url(wasteLatest)
             .build()
 
         client3.newCall(request3).enqueue(object : Callback {
@@ -1400,92 +1403,6 @@ class HomeFragment : Fragment() {
 
                 val decimalFormat = DecimalFormat("#.##")
 
-
-                // val client2 = OkHttpClient()
-                // val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
-                // val request2 = Request.Builder()
-                //     .url(url)
-                //     .build()
-
-                // client2.newCall(request2).enqueue(object : Callback {
-                //     override fun onFailure(call: Call, e: IOException) {
-                //         requireActivity().runOnUiThread {
-                //             showErrorMessage("Please check your Internet Connection")
-                //         }
-                //     }
-
-                //     @SuppressLint("SetTextI18n")
-                //     override fun onResponse(call: Call, response: Response) {
-                //         val responseString = response.body?.string()
-                //         try {
-                //             val jsonArray = JSONArray(responseString)
-                //             val jsonObject = jsonArray.getJSONObject(0)
-                //             val buildingObject: JSONObject? = try {
-                //                 jsonObject.getJSONObject("$buildingObject")
-                //             } catch (e: JSONException) {
-                //                 null
-                //             }
-                //             if (buildingObject != null) {
-                //                 val weightObject = buildingObject.getJSONObject("weight")
-                //                 val residualWasteWeight: Double? = try {
-                //                     weightObject.getDouble("residual")
-                //                 } catch (e: JSONException) {
-                //                     null
-                //                 }
-                //                 val foodWasteWeight: Double? = try {
-                //                     weightObject.getDouble("food_waste")
-                //                 } catch (e: JSONException) {
-                //                     null
-                //                 }
-                //                 val recyclableWasteWeight: Double? = try {
-                //                     weightObject.getDouble("recyclable")
-                //                 } catch (e: JSONException) {
-                //                     null
-                //                 }
-                //                 if (residualWasteWeight != null) {
-                //                     residualPercentage = residualWasteWeight
-                //                 }
-                //                 if (foodWasteWeight != null) {
-                //                     foodWastePercentage = foodWasteWeight
-                //                 }
-
-                //                 if (recyclableWasteWeight != null) {
-                //                     recyclablePercentage = recyclableWasteWeight
-                //                 }
-                    
-                //                 if (isAdded) {
-                //                     requireActivity().runOnUiThread {
-                //                         binding.displayres.text = residualWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                //                         binding.displayfood.text = foodWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                //                         binding.displayrec.text = recyclableWasteWeight?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
-                //                     }
-                //                 }
-                //             } else {
-                //                 if (isAdded) {
-                //                     requireActivity().runOnUiThread {
-                //                         binding.displayres.text = "0 kg"
-                //                         binding.displayfood.text = "0 kg"
-                //                         binding.displayrec.text = "0 kg"
-                //                     }
-                //                 }
-                //             }
-                //         } catch (e: JSONException) {
-                //             // Handle the JSON parsing error
-                //             if (isAdded) {
-                //                 requireActivity().runOnUiThread {
-                //                     showErrorMessage("The app is on maintenance, Please comeback later.")
-                //                 }
-                //             }
-                //         }
-                    
-                //         if (isAdded) {
-                //             requireActivity().runOnUiThread {
-                //                 setupPieChartL7days(wasteCompPieChart, selectedBuilding) // Refresh the pie chart
-                //             }
-                //         }
-                //     }
-                    
-                // })
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

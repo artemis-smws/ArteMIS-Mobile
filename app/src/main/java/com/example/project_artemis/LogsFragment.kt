@@ -21,6 +21,8 @@ import java.io.IOException
 
 class LogsFragment : Fragment() {
 
+    private val wasteLatest = BuildConfig.waste_latest
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,12 +31,11 @@ class LogsFragment : Fragment() {
         val binding = FragmentLogsBinding.inflate(inflater, container, false)
 
         val client2 = OkHttpClient()
-        val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
-        val request2 = Request.Builder()
-            .url(url)
+        val logRequest = Request.Builder()
+            .url(wasteLatest)
             .build()
 
-        client2.newCall(request2).enqueue(object : Callback {
+        client2.newCall(logRequest).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 requireActivity().runOnUiThread {
                     showErrorMessage("Please check your Internet Connection")
