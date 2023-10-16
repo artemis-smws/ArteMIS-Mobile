@@ -25,6 +25,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 @Suppress("NAME_SHADOWING")
 class AddFragment : Fragment() {
 
+    private val waste = BuildConfig.waste
+    private val wasteLatest = BuildConfig.waste_latest
     private var buildingName: String? = null
     private var campusName: String? = null
     private var selectedName: String? = null
@@ -264,31 +266,9 @@ class AddFragment : Fragment() {
                                             binding.overlay.visibility = View.VISIBLE
                                             binding.overlay.setOnTouchListener { _, _ -> true}
 
-                                            // val client = OkHttpClient()
-                                            // val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
-                                            // val request = Request.Builder()
-                                            //     .url(url)
-                                            //     .build()
-                                    
-                                            // client.newCall(request).enqueue(object : Callback {
-                                            //     override fun onFailure(call: Call, e: IOException) {
-                                            //         Toast.makeText(requireContext(), "Request unsuccessful", Toast.LENGTH_SHORT).show()
-                                            //     }
-                                    
-                                            //     override fun onResponse(call: Call, response: Response) {
-                                            //         val responseString = response.body?.string()
-                                            //         val jsonArray = JSONArray(responseString)
-                                            //         val jsonObject = jsonArray.getJSONObject(0)
-                                            //         todayId = jsonObject.getString("id")
-                                            //     }
-                                    
-                                            // })
-
-
                                             val getclient = OkHttpClient()
-                                            val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
                                             val getData = Request.Builder()
-                                                .url(geturl)
+                                                .url(wasteLatest)
                                                 .build()
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
@@ -342,7 +322,6 @@ class AddFragment : Fragment() {
                                                     val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
-                                                    val id = todayId
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
                                                     // Check if any EditText field is empty before proceeding
@@ -358,8 +337,6 @@ class AddFragment : Fragment() {
                                                     val client = OkHttpClient.Builder()
                                                         .addInterceptor(interceptor)
                                                         .build()
-                                        
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
                                         
                                                     val jsonBody = JSONObject().apply {
                                                         put("$building", JSONObject().apply {
@@ -381,7 +358,7 @@ class AddFragment : Fragment() {
                                                     val requestBody =
                                                         jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
                                                     val request = Request.Builder()
-                                                        .url(url)
+                                                        .url("$waste/$todayId")
                                                         .put(requestBody)
                                                         .addHeader("Content-Type", "application/json")
                                                         .build()
@@ -467,9 +444,8 @@ class AddFragment : Fragment() {
                                             binding.overlay.setOnTouchListener { _, _ -> true}
 
                                             val getclient = OkHttpClient()
-                                            val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
                                             val getData = Request.Builder()
-                                                .url(geturl)
+                                                .url(wasteLatest)
                                                 .build()
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
@@ -524,7 +500,6 @@ class AddFragment : Fragment() {
                                                     val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
-                                                    val id = todayId
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
                                         
                                                     // Check if any EditText field is empty before proceeding
@@ -540,8 +515,6 @@ class AddFragment : Fragment() {
                                                     val client = OkHttpClient.Builder()
                                                         .addInterceptor(interceptor)
                                                         .build()
-                                        
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
                                         
                                                     val jsonBody = JSONObject().apply {
                                                         put("$building", JSONObject().apply {
@@ -579,7 +552,7 @@ class AddFragment : Fragment() {
                                                     val requestBody =
                                                         jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
                                                     val request = Request.Builder()
-                                                        .url(url)
+                                                        .url("$waste/$todayId")
                                                         .put(requestBody)
                                                         .addHeader("Content-Type", "application/json")
                                                         .build()
@@ -667,9 +640,8 @@ class AddFragment : Fragment() {
                                             binding.overlay.setOnTouchListener { _, _ -> true}
 
                                             val getclient = OkHttpClient()
-                                            val geturl = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/latest"
                                             val getData = Request.Builder()
-                                                .url(geturl)
+                                                .url(wasteLatest)
                                                 .build()
                                         
                                             getclient.newCall(getData).enqueue(object : Callback {
@@ -723,7 +695,6 @@ class AddFragment : Fragment() {
                                                     val paper = recyclablepaper ?: 0.0
                                                     val foodwaste = foodweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
-                                                    val id = todayId
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
                                                     // Check if any EditText field is empty before proceeding
@@ -739,8 +710,6 @@ class AddFragment : Fragment() {
                                                     val client = OkHttpClient.Builder()
                                                         .addInterceptor(interceptor)
                                                         .build()
-                                        
-                                                    val url = "https://us-central1-artemis-b18ae.cloudfunctions.net/server/waste/$id"
 
                                                     val jsonBody = JSONObject().apply {
                                                         put("$building", JSONObject().apply {
@@ -762,7 +731,7 @@ class AddFragment : Fragment() {
                                                     val requestBody =
                                                         jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
                                                     val request = Request.Builder()
-                                                        .url(url)
+                                                        .url("$waste/$todayId")
                                                         .put(requestBody)
                                                         .addHeader("Content-Type", "application/json")
                                                         .build()
@@ -840,13 +809,6 @@ class AddFragment : Fragment() {
                     binding.quantityEditText.setText("")
                     binding.amountEditText.setText("")
                 }
-
-                // private fun handleNaN(value: Double?): Double? {
-                //     if (value != null && value.isNaN()) {
-                //         return 0.0
-                //     }
-                //     return value
-                // }
 
             }
 

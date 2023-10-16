@@ -22,6 +22,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "waste", "\"${properties.getProperty("waste")}\""
+        buildConfigField "String", "waste_latest", "\"${properties.getProperty("waste_latest")}\""
+        buildConfigField "String", "reports", "\"${properties.getProperty("reports")}\""
+        buildConfigField "String", "status", "\"${properties.getProperty("status")}\""
+        buildConfigField "String", "status_latest", "\"${properties.getProperty("status_latest")}\""
     }
 
     buildTypes {
