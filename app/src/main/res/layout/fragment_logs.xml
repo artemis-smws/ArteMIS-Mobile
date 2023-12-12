@@ -50,7 +50,7 @@
                     android:layout_marginEnd="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Food Waste"
+                    android:text="Biodegradable"
                     android:textSize="13sp"
                     android:textColor="?attr/colorOnSecondary"
                     android:layout_gravity="center"
@@ -217,7 +217,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodcics"
+            android:id="@+id/biodegradablecics"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -227,7 +227,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodcics"
+            android:id="@+id/nullbiodegradablecics"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -415,7 +415,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodceafa"
+            android:id="@+id/biodegradableceafa"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -425,7 +425,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodceafa"
+            android:id="@+id/nullbiodegradableceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -614,7 +614,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodcit"
+            android:id="@+id/biodegradablecit"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -624,7 +624,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodcit"
+            android:id="@+id/nullbiodegradablecit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -813,7 +813,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodrgr"
+            android:id="@+id/biodegradablergr"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -823,7 +823,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodrgr"
+            android:id="@+id/nullbiodegradablergr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -1012,7 +1012,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodgym"
+            android:id="@+id/biodegradablegym"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -1022,7 +1022,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodgym"
+            android:id="@+id/nullbiodegradablegym"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -1211,7 +1211,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodsteer"
+            android:id="@+id/biodegradablesteer"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -1221,7 +1221,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodsteer"
+            android:id="@+id/nullbiodegradablesteer"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -1410,7 +1410,7 @@
                         <ImageView
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
-            android:id="@+id/foodssc"
+            android:id="@+id/biodegradablessc"
             android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
@@ -1420,7 +1420,7 @@
                                 android:layout_marginStart="30dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullfoodssc"
+            android:id="@+id/nullbiodegradablessc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 

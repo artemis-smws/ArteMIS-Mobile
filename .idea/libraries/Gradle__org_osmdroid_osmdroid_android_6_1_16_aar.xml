@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: org.osmdroid:osmdroid-android:6.1.16@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/57520c167f3c39fdaff17531d96c28d8/transformed/osmdroid-android-6.1.16/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/57520c167f3c39fdaff17531d96c28d8/transformed/osmdroid-android-6.1.16/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/57520c167f3c39fdaff17531d96c28d8/transformed/osmdroid-android-6.1.16/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3cdd69679a73c63160b477491cf37a6a/transformed/osmdroid-android-6.1.16/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3cdd69679a73c63160b477491cf37a6a/transformed/osmdroid-android-6.1.16/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3cdd69679a73c63160b477491cf37a6a/transformed/osmdroid-android-6.1.16/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.osmdroid/osmdroid-android/6.1.16/ed50052e1ca577d092b99f7c67202f0847c999bd/osmdroid-android-6.1.16-javadoc.jar!/" />

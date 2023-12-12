@@ -315,7 +315,7 @@
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
-                            android:layout_height="220dp"
+                            android:layout_height="290dp"
                             android:orientation="vertical"
                             >
 
@@ -336,7 +336,7 @@
 
                             <com.github.mikephil.charting.charts.PieChart
                                     android:id="@+id/wasteCompChart"
-                                    android:layout_width="230dp"
+                                    android:layout_width="270dp"
                                     android:elevation="3dp"
                                     android:layout_height="match_parent"/>
 
@@ -350,7 +350,7 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Food Waste"
+                                        android:text="Biodegradable"
                                         android:textStyle="bold"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
@@ -360,7 +360,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="0 kg"
-                                        android:id="@+id/displayfood"
+                                        android:id="@+id/displaybiodegradable"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
                                         />
@@ -368,7 +368,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Residual Waste"
+                                        android:text="Residual"
+                                        android:layout_marginTop="10dp"
                                         android:textStyle="bold"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
@@ -386,7 +387,8 @@
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Recyclable Waste"
+                                        android:text="Recyclable"
+                                        android:layout_marginTop="10dp"
                                         android:textStyle="bold"
                                         android:textColor="?attr/colorOnSecondary"
                                         android:textSize="13sp"
@@ -401,6 +403,24 @@
                                         android:textSize="13sp"
                                         />
 
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Infectious"
+                                        android:layout_marginTop="10dp"
+                                        android:textStyle="bold"
+                                        android:textColor="?attr/colorOnSecondary"
+                                        android:textSize="13sp"
+                                        />
+
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0 kg"
+                                        android:id="@+id/displayinfec"
+                                        android:textColor="?attr/colorOnSecondary"
+                                        android:textSize="13sp"
+                                        />
                             </LinearLayout>
 
                         </LinearLayout>
