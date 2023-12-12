@@ -53,7 +53,7 @@ class LogsFragment : Fragment() {
                 } else {
                     ceafaObject.getJSONObject("weight").getInt("recyclable")
                 }
-                val ceafafoodValue = ceafaObject.getJSONObject("weight").getInt("food_waste")
+                val ceafabiodegradableValue = ceafaObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val citObject = jsonArray.getJSONObject(0).getJSONObject("CIT")
                 val citresValue = citObject.getJSONObject("weight").getInt("residual")
                 val citrecValue = if (citObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -61,7 +61,7 @@ class LogsFragment : Fragment() {
                 } else {
                     citObject.getJSONObject("weight").getInt("recyclable")
                 }                
-                val citfoodValue = citObject.getJSONObject("weight").getInt("food_waste")
+                val citbiodegradableValue = citObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val cicsObject = jsonArray.getJSONObject(0).getJSONObject("CICS")
                 val cicsresValue = cicsObject.getJSONObject("weight").getInt("residual")
                 val cicsrecValue = if (cicsObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -69,7 +69,7 @@ class LogsFragment : Fragment() {
                 } else {
                     cicsObject.getJSONObject("weight").getInt("recyclable")
                 }                
-                val cicsfoodValue = cicsObject.getJSONObject("weight").getInt("food_waste")
+                val cicsbiodegradableValue = cicsObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val rgrObject = jsonArray.getJSONObject(0).getJSONObject("RGR")
                 val rgrresValue = rgrObject.getJSONObject("weight").getInt("residual")
                 val rgrrecValue = if (rgrObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -77,7 +77,7 @@ class LogsFragment : Fragment() {
                 } else {
                     rgrObject.getJSONObject("weight").getInt("recyclable")
                 }                
-                val rgrfoodValue = rgrObject.getJSONObject("weight").getInt("food_waste")
+                val rgrbiodegradableValue = rgrObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val gymObject = jsonArray.getJSONObject(0).getJSONObject("Gymnasium")
                 val gymresValue = gymObject.getJSONObject("weight").getInt("residual")
                 val gymrecValue = if (gymObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -85,7 +85,7 @@ class LogsFragment : Fragment() {
                 } else {
                     gymObject.getJSONObject("weight").getInt("recyclable")
                 }
-                val gymfoodValue = gymObject.getJSONObject("weight").getInt("food_waste")
+                val gymbiodegradableValue = gymObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val steerObject = jsonArray.getJSONObject(0).getJSONObject("STEER_Hub")
                 val steerresValue = steerObject.getJSONObject("weight").getInt("residual")
                 val steerrecValue = if (steerObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -93,7 +93,7 @@ class LogsFragment : Fragment() {
                 } else {
                     steerObject.getJSONObject("weight").getInt("recyclable")
                 }                
-                val steerfoodValue = steerObject.getJSONObject("weight").getInt("food_waste")
+                val steerbiodegradableValue = steerObject.getJSONObject("weight").getInt("biodegradable_waste")
                 val sscObject = jsonArray.getJSONObject(0).getJSONObject("SSC")
                 val sscresValue = sscObject.getJSONObject("weight").getInt("residual")
                 val sscrecValue = if (sscObject.getJSONObject("weight").opt("recyclable") is JSONObject) {
@@ -101,7 +101,7 @@ class LogsFragment : Fragment() {
                 } else {
                     sscObject.getJSONObject("weight").getInt("recyclable")
                 }                
-                val sscfoodValue = sscObject.getJSONObject("weight").getInt("food_waste")
+                val sscbiodegradableValue = sscObject.getJSONObject("weight").getInt("biodegradable_waste")
 
                 if (isAdded){
                     requireActivity().runOnUiThread {
@@ -113,9 +113,9 @@ class LogsFragment : Fragment() {
                             binding.nullrecceafa.visibility = View.GONE
                             binding.recceafa.visibility = View.VISIBLE
                         }
-                        if (ceafafoodValue != 0) {
-                            binding.nullfoodceafa.visibility = View.GONE
-                            binding.foodceafa.visibility = View.VISIBLE
+                        if (ceafabiodegradableValue != 0) {
+                            binding.nullbiodegradableceafa.visibility = View.GONE
+                            binding.biodegradableceafa.visibility = View.VISIBLE
                         }
                         if (citresValue != 0) {
                             binding.nullrescit.visibility = View.GONE
@@ -125,9 +125,9 @@ class LogsFragment : Fragment() {
                             binding.nullreccit.visibility = View.GONE
                             binding.reccit.visibility = View.VISIBLE
                         }
-                        if (citfoodValue != 0) {
-                            binding.nullfoodcit.visibility = View.GONE
-                            binding.foodcit.visibility = View.VISIBLE
+                        if (citbiodegradableValue != 0) {
+                            binding.nullbiodegradablecit.visibility = View.GONE
+                            binding.biodegradablecit.visibility = View.VISIBLE
                         }
                         if (cicsresValue != 0) {
                             binding.nullrescics.visibility = View.GONE
@@ -137,9 +137,9 @@ class LogsFragment : Fragment() {
                             binding.nullreccics.visibility = View.GONE
                             binding.reccics.visibility = View.VISIBLE
                         }
-                        if (cicsfoodValue != 0) {
-                            binding.nullfoodcics.visibility = View.GONE
-                            binding.foodcics.visibility = View.VISIBLE
+                        if (cicsbiodegradableValue != 0) {
+                            binding.nullbiodegradablecics.visibility = View.GONE
+                            binding.biodegradablecics.visibility = View.VISIBLE
                         }
                         if (rgrresValue != 0) {
                             binding.nullresrgr.visibility = View.GONE
@@ -149,9 +149,9 @@ class LogsFragment : Fragment() {
                             binding.nullrecrgr.visibility = View.GONE
                             binding.recrgr.visibility = View.VISIBLE
                         }
-                        if (rgrfoodValue != 0) {
-                            binding.nullfoodrgr.visibility = View.GONE
-                            binding.foodrgr.visibility = View.VISIBLE
+                        if (rgrbiodegradableValue != 0) {
+                            binding.nullbiodegradablergr.visibility = View.GONE
+                            binding.biodegradablergr.visibility = View.VISIBLE
                         }
                         if (gymresValue != 0) {
                             binding.nullresgym.visibility = View.GONE
@@ -161,9 +161,9 @@ class LogsFragment : Fragment() {
                             binding.nullrecgym.visibility = View.GONE
                             binding.recgym.visibility = View.VISIBLE
                         }
-                        if (gymfoodValue != 0) {
-                            binding.nullfoodgym.visibility = View.GONE
-                            binding.foodgym.visibility = View.VISIBLE
+                        if (gymbiodegradableValue != 0) {
+                            binding.nullbiodegradablegym.visibility = View.GONE
+                            binding.biodegradablegym.visibility = View.VISIBLE
                         }
                         if (steerresValue != 0) {
                             binding.nullressteer.visibility = View.GONE
@@ -173,9 +173,9 @@ class LogsFragment : Fragment() {
                             binding.nullrecsteer.visibility = View.GONE
                             binding.recsteer.visibility = View.VISIBLE
                         }
-                        if (steerfoodValue != 0) {
-                            binding.nullfoodsteer.visibility = View.GONE
-                            binding.foodsteer.visibility = View.VISIBLE
+                        if (steerbiodegradableValue != 0) {
+                            binding.nullbiodegradablesteer.visibility = View.GONE
+                            binding.biodegradablesteer.visibility = View.VISIBLE
                         }
                         if (sscresValue != 0) {
                             binding.nullresssc.visibility = View.GONE
@@ -185,9 +185,9 @@ class LogsFragment : Fragment() {
                             binding.nullrecssc.visibility = View.GONE
                             binding.recssc.visibility = View.VISIBLE
                         }
-                        if (sscfoodValue != 0) {
-                            binding.nullfoodssc.visibility = View.GONE
-                            binding.foodssc.visibility = View.VISIBLE
+                        if (sscbiodegradableValue != 0) {
+                            binding.nullbiodegradablessc.visibility = View.GONE
+                            binding.biodegradablessc.visibility = View.VISIBLE
                         }
                     }
                 }

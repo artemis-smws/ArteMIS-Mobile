@@ -7,67 +7,64 @@
     tools:context=".LocationFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-        >
-
-        <TextView
-            android:id="@+id/wasteMappingTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Waste Mapping"
-            android:textColor="?attr/colorOnSecondary"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+                android:id="@+id/wasteMappingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waste Mapping"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wasteMappingTitle"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:layout_marginBottom="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wasteMappingTitle"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:elevation="3dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginBottom="10dp">
 
             <Spinner
-                android:background="@drawable/spinner1"
-                android:id="@+id/locationPickerMapping"
-                android:layout_height="40dp"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="5dp"
-                />
+                    android:background="@drawable/spinner1"
+                    android:id="@+id/locationPickerMapping"
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="5dp" />
 
             <Button
-                style="?android:spinnerStyle"
-                android:text="JAN 01 2020"
-                android:textSize="16sp"
-                android:textColor="?attr/colorPrimary"
-                android:layout_gravity="center"
-                android:gravity="start"
-                android:id="@+id/datePicker"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                />
+                    style="?android:spinnerStyle"
+                    android:text="JAN 01 2020"
+                    android:textSize="16sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:layout_gravity="center"
+                    android:gravity="start"
+                    android:id="@+id/datePicker"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
 
         </LinearLayout>
 
         <org.osmdroid.views.MapView
-            android:id="@+id/map"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            />
+                android:id="@+id/map"
+                android:layout_marginTop="-110dp"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent" />
 
     </LinearLayout>
 

@@ -32,8 +32,9 @@ class AddFragment : Fragment() {
     private var selectedName: String? = null
     // private var todayId: String? = null
     private var residualweight: Double? = null
+    private var infectiousweight: Double? = null
     private var recyclableweight: Double? = null
-    private var foodweight: Double? = null
+    private var biodegradableweight: Double? = null
     private var totalweight: Double? = null
     private var recyclablebottle: Double? = null
     private var recyclablecardboard: Double? = null
@@ -176,7 +177,8 @@ class AddFragment : Fragment() {
                     val wasteType = listOf(
                         "Residual Waste",
                         "Recyclable Waste",
-                        "Food Waste"
+                        "Biodegradable Waste",
+                        "Infectious Waste"
                     )
 
                     val adapterWaste = ArrayAdapter(
@@ -291,6 +293,7 @@ class AddFragment : Fragment() {
                                                         if (buildingObject != null) {
                                                             val weightObject = buildingObject.optJSONObject("weight")
                                                             residualweight = weightObject?.optDouble("residual")
+                                                            infectiousweight = weightObject?.optDouble("infectious")
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
@@ -298,7 +301,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -316,11 +319,12 @@ class AddFragment : Fragment() {
                                                     }
 
                                                     val residual = residualweight ?: 0.0
+                                                    val infectious = infectiousweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val foodwaste = foodweight ?: 0.0
+                                                    val biodegradablewaste = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -342,13 +346,14 @@ class AddFragment : Fragment() {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual + weight)
+                                                                put("infectious", infectious)
                                                                 put("recyclable", JSONObject().apply {
                                                                     put("total", recyclable)
                                                                     put("cardboard", cardboard)
                                                                     put("bottle", bottle)
                                                                     put("paper", paper)
                                                                 })
-                                                                put("food_waste", foodwaste)
+                                                                put("biodegradable_waste", biodegradablewaste)
                                                                 put("total", totalWeight + weight)
                                                             })
                                                             put("campus", campus)
@@ -468,6 +473,7 @@ class AddFragment : Fragment() {
                                                         if (buildingObject != null) {
                                                             val weightObject = buildingObject.optJSONObject("weight")
                                                             residualweight = weightObject?.optDouble("residual")
+                                                            infectiousweight = weightObject?.optDouble("infectious")
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
@@ -475,7 +481,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -494,11 +500,12 @@ class AddFragment : Fragment() {
                                                     }
 
                                                     val residual = residualweight ?: 0.0
+                                                    val infectious = infectiousweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val foodwaste = foodweight ?: 0.0
+                                                    val biodegradablewaste = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
                                         
@@ -520,6 +527,7 @@ class AddFragment : Fragment() {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual)
+                                                                put("infectious", infectious)
                                                                 put("recyclable", JSONObject().apply {
                                                                     when (name) {
                                                                         "cardboard" -> {
@@ -542,7 +550,7 @@ class AddFragment : Fragment() {
                                                                         }
                                                                     }
                                                                 })
-                                                                put("food_waste", foodwaste)
+                                                                put("biodegradablewaste", biodegradablewaste)
                                                                 put("total", totalWeight + weight)
                                                             })
                                                             put("campus", campus)
@@ -601,7 +609,7 @@ class AddFragment : Fragment() {
                                         }
 
                                     }
-                                    "Food Waste" -> {
+                                    "Biodegradable Waste" -> {
 
                                         binding.wasteQuantity.visibility = View.GONE
                                         binding.nameOfWaste.visibility = View.GONE
@@ -664,6 +672,7 @@ class AddFragment : Fragment() {
                                                         if (buildingObject != null) {
                                                             val weightObject = buildingObject.optJSONObject("weight")
                                                             residualweight = weightObject?.optDouble("residual")
+                                                            infectiousweight = weightObject?.optDouble("infectious")
 
                                                             val recyclableObject = weightObject?.optJSONObject("recyclable")
                                                             recyclableweight = recyclableObject?.optDouble("total")
@@ -671,7 +680,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            foodweight = weightObject?.optDouble("food_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -689,11 +698,12 @@ class AddFragment : Fragment() {
                                                     }
 
                                                     val residual = residualweight ?: 0.0
+                                                    val infectious = infectiousweight ?: 0.0
                                                     val recyclable = recyclableweight ?: 0.0
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val foodwaste = foodweight ?: 0.0
+                                                    val biodegradablewaste = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -715,13 +725,14 @@ class AddFragment : Fragment() {
                                                         put("$building", JSONObject().apply {
                                                             put("weight", JSONObject().apply {
                                                                 put("residual", residual)
+                                                                put("infectious", infectious)
                                                                 put("recyclable", JSONObject().apply {
                                                                     put("total", recyclable)
                                                                     put("cardboard", cardboard)
                                                                     put("bottle", bottle)
                                                                     put("paper", paper)
                                                                 })
-                                                                put("food_waste", foodwaste + weight)
+                                                                put("biodegradable_waste", biodegradablewaste + weight)
                                                                 put("total", totalWeight + weight)
                                                             })
                                                             put("campus", campus)
@@ -779,7 +790,186 @@ class AddFragment : Fragment() {
                                         
                                         }
                                         
-                                        
+                                    }
+                                    "Infectious Waste" -> {
+
+                                        binding.wasteQuantity.visibility = View.GONE
+                                        binding.nameOfWaste.visibility = View.GONE
+                                        binding.amountOfWaste.visibility = View.VISIBLE
+
+                                        binding.inputButton.isEnabled = false // Disable the button initially
+
+                                        // Add a TextWatcher to monitor changes in the EditText fields
+                                        val textWatcher = object : TextWatcher {
+                                            override fun afterTextChanged(s: Editable?) {
+                                                // Check if all EditText fields have non-empty values
+                                                val amount = binding.amountEditText.text.toString().trim()
+
+                                                val allFieldsFilled = amount.isNotEmpty()
+
+                                                // Enable/disable the button based on the result of the check
+                                                binding.inputButton.isEnabled = allFieldsFilled
+                                            }
+
+                                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                                                // No implementation needed
+                                            }
+
+                                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                                                // No implementation needed
+                                            }
+                                        }
+
+                                        binding.amountEditText.addTextChangedListener(textWatcher)
+
+                                        binding.inputButton.setOnClickListener {
+
+                                            binding.progressBar2.visibility = View.VISIBLE
+                                            binding.overlay.visibility = View.VISIBLE
+                                            binding.overlay.setOnTouchListener { _, _ -> true}
+
+                                            val getclient = OkHttpClient()
+                                            val getData = Request.Builder()
+                                                .url(wasteLatest)
+                                                .build()
+
+                                            getclient.newCall(getData).enqueue(object : Callback {
+                                                override fun onFailure(call: Call, e: IOException) {
+                                                    requireActivity().runOnUiThread {
+                                                        showErrorMessage("Please check your Internet Connection")
+                                                    }
+                                                }
+
+                                                override fun onResponse(call: Call, response: Response) {
+                                                    val responseString = response.body?.string()
+                                                    val jsonArray = JSONArray(responseString)
+                                                    val jsonObject = jsonArray.getJSONObject(0)
+                                                    val todayId = jsonObject.getString("id")
+
+                                                    if (jsonArray.length() > 0) {
+                                                        val jsonObject = jsonArray.getJSONObject(0)
+                                                        val buildingObject = jsonObject.optJSONObject(buildingName)
+
+                                                        if (buildingObject != null) {
+                                                            val weightObject = buildingObject.optJSONObject("weight")
+                                                            residualweight = weightObject?.optDouble("residual")
+                                                            infectiousweight = weightObject?.optDouble("infectious")
+
+                                                            val recyclableObject = weightObject?.optJSONObject("recyclable")
+                                                            recyclableweight = recyclableObject?.optDouble("total")
+                                                            recyclablecardboard = recyclableObject?.optDouble("cardboard") ?: 0.0
+                                                            recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
+                                                            recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
+
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
+                                                            totalweight = weightObject?.optDouble("total")
+                                                        }
+                                                    }
+                                                    val building = buildingName
+                                                    val campus = campusName
+
+                                                    if (recyclablecardboard == null || recyclablecardboard!!.isNaN()) {
+                                                        recyclablecardboard = 0.0
+                                                    }
+                                                    if (recyclablepaper == null || recyclablepaper!!.isNaN()) {
+                                                        recyclablepaper = 0.0
+                                                    }
+                                                    if (recyclablebottle == null || recyclablebottle!!.isNaN()) {
+                                                        recyclablebottle = 0.0
+                                                    }
+
+                                                    val residual = residualweight ?: 0.0
+                                                    val infectious = infectiousweight ?: 0.0
+                                                    val recyclable = recyclableweight ?: 0.0
+                                                    val cardboard = recyclablecardboard ?: 0.0
+                                                    val bottle = recyclablebottle ?: 0.0
+                                                    val paper = recyclablepaper ?: 0.0
+                                                    val biodegradablewaste = biodegradableweight ?: 0.0
+                                                    val totalWeight = totalweight ?: 0.0
+                                                    val weight = binding.amountEditText.text.toString().trim().toDouble()
+
+                                                    // Check if any EditText field is empty before proceeding
+                                                    if (weight == 0.0) {
+                                                        requireActivity().runOnUiThread {
+                                                            showErrorMessage("Please enter the required data")
+                                                        }
+                                                    }
+
+                                                    val interceptor = HttpLoggingInterceptor()
+                                                    interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+                                                    val client = OkHttpClient.Builder()
+                                                        .addInterceptor(interceptor)
+                                                        .build()
+
+                                                    val jsonBody = JSONObject().apply {
+                                                        put("$building", JSONObject().apply {
+                                                            put("weight", JSONObject().apply {
+                                                                put("residual", residual)
+                                                                put("infectious", infectious + weight)
+                                                                put("recyclable", JSONObject().apply {
+                                                                    put("total", recyclable)
+                                                                    put("cardboard", cardboard)
+                                                                    put("bottle", bottle)
+                                                                    put("paper", paper)
+                                                                })
+                                                                put("biodegradable_waste", biodegradablewaste)
+                                                                put("total", totalWeight + weight)
+                                                            })
+                                                            put("campus", campus)
+                                                        })
+                                                    }
+
+                                                    val requestBody =
+                                                        jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+                                                    val request = Request.Builder()
+                                                        .url("$waste/$todayId")
+                                                        .put(requestBody)
+                                                        .addHeader("Content-Type", "application/json")
+                                                        .build()
+
+                                                    // Send the request and handle the response
+                                                    client.newCall(request).enqueue(object : Callback {
+                                                        override fun onFailure(call: Call, e: IOException) {
+                                                            // Handle the failure
+                                                            Toast.makeText(
+                                                                requireContext(),
+                                                                "An error occurred: ${e.message}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+
+                                                        override fun onResponse(call: Call, response: Response) {
+                                                            val responseBody = response.body?.string()
+                                                            if (response.isSuccessful && responseBody != null) {
+                                                                requireActivity().runOnUiThread {
+                                                                    clearInputFields()
+                                                                    binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
+                                                                    Toast.makeText(
+                                                                        requireContext(),
+                                                                        "Input Successful: ${response.code}",
+                                                                        Toast.LENGTH_SHORT
+                                                                    ).show()
+                                                                }
+                                                            } else {
+                                                                requireActivity().runOnUiThread {
+                                                                    binding.progressBar2.visibility = View.GONE
+                                                                    binding.overlay.visibility = View.GONE
+                                                                    Toast.makeText(
+                                                                        requireContext(),
+                                                                        "Input Failed: ${response.code}",
+                                                                        Toast.LENGTH_SHORT
+                                                                    ).show()
+                                                                }
+                                                            }
+                                                        }
+                                                    })
+
+                                                }
+                                            })
+
+                                        }
                                     }
                                 }
                             }

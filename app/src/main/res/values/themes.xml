@@ -12,7 +12,7 @@
         <!-- Tertiary brand color. -->
         <item name="colorTertiary">@color/pastel_red</item>
         <item name="colorOnTertiary">@color/green</item>
-        <item name="colorSurface">#EAEAEA</item>
+        <item name="colorSurface">#F4F4F4</item>
         <item name="colorAccent">@color/dark_red</item>
         <item name="colorOnContainer">#E6E6E6</item>
         <item name="colorOnSecondaryContainer">#F7F7F7</item>
