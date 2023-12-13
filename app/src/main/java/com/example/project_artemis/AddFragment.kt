@@ -17,10 +17,10 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import kotlinx.coroutines.DelicateCoroutinesApi
 import org.json.JSONArray
 import org.json.JSONObject
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONException
 import okhttp3.*
 import java.io.IOException
-import okhttp3.logging.HttpLoggingInterceptor
 
 @Suppress("NAME_SHADOWING")
 class AddFragment : Fragment() {
@@ -301,7 +301,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -324,7 +324,7 @@ class AddFragment : Fragment() {
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val biodegradablewaste = biodegradableweight ?: 0.0
+                                                    val biodegradable = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -343,21 +343,20 @@ class AddFragment : Fragment() {
                                                         .build()
                                         
                                                     val jsonBody = JSONObject().apply {
-                                                        put("$building", JSONObject().apply {
-                                                            put("weight", JSONObject().apply {
-                                                                put("residual", residual + weight)
-                                                                put("infectious", infectious)
-                                                                put("recyclable", JSONObject().apply {
-                                                                    put("total", recyclable)
-                                                                    put("cardboard", cardboard)
-                                                                    put("bottle", bottle)
-                                                                    put("paper", paper)
-                                                                })
-                                                                put("biodegradable_waste", biodegradablewaste)
-                                                                put("total", totalWeight + weight)
+                                                        put("building_name", building)
+                                                        put("weight", JSONObject().apply {
+                                                            put("residual", residual + weight)
+                                                            put("infectious", infectious)
+                                                            put("recyclable", JSONObject().apply {
+                                                                put("total", recyclable)
+                                                                put("cardboard", cardboard)
+                                                                put("bottle", bottle)
+                                                                put("paper", paper)
                                                             })
-                                                            put("campus", campus)
+                                                            put("biodegradable", biodegradable)
+                                                            put("total", totalWeight + weight)
                                                         })
+                                                        put("campus", campus)
                                                     }
                                         
                                                     val requestBody =
@@ -481,13 +480,13 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
                                                     val building = buildingName
                                                     val campus = campusName
-                                                    val name = selectedName
+                                                    var name = selectedName
 
                                                     if (recyclablecardboard == null || recyclablecardboard!!.isNaN()) {
                                                         recyclablecardboard = 0.0
@@ -505,7 +504,7 @@ class AddFragment : Fragment() {
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val biodegradablewaste = biodegradableweight ?: 0.0
+                                                    val biodegradable = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
                                         
@@ -524,37 +523,36 @@ class AddFragment : Fragment() {
                                                         .build()
                                         
                                                     val jsonBody = JSONObject().apply {
-                                                        put("$building", JSONObject().apply {
-                                                            put("weight", JSONObject().apply {
-                                                                put("residual", residual)
-                                                                put("infectious", infectious)
-                                                                put("recyclable", JSONObject().apply {
-                                                                    when (name) {
-                                                                        "cardboard" -> {
-                                                                            put("total", recyclable + weight)
-                                                                            put("cardboard", cardboard!! + weight)
-                                                                            put("bottle", bottle)
-                                                                            put("paper", paper)
-                                                                        }
-                                                                        "bottle" -> {
-                                                                            put("total", recyclable + weight)
-                                                                            put("cardboard", cardboard)
-                                                                            put("bottle", bottle!! + weight)
-                                                                            put("paper", paper)
-                                                                        }
-                                                                        "paper" -> {
-                                                                            put("total", recyclable + weight)
-                                                                            put("cardboard", cardboard)
-                                                                            put("bottle", bottle)
-                                                                            put("paper", paper!! + weight)
-                                                                        }
+                                                        put("building_name", building)
+                                                        put("weight", JSONObject().apply {
+                                                            put("residual", residual)
+                                                            put("infectious", infectious)
+                                                            put("recyclable", JSONObject().apply {
+                                                                when (name) {
+                                                                    "cardboard" -> {
+                                                                        put("total", recyclable!! + weight)
+                                                                        put("cardboard", cardboard!! + weight)
+                                                                        put("bottle", bottle!!)
+                                                                        put("paper", paper!!)
                                                                     }
-                                                                })
-                                                                put("biodegradablewaste", biodegradablewaste)
-                                                                put("total", totalWeight + weight)
+                                                                    "bottle" -> {
+                                                                        put("total", recyclable!! + weight)
+                                                                        put("cardboard", cardboard!!)
+                                                                        put("bottle", bottle!! + weight)
+                                                                        put("paper", paper!!)
+                                                                    }
+                                                                    "paper" -> {
+                                                                        put("total", recyclable!! + weight)
+                                                                        put("cardboard", cardboard!!)
+                                                                        put("bottle", bottle!!)
+                                                                        put("paper", paper!! + weight)
+                                                                    }
+                                                                }
                                                             })
-                                                            put("campus", campus)
+                                                            put("biodegradable", biodegradable)
+                                                            put("total", totalWeight + weight)
                                                         })
+                                                        put("campus", campus)
                                                     }
                                         
                                                     val requestBody =
@@ -680,7 +678,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -703,7 +701,7 @@ class AddFragment : Fragment() {
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val biodegradablewaste = biodegradableweight ?: 0.0
+                                                    val biodegradable = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -722,21 +720,20 @@ class AddFragment : Fragment() {
                                                         .build()
 
                                                     val jsonBody = JSONObject().apply {
-                                                        put("$building", JSONObject().apply {
-                                                            put("weight", JSONObject().apply {
-                                                                put("residual", residual)
-                                                                put("infectious", infectious)
-                                                                put("recyclable", JSONObject().apply {
-                                                                    put("total", recyclable)
-                                                                    put("cardboard", cardboard)
-                                                                    put("bottle", bottle)
-                                                                    put("paper", paper)
-                                                                })
-                                                                put("biodegradable_waste", biodegradablewaste + weight)
-                                                                put("total", totalWeight + weight)
+                                                        put("building_name", building)
+                                                        put("weight", JSONObject().apply {
+                                                            put("residual", residual)
+                                                            put("infectious", infectious)
+                                                            put("recyclable", JSONObject().apply {
+                                                                put("total", recyclable)
+                                                                put("cardboard", cardboard)
+                                                                put("bottle", bottle)
+                                                                put("paper", paper)
                                                             })
-                                                            put("campus", campus)
+                                                            put("biodegradable", biodegradable + weight)
+                                                            put("total", totalWeight + weight)
                                                         })
+                                                        put("campus", campus)
                                                     }
                                         
                                                     val requestBody =
@@ -861,7 +858,7 @@ class AddFragment : Fragment() {
                                                             recyclablebottle = recyclableObject?.optDouble("bottle") ?: 0.0
                                                             recyclablepaper = recyclableObject?.optDouble("paper") ?: 0.0
 
-                                                            biodegradableweight = weightObject?.optDouble("biodegradable_waste")
+                                                            biodegradableweight = weightObject?.optDouble("biodegradable")
                                                             totalweight = weightObject?.optDouble("total")
                                                         }
                                                     }
@@ -884,7 +881,7 @@ class AddFragment : Fragment() {
                                                     val cardboard = recyclablecardboard ?: 0.0
                                                     val bottle = recyclablebottle ?: 0.0
                                                     val paper = recyclablepaper ?: 0.0
-                                                    val biodegradablewaste = biodegradableweight ?: 0.0
+                                                    val biodegradable = biodegradableweight ?: 0.0
                                                     val totalWeight = totalweight ?: 0.0
                                                     val weight = binding.amountEditText.text.toString().trim().toDouble()
 
@@ -903,21 +900,20 @@ class AddFragment : Fragment() {
                                                         .build()
 
                                                     val jsonBody = JSONObject().apply {
-                                                        put("$building", JSONObject().apply {
-                                                            put("weight", JSONObject().apply {
-                                                                put("residual", residual)
-                                                                put("infectious", infectious + weight)
-                                                                put("recyclable", JSONObject().apply {
-                                                                    put("total", recyclable)
-                                                                    put("cardboard", cardboard)
-                                                                    put("bottle", bottle)
-                                                                    put("paper", paper)
-                                                                })
-                                                                put("biodegradable_waste", biodegradablewaste)
-                                                                put("total", totalWeight + weight)
+                                                        put("building_name", building)
+                                                        put("weight", JSONObject().apply {
+                                                            put("residual", residual)
+                                                            put("infectious", infectious + weight)
+                                                            put("recyclable", JSONObject().apply {
+                                                                put("total", recyclable)
+                                                                put("cardboard", cardboard)
+                                                                put("bottle", bottle)
+                                                                put("paper", paper)
                                                             })
-                                                            put("campus", campus)
+                                                            put("biodegradable", biodegradable)
+                                                            put("total", totalWeight + weight)
                                                         })
+                                                        put("campus", campus)
                                                     }
 
                                                     val requestBody =

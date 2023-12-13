@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
     private var cicsbiodegradableWeight4: Double? = null
     private var cicsbiodegradableWeight5: Double? = null
     private var cicsbiodegradableWeight6: Double? = null
-    
+
 
     private var citresidualWeight: Double? = null
     private var citresidualWeight1: Double? = null
@@ -369,7 +369,7 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 // Handle request failure
             }
-        
+
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val jsonData = response.body?.string()
@@ -379,14 +379,14 @@ class HomeFragment : Fragment() {
                         val jsonObject = jsonArray.getJSONObject(0)
                         val overallWeight = jsonObject.getInt("overall_weight")
                         val createdAtSeconds = jsonObject.getJSONObject("createdAt").getLong("seconds")
-        
+
                         // Convert createdAtSeconds to a Date object
                         val createdAtDate = Date(createdAtSeconds * 1000)
-        
+
                         // Format the date as MMM-d
                         val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
                         val formattedDate = dateFormat.format(createdAtDate)
-        
+
                         if (isAdded) {
                             requireActivity().runOnUiThread {
                                 binding.highestDate.text = formattedDate
@@ -402,12 +402,12 @@ class HomeFragment : Fragment() {
         val lowrequest = Request.Builder()
             .url("$waste/lowest")
             .build()
-        
+
         getLowest.newCall(lowrequest).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // Handle request failure
             }
-        
+
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val jsonData = response.body?.string()
@@ -420,11 +420,11 @@ class HomeFragment : Fragment() {
 
                         // Convert createdAtSeconds to a Date object
                         val createdAtDate = Date(createdAtSeconds * 1000)
-        
+
                         // Format the date as MMM-d
                         val dateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
                         val formattedDate = dateFormat.format(createdAtDate)
-        
+
                         if (isAdded) {
                             requireActivity().runOnUiThread {
                                 binding.lowestDate.text = formattedDate
@@ -445,7 +445,7 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 // Handle request failure
             }
-        
+
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val jsonData = response.body?.string()
@@ -461,7 +461,7 @@ class HomeFragment : Fragment() {
                         if (overallWeight != null) {
                             current_average = overallWeight
                         }
-        
+
                         if (isAdded) {
                             requireActivity().runOnUiThread {
                                 binding.averageWeight.text = current_average?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
@@ -578,7 +578,7 @@ class HomeFragment : Fragment() {
             listOf(Entry(0f, steerHubbiodegradableWeight6?.toFloat() ?: 0f), Entry(1f, steerHubbiodegradableWeight5?.toFloat() ?: 0f), Entry(2f, steerHubbiodegradableWeight4?.toFloat() ?: 0f), Entry(3f, steerHubbiodegradableWeight3?.toFloat() ?: 0f), Entry(4f, steerHubbiodegradableWeight2?.toFloat() ?: 0f), Entry(5f, steerHubbiodegradableWeight1?.toFloat() ?: 0f), Entry(6f, steerHubbiodegradableWeight?.toFloat() ?: 0f)),  // STEER Hub
             listOf(Entry(0f, sscbiodegradableWeight6?.toFloat() ?: 0f), Entry(1f, sscbiodegradableWeight5?.toFloat() ?: 0f), Entry(2f, sscbiodegradableWeight4?.toFloat() ?: 0f), Entry(3f, sscbiodegradableWeight3?.toFloat() ?: 0f), Entry(4f, sscbiodegradableWeight2?.toFloat() ?: 0f), Entry(5f, sscbiodegradableWeight1?.toFloat() ?: 0f), Entry(6f, sscbiodegradableWeight?.toFloat() ?: 0f))  // SSC
         )
-        
+
 
         val wasteGeneratedFormatter: ValueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase): String {
@@ -587,7 +587,7 @@ class HomeFragment : Fragment() {
         }
 
         val xAxisWasteGenerated: XAxis = wasteGeneratedChart.xAxis
-        
+
         xAxisWasteGenerated.granularity = 1f
         // Set the text and label colors
         xAxisWasteGenerated.textColor = themeColor
@@ -600,7 +600,7 @@ class HomeFragment : Fragment() {
         // Waste Composition Chart
 
         val wasteCompPieChart = binding.wasteCompChart
-        
+
         // Waste Composition per Building Chart
 
         val wasteCompPieChartperBuilding = binding.wasteCompChartperBuilding
@@ -613,22 +613,22 @@ class HomeFragment : Fragment() {
         val request = Request.Builder()
             .url("$wasteLatest/7days")
             .build()
-    
+
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 requireActivity().runOnUiThread {
                     showErrorMessage("Please check your Internet Connection")
                 }
             }
-    
+
             override fun onResponse(call: Call, response: Response) {
                 val responseData = response.body?.string()
                 val jsonArray = JSONArray(responseData)
-    
+
                 // Sort the array based on the "createdAt" timestamp in descending order
                 val sortedArray = (0 until jsonArray.length()).map { jsonArray.getJSONObject(it) }
                     .sortedByDescending { it.getJSONObject("createdAt").getLong("seconds") }
-    
+
                 // Get the current date in the same format as "createdAt" field
                 val calendar = Calendar.getInstance()
                 calendar.add(Calendar.DAY_OF_YEAR, -1)
@@ -649,14 +649,14 @@ class HomeFragment : Fragment() {
                 val previousDate2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar2.time)
                 val previousDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
                 val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-    
+
                 // Find the latest data with the current date
                 for (i in sortedArray.indices) {
                     val item = sortedArray[i]
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-    
+
                     if (createdAtDate == currentDate) {
                         overallWeight = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -666,64 +666,64 @@ class HomeFragment : Fragment() {
                         val gymnasiumData = item.optJSONObject("Gymnasium")
                         val sscData = item.optJSONObject("SSC")
                         val rgrData = item.optJSONObject("RGR")
-    
+
 
                         if (citData != null) {
                             citTotalWeight = citData.getJSONObject("weight").getDouble("total")
                             citresidualWeight = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (ceafaData != null) {
                             ceafaTotalWeight = ceafaData.getJSONObject("weight").getDouble("total")
                             ceafaresidualWeight = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (cicsData != null) {
                             cicsTotalWeight = cicsData.getJSONObject("weight").getDouble("total")
                             cicsresidualWeight = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (steerHubData != null) {
                             steerHubTotalWeight = steerHubData.getJSONObject("weight").getDouble("total")
                             steerHubresidualWeight = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (gymnasiumData != null) {
                             gymnasiumTotalWeight = gymnasiumData.getJSONObject("weight").getDouble("total")
                             gymnasiumresidualWeight = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (sscData != null) {
                             sscTotalWeight = sscData.getJSONObject("weight").getDouble("total")
                             sscresidualWeight = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                         if (rgrData != null) {
                             rgrTotalWeight = rgrData.getJSONObject("weight").getDouble("total")
                             rgrresidualWeight = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                     }
                 }
                 for (i in sortedArray.indices) {
@@ -731,7 +731,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate) {
                         overallWeight1 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -748,7 +748,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight1 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight1 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight1 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight1 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight1 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -756,7 +756,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight1 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight1 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight1 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight1 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight1 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -764,7 +764,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight1 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight1 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight1 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight1 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight1 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -772,7 +772,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight1 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight1 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight1 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight1 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight1 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -780,7 +780,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight1 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight1 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight1 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight1 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight1 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -788,7 +788,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight1 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight1 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight1 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight1 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight1 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -796,7 +796,7 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight1 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight1 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight1 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight1 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight1 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
                     }
                 }
@@ -805,7 +805,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate2) {
                         overallWeight2 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -822,7 +822,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight2 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight2 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight2 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight2 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight2 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -830,7 +830,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight2 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight2 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight2 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight2 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight2 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -838,7 +838,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight2 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight2 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight2 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight2 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight2 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -846,7 +846,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight2 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight2 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight2 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight2 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight2 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -854,7 +854,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight2 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight2 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight2 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight2 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight2 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -862,7 +862,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight2 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight2 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight2 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight2 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight2 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -870,9 +870,9 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight2 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight2 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight2 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight2 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight2 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                     }
                 }
                 for (i in sortedArray.indices) {
@@ -880,7 +880,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate3) {
                         overallWeight3 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -897,7 +897,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight3 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight3 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight3 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight3 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight3 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -905,7 +905,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight3 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight3 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight3 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight3 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight3 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -913,7 +913,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight3 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight3 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight3 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight3 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight3 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -921,7 +921,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight3 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight3 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight3 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight3 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight3 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -929,7 +929,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight3 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight3 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight3 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight3 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight3 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -937,7 +937,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight3 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight3 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight3 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight3 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight3 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -945,7 +945,7 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight3 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight3 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight3 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight3 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight3 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
                     }
                 }
@@ -954,7 +954,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate4) {
                         overallWeight4 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -971,7 +971,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight4 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight4 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight4 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight4 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight4 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -979,7 +979,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight4 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight4 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight4 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight4 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight4 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -987,7 +987,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight4 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight4 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight4 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight4 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight4 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -995,7 +995,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight4 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight4 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight4 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight4 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight4 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -1003,7 +1003,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight4 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight4 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight4 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight4 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight4 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -1011,7 +1011,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight4 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight4 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight4 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight4 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight4 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -1019,9 +1019,9 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight4 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight4 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight4 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight4 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight4 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                     }
                 }
                 for (i in sortedArray.indices) {
@@ -1029,7 +1029,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate5) {
                         overallWeight5 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -1046,7 +1046,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight5 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight5 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight5 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight5 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight5 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -1054,7 +1054,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight5 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight5 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight5 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight5 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight5 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -1062,7 +1062,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight5 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight5 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight5 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight5 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight5 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -1070,7 +1070,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight5 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight5 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight5 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight5 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight5 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -1078,7 +1078,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight5 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight5 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight5 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight5 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight5 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -1086,7 +1086,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight5 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight5 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight5 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight5 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight5 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -1094,7 +1094,7 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight5 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight5 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight5 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight5 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight5 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
                     }
                 }
@@ -1103,7 +1103,7 @@ class HomeFragment : Fragment() {
                     val createdAt = item.getJSONObject("createdAt")
                     val createdAtDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(Date(createdAt.getLong("seconds") * 1000))
-                
+
                     if (createdAtDate == previousDate6) {
                         overallWeight6 = item.getDouble("overall_weight")
                         val citData = item.optJSONObject("CIT")
@@ -1120,7 +1120,7 @@ class HomeFragment : Fragment() {
                             citresidualWeight6 = citData.getJSONObject("weight").getDouble("residual")
                             citrecyclableWeight6 = citData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             citinfectiousWeight6 = citData.getJSONObject("weight").getDouble("infectious")
-                            citbiodegradableWeight6 = citData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            citbiodegradableWeight6 = citData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (ceafaData != null) {
@@ -1128,7 +1128,7 @@ class HomeFragment : Fragment() {
                             ceafaresidualWeight6 = ceafaData.getJSONObject("weight").getDouble("residual")
                             ceafarecyclableWeight6 = ceafaData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             ceafainfectiousWeight6 = ceafaData.getJSONObject("weight").getDouble("infectious")
-                            ceafabiodegradableWeight6 = ceafaData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            ceafabiodegradableWeight6 = ceafaData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (cicsData != null) {
@@ -1136,7 +1136,7 @@ class HomeFragment : Fragment() {
                             cicsresidualWeight6 = cicsData.getJSONObject("weight").getDouble("residual")
                             cicsrecyclableWeight6 = cicsData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             cicsinfectiousWeight6 = cicsData.getJSONObject("weight").getDouble("infectious")
-                            cicsbiodegradableWeight6 = cicsData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            cicsbiodegradableWeight6 = cicsData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (steerHubData != null) {
@@ -1144,7 +1144,7 @@ class HomeFragment : Fragment() {
                             steerHubresidualWeight6 = steerHubData.getJSONObject("weight").getDouble("residual")
                             steerHubrecyclableWeight6 = steerHubData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             steerHubinfectiousWeight6 = steerHubData.getJSONObject("weight").getDouble("infectious")
-                            steerHubbiodegradableWeight6 = steerHubData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            steerHubbiodegradableWeight6 = steerHubData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (gymnasiumData != null) {
@@ -1152,7 +1152,7 @@ class HomeFragment : Fragment() {
                             gymnasiumresidualWeight6 = gymnasiumData.getJSONObject("weight").getDouble("residual")
                             gymnasiumrecyclableWeight6 = gymnasiumData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             gymnasiuminfectiousWeight6 = gymnasiumData.getJSONObject("weight").getDouble("infectious")
-                            gymnasiumbiodegradableWeight6 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            gymnasiumbiodegradableWeight6 = gymnasiumData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (sscData != null) {
@@ -1160,7 +1160,7 @@ class HomeFragment : Fragment() {
                             sscresidualWeight6 = sscData.getJSONObject("weight").getDouble("residual")
                             sscrecyclableWeight6 = sscData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             sscinfectiousWeight6 = sscData.getJSONObject("weight").getDouble("infectious")
-                            sscbiodegradableWeight6 = sscData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            sscbiodegradableWeight6 = sscData.getJSONObject("weight").getDouble("biodegradable")
                         }
 
                         if (rgrData != null) {
@@ -1168,9 +1168,9 @@ class HomeFragment : Fragment() {
                             rgrresidualWeight6 = rgrData.getJSONObject("weight").getDouble("residual")
                             rgrrecyclableWeight6 = rgrData.getJSONObject("weight").getJSONObject("recyclable").getDouble("total")
                             rgrinfectiousWeight6 = rgrData.getJSONObject("weight").getDouble("infectious")
-                            rgrbiodegradableWeight6 = rgrData.getJSONObject("weight").getDouble("biodegradable_waste")
+                            rgrbiodegradableWeight6 = rgrData.getJSONObject("weight").getDouble("biodegradable")
                         }
-    
+
                     }
                 }
                 if (isAdded) {
@@ -1184,7 +1184,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        
+
         val client3 = OkHttpClient()
         val request3 = Request.Builder()
             .url(wasteLatest)
@@ -1489,34 +1489,34 @@ class HomeFragment : Fragment() {
 
                 val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
-                val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Waste Generated")
+                val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Overall")
                 buildingDataSet.setDrawValues(true)
                 buildingDataSet.valueTextColor = buildingthemeColor
-                buildingDataSet.color = buildingthemeColor
+                buildingDataSet.color = Color.RED
                 buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                 val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual")
                 residualDataSet.setDrawValues(true)
                 residualDataSet.valueTextColor = buildingthemeColor
-                residualDataSet.color = Color.RED
+                residualDataSet.color = Color.BLACK
                 residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                 val infectiousDataSet = LineDataSet(infectiousLineData[buildingIndex], "Infectious")
                 infectiousDataSet.setDrawValues(true)
                 infectiousDataSet.valueTextColor = buildingthemeColor
-                infectiousDataSet.color = Color.BLACK
+                infectiousDataSet.color = Color.YELLOW
                 infectiousDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                 val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable")
                 recyclableDataSet.setDrawValues(true)
                 recyclableDataSet.valueTextColor = buildingthemeColor
-                recyclableDataSet.color = Color.GREEN
+                recyclableDataSet.color = Color.BLUE
                 recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-                val biodegradableDataSet = LineDataSet(biodegradableLineData[buildingIndex], "biodegradable Waste")
+                val biodegradableDataSet = LineDataSet(biodegradableLineData[buildingIndex], "Biodegradable")
                 biodegradableDataSet.setDrawValues(true)
                 biodegradableDataSet.valueTextColor = buildingthemeColor
-                biodegradableDataSet.color = Color.YELLOW
+                biodegradableDataSet.color = Color.GREEN
                 biodegradableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                 val wasteGeneratedDataSets = listOf(buildingDataSet, residualDataSet, infectiousDataSet, recyclableDataSet, biodegradableDataSet)
@@ -1615,34 +1615,34 @@ class HomeFragment : Fragment() {
             val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
 
 
-            val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Building Waste Generated")
+            val buildingDataSet = LineDataSet(buildingLineData[buildingIndex], "Overall")
             buildingDataSet.setDrawValues(true)
             buildingDataSet.valueTextColor = buildingthemeColor
-            buildingDataSet.color = buildingthemeColor
+            buildingDataSet.color = Color.RED
             buildingDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual")
             residualDataSet.setDrawValues(true)
             residualDataSet.valueTextColor = buildingthemeColor
-            residualDataSet.color = Color.RED
+            residualDataSet.color = Color.BLACK
             residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val infectiousDataSet = LineDataSet(infectiousLineData[buildingIndex], "Infectious")
             infectiousDataSet.setDrawValues(true)
             infectiousDataSet.valueTextColor = buildingthemeColor
-            infectiousDataSet.color = Color.BLACK
+            infectiousDataSet.color = Color.YELLOW
             infectiousDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val recyclableDataSet = LineDataSet(recyclableLineData[buildingIndex], "Recyclable")
             recyclableDataSet.setDrawValues(true)
             recyclableDataSet.valueTextColor = buildingthemeColor
-            recyclableDataSet.color = Color.GREEN
+            recyclableDataSet.color = Color.BLUE
             recyclableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
-            val biodegradableDataSet = LineDataSet(biodegradableLineData[buildingIndex], "biodegradable Waste")
+            val biodegradableDataSet = LineDataSet(biodegradableLineData[buildingIndex], "Biodegradable")
             biodegradableDataSet.setDrawValues(true)
             biodegradableDataSet.valueTextColor = buildingthemeColor
-            biodegradableDataSet.color = Color.YELLOW
+            biodegradableDataSet.color = Color.GREEN
             biodegradableDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val wasteGeneratedDataSets = listOf(buildingDataSet, residualDataSet, infectiousDataSet, recyclableDataSet, biodegradableDataSet)
@@ -1760,7 +1760,7 @@ class HomeFragment : Fragment() {
             setExtraOffsets(5f, 10f, 5f, 5f)
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
-            holeRadius = 10f
+            holeRadius = 0f
             transparentCircleRadius = 45f
             setEntryLabelColor(themeColor1)
             setEntryLabelTextSize(12f)
@@ -1780,7 +1780,7 @@ class HomeFragment : Fragment() {
             return
         }
 
-        val wasteCompColors = listOf(Color.GREEN, Color.RED, Color. BLACK, Color.YELLOW)
+        val wasteCompColors = listOf(Color.BLUE, Color.BLACK, Color.YELLOW , Color.GREEN)
 
         val entries: MutableList<PieEntry> = ArrayList()
 
@@ -1834,7 +1834,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(citrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(citresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(citinfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(citbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(citbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $citTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1842,7 +1842,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(cicsrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(cicsresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(cicsinfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(cicsbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(cicsbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $cicsTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1850,7 +1850,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(rgrrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(rgrresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(rgrinfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(rgrbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(rgrbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $rgrTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1858,7 +1858,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(gymnasiumrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(gymnasiumresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(gymnasiuminfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(gymnasiumbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(gymnasiumbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $gymnasiumTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1866,7 +1866,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(steerHubrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(steerHubresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(steerHubinfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(steerHubbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(steerHubbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $steerHubTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1874,7 +1874,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(sscrecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(sscresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(sscinfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(sscbiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(sscbiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $sscTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1936,7 +1936,7 @@ class HomeFragment : Fragment() {
 
 
     private fun setupPieChartL30days(pieChart: PieChart, building: String) {
-        val wasteCompColors = listOf(Color.GREEN, Color.RED, Color.BLACK, Color.YELLOW)
+        val wasteCompColors = listOf(Color.BLUE, Color.BLACK, Color.YELLOW , Color.GREEN)
 
         val entries: MutableList<PieEntry> = ArrayList()
         when (building) {
@@ -1944,49 +1944,49 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "CIT Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "CICS Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "RGR Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
         }

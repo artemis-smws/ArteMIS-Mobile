@@ -31,6 +31,7 @@ android {
         buildConfigField "String", "reports", "\"${properties.getProperty("reports")}\""
         buildConfigField "String", "status", "\"${properties.getProperty("status")}\""
         buildConfigField "String", "status_latest", "\"${properties.getProperty("status_latest")}\""
+        buildConfigField "String", "signin", "\"${properties.getProperty("signin")}\""
     }
 
     buildTypes {
