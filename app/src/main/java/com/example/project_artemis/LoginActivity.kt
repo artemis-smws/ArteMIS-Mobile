@@ -29,6 +29,8 @@ import android.widget.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import android.widget.Toast
+import okhttp3.logging.HttpLoggingInterceptor
+
 class LoginActivity : AppCompatActivity() {
 
     private val signIn = BuildConfig.signin
@@ -161,19 +163,27 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun sendSignInRequest(email: String, password: String) {
-        val client = OkHttpClient()
 
-        val json = JSONObject().apply {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+
+        val jsonBody = JSONObject().apply {
             put("email", email)
             put("password", password)
         }
 
-        val requestBody = json.toString().toRequestBody("application/json".toMediaType())
-
+        val requestBody =
+            jsonBody.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
         val request = Request.Builder()
             .url(signIn)
-            .post(requestBody)
+            .put(requestBody)
+            .addHeader("Content-Type", "application/json")
             .build()
+
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {

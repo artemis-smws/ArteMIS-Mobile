@@ -31,11 +31,14 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class HomeFragment : Fragment() {
 
     private val waste = BuildConfig.waste
     private val wasteLatest = BuildConfig.waste_latest
-    private val statusLatest = BuildConfig.status_latest
+//    private val statusLatest = BuildConfig.status_latest
+    private var themeColor: Int = 0
+    private var themeColor2: Int = 0
 
     private var buildingObject: String? = null
     private var current_average: Int? = null
@@ -345,7 +348,7 @@ class HomeFragment : Fragment() {
     private var gymPercentage: Double? = null
 
     private var residualPercentage: Double? = null
-    private var biodegradableWastePercentage: Double? = null
+    private var biodegradablePercentage: Double? = null
     private var recyclablePercentage: Double? = null
     private var infectiousPercentage: Double? = null
     private lateinit var itemsBuilding: List<String>
@@ -438,7 +441,7 @@ class HomeFragment : Fragment() {
 
         val getAverage = OkHttpClient()
         val averequest = Request.Builder()
-            .url(statusLatest)
+            .url(wasteLatest)
             .build()
 
         getAverage.newCall(averequest).enqueue(object : Callback {
@@ -454,17 +457,16 @@ class HomeFragment : Fragment() {
                     if (jsonArray.length() > 0) {
                         val jsonObject = jsonArray.getJSONObject(0)
                         val overallWeight: Int? = try {
-                            jsonObject.getInt("average_per_building")
+                            jsonObject.getInt("overall_weight")
                         } catch (e: JSONException) {
                             null
                         }
                         if (overallWeight != null) {
-                            current_average = overallWeight
-                        }
-
-                        if (isAdded) {
-                            requireActivity().runOnUiThread {
-                                binding.averageWeight.text = current_average?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                            val current_average = overallWeight / 7  // Divide by 7
+                            if (isAdded) {
+                                requireActivity().runOnUiThread {
+                                    binding.averageWeight.text = current_average?.let { decimalFormat.format(it) + " kg" } ?: "0 kg"
+                                }
                             }
                         }
                     }
@@ -1498,7 +1500,7 @@ class HomeFragment : Fragment() {
                 val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual")
                 residualDataSet.setDrawValues(true)
                 residualDataSet.valueTextColor = buildingthemeColor
-                residualDataSet.color = Color.BLACK
+                residualDataSet.color = buildingthemeColor
                 residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
                 val infectiousDataSet = LineDataSet(infectiousLineData[buildingIndex], "Infectious")
@@ -1624,7 +1626,7 @@ class HomeFragment : Fragment() {
             val residualDataSet = LineDataSet(residualLineData[buildingIndex], "Residual")
             residualDataSet.setDrawValues(true)
             residualDataSet.valueTextColor = buildingthemeColor
-            residualDataSet.color = Color.BLACK
+            residualDataSet.color = buildingthemeColor
             residualDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
             val infectiousDataSet = LineDataSet(infectiousLineData[buildingIndex], "Infectious")
@@ -1826,7 +1828,7 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(ceafarecyclabletotal?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(ceafaresidualtotal?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(ceafainfectioustotal?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(ceafabiodegradabletotal?.toFloat() ?: 0f, "biodegradable Waste"))
+                entries.add(PieEntry(ceafabiodegradabletotal?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.description.text = "total $ceafaTotal7days kg"
                 pieChart.invalidate()
             }
@@ -1880,8 +1882,8 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val themeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
-        val themeColor2 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnPrimary)
+        themeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
+        themeColor2 = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnPrimary)
 
         val dataSet = PieDataSet(entries, "").apply {
             colors = wasteCompColors
@@ -1944,49 +1946,49 @@ class HomeFragment : Fragment() {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "CIT Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "CICS Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "RGR Building" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "Gymnasium" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "STEER Hub" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
             "Student Services Center" -> {
                 entries.add(PieEntry(recyclablePercentage?.toFloat() ?: 0f, "Recyclable"))
                 entries.add(PieEntry(residualPercentage?.toFloat() ?: 0f, "Residual"))
                 entries.add(PieEntry(infectiousPercentage?.toFloat() ?: 0f, "Infectious"))
-                entries.add(PieEntry(biodegradableWastePercentage?.toFloat() ?: 0f, "Biodegradable"))
+                entries.add(PieEntry(biodegradablePercentage?.toFloat() ?: 0f, "Biodegradable"))
                 pieChart.invalidate()
             }
         }
