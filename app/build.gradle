@@ -29,8 +29,6 @@ android {
         buildConfigField "String", "waste", "\"${properties.getProperty("waste")}\""
         buildConfigField "String", "waste_latest", "\"${properties.getProperty("waste_latest")}\""
         buildConfigField "String", "reports", "\"${properties.getProperty("reports")}\""
-        buildConfigField "String", "status", "\"${properties.getProperty("status")}\""
-        buildConfigField "String", "status_latest", "\"${properties.getProperty("status_latest")}\""
         buildConfigField "String", "signin", "\"${properties.getProperty("signin")}\""
     }
 
