@@ -1,20 +1,18 @@
 package com.example.project_artemis
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
-import com.example.project_artemis.databinding.ActivityLoginBinding
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import com.example.project_artemis.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,9 +20,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.io.IOException
+import android.widget.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import android.widget.Toast
 class LoginActivity : AppCompatActivity() {
 
+    private val signIn = BuildConfig.signin
     private lateinit var binding: ActivityLoginBinding
     private var backPressedTime: Long = 0
     private lateinit var sharedPreferences: SharedPreferences
@@ -32,28 +39,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private var mIsShowPass = false
-
-    private fun createIntent() {
-
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Signup Error")
-        builder.setMessage("Please enter a valid email address")
-        builder.setPositiveButton("OK") { dialog, which ->
-            binding.progressBar2.visibility = View.GONE
-            dialog.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
-//        val intent = Intent(this, HomeActivity::class.java)
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-//        startActivity(intent)
-    }
-
-    private fun createIntentGuest() {
-        val intent = Intent(this, GuestActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,38 +116,18 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-
-            val email = binding.editTextEmail.text.toString()
-            val sharedPreferencesEmailInfo = getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            val editor = sharedPreferencesEmailInfo.edit()
-            editor.putString("EMAIL", email)
-            editor.apply()
-            val emailTest = binding.editTextEmail.text.toString().trim()
+            val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
 
-            val emailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
-            val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+            val emailRegex = Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$")
+            val passwordRegex = Regex("^.{8,}\$")
 
-            if (!emailRegex.matches(emailTest)) {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Login Error")
-                builder.setMessage("Please enter a valid email address")
-                builder.setPositiveButton("OK") { dialog, which ->
-                    dialog.dismiss()
-                }
-                val dialog = builder.create()
-                dialog.show()
+            if (!emailRegex.matches(email)) {
+                showErrorDialog("Please enter a valid email address")
             } else if (!passwordRegex.matches(password)) {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Login Error")
-                builder.setMessage("Your password must have:\n8 or more characters, must contain Upper and lowercase letter, atleast 1 digit and 1 special character.")
-                builder.setPositiveButton("OK") { dialog, which ->
-                    dialog.dismiss()
-                }
-                val dialog = builder.create()
-                dialog.show()
+                showErrorDialog("Your password must have 8 or more characters")
             } else {
-                createIntent()
+                sendSignInRequest(email, password)
             }
         }
 
@@ -181,6 +146,65 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Press back again to exit the app.", Toast.LENGTH_LONG).show()
         }
         backPressedTime = System.currentTimeMillis()
+    }
+
+
+    private fun showErrorDialog(message: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Login Error")
+        builder.setMessage(message)
+        builder.setPositiveButton("OK") { dialog, which ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun sendSignInRequest(email: String, password: String) {
+        val client = OkHttpClient()
+
+        val json = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+        }
+
+        val requestBody = json.toString().toRequestBody("application/json".toMediaType())
+
+        val request = Request.Builder()
+            .url(signIn)
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    showErrorDialog("Failed to sign in. Please try again.")
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                if (response.isSuccessful && responseBody != null) {
+                    createIntent()
+                } else {
+                    runOnUiThread {
+                        showErrorDialog("Failed to sign in. Please check your credentials.")
+                    }
+                }
+            }
+        })
+    }
+
+    private fun createIntent() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    private fun createIntentGuest() {
+        val intent = Intent(this, GuestActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun signInGoogle(){

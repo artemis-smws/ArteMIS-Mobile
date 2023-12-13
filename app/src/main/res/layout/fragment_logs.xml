@@ -27,9 +27,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
             >
 
@@ -37,33 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="0.2"
-                >
-
-            <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/circle_yellow"/>
-
-            <TextView
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Biodegradable"
-                    android:textSize="13sp"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:layout_gravity="center"
-                    />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
+                android:layout_weight="0.1"
                 >
 
             <ImageView
@@ -76,8 +50,8 @@
                     android:layout_marginEnd="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recyclable"
-                    android:textSize="13sp"
+                    android:text="Biodegradable"
+                    android:textSize="15sp"
                     android:textColor="?attr/colorOnSecondary"
                     android:layout_gravity="center"
                     />
@@ -88,21 +62,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="0.2"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
                 >
 
             <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/circle_red"/>
+                    android:src="@drawable/circle_blue"/>
 
             <TextView
                     android:layout_marginStart="6dp"
                     android:layout_marginEnd="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Residual"
-                    android:textSize="13sp"
+                    android:text="Recyclable"
+                    android:textSize="15sp"
                     android:textColor="?attr/colorOnSecondary"
                     android:layout_gravity="center"
                     />
@@ -112,39 +87,74 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/legend"
+            android:id="@+id/legend2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            >
 
-        <TextView
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/building"
-                android:textStyle="bold"
-                android:layout_marginStart="25dp"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:layout_weight="0.2" />
+                android:orientation="horizontal"
+                android:layout_weight="0.1"
+                >
 
-        <TextView
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/circle_black"/>
+
+            <TextView
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Residual"
+                    android:textSize="15sp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:layout_gravity="center"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/statusTitle"
-                android:textStyle="bold"
-                android:layout_marginEnd="25dp"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:layout_weight="0.1" />
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="0.05"
+                >
+
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/circle_yellow"/>
+
+            <TextView
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Infectious"
+                    android:textSize="15sp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:layout_gravity="center"
+                    />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <ScrollView
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,9 +171,9 @@
                 >
 
             <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -172,32 +182,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="CICS Building"
+                                android:text="CICS"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -209,27 +212,82 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="10dp"
                                 android:layout_width="50dp"
-            android:id="@+id/biodegradablecics"
-            android:visibility="gone"
+                                android:id="@+id/biodegradablecics"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullbiodegradablecics"
+                                android:id="@+id/nullbiodegradablecics"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/reccics"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon1"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullreccics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/rescics"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon2"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullrescics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infeccics"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfeccics"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
 
                     </LinearLayout>
 
@@ -239,32 +297,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="CICS Building"
+                                android:text="CEAFA"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -276,144 +327,13 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/reccics"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullreccics"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CICS Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/rescics"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullrescics"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CEAFA Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
             android:id="@+id/biodegradableceafa"
             android:visibility="gone"
@@ -422,77 +342,63 @@
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
             android:id="@+id/nullbiodegradableceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CEAFA Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/recceafa"
-            android:visibility="gone"
+                                android:id="@+id/recceafa"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon1"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullrecceafa"
+                                android:id="@+id/nullrecceafa"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/resceafa"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon2"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullresceafa"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infecceafa"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfecceafa"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -500,105 +406,35 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CEAFA Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/resceafa"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullresceafa"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
 
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="107dp"
                                 android:layout_height="wrap_content"
                                 android:text="CIT Building"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
+                                android:layout_gravity="center" />
 
                     </LinearLayout>
 
@@ -606,13 +442,13 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
             android:id="@+id/biodegradablecit"
             android:visibility="gone"
@@ -621,77 +457,63 @@
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
             android:id="@+id/nullbiodegradablecit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
 
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CIT Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/reccit"
-            android:visibility="gone"
+                                android:id="@+id/reccit"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon1"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullreccit"
+                                android:id="@+id/nullreccit"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/rescit"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon2"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullrescit"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infeccit"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfeccit"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
@@ -699,101 +521,31 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="CIT Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/rescit"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullrescit"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RGR Building"
+                                android:text="RGR"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -805,13 +557,13 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
             android:id="@+id/biodegradablergr"
             android:visibility="gone"
@@ -820,179 +572,98 @@
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
             android:id="@+id/nullbiodegradablergr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
 
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="RGR Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/recrgr"
-            android:visibility="gone"
+                                android:id="@+id/recrgr"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon1"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullrecrgr"
+                                android:id="@+id/nullrecrgr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="RGR Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/resrgr"
-            android:visibility="gone"
+                                android:id="@+id/resrgr"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon2"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullresrgr"
+                                android:id="@+id/nullresrgr"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infecrgr"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfecrgr"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+
+
                     </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
 
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Gymnasium"
+                                android:text="Gym"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -1004,13 +675,13 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
             android:id="@+id/biodegradablegym"
             android:visibility="gone"
@@ -1019,47 +690,97 @@
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
             android:id="@+id/nullbiodegradablegym"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/recgym"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon1"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullrecgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/resgym"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon2"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullresgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infecgym"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfecgym"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+
                     </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
 
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Gymnasium"
+                                android:text="STEERHub"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -1071,127 +792,112 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/recgym"
-            android:visibility="gone"
+                                android:id="@+id/biodegradablesteer"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullrecgym"
+                                android:id="@+id/nullbiodegradablesteer"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/recsteer"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon1"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullrecsteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/ressteer"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon2"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullressteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:id="@+id/infecsteer"
+                                android:visibility="gone"
+                                android:layout_height="50dp"
+                                android:src="@drawable/checkbox_icon3"
+                                android:layout_gravity="center"/>
+
+                        <ImageView
+                                android:layout_marginStart="7dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/nullinfecsteer"
+                                android:src="@drawable/checkbox_bg"
+                                android:layout_gravity="center"/>
+
+
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Gymnasium"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/resgym"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullresgym"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         >
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/status_container_2"
                             android:orientation="horizontal"
                             android:padding="10dp"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.35"
                             >
 
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
 
                         <TextView
                                 android:layout_marginStart="3dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="STEER Hub"
+                                android:text="SSC"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
+                                android:textSize="22sp"
                                 android:textColor="?attr/colorOnSecondary"
                                 android:layout_weight="0.1"
                                 android:layout_gravity="center"
@@ -1203,358 +909,82 @@
 
                     <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:layout_weight="0.2"
                             >
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/biodegradablesteer"
-            android:visibility="gone"
+                                android:id="@+id/biodegradablessc"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
                                 android:src="@drawable/checkbox_icon"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullbiodegradablesteer"
+                                android:id="@+id/nullbiodegradablessc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
 
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="STEER Hub"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/recsteer"
-            android:visibility="gone"
+                                android:id="@+id/recssc"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon1"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullrecsteer"
+                                android:id="@+id/nullrecssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="STEER Hub"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/ressteer"
-            android:visibility="gone"
+                                android:id="@+id/resssc"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon2"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullressteer"
+                                android:id="@+id/nullresssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
 
                         <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_yellow"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="SSC Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
-            android:id="@+id/biodegradablessc"
-            android:visibility="gone"
+                                android:id="@+id/infecssc"
+                                android:visibility="gone"
                                 android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
+                                android:src="@drawable/checkbox_icon3"
                                 android:layout_gravity="center"/>
 
                         <ImageView
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="7dp"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-            android:id="@+id/nullbiodegradablessc"
+                                android:id="@+id/nullinfecssc"
                                 android:src="@drawable/checkbox_bg"
                                 android:layout_gravity="center"/>
 
-                    </LinearLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_green"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="SSC Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/recssc"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullrecssc"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp"
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:background="@drawable/status_container_2"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            android:layout_weight="0.1"
-                            >
-
-                        <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:src="@drawable/trash_red"
-                                android:layout_gravity="center"
-                                />
-
-                        <TextView
-                                android:layout_marginStart="3dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="SSC Building"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:layout_weight="0.1"
-                                android:layout_gravity="center"
-                                />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="0.2"
-                            >
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-            android:id="@+id/resssc"
-            android:visibility="gone"
-                                android:layout_height="50dp"
-                                android:src="@drawable/checkbox_icon"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_marginStart="30dp"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-            android:id="@+id/nullresssc"
-                                android:src="@drawable/checkbox_bg"
-                                android:layout_gravity="center"/>
 
                     </LinearLayout>
 
@@ -1564,7 +994,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
 
 
