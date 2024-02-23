@@ -1782,7 +1782,9 @@ class HomeFragment : Fragment() {
             return
         }
 
-        val wasteCompColors = listOf(Color.BLUE, Color.BLACK, Color.YELLOW , Color.GREEN)
+        val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
+
+        val wasteCompColors = listOf(Color.BLUE, buildingthemeColor, Color.YELLOW , Color.GREEN)
 
         val entries: MutableList<PieEntry> = ArrayList()
 
@@ -1938,7 +1940,10 @@ class HomeFragment : Fragment() {
 
 
     private fun setupPieChartL30days(pieChart: PieChart, building: String) {
-        val wasteCompColors = listOf(Color.BLUE, Color.BLACK, Color.YELLOW , Color.GREEN)
+
+        val buildingthemeColor = resolveThemeColor(requireContext(), com.google.android.material.R.attr.colorOnSecondary)
+
+        val wasteCompColors = listOf(Color.BLUE, buildingthemeColor, Color.YELLOW , Color.GREEN)
 
         val entries: MutableList<PieEntry> = ArrayList()
         when (building) {
